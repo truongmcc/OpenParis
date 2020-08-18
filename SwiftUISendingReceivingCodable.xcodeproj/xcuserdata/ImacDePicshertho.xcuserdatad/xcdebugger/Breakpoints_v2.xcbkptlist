@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A0647F78-0C95-4683-AA74-8AAFE819E916"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8ABC6867-9FF8-40CB-82C3-A2361C1C5C25"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUISendingReceivingCodable/WebServiceManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "UrlDataLocationEnum"
+            landmarkType = "13">
+            <Locations>
+               <Location
+                  uuid = "8ABC6867-9FF8-40CB-82C3-A2361C1C5C25 - 952ba70feb19c259"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.UrlServicesEnum.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;SwiftUISendingReceivingCodable.UrlServicesEnum&gt;"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUISendingReceivingCodable/SwiftUISendingReceivingCodable/WebServiceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  uuid = "8ABC6867-9FF8-40CB-82C3-A2361C1C5C25 - 342a3c64aff791d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.UrlServicesEnum.rawValue.getter : Swift.String"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUISendingReceivingCodable/SwiftUISendingReceivingCodable/WebServiceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "6">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "355168F0-D838-4972-928A-E97302FFCA18"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUISendingReceivingCodable/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "mapView(_:didSelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

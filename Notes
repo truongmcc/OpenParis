@@ -1,7 +1,10 @@
 
 gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
-
+bug cumul annotations après un reload
+crash selection userlocation : done
+refacto : done
+ajout dand git : done
 zoom sur map : done
 gestion des erreurs ws : done
 animation sur détail velib : done

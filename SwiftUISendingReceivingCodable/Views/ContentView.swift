@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var annotations = [Annotation]()
     @State private var results = [GenericData]()
     @State private var showingDetails = false
-    @State var selectedAnnotation: VelibAnnotation?
+    @State var velibSelected: Velib?
     @State private var showingErrorAlert = false
     @State var alertError: Alert?
     
@@ -22,22 +22,32 @@ struct ContentView: View {
             MapView(annotations: annotations,
                     showingDetails: $showingDetails,
                     showingErrorAlert: $showingErrorAlert,
-                    selectedAnnotation: $selectedAnnotation,
+                    velibSelected: $velibSelected,
                     alertError: $alertError).onAppear {
                         loadMap()
                     }
             if showingDetails == true {
-                DetailVelibView(selectedAnnotation: selectedAnnotation)
+                DetailVelibView(velibSelected: velibSelected)
             }
         }
+        
         
         .onTapGesture {
             showingDetails = false
         }
         
         .alert(isPresented: $showingErrorAlert) {
-            return (alertError ?? Alert(title: Text("lkj")))
+            return (alertError ?? Alert(title: Text("Erreur")))
         }
+        
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
+                                                   object: nil,
+                                                   queue: .main) { (notification) in
+                loadMap()
+            }
+        }
+
     }
     
     fileprivate func loadMap() {
@@ -57,7 +67,7 @@ struct ContentView: View {
         })
     }
     
-    func createAnnotations(results: [GenericData]) {
+    fileprivate func createAnnotations(results: [GenericData]) {
         for annotation in results {
             DispatchQueue.main.async {
                 annotations.append(Annotation(data: annotation))
@@ -90,29 +100,7 @@ struct ContentView: View {
 //            getData("https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes")
 //        }
 //    }
-//
-//    func getData(_ url: String) {
-//        guard let url = URL(string: url) else {
-//            print("Invalid URL")
-//            return
-//        }
-//        let urlRequest = URLRequest(url: url)
-//
-//        WebServiceManager.getContent(urlRequest: urlRequest, decodable: Response.self, completion: {decodedResponse, error in
-//            // we have good data – go back to the main thread
-//            DispatchQueue.main.async {
-//                // update our UI
-//                if let dataResults = decodedResponse?.records {
-//                    self.results = dataResults
-//                }
-//            }
-//            // everything is good, so we can exit
-//            return
-//
-//
-//        })
-//    }
-//}
+
 //    
 //    func createUrl(url: String) -> URLRequest? {
 //        guard let url = URL(string: url) else {

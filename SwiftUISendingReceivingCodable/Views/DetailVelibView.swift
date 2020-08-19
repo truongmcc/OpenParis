@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct DetailVelibView: View {
-    @State var selectedAnnotation: VelibAnnotation?
+    @State var velibSelected: Velib?
     @State var opacityChange = false
 
 
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10) {
-            Text(selectedAnnotation?.name ?? "nom non trouvé")
+            Text(velibSelected?.fields.name ?? "nom non trouvé")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                 Text("Bornes disponibles : ")
-                Text("\(selectedAnnotation?.numDockAvailable ?? 0)")
+                Text("\(velibSelected?.fields.numDockAvailable ?? 0)")
             }
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                 Text("Velib disponibles : ")
-                Text("\(selectedAnnotation?.numBikesAvailable ?? 0)")
+                Text("\(velibSelected?.fields.numBikesAvailable ?? 0)")
             }
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                 Text("Ebikes : ")
-                Text("\(selectedAnnotation?.eBike ?? 0)")
+                Text("\(velibSelected?.fields.eBike ?? 0)")
             }
         }
         .font(.system(size: 20))

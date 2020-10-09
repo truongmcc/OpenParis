@@ -11,7 +11,7 @@ import CoreLocation
 
 struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
-    var annotations: [Annotation]
+    @Binding var annotations: [Annotation]
     @Binding var showingDetails: Bool
     @Binding var showingErrorAlert: Bool
     @Binding var velibSelected: Velib?
@@ -20,14 +20,20 @@ struct MapView: UIViewRepresentable {
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
         let uiView = MKMapView()
+        uiView.delegate = context.coordinator
         goToUserLocation(uiView: uiView)
         return uiView
     }
     
+    
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.delegate = context.coordinator
         uiView.addAnnotations(annotations)
+        print("uiView.annotions \(uiView.annotations.count)")
+        print("annotions \(annotations.count )")
     }
+    
+    
+    
     
     // MARK: - Functions
     func makeCoordinator() -> MapCoordinator {

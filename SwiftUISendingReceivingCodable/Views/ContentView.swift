@@ -16,22 +16,23 @@ struct ContentView: View {
     @State var velibSelected: Velib?
     @State private var showingErrorAlert = false
     @State var alertError: Alert?
-    
+    @State var map: MKMapView?
+
     var body: some View {
         ZStack {
-            MapView(annotations: annotations,
+            MapView(annotations: $annotations,
                     showingDetails: $showingDetails,
                     showingErrorAlert: $showingErrorAlert,
                     velibSelected: $velibSelected,
                     alertError: $alertError).onAppear {
+                        annotations.removeAll()
                         loadMap()
                     }
             if showingDetails == true {
                 DetailVelibView(velibSelected: velibSelected)
             }
         }
-        
-        
+
         .onTapGesture {
             showingDetails = false
         }
@@ -44,6 +45,7 @@ struct ContentView: View {
             NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                                    object: nil,
                                                    queue: .main) { (notification) in
+                annotations.removeAll()
                 loadMap()
             }
         }
@@ -51,9 +53,10 @@ struct ContentView: View {
     }
     
     fileprivate func loadMap() {
-        MapServices.shared.loadMap(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
             if let dataResults = decodedResponse?.records {
                 results = dataResults
+                print("results \(results.count)")
                 createAnnotations(results: results)
             }
             else {
@@ -68,6 +71,7 @@ struct ContentView: View {
     }
     
     fileprivate func createAnnotations(results: [GenericData]) {
+        annotations.removeAll()
         for annotation in results {
             DispatchQueue.main.async {
                 annotations.append(Annotation(data: annotation))

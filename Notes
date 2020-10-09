@@ -1,7 +1,7 @@
 
 gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
-bug cumul annotations après un reload
+bug cumul annotations après un reload (un jour) !!!
 crash selection userlocation : done
 refacto : done
 ajout dand git : done

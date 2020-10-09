@@ -21,7 +21,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         let url = UrlDataLocationEnum.velib.rawValue + recordid
         getVelib(url)
     }
- 
+    
     fileprivate func createVelibDetail(_ dataResults: [Velib]) {
         for velib in dataResults {
             DispatchQueue.main.async {
@@ -32,13 +32,13 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     }
     
     fileprivate func getVelib(_ url: String) {
-        MapServices.shared.loadAnnotation(url: url,
+        MapServices.shared.loadData(url: url,
                                           decodable: VelibResponse.self) { decodedResponse, error in
             if let dataResults = decodedResponse?.records {
                 self.createVelibDetail(dataResults)
             } else { // si échec, recharger la map au cas ou les recordId ont été raffraichis sur le serveur
-                MapServices.shared.loadMap(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
-                    MapServices.shared.loadAnnotation(url: url,
+                MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+                    MapServices.shared.loadData(url: url,
                                                       decodable: VelibResponse.self) { decodedResponse, error in
                         if let dataResults = decodedResponse?.records {
                             self.createVelibDetail(dataResults)

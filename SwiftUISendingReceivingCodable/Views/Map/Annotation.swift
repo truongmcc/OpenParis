@@ -3,7 +3,7 @@
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 15/08/2020.
-//
+// Initialisé à partir des GenericData
 
 import MapKit
 

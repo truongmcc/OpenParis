@@ -13,6 +13,16 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     var map: MapView
     init(mapView: MapView) {
         map = mapView
+        mapView.velibsViewModel.fetchVelibs()
+    }
+    
+    fileprivate func createAnnotations(results: [GenericData]) {
+        map.velibsViewModel.annotations.removeAll()
+        for annotation in results {
+            DispatchQueue.main.async {
+                self.map.velibsViewModel.annotations.append(Annotation(data: annotation))
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -29,6 +39,15 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
                 self.map.showingDetails = true
             }
         }
+    }
+    
+    fileprivate func createErrorAlert(_ error: Error?) {
+        if let error = error?.localizedDescription {
+            self.map.velibsViewModel.alertError = Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")) {
+                self.map.showingErrorAlert = false
+            })
+        }
+        self.map.showingErrorAlert = true
     }
     
     fileprivate func getVelib(_ url: String) {
@@ -51,12 +70,5 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
-    fileprivate func createErrorAlert(_ error: Error?) {
-        if let error = error?.localizedDescription {
-            self.map.alertError = Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")) {
-                self.map.showingErrorAlert = false
-            })
-        }
-        self.map.showingErrorAlert = true
-    }
+ 
 }

@@ -10,7 +10,7 @@ import MapKit
 class Annotation: NSObject, MKAnnotation {
     
     let id: String?
-    let coordinate: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
 
     init(data: GenericData) {
         self.id = data.idData

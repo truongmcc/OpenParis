@@ -9,9 +9,6 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    
-    @State private var annotations = [Annotation]()
-    @State private var results = [GenericData]()
     @State private var showingDetails = false
     @State var velibSelected: Velib?
     @State private var showingErrorAlert = false
@@ -20,14 +17,10 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            MapView(annotations: $annotations,
-                    showingDetails: $showingDetails,
+            MapView(showingDetails: $showingDetails,
                     showingErrorAlert: $showingErrorAlert,
-                    velibSelected: $velibSelected,
-                    alertError: $alertError).onAppear {
-                        annotations.removeAll()
-                        loadMap()
-                    }
+                    velibSelected: $velibSelected
+                    )
             if showingDetails == true {
                 DetailVelibView(velibSelected: velibSelected)
             }
@@ -45,39 +38,38 @@ struct ContentView: View {
             NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                                    object: nil,
                                                    queue: .main) { (notification) in
-                annotations.removeAll()
-                loadMap()
+                //annotations.removeAll()
             }
         }
 
     }
     
-    fileprivate func loadMap() {
-        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
-            if let dataResults = decodedResponse?.records {
-                results = dataResults
-                print("results \(results.count)")
-                createAnnotations(results: results)
-            }
-            else {
-                showingErrorAlert = true
-                if let error = error?.localizedDescription {
-                    alertError = Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")) {
-                        self.showingErrorAlert = false
-                    })
-                }
-            }
-        })
-    }
+//    fileprivate func loadMap() {
+//        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+//            if let dataResults = decodedResponse?.velibs {
+//                results = dataResults
+//                print("results \(results.count)")
+//                createAnnotations(results: results)
+//            }
+//            else {
+//                showingErrorAlert = true
+//                if let error = error?.localizedDescription {
+//                    alertError = Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")) {
+//                        self.showingErrorAlert = false
+//                    })
+//                }
+//            }
+//        })
+//    }
     
-    fileprivate func createAnnotations(results: [GenericData]) {
-        annotations.removeAll()
-        for annotation in results {
-            DispatchQueue.main.async {
-                annotations.append(Annotation(data: annotation))
-            }
-        }
-    }
+//    fileprivate func createAnnotations(results: [GenericData]) {
+//        annotations.removeAll()
+//        for annotation in results {
+//            DispatchQueue.main.async {
+//                annotations.append(Annotation(data: annotation))
+//            }
+//        }
+//    }
     
     //    func createAnnotations(results: [Velib]) {
     //        for annotation in results {
@@ -130,7 +122,7 @@ struct ContentView: View {
 //                    // we have good data – go back to the main thread
 //                    DispatchQueue.main.async {
 //                        // update our UI
-//                        if let datas = decodedResponse.records {
+//                        if let datas = decodedResponse.velibs {
 //                            self.results = datas
 //                        }
 //                    }

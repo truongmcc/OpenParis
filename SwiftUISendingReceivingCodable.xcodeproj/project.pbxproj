@@ -12,7 +12,8 @@
 		EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFA24E7CB520013ED0E /* Annotation.swift */; };
 		EB3C1DFF24E7F7870013ED0E /* GenericData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFE24E7F7870013ED0E /* GenericData.swift */; };
 		EB80C0B624EABB44006F9635 /* MapServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80C0B524EABB44006F9635 /* MapServices.swift */; };
-		EB84BF40253DCE2900BB18E5 /* VelibsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84BF3F253DCE2900BB18E5 /* VelibsViewModel.swift */; };
+		EB84BF4C253DE84D00BB18E5 /* VelibsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84BF4B253DE84D00BB18E5 /* VelibsViewModel.swift */; };
+		EB84BF54253DE8D400BB18E5 /* DetailVelibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
 		EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */; };
 		EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FBA24C9BDD000BA086F /* ContentView.swift */; };
@@ -22,7 +23,6 @@
 		EB887FD624C9BE3000BA086F /* SwiftUISendingReceivingCodableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FD524C9BE3000BA086F /* SwiftUISendingReceivingCodableUITests.swift */; };
 		EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE324C9DC8500BA086F /* WebServiceManager.swift */; };
 		EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE524C9DD9300BA086F /* VelibModel.swift */; };
-		EBD1C42524E68001007DB937 /* DetailVelibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1C42424E68001007DB937 /* DetailVelibView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,8 @@
 		EB3C1DFA24E7CB520013ED0E /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		EB3C1DFE24E7F7870013ED0E /* GenericData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericData.swift; sourceTree = "<group>"; };
 		EB80C0B524EABB44006F9635 /* MapServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServices.swift; sourceTree = "<group>"; };
-		EB84BF3F253DCE2900BB18E5 /* VelibsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VelibsViewModel.swift; path = "View Model/VelibsViewModel.swift"; sourceTree = "<group>"; };
+		EB84BF4B253DE84D00BB18E5 /* VelibsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VelibsViewModel.swift; path = "SwiftUISendingReceivingCodable/View Model/VelibsViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailVelibView.swift; path = SwiftUISendingReceivingCodable/Views/DetailVelibView.swift; sourceTree = SOURCE_ROOT; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EB887FB524C9BDD000BA086F /* SwiftUISendingReceivingCodable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUISendingReceivingCodable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISendingReceivingCodableApp.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		EB887FD724C9BE3000BA086F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB887FE324C9DC8500BA086F /* WebServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
 		EB887FE524C9DD9300BA086F /* VelibModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibModel.swift; sourceTree = "<group>"; };
-		EBD1C42424E68001007DB937 /* DetailVelibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVelibView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +114,8 @@
 		EB3C1DFC24E7CBE50013ED0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB84BF4A253DE83100BB18E5 /* ViewModel */,
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
-				EBD1C42424E68001007DB937 /* DetailVelibView.swift */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 			);
 			path = Views;
@@ -130,12 +130,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		EB84BF38253DCBBC00BB18E5 /* View Model */ = {
+		EB84BF4A253DE83100BB18E5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB84BF3F253DCE2900BB18E5 /* VelibsViewModel.swift */,
+				EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */,
+				EB84BF4B253DE84D00BB18E5 /* VelibsViewModel.swift */,
 			);
-			name = "View Model";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EB887FAC24C9BDCF00BA086F = {
@@ -164,7 +165,6 @@
 			children = (
 				EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */,
 				EB3C1DFC24E7CBE50013ED0E /* Views */,
-				EB84BF38253DCBBC00BB18E5 /* View Model */,
 				EB3C1DF824E7C9300013ED0E /* Data Model */,
 				EB3C1DFD24E7CC750013ED0E /* Services */,
 				EB887FBC24C9BE2E00BA086F /* Assets.xcassets */,
@@ -332,14 +332,14 @@
 			files = (
 				EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */,
 				EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */,
-				EBD1C42524E68001007DB937 /* DetailVelibView.swift in Sources */,
-				EB84BF40253DCE2900BB18E5 /* VelibsViewModel.swift in Sources */,
+				EB84BF4C253DE84D00BB18E5 /* VelibsViewModel.swift in Sources */,
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* GenericData.swift in Sources */,
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */,
 				EB80C0B624EABB44006F9635 /* MapServices.swift in Sources */,
+				EB84BF54253DE8D400BB18E5 /* DetailVelibView.swift in Sources */,
 				EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

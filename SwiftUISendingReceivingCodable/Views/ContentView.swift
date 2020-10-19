@@ -9,9 +9,9 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var showingDetails = false
+    @State var showingDetails = false
     @State var velibSelected: Velib?
-    @State private var showingErrorAlert = false
+    @State var showingErrorAlert = false
     @State var alertError: Alert?
     @State var map: MKMapView?
 

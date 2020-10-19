@@ -3,6 +3,7 @@ gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
 bug cumul annotations après un reload (un jour) !!!
 webservices with combine !!
+utiliser le protocole Identifiable
 MVVM : creer view model VelibsViewModel avec ObservableObject done
 crash selection userlocation : done
 refacto : done

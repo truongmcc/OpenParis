@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case badURL, requestFailed, decodingFailed, unknown, noInternet, serverNotAccessible
+}
+
 enum ErrorsEnum: Error {
     case noInternet
     case serverNotAccessible
@@ -62,4 +66,30 @@ class WebServiceManager {
         }
         .resume()
     }
+    
+    static func getContentWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        guard let urlRequest = createUrlRequest(url: url) else {
+            completion(.failure(NetworkError.badURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data else {
+                print(error?._code ?? "0")
+                completion(.failure(NetworkError.requestFailed))
+                return
+            }
+            
+            do {
+                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
+                completion(.success(decodedResponse))
+            } catch {
+                completion(.failure(NetworkError.decodingFailed))
+            }
+        }
+        .resume()
+    }
+    
+   
+    
 }

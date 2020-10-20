@@ -14,7 +14,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     init(mapView: MapView) {
         map = mapView
         super.init()
-        fetchAllVelibs()
+        fetchAllVelibsWithTypeResult()
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -39,6 +39,32 @@ extension MapCoordinator {
                 self.createAnnotations(results: velibs)
             } else {
                 self.createErrorAlert(error)
+            }
+        }
+    }
+    
+    fileprivate func fetchAllVelibsWithTypeResult() {
+        map.velibsViewModel.fetchVelibsWithTypeResult { result in
+            switch result {
+            case .success(let data):
+                self.createAnnotations(results: data)
+            case .failure(let error):
+                switch error {
+                case .badURL:
+                    print("Bad URL")
+                    self.createErrorAlert(NetworkError.badURL)
+                case .requestFailed:
+                    print("Network problems")
+                    self.createErrorAlert(NetworkError.requestFailed)
+                case .decodingFailed:
+                    self.createErrorAlert(NetworkError.decodingFailed)
+                case .unknown:
+                    self.createErrorAlert(NetworkError.unknown)
+                case .noInternet:
+                    self.createErrorAlert(NetworkError.noInternet)
+                case .serverNotAccessible:
+                    self.createErrorAlert(NetworkError.serverNotAccessible)
+                }
             }
         }
     }

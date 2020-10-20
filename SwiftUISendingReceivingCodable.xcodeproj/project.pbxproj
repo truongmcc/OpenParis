@@ -92,13 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EB3C1DF824E7C9300013ED0E /* Data Model */ = {
+		EB3C1DF824E7C9300013ED0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				EB3C1DFE24E7F7870013ED0E /* GenericData.swift */,
 				EB887FE524C9DD9300BA086F /* VelibModel.swift */,
 			);
-			path = "Data Model";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EB3C1DF924E7CAE90013ED0E /* Map */ = {
@@ -165,7 +165,7 @@
 				EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */,
 				EB84BF4A253DE83100BB18E5 /* ViewModel */,
 				EB3C1DFC24E7CBE50013ED0E /* Views */,
-				EB3C1DF824E7C9300013ED0E /* Data Model */,
+				EB3C1DF824E7C9300013ED0E /* Model */,
 				EB3C1DFD24E7CC750013ED0E /* Services */,
 				EB887FBC24C9BE2E00BA086F /* Assets.xcassets */,
 				EB887FC124C9BE2F00BA086F /* Info.plist */,

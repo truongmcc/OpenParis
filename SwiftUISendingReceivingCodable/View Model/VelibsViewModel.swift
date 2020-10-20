@@ -11,11 +11,11 @@ import SwiftUI
 class VelibsViewModel: ObservableObject {
     
     private var task: AnyCancellable?
-    @Published var velibs: [Velib] = []
+    @Published var velibAnnotations = [GenericData]()
     @Published var velibSelected = [Velib]()
     @Published var annotations = [Annotation]()
     @Published var showingErrorAlert = false
-    @Published var results = [GenericData]()
+    
     @Published var alertError: Alert?
 
     //    Version COMBINE
@@ -26,16 +26,16 @@ class VelibsViewModel: ObservableObject {
         //            .replaceError(with: [])
         //            .eraseToAnyPublisher()
         //            .receive(on: RunLoop.main)
-        //            .assign(to: \VelibsViewModel.velibs, on: self)
+        //            .assign(to: \VelibsViewModel.velibDatas, on: self)
         //    }
     
     func fetchVelibs() {
         MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
             if let dataResults = decodedResponse?.records {
                 DispatchQueue.main.async {
-                    self.results = dataResults
-                    print("results \(dataResults.count)")
-                    self.createAnnotations(results: dataResults)
+                    self.velibAnnotations = dataResults
+                    print("annotationDatas \(dataResults.count)")
+                    self.createAnnotations(results: self.velibAnnotations)
                 }
             }
             else {

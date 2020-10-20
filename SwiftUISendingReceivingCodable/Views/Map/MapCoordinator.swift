@@ -13,17 +13,34 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     var map: MapView
     init(mapView: MapView) {
         map = mapView
-        mapView.velibsViewModel.fetchVelibs()
+        super.init()
+        fetchAllVelibs()
+    }
+    
+    func fetchAllVelibs() {
+        map.velibsViewModel.fetchVelibs { responseData, error in
+            if let velibs = responseData {
+                self.createAnnotations(results: velibs)
+            } else {
+                self.createErrorAlert(error)
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as? Annotation
         guard let recordid = annotation?.id else { return }
         let url = UrlDataLocationEnum.velib.rawValue + recordid
-        getVelib(url)
+        map.velibsViewModel.getVelib(url) { responseVelib, error in
+            if let velibs = responseVelib {
+                self.createVelibDetail(velibs)
+            } else {
+                self.createErrorAlert(error)
+            }
+        }
     }
     
-    fileprivate func createAnnotations(results: [GenericData]) {
+     func createAnnotations(results: [GenericData]) {
         map.velibsViewModel.annotations.removeAll()
         for annotation in results {
             DispatchQueue.main.async {
@@ -32,7 +49,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
  
-    fileprivate func createVelibDetail(_ dataResults: [Velib]) {
+    func createVelibDetail(_ dataResults: [Velib]) {
         if let velib = dataResults.first {
             DispatchQueue.main.async {
                 self.map.velibSelected = velib
@@ -41,7 +58,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
-    fileprivate func createErrorAlert(_ error: Error?) {
+    func createErrorAlert(_ error: Error?) {
         if let error = error?.localizedDescription {
             self.map.velibsViewModel.alertError = Alert(title: Text("Error Network"), message: Text(error), dismissButton: .default(Text("OK")) {
                 self.map.showingErrorAlert = false
@@ -50,23 +67,4 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         self.map.showingErrorAlert = true
     }
     
-    fileprivate func getVelib(_ url: String) {
-        MapServices.shared.loadData(url: url,
-                                    decodable: VelibResponse.self) { decodedResponse, error in
-            if let dataResults = decodedResponse?.records {
-                self.createVelibDetail(dataResults)
-            } else { // si échec, recharger la map au cas ou les recordId ont été raffraichis sur le serveur
-                MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
-                    MapServices.shared.loadData(url: url,
-                                                decodable: VelibResponse.self) { decodedResponse, error in
-                        if let dataResults = decodedResponse?.records {
-                            self.createVelibDetail(dataResults)
-                        } else {
-                            self.createErrorAlert(error)
-                        }
-                    }
-                })
-            }
-        }
-    }
 }

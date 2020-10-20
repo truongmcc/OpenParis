@@ -15,9 +15,49 @@ class VelibsViewModel: ObservableObject {
     @Published var velibSelected = [Velib]()
     @Published var annotations = [Annotation]()
     @Published var showingErrorAlert = false
-    
     @Published var alertError: Alert?
 
+}
+
+// WebServices methods
+extension VelibsViewModel {
+    func fetchVelibs(completion:  @escaping([GenericData]?, Error?) -> Void) {
+        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+            if let dataResults = decodedResponse?.records {
+                DispatchQueue.main.async {
+                    
+                    self.velibAnnotations = dataResults
+                    print("annotationDatas \(dataResults.count)")
+                    completion(self.velibAnnotations, nil)
+                }
+            }
+            else {
+                self.showingErrorAlert = true
+                completion(nil, error)
+            }
+        })
+    }
+    
+    func getVelib(_ url: String, completion:  @escaping([Velib]?, Error?) -> Void) {
+        MapServices.shared.loadData(url: url,
+                                    decodable: VelibResponse.self) { decodedResponse, error in
+            if let dataResults = decodedResponse?.records {
+                completion(dataResults, nil)
+            } else { // si échec, recharger la map au cas ou les recordId ont été raffraichis sur le serveur
+                MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+                    MapServices.shared.loadData(url: url,
+                                                decodable: VelibResponse.self) { decodedResponse, error in
+                        if let dataResults = decodedResponse?.records {
+                            completion(dataResults, nil)
+                        } else {
+                            completion(nil, error)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
     //    Version COMBINE
 //    func fetchVelibs() {
         //        task = URLSession.shared.dataTaskPublisher(for: URL(string: UrlDataLocationEnum.allVelibs.rawValue)!)
@@ -29,34 +69,4 @@ class VelibsViewModel: ObservableObject {
         //            .assign(to: \VelibsViewModel.velibDatas, on: self)
         //    }
     
-    func fetchVelibs() {
-        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
-            if let dataResults = decodedResponse?.records {
-                DispatchQueue.main.async {
-                    self.velibAnnotations = dataResults
-                    print("annotationDatas \(dataResults.count)")
-                    self.createAnnotations(results: self.velibAnnotations)
-                }
-            }
-            else {
-                self.showingErrorAlert = true
-                if let error = error?.localizedDescription {
-                    self.alertError = Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")) {
-                        self.showingErrorAlert = false
-                    })
-                }
-            }
-        })
-    }
-    
-    fileprivate func createAnnotations(results: [GenericData]) {
-        annotations.removeAll()
-        for annotation in results {
-            DispatchQueue.main.async {
-                self.annotations.append(Annotation(data: annotation))
-            }
-        }
-    }
-    
-
 }

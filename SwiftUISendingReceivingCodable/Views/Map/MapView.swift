@@ -56,4 +56,7 @@ struct MapView: UIViewRepresentable {
             uiView.setRegion(region, animated: true)
         }
     }
+    
+    func refreshMap() {
+    }
 }

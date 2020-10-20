@@ -19,20 +19,18 @@ class VelibsViewModel: ObservableObject {
 
 }
 
-// WebServices methods
+// MARK: WebServices methods
 extension VelibsViewModel {
     func fetchVelibs(completion:  @escaping([GenericData]?, Error?) -> Void) {
         MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
             if let dataResults = decodedResponse?.records {
                 DispatchQueue.main.async {
-                    
                     self.velibAnnotations = dataResults
                     print("annotationDatas \(dataResults.count)")
                     completion(self.velibAnnotations, nil)
                 }
             }
             else {
-                self.showingErrorAlert = true
                 completion(nil, error)
             }
         })

@@ -114,8 +114,8 @@
 		EB3C1DFC24E7CBE50013ED0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB84BF4A253DE83100BB18E5 /* ViewModel */,
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
+				EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 			);
 			path = Views;
@@ -133,7 +133,6 @@
 		EB84BF4A253DE83100BB18E5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */,
 				EB84BF4B253DE84D00BB18E5 /* VelibsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -164,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */,
+				EB84BF4A253DE83100BB18E5 /* ViewModel */,
 				EB3C1DFC24E7CBE50013ED0E /* Views */,
 				EB3C1DF824E7C9300013ED0E /* Data Model */,
 				EB3C1DFD24E7CC750013ED0E /* Services */,

@@ -33,51 +33,7 @@ struct ContentView: View {
         .alert(isPresented: $showingErrorAlert) {
             return (alertError ?? Alert(title: Text("Erreur")))
         }
-        
-        .onAppear {
-            NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
-                                                   object: nil,
-                                                   queue: .main) { (notification) in
-                //annotations.removeAll()
-            }
-        }
-
     }
-    
-//    fileprivate func loadMap() {
-//        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
-//            if let dataResults = decodedResponse?.velibs {
-//                results = dataResults
-//                print("results \(results.count)")
-//                createAnnotations(results: results)
-//            }
-//            else {
-//                showingErrorAlert = true
-//                if let error = error?.localizedDescription {
-//                    alertError = Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")) {
-//                        self.showingErrorAlert = false
-//                    })
-//                }
-//            }
-//        })
-//    }
-    
-//    fileprivate func createAnnotations(results: [GenericData]) {
-//        annotations.removeAll()
-//        for annotation in results {
-//            DispatchQueue.main.async {
-//                annotations.append(Annotation(data: annotation))
-//            }
-//        }
-//    }
-    
-    //    func createAnnotations(results: [Velib]) {
-    //        for annotation in results {
-    //            DispatchQueue.main.async {
-    //                annotations.append(Annotation(velib: annotation))
-    //            }
-    //        }
-    //    }
 }
 
 /// GESTION PAR LISTE

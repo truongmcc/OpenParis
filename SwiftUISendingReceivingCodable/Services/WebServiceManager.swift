@@ -59,7 +59,6 @@ class WebServiceManager {
             } catch {
                 print(error)
             }
-            
         }
         .resume()
     }

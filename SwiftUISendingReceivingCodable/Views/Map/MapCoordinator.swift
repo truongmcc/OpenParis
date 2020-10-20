@@ -17,16 +17,6 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         fetchAllVelibs()
     }
     
-    func fetchAllVelibs() {
-        map.velibsViewModel.fetchVelibs { responseData, error in
-            if let velibs = responseData {
-                self.createAnnotations(results: velibs)
-            } else {
-                self.createErrorAlert(error)
-            }
-        }
-    }
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as? Annotation
         guard let recordid = annotation?.id else { return }
@@ -39,8 +29,21 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
             }
         }
     }
+}
+
+extension MapCoordinator {
     
-     func createAnnotations(results: [GenericData]) {
+    fileprivate func fetchAllVelibs() {
+        map.velibsViewModel.fetchVelibs { responseData, error in
+            if let velibs = responseData {
+                self.createAnnotations(results: velibs)
+            } else {
+                self.createErrorAlert(error)
+            }
+        }
+    }
+
+    fileprivate func createAnnotations(results: [GenericData]) {
         map.velibsViewModel.annotations.removeAll()
         for annotation in results {
             DispatchQueue.main.async {
@@ -49,7 +52,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
  
-    func createVelibDetail(_ dataResults: [Velib]) {
+    fileprivate func createVelibDetail(_ dataResults: [Velib]) {
         if let velib = dataResults.first {
             DispatchQueue.main.async {
                 self.map.velibSelected = velib
@@ -58,7 +61,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
-    func createErrorAlert(_ error: Error?) {
+    fileprivate func createErrorAlert(_ error: Error?) {
         if let error = error?.localizedDescription {
             self.map.velibsViewModel.alertError = Alert(title: Text("Error Network"), message: Text(error), dismissButton: .default(Text("OK")) {
                 self.map.showingErrorAlert = false

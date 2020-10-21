@@ -15,6 +15,7 @@ struct MapView: UIViewRepresentable {
     @Binding var showingDetails: Bool
     @Binding var showingErrorAlert: Bool
     @Binding var velibSelected: Velib?
+    @Binding var alertError: Alert?
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {

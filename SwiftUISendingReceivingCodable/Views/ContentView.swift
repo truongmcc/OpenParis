@@ -19,7 +19,7 @@ struct ContentView: View {
         ZStack {
             MapView(showingDetails: $showingDetails,
                     showingErrorAlert: $showingErrorAlert,
-                    velibSelected: $velibSelected
+                    velibSelected: $velibSelected, alertError: $alertError
                     )
             if showingDetails == true {
                 DetailVelibView(velibSelected: velibSelected)

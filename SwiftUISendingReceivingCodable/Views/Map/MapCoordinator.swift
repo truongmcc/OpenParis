@@ -61,15 +61,12 @@ extension MapCoordinator {
     
     fileprivate func createErrorAlert(_ error: NetworkError?) {
         DispatchQueue.main.async {
-        self.map.velibsViewModel.alertError = Alert(title: Text("Error Network"), message: Text(error?.description ?? "kjhkj"), dismissButton: .default(Text("OK")) {
+            self.map.alertError = Alert(title: Text("Error Network"), message: Text(error?.description ?? "kjhkj"), dismissButton: .default(Text("OK")) {
                 self.map.showingErrorAlert = false
             })
             self.map.showingErrorAlert = true
         }
-        
-        
     }
-    
     
     fileprivate func createAnnotations(results: [AnnotationDatas]) {
         map.velibsViewModel.annotations.removeAll()
@@ -91,11 +88,10 @@ extension MapCoordinator {
     
     fileprivate func createErrorAlert(_ error: Error?) {
         if let error = error?.localizedDescription {
-            self.map.velibsViewModel.alertError = Alert(title: Text("Error Network"), message: Text(error), dismissButton: .default(Text("OK")) {
+            self.map.alertError = Alert(title: Text("Error Network"), message: Text(error), dismissButton: .default(Text("OK")) {
                 self.map.showingErrorAlert = false
             })
         }
         self.map.showingErrorAlert = true
     }
-    
 }

@@ -13,8 +13,8 @@ class VelibsViewModel: ObservableObject {
     @Published var velibAnnotations = [AnnotationDatas]()
     @Published var velibSelected = [Velib]()
     @Published var annotations = [Annotation]()
-    @Published var showingErrorAlert = false
-    @Published var alertError: Alert?
+    //@Published var showingErrorAlert = false
+    //@Published var alertError: Alert?
 }
 
 // MARK: WebServices methods

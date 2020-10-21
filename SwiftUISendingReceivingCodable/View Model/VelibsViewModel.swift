@@ -10,7 +10,7 @@ import SwiftUI
 
 class VelibsViewModel: ObservableObject {
     //private var task: AnyCancellable? // Combine
-    @Published var velibAnnotations = [GenericData]()
+    @Published var velibAnnotations = [AnnotationDatas]()
     @Published var velibSelected = [Velib]()
     @Published var annotations = [Annotation]()
     @Published var showingErrorAlert = false
@@ -20,8 +20,8 @@ class VelibsViewModel: ObservableObject {
 // MARK: WebServices methods
 extension VelibsViewModel {
     
-    func fetchVelibs(completion:  @escaping([GenericData]?, Error?) -> Void) {
-        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+    func fetchVelibs(completion:  @escaping([AnnotationDatas]?, Error?) -> Void) {
+        MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self, completion: { decodedResponse, error in
             if let dataResults = decodedResponse?.records {
                 DispatchQueue.main.async {
                     self.velibAnnotations = dataResults
@@ -34,23 +34,12 @@ extension VelibsViewModel {
         })
     }
     
-    func fetchVelibsWithTypeResult(completion: @escaping (Result<[GenericData], NetworkError>) -> Void) {
-        MapServices.shared.loadDataWithTypeResult(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self) { result in
-            switch result {
-            case .success(let data):
-                if let dataResults = data.records {
-                    DispatchQueue.main.async {
-                        self.velibAnnotations = dataResults
-                        completion(.success(dataResults))
-                    }
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+    func fetchVelibsWithTypeResult(completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+        MapServices.shared.loadDataWithTypeResult(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self) {
+            result in
+            completion(result)
         }
     }
-    
-    
     
     func getVelib(_ url: String, completion:  @escaping([Velib]?, Error?) -> Void) {
         MapServices.shared.loadData(url: url,
@@ -58,7 +47,7 @@ extension VelibsViewModel {
             if let dataResults = decodedResponse?.records {
                 completion(dataResults, nil)
             } else { // si échec, recharger la map au cas ou les recordId ont été raffraichis sur le serveur
-                MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseData.self, completion: { decodedResponse, error in
+                MapServices.shared.loadData(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self, completion: { decodedResponse, error in
                     MapServices.shared.loadData(url: url,
                                                 decodable: VelibResponse.self) { decodedResponse, error in
                         if let dataResults = decodedResponse?.records {

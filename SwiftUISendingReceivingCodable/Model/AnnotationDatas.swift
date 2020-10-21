@@ -1,5 +1,5 @@
 //
-//  GenericData.swift
+//  AnnotationDatas.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 15/08/2020.
@@ -10,11 +10,11 @@ enum DataTypeEnum {
     case autres
 }
 
-struct ResponseData: Codable {
-    var records: [GenericData]?
+struct ResponseAnnotationDatas: Codable {
+    var records: [AnnotationDatas]?
 }
 
-struct GenericData: Codable {
+struct AnnotationDatas: Codable {
     var idData: String?
     var fieldsData: FieldsData
 

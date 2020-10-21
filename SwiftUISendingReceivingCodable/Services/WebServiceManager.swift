@@ -8,33 +8,37 @@
 import Foundation
 
 enum NetworkError: Error {
+    
     case badURL, requestFailed, decodingFailed, unknown, noInternet, serverNotAccessible
-}
-
-enum ErrorsEnum: Error {
-    case noInternet
-    case serverNotAccessible
     
     var description: String {
-        switch self._code {
-        case -1009:
+        switch self {
+        case .badURL:
+            return "The URL request contains error(s)"
+        case .requestFailed:
+            return "Request failed"
+        case .decodingFailed:
+            return "Decoding failed"
+        case .serverNotAccessible:
+            return "Server not accessible."
+        case .noInternet:
             return "The Internet connection appears to be offline."
-        case 502:
-            return "The server is not accessible"
-        default:
-            return "Error not treated yet"
+        case .unknown:
+            return "Unknown error"
         }
     }
-    
 }
 
 enum UrlDataLocationEnum: String {
     case allVelibs = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes"
     case velib = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
-                   
+    
 }
 
 class WebServiceManager {
+    
+    static let shared = WebServiceManager()
+    private init() { }
     
     static func createUrlRequest(url: String) -> URLRequest? {
         guard let url = URL(string: url) else {
@@ -90,6 +94,6 @@ class WebServiceManager {
         .resume()
     }
     
-   
+    
     
 }

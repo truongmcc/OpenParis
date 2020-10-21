@@ -3,7 +3,7 @@
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 15/08/2020.
-// Initialisé à partir des GenericData
+// Initialisé à partir des AnnotationDatas
 
 import MapKit
 
@@ -12,7 +12,7 @@ class Annotation: NSObject, MKAnnotation {
     let id: String?
     var coordinate: CLLocationCoordinate2D
 
-    init(data: GenericData) {
+    init(data: AnnotationDatas) {
         self.id = data.idData
         let coordinate = CLLocationCoordinate2D(latitude: data.fieldsData.coordonneesGeo?.first ?? 0,
                                                 longitude: data.fieldsData.coordonneesGeo?.last ?? 0)

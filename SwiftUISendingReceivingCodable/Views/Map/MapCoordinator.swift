@@ -47,29 +47,31 @@ extension MapCoordinator {
         map.velibsViewModel.fetchVelibsWithTypeResult { result in
             switch result {
             case .success(let data):
-                self.createAnnotations(results: data)
-            case .failure(let error):
-                switch error {
-                case .badURL:
-                    print("Bad URL")
-                    self.createErrorAlert(NetworkError.badURL)
-                case .requestFailed:
-                    print("Network problems")
-                    self.createErrorAlert(NetworkError.requestFailed)
-                case .decodingFailed:
-                    self.createErrorAlert(NetworkError.decodingFailed)
-                case .unknown:
-                    self.createErrorAlert(NetworkError.unknown)
-                case .noInternet:
-                    self.createErrorAlert(NetworkError.noInternet)
-                case .serverNotAccessible:
-                    self.createErrorAlert(NetworkError.serverNotAccessible)
+                if let dataResults = data.records {
+                    DispatchQueue.main.async {
+                        self.map.velibsViewModel.velibAnnotations = dataResults
+                        self.createAnnotations(results: dataResults)
+                    }
                 }
+            case .failure(let error):
+                self.createErrorAlert(error)
             }
         }
     }
-
-    fileprivate func createAnnotations(results: [GenericData]) {
+    
+    fileprivate func createErrorAlert(_ error: NetworkError?) {
+        DispatchQueue.main.async {
+        self.map.velibsViewModel.alertError = Alert(title: Text("Error Network"), message: Text(error?.description ?? "kjhkj"), dismissButton: .default(Text("OK")) {
+                self.map.showingErrorAlert = false
+            })
+            self.map.showingErrorAlert = true
+        }
+        
+        
+    }
+    
+    
+    fileprivate func createAnnotations(results: [AnnotationDatas]) {
         map.velibsViewModel.annotations.removeAll()
         for annotation in results {
             DispatchQueue.main.async {
@@ -77,7 +79,7 @@ extension MapCoordinator {
             }
         }
     }
- 
+    
     fileprivate func createVelibDetail(_ dataResults: [Velib]) {
         if let velib = dataResults.first {
             DispatchQueue.main.async {

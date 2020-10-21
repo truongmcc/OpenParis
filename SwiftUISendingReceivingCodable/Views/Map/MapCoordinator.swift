@@ -14,37 +14,38 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     init(mapView: MapView) {
         map = mapView
         super.init()
-        fetchAllVelibsWithTypeResult()
+        fetchAllVelibs()
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as? Annotation
         guard let recordid = annotation?.id else { return }
-        let url = UrlDataLocationEnum.velib.rawValue + recordid
-        map.velibsViewModel.getVelib(url) { responseVelib, error in
-            if let velibs = responseVelib {
-                self.createVelibDetail(velibs)
-            } else {
-                self.createErrorAlert(error)
-            }
-        }
+        fetchVelib(recordid: recordid)
     }
 }
 
 extension MapCoordinator {
     
-    fileprivate func fetchAllVelibs() {
-        map.velibsViewModel.fetchVelibs { responseData, error in
-            if let velibs = responseData {
-                self.createAnnotations(results: velibs)
-            } else {
+    fileprivate func fetchVelib(recordid: String) {
+        let url = UrlDataLocationEnum.velib.rawValue + recordid
+        WebServiceManager.shared.loadDataWithTypeResult(url: url,
+                                    decodable: VelibResponse.self) { result in
+            switch result {
+            case .success(let data):
+                if let velibs = data.records {
+                    DispatchQueue.main.async {
+                        self.createVelibDetail(velibs)
+                    }
+                }
+            case .failure(let error):
                 self.createErrorAlert(error)
             }
         }
     }
     
-    fileprivate func fetchAllVelibsWithTypeResult() {
-        map.velibsViewModel.fetchVelibsWithTypeResult { result in
+    fileprivate func fetchAllVelibs() {
+        WebServiceManager.shared.loadDataWithTypeResult(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self) {
+            result in
             switch result {
             case .success(let data):
                 if let dataResults = data.records {
@@ -81,7 +82,6 @@ extension MapCoordinator {
         if let velib = dataResults.first {
             DispatchQueue.main.async {
                 self.map.velibSelected = velib
-                self.map.showingDetails = true
             }
         }
     }
@@ -94,4 +94,5 @@ extension MapCoordinator {
         }
         self.map.showingErrorAlert = true
     }
+
 }

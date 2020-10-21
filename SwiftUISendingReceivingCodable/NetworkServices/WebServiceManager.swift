@@ -48,27 +48,10 @@ class WebServiceManager {
         return URLRequest(url: url)
     }
     
-    // !!!!!!!!!!!!!!!!!!!!!!!! GENERIC VERSION !!!!!!!!!!!!!!!!!!!!!
-    static func getContent<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
-        guard let urlRequest = createUrlRequest(url: url) else {
-            return
+    func loadDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        WebServiceManager.getContentWithTypeResult(url: url, decodable: decodable) { result in
+            completion(result)
         }
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            guard let data = data else {
-                print(error?._code ?? "0")
-                completion(nil, error)
-                return // Handling errors in an enum
-            }
-            
-            do {
-                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
-                completion(decodedResponse, nil)
-            } catch {
-                print(error)
-            }
-        }
-        .resume()
     }
     
     static func getContentWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
@@ -94,6 +77,34 @@ class WebServiceManager {
         .resume()
     }
     
+    // !!!!!!!!!!!!!!!!!!!!!!!! GENERIC VERSION !!!!!!!!!!!!!!!!!!!!!
     
+//    func loadData<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+//        WebServiceManager.getContent(url: url, decodable: decodable, completion: { decodedResponse, error in
+//            completion(decodedResponse, error)
+//        })
+//    }
+    
+//    static func getContent<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+//        guard let urlRequest = createUrlRequest(url: url) else {
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+//            guard let data = data else {
+//                print(error?._code ?? "0")
+//                completion(nil, error)
+//                return // Handling errors in an enum
+//            }
+//
+//            do {
+//                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
+//                completion(decodedResponse, nil)
+//            } catch {
+//                print(error)
+//            }
+//        }
+//        .resume()
+//    }
     
 }

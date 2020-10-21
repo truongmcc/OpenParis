@@ -12,7 +12,6 @@ import CoreLocation
 struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @ObservedObject var velibsViewModel = VelibsViewModel()
-    @Binding var showingDetails: Bool
     @Binding var showingErrorAlert: Bool
     @Binding var velibSelected: Velib?
     @Binding var alertError: Alert?

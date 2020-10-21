@@ -11,7 +11,6 @@
 		EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0EB5D624ED12AE001319C7 /* MapCoordinator.swift */; };
 		EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFA24E7CB520013ED0E /* Annotation.swift */; };
 		EB3C1DFF24E7F7870013ED0E /* AnnotationDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFE24E7F7870013ED0E /* AnnotationDatas.swift */; };
-		EB80C0B624EABB44006F9635 /* MapServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80C0B524EABB44006F9635 /* MapServices.swift */; };
 		EB84BF4C253DE84D00BB18E5 /* VelibsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84BF4B253DE84D00BB18E5 /* VelibsViewModel.swift */; };
 		EB84BF54253DE8D400BB18E5 /* DetailVelibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
@@ -47,7 +46,6 @@
 		EB0EB5D624ED12AE001319C7 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		EB3C1DFA24E7CB520013ED0E /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		EB3C1DFE24E7F7870013ED0E /* AnnotationDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationDatas.swift; sourceTree = "<group>"; };
-		EB80C0B524EABB44006F9635 /* MapServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServices.swift; sourceTree = "<group>"; };
 		EB84BF4B253DE84D00BB18E5 /* VelibsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VelibsViewModel.swift; path = "SwiftUISendingReceivingCodable/View Model/VelibsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailVelibView.swift; path = SwiftUISendingReceivingCodable/Views/DetailVelibView.swift; sourceTree = SOURCE_ROOT; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -121,13 +119,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EB3C1DFD24E7CC750013ED0E /* Services */ = {
+		EB3C1DFD24E7CC750013ED0E /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				EB80C0B524EABB44006F9635 /* MapServices.swift */,
 				EB887FE324C9DC8500BA086F /* WebServiceManager.swift */,
 			);
-			path = Services;
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 		EB84BF4A253DE83100BB18E5 /* ViewModel */ = {
@@ -166,7 +163,7 @@
 				EB3C1DFC24E7CBE50013ED0E /* Views */,
 				EB84BF4A253DE83100BB18E5 /* ViewModel */,
 				EB3C1DF824E7C9300013ED0E /* Model */,
-				EB3C1DFD24E7CC750013ED0E /* Services */,
+				EB3C1DFD24E7CC750013ED0E /* NetworkServices */,
 				EB887FBC24C9BE2E00BA086F /* Assets.xcassets */,
 				EB887FC124C9BE2F00BA086F /* Info.plist */,
 				EB887FBE24C9BE2F00BA086F /* Preview Content */,
@@ -338,7 +335,6 @@
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */,
-				EB80C0B624EABB44006F9635 /* MapServices.swift in Sources */,
 				EB84BF54253DE8D400BB18E5 /* DetailVelibView.swift in Sources */,
 				EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */,
 			);

@@ -23,7 +23,6 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         print(recordid)
         fetchVelib(recordid: recordid)
     }
-    
 }
 
 extension MapCoordinator {
@@ -69,12 +68,15 @@ extension MapCoordinator {
         self.map.alertError = Alert(title: Text("Error Network"), message: Text(error?.description ?? "kjhkj"), dismissButton: .default(Text("OK")) {
             
             self.map.showingErrorAlert = false
+            
+            // fetch all velibs cause of the open data bug server
             self.fetchAllVelibs()
         })
         self.map.showingErrorAlert = true
     }
     
     fileprivate func createAnnotations(results: [AnnotationDatas]) {
+        //map.annotations.removeAll()
         for annotation in results {
             self.map.annotations.append(Annotation(data: annotation))
         }

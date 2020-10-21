@@ -25,7 +25,13 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.addAnnotations(annotations)
+        
+        if annotations.count != uiView.annotations.count - 1 {
+            uiView.removeAnnotations(uiView.annotations)
+            uiView.addAnnotations(annotations)
+        }
+        
+        print("annotions \(annotations.count)")
         print("uiView.annotions \(uiView.annotations.count)")
     }
     

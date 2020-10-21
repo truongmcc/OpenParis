@@ -3,7 +3,7 @@ gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
 webservices with combine !!
 utiliser le protocole Identifiable
-BUG : recordid lost by opendata server : reload map when notify the alert error
+BUG : recordid lost by opendata server : reload map when notify the alert error !!!
 utiliser le type results (erreurs et datas) done
 crash selection userlocation : done
 refacto : done

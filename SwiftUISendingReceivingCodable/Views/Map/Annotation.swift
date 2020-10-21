@@ -11,7 +11,7 @@ class Annotation: NSObject, MKAnnotation {
     
     let id: String?
     var coordinate: CLLocationCoordinate2D
-
+    
     init(data: AnnotationDatas) {
         self.id = data.idData
         let coordinate = CLLocationCoordinate2D(latitude: data.fieldsData.coordonneesGeo?.first ?? 0,

@@ -9,7 +9,7 @@ import Foundation
 
 enum NetworkError: Error {
     
-    case badURL, requestFailed, decodingFailed, unknown, noInternet, serverNotAccessible
+    case badURL, requestFailed, decodingFailed, serverNotAccessible, noInternet, serverLost, unknown
     
     var description: String {
         switch self {
@@ -23,6 +23,8 @@ enum NetworkError: Error {
             return "Server not accessible."
         case .noInternet:
             return "The Internet connection appears to be offline."
+        case .serverLost:
+            return "Server lost. Relaunch the app"
         case .unknown:
             return "Unknown error"
         }
@@ -40,7 +42,7 @@ class WebServiceManager {
     static let shared = WebServiceManager()
     private init() { }
     
-    static func createUrlRequest(url: String) -> URLRequest? {
+    func createUrlRequest(url: String) -> URLRequest? {
         guard let url = URL(string: url) else {
             print("Invalid URL")
             return nil
@@ -48,13 +50,7 @@ class WebServiceManager {
         return URLRequest(url: url)
     }
     
-    func loadDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        WebServiceManager.getContentWithTypeResult(url: url, decodable: decodable) { result in
-            completion(result)
-        }
-    }
-    
-    static func getContentWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let urlRequest = createUrlRequest(url: url) else {
             completion(.failure(NetworkError.badURL))
             return
@@ -79,13 +75,7 @@ class WebServiceManager {
     
     // !!!!!!!!!!!!!!!!!!!!!!!! GENERIC VERSION !!!!!!!!!!!!!!!!!!!!!
     
-//    func loadData<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
-//        WebServiceManager.getContent(url: url, decodable: decodable, completion: { decodedResponse, error in
-//            completion(decodedResponse, error)
-//        })
-//    }
-    
-//    static func getContent<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+//    static func fetchData<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
 //        guard let urlRequest = createUrlRequest(url: url) else {
 //            return
 //        }

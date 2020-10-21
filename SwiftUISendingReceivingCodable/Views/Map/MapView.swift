@@ -11,10 +11,10 @@ import CoreLocation
 
 struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
-    @ObservedObject var velibsViewModel = VelibsViewModel()
     @Binding var showingErrorAlert: Bool
     @Binding var velibSelected: Velib?
     @Binding var alertError: Alert?
+    @State var annotations = [Annotation]()
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -25,9 +25,8 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.addAnnotations(velibsViewModel.annotations)
+        uiView.addAnnotations(annotations)
         print("uiView.annotions \(uiView.annotations.count)")
-        print("annotions \(velibsViewModel.annotations.count )")
     }
     
     // MARK: - Functions

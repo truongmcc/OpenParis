@@ -21,6 +21,7 @@
 		EB887FD624C9BE3000BA086F /* SwiftUISendingReceivingCodableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FD524C9BE3000BA086F /* SwiftUISendingReceivingCodableUITests.swift */; };
 		EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE324C9DC8500BA086F /* WebServiceManager.swift */; };
 		EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE524C9DD9300BA086F /* VelibModel.swift */; };
+		EBADF27B25498496003CD339 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADF27A25498496003CD339 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		EB887FD724C9BE3000BA086F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB887FE324C9DC8500BA086F /* WebServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
 		EB887FE524C9DD9300BA086F /* VelibModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibModel.swift; sourceTree = "<group>"; };
+		EBADF27A25498496003CD339 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
+				EBADF27A25498496003CD339 /* MenuView.swift */,
 				EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 			);
@@ -321,6 +324,7 @@
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* AnnotationDatas.swift in Sources */,
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
+				EBADF27B25498496003CD339 /* MenuView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */,
 				EB84BF54253DE8D400BB18E5 /* DetailVelibView.swift in Sources */,

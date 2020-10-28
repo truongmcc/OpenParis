@@ -14,7 +14,9 @@ struct MapView: UIViewRepresentable {
     @Binding var showingErrorAlert: Bool
     @Binding var velibSelected: Velib?
     @Binding var alertError: Alert?
+    @Binding var mapType : Int
     @State var annotations = [Annotation]()
+    
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -25,6 +27,12 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
+        
+        if mapType == 0 {
+            uiView.mapType = .standard
+        } else {
+            uiView.mapType = .satellite
+        }
         
         if annotations.count != uiView.annotations.count - 1 {
             uiView.removeAnnotations(uiView.annotations)
@@ -61,7 +69,5 @@ struct MapView: UIViewRepresentable {
             uiView.setRegion(region, animated: true)
         }
     }
-    
-    func refreshMap() {
-    }
+
 }

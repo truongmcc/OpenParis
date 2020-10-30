@@ -11,7 +11,7 @@ import MapKit
 struct ContentView: View {
     @State var map: MKMapView?
     @State var velibSelected: Velib?
-    @State var showingErrorAlert = false
+    @State var alertErrorDetected = false
     @State var alertError: Alert?
     @State var annotations: [Annotation]?
     @State private var mapType = MKMapType.standard
@@ -24,7 +24,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             
-            MapView(showingErrorAlert: $showingErrorAlert,
+            MapView(alertErrorDetected: $alertErrorDetected,
                     velibSelected: $velibSelected, alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations)
             
             if velibSelected != nil {
@@ -38,8 +38,8 @@ struct ContentView: View {
             velibSelected = nil
         }
         
-        .alert(isPresented: $showingErrorAlert) {
-            return (alertError ?? Alert(title: Text("Erreur")))
+        .alert(isPresented: $alertErrorDetected) {
+            return (alertError ?? Alert(title: Text(NetworkError.unknown.description)))
         }
         
         .sheet(isPresented: $showMenuView) {
@@ -83,17 +83,11 @@ struct ContentView: View {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.createErrorAlert(error)
+                    alertError = AlertManager.shared.createErrorAlert(error)
+                    alertErrorDetected = true
                 }
             }
         }
-    }
-    
-    fileprivate func createErrorAlert(_ error: NetworkError?) {
-        alertError = Alert(title: Text("Error Network"), message: Text(error?.description ?? "Unknown error"), dismissButton: .default(Text("OK")) {
-            showingErrorAlert = false
-        })
-        showingErrorAlert = true
     }
     
     fileprivate func createAnnotations(results: [AnnotationDatas]) {

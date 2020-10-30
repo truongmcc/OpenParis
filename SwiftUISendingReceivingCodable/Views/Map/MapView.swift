@@ -12,7 +12,7 @@ import CoreLocation
 struct MapView: UIViewRepresentable {
 
     let locationManager = CLLocationManager()
-    @Binding var showingErrorAlert: Bool
+    @Binding var alertErrorDetected: Bool
     @Binding var velibSelected: Velib?
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType

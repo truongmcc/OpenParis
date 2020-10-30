@@ -14,9 +14,6 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     init(mapView: MapView) {
         map = mapView
         super.init()
-        
-        //fetchAllVelibs()
-        //fetchAll(service: map.service)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -25,16 +22,6 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         print(recordid)
         fetchVelib(recordid: recordid)
     }
-    
-    func mapViewWillStartRenderingMap(_ mapView: MKMapView) {
-        print("render")
-    }
-    
-    
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        print("didadd")
-    }
-
 }
 
 extension MapCoordinator {
@@ -49,36 +36,16 @@ extension MapCoordinator {
                     if let velibs = data.records, velibs.count > 0 {
                         self.createVelibDetail(velibs)
                     } else {
-                        self.createErrorAlert(NetworkError.serverLost)
+                        self.map.alertError = AlertManager.shared.createErrorAlert(NetworkError.serverLost)
+                        self.map.alertErrorDetected = true
                     }
                 }
             case .failure(let error):
-                self.createErrorAlert(error)
+                self.map.alertError = AlertManager.shared.createErrorAlert(error)
+                self.map.alertErrorDetected = true
             }
         }
     }
-    
-
-    
-//    fileprivate func fetchAllVelibs() {
-//        WebServiceManager.shared.fetchDataWithTypeResult(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self) {
-//            result in
-//            switch result {
-//            case .success(let data):
-//                if let dataResults = data.records {
-//                    DispatchQueue.main.async {
-//                        self.createAnnotations(results: dataResults)
-//                    }
-//                }
-//            case .failure(let error):
-//                DispatchQueue.main.async {
-//                    self.createErrorAlert(error)
-//                }
-//            }
-//        }
-//    }
-    
-
     
     fileprivate func createVelibDetail(_ dataResults: [Velib]) {
         if let velib = dataResults.first {
@@ -86,15 +53,6 @@ extension MapCoordinator {
                 self.map.velibSelected = velib
             }
         }
-    }
-    
-    fileprivate func createErrorAlert(_ error: Error?) {
-        if let error = error?.localizedDescription {
-            self.map.alertError = Alert(title: Text("Error Network"), message: Text(error), dismissButton: .default(Text("OK")) {
-                self.map.showingErrorAlert = false
-            })
-        }
-        self.map.showingErrorAlert = true
     }
 
 }

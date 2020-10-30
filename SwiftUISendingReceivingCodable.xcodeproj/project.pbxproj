@@ -21,6 +21,7 @@
 		EB887FD624C9BE3000BA086F /* SwiftUISendingReceivingCodableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FD524C9BE3000BA086F /* SwiftUISendingReceivingCodableUITests.swift */; };
 		EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE324C9DC8500BA086F /* WebServiceManager.swift */; };
 		EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE524C9DD9300BA086F /* VelibModel.swift */; };
+		EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C3321254C4BC400524379 /* AlertManager.swift */; };
 		EBADF27B25498496003CD339 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADF27A25498496003CD339 /* OptionsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		EB887FD724C9BE3000BA086F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB887FE324C9DC8500BA086F /* WebServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
 		EB887FE524C9DD9300BA086F /* VelibModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibModel.swift; sourceTree = "<group>"; };
+		EB8C3321254C4BC400524379 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		EBADF27A25498496003CD339 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
+				EB8C3321254C4BC400524379 /* AlertManager.swift */,
 				EBADF27A25498496003CD339 /* OptionsView.swift */,
 				EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */,
+				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
 				EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */,
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* AnnotationDatas.swift in Sources */,

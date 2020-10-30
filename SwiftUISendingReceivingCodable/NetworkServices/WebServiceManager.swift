@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum NetworkError: Error {
     
@@ -74,7 +75,7 @@ class WebServiceManager {
         }
         .resume()
     }
-    
+ 
     // !!!!!!!!!!!!!!!!!!!!!!!! GENERIC VERSION !!!!!!!!!!!!!!!!!!!!!
     
 //    static func fetchData<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {

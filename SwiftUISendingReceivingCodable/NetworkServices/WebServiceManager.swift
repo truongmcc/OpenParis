@@ -24,7 +24,7 @@ enum NetworkError: Error {
         case .noInternet:
             return "The Internet connection appears to be offline."
         case .serverLost:
-            return "Server lost. Relaunch the app"
+            return "Server lost. Try again"
         case .unknown:
             return "Unknown error"
         }
@@ -34,6 +34,8 @@ enum NetworkError: Error {
 enum UrlDataLocationEnum: String {
     case allVelibs = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes"
     case velib = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
+    
+    case allTrotinettes = "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1300"
     
 }
 

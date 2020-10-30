@@ -2,6 +2,8 @@
 gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
 webservices with combine !!
+déporter web wervices du map coordinator en cours
+ajout des trotinettes en cours
 raccourcir la frame de MenuView
 ajout menu avec type de map (binding) done
 utiliser le protocole Identifiable

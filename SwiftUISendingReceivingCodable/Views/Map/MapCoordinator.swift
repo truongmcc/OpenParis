@@ -14,7 +14,9 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     init(mapView: MapView) {
         map = mapView
         super.init()
-        fetchAllVelibs()
+        
+        //fetchAllVelibs()
+        //fetchAll(service: map.service)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -23,6 +25,16 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         print(recordid)
         fetchVelib(recordid: recordid)
     }
+    
+    func mapViewWillStartRenderingMap(_ mapView: MKMapView) {
+        print("render")
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        print("didadd")
+    }
+
 }
 
 extension MapCoordinator {
@@ -46,41 +58,27 @@ extension MapCoordinator {
         }
     }
     
-    fileprivate func fetchAllVelibs() {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self) {
-            result in
-            switch result {
-            case .success(let data):
-                if let dataResults = data.records {
-                    DispatchQueue.main.async {
-                        self.createAnnotations(results: dataResults)
-                    }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.createErrorAlert(error)
-                }
-            }
-        }
-    }
+
     
-    fileprivate func createErrorAlert(_ error: NetworkError?) {
-        self.map.alertError = Alert(title: Text("Error Network"), message: Text(error?.description ?? "kjhkj"), dismissButton: .default(Text("OK")) {
-            
-            self.map.showingErrorAlert = false
-            
-            // fetch all velibs cause of the open data bug server
-            self.fetchAllVelibs()
-        })
-        self.map.showingErrorAlert = true
-    }
+//    fileprivate func fetchAllVelibs() {
+//        WebServiceManager.shared.fetchDataWithTypeResult(url: UrlDataLocationEnum.allVelibs.rawValue, decodable: ResponseAnnotationDatas.self) {
+//            result in
+//            switch result {
+//            case .success(let data):
+//                if let dataResults = data.records {
+//                    DispatchQueue.main.async {
+//                        self.createAnnotations(results: dataResults)
+//                    }
+//                }
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    self.createErrorAlert(error)
+//                }
+//            }
+//        }
+//    }
     
-    fileprivate func createAnnotations(results: [AnnotationDatas]) {
-        //map.annotations.removeAll()
-        for annotation in results {
-            self.map.annotations.append(Annotation(data: annotation))
-        }
-    }
+
     
     fileprivate func createVelibDetail(_ dataResults: [Velib]) {
         if let velib = dataResults.first {

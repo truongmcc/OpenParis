@@ -10,12 +10,14 @@ import MapKit
 import CoreLocation
 
 struct MapView: UIViewRepresentable {
+
     let locationManager = CLLocationManager()
     @Binding var showingErrorAlert: Bool
     @Binding var velibSelected: Velib?
     @Binding var alertError: Alert?
-    @Binding var mapType : Int
-    @State var annotations = [Annotation]()
+    @Binding var mapType : MKMapType
+    @Binding var service: ServicesEnum
+    @Binding var annotations: [Annotation]?
     
     
     // MARK: - Required protocol methods of UIViewRepresentable
@@ -27,23 +29,23 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        
-        if mapType == 0 {
-            uiView.mapType = .standard
-        } else {
-            uiView.mapType = .satellite
-        }
-        
-        if annotations.count != uiView.annotations.count - 1 {
+
+        uiView.mapType = mapType
+
+        if annotations?.count != uiView.annotations.count - 1 {
             uiView.removeAnnotations(uiView.annotations)
-            uiView.addAnnotations(annotations)
+            if let annos = annotations {
+                uiView.addAnnotations(annos)
+            }
         }
-        
-        print("annotions \(annotations.count)")
-        print("uiView.annotions \(uiView.annotations.count)")
     }
     
     // MARK: - Functions
+    
+    func refresh() {
+        print("dans refresh")
+    }
+    
     func makeCoordinator() -> MapCoordinator {
         MapCoordinator(mapView: self)
     }
@@ -69,5 +71,4 @@ struct MapView: UIViewRepresentable {
             uiView.setRegion(region, animated: true)
         }
     }
-
 }

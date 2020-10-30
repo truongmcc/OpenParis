@@ -10,17 +10,16 @@ import MapKit
 
 struct ContentView: View {
     @State var map: MKMapView?
+    @State var annotations: [Annotation]?
     @State var velibSelected: Velib?
+    
     @State var alertErrorDetected = false
     @State var alertError: Alert?
-    @State var annotations: [Annotation]?
+    
     @State private var mapType = MKMapType.standard
-    @State var showMenuView = false
-    
-    @State var service = ServicesEnum.velib
-    
-    @State var test = false
-    
+    @State var showOptionsView = false
+    @State var service = Services.velib
+        
     var body: some View {
         ZStack {
             
@@ -42,14 +41,14 @@ struct ContentView: View {
             return (alertError ?? Alert(title: Text(NetworkError.unknown.description)))
         }
         
-        .sheet(isPresented: $showMenuView) {
+        .sheet(isPresented: $showOptionsView) {
             OptionsView(mapType: $mapType, service: $service) {
-                fetchAll(service: service)
+                fetchAllAnnotations(of: service)
             }
         }
         
         .onAppear() {
-            fetchAll(service: service)
+            fetchAllAnnotations(of: service)
         }
     }
     
@@ -57,7 +56,7 @@ struct ContentView: View {
         return
             GeometryReader { geometryReader in
                 Button("Options", action: {
-                    showMenuView.toggle()
+                    showOptionsView.toggle()
                 })
                 .foregroundColor(.primary)
                 .padding(20)
@@ -65,14 +64,8 @@ struct ContentView: View {
             }
     }
     
-    fileprivate func fetchAll(service: ServicesEnum) {
-        var urlService = UrlDataLocationEnum.allVelibs.rawValue
-        if service == .velib {
-            urlService = UrlDataLocationEnum.allVelibs.rawValue
-        } else {
-            urlService = UrlDataLocationEnum.allTrotinettes.rawValue
-        }
-        WebServiceManager.shared.fetchDataWithTypeResult(url: urlService, decodable: ResponseAnnotationDatas.self) {
+    fileprivate func fetchAllAnnotations(of service: Services) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: service.url(), decodable: ResponseAnnotationDatas.self) {
             result in
             switch result {
             case .success(let data):

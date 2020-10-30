@@ -16,7 +16,7 @@ struct MapView: UIViewRepresentable {
     @Binding var velibSelected: Velib?
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
-    @Binding var service: ServicesEnum
+    @Binding var service: Services
     @Binding var annotations: [Annotation]?
     
     

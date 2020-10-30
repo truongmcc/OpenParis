@@ -33,11 +33,7 @@ enum NetworkError: Error {
 }
 
 enum UrlDataLocationEnum: String {
-    case allVelibs = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes"
     case velib = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
-    
-    case allTrotinettes = "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1300"
-    
 }
 
 class WebServiceManager {
@@ -52,6 +48,20 @@ class WebServiceManager {
         }
         return URLRequest(url: url)
     }
+    
+//    func fetchAll(service: Services, completion: @escaping (Result<[AnnotationDatas], NetworkError>) -> Void) {
+//        WebServiceManager.shared.fetchDataWithTypeResult(url: service.url(), decodable: ResponseAnnotationDatas.self) {
+//            result in
+//            switch result {
+//            case .success(let data):
+//                if let dataResults = data.records {
+//                    completion(.success(dataResults))
+//                }
+//            case .failure(let error):
+//                completion(.failure(error))
+//            }
+//        }
+//    }
     
     func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let urlRequest = createUrlRequest(url: url) else {

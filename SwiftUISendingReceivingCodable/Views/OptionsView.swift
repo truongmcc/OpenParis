@@ -8,15 +8,10 @@
 import SwiftUI
 import MapKit
 
-enum ServicesEnum: Int {
-    case velib
-    case trotinettes
-}
-
 struct OptionsView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var mapType: MKMapType
-    @Binding var service: ServicesEnum
+    @Binding var service: Services
     var onDismiss: () -> Void
 
     var body: some View {
@@ -52,8 +47,8 @@ struct OptionsView: View {
     
     fileprivate func addTypeService()  -> some View {
         Picker(selection: $service, label: Text("Services"), content: {
-            Text("Velibs").tag(ServicesEnum.velib)
-            Text("Trotinettes").tag(ServicesEnum.trotinettes)
+            Text("Velibs").tag(Services.velib)
+            Text("Trotinettes").tag(Services.trotinette)
         })
         .pickerStyle(SegmentedPickerStyle())
         .padding(10)
@@ -61,10 +56,8 @@ struct OptionsView: View {
 }
 
 struct MenuView_Previews: PreviewProvider {
-    @State static var test = false
     @State static var mapType = MKMapType.standard
-    @State static var showMenuView = false
-    @State static var service = ServicesEnum.velib
+    @State static var service = Services.velib
     static var previews: some View {
         OptionsView(mapType: $mapType, service: $service, onDismiss: {} )
     }

@@ -14,6 +14,7 @@ struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @Binding var alertErrorDetected: Bool
     @Binding var velibSelected: Velib?
+    //@Binding var annotationSelected: Any
     @Binding var trotinetteSelected: Trotinette?
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
@@ -78,44 +79,57 @@ extension MapView {
         let url = service.url() + recordid
         switch service {
         case .velib:
-            ServiceRepository.shared.fetchVelib(urlString: url) { result in
-                
-                
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        if let velibs = data.records, velibs.count > 0 {
-                            self.createVelibDetail(velibs)
-                        } else {
-                            alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
-                            alertErrorDetected = true
-                        }
-                    }
-                case .failure(let error):
-                    alertError = AlertManager.shared.createNetworkAlert(error)
-                    alertErrorDetected = true
-                }
-            }
-        
+            showServiceVelib(url)
         case .trotinette:
-            ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        
-                        
-                        
-                        if let trotinettes = data.records, trotinettes.count > 0 {
-                            self.createTrotinetteDetail(trotinettes)
-                        } else {
-                            alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
-                            alertErrorDetected = true
-                        }
-                    }
-                case .failure(let error):
-                    alertError = AlertManager.shared.createNetworkAlert(error)
-                    alertErrorDetected = true
-                }
+            showServiceTrotinette(url)
+        }
+    }
+    
+    fileprivate func showServiceTrotinette(_ url: String) {
+        ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
+            treatResult(result: result)
+        }
+    }
+    
+    fileprivate func showServiceVelib(_ url: String) {
+        ServiceRepository.shared.fetchVelib(urlString: url) { result in
+            treatResult(result: result)
+        }
+    }
+
+    fileprivate func treatResult<T>(result: Result<T, NetworkError>) {
+        switch result {
+        case .success(let data):
+            createDetail(data: data)
+        case .failure(let error):
+            alertError = AlertManager.shared.createNetworkAlert(error)
+            alertErrorDetected = true
+        }
+    }
+    
+    fileprivate func createDetail<T>(data: T) {
+        DispatchQueue.main.async {
+            if let dataResponse = data as? VelibResponse, let velibs = dataResponse.records {
+                self.createVelibDetail(velibs)
+            } else if let dataResponse = data as? TrotinetteResponse, let trotinettes = dataResponse.records {
+                self.createTrotinetteDetail(trotinettes)
+            }
+        }
+    }
+    
+    fileprivate func createVelibDetail(_ dataResults: [Velib]) {
+        if let velib = dataResults.first {
+            DispatchQueue.main.async {
+                velibSelected = velib
+            }
+        }
+    }
+    
+    fileprivate func createTrotinetteDetail(_ dataResults: [Trotinette]) {
+        if let trotinette = dataResults.first {
+            DispatchQueue.main.async {
+                trotinetteSelected = trotinette
+                //annotationSelected = trotinetteSelected as Any
             }
         }
     }
@@ -151,21 +165,4 @@ extension MapView {
 //            alertErrorDetected = true
 //        }
 //    }
-    
-    fileprivate func createVelibDetail(_ dataResults: [Velib]) {
-        if let velib = dataResults.first {
-            DispatchQueue.main.async {
-                velibSelected = velib
-            }
-        }
-    }
-    
-    
-    fileprivate func createTrotinetteDetail(_ dataResults: [Trotinette]) {
-        if let trotinette = dataResults.first {
-            DispatchQueue.main.async {
-                trotinetteSelected = trotinette
-            }
-        }
-    }
 }

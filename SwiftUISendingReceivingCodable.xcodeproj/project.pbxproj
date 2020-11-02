@@ -11,9 +11,9 @@
 		EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0EB5D624ED12AE001319C7 /* MapCoordinator.swift */; };
 		EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFA24E7CB520013ED0E /* Annotation.swift */; };
 		EB3C1DFF24E7F7870013ED0E /* AnnotationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFE24E7F7870013ED0E /* AnnotationDataModel.swift */; };
-		EB6AE2F025503B6C00787240 /* ServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE2EF25503B6C00787240 /* ServiceRepository.swift */; };
 		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
 		EB6AE3082550447F00787240 /* DetailTrotinetteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE3072550447F00787240 /* DetailTrotinetteView.swift */; };
+		EB6AE31D25505CE500787240 /* ServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* ServiceRepository.swift */; };
 		EB84BF54253DE8D400BB18E5 /* DetailVelibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
 		EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */; };
@@ -50,9 +50,9 @@
 		EB0EB5D624ED12AE001319C7 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		EB3C1DFA24E7CB520013ED0E /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		EB3C1DFE24E7F7870013ED0E /* AnnotationDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationDataModel.swift; sourceTree = "<group>"; };
-		EB6AE2EF25503B6C00787240 /* ServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRepository.swift; sourceTree = "<group>"; };
 		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
 		EB6AE3072550447F00787240 /* DetailTrotinetteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrotinetteView.swift; sourceTree = "<group>"; };
+		EB6AE31C25505CE500787240 /* ServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRepository.swift; sourceTree = "<group>"; };
 		EB84BF53253DE8D400BB18E5 /* DetailVelibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailVelibView.swift; path = SwiftUISendingReceivingCodable/Views/DetailVelibView.swift; sourceTree = SOURCE_ROOT; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EB887FB524C9BDD000BA086F /* SwiftUISendingReceivingCodable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUISendingReceivingCodable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +133,7 @@
 		EB6AE30F25504D5600787240 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				EB6AE2EF25503B6C00787240 /* ServiceRepository.swift */,
+				EB6AE31C25505CE500787240 /* ServiceRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -339,7 +339,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB6AE2F025503B6C00787240 /* ServiceRepository.swift in Sources */,
 				EB6AE3082550447F00787240 /* DetailTrotinetteView.swift in Sources */,
 				EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */,
 				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
@@ -347,6 +346,7 @@
 				EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */,
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* AnnotationDataModel.swift in Sources */,
+				EB6AE31D25505CE500787240 /* ServiceRepository.swift in Sources */,
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
 				EBADF27B25498496003CD339 /* OptionsView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,

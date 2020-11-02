@@ -2,7 +2,8 @@
 gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
 webservices with combine !!
-ajout webservice trotinette
+refacto webService trotinette et velib
+ajout webservice trotinette done
 ajout model trotinette done
 ajout services allTrotinettes done
 raccourcir la frame de MenuView (complexe)

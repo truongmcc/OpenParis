@@ -77,11 +77,11 @@ extension MapView {
         let url = service.url() + recordid
         switch service {
         case .velib:
-            ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
+            ServiceRepository.shared.fetchVelib(urlString: url) { result in
                 treatResult(result: result)
             }
         case .trotinette:
-            ServiceRepository.shared.fetchVelib(urlString: url) { result in
+            ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
                 treatResult(result: result)
             }
         }

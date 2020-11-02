@@ -14,6 +14,7 @@ struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @Binding var alertErrorDetected: Bool
     @Binding var velibSelected: Velib?
+    @Binding var trotinetteSelected: Trotinette?
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
     @Binding var service: Services
@@ -72,31 +73,98 @@ struct MapView: UIViewRepresentable {
 }
     
 extension MapView {
-    func fetchVelib(recordid: String) {
-        let url = UrlDataLocationEnum.velib.rawValue + recordid
-        WebServiceManager.shared.fetchDataWithTypeResult(url: url,
-                                    decodable: VelibResponse.self) { result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    if let velibs = data.records, velibs.count > 0 {
-                        self.createVelibDetail(velibs)
-                    } else {
-                        alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
-                        alertErrorDetected = true
+    
+    func showServiceDetail(recordid: String) {
+        let url = service.url() + recordid
+        switch service {
+        case .velib:
+            ServiceRepository.shared.fetchVelib(urlString: url) { result in
+                
+                
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        if let velibs = data.records, velibs.count > 0 {
+                            self.createVelibDetail(velibs)
+                        } else {
+                            alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
+                            alertErrorDetected = true
+                        }
                     }
+                case .failure(let error):
+                    alertError = AlertManager.shared.createNetworkAlert(error)
+                    alertErrorDetected = true
                 }
-            case .failure(let error):
-                alertError = AlertManager.shared.createNetworkAlert(error)
-                alertErrorDetected = true
+            }
+        
+        case .trotinette:
+            ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        
+                        
+                        
+                        if let trotinettes = data.records, trotinettes.count > 0 {
+                            self.createTrotinetteDetail(trotinettes)
+                        } else {
+                            alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
+                            alertErrorDetected = true
+                        }
+                    }
+                case .failure(let error):
+                    alertError = AlertManager.shared.createNetworkAlert(error)
+                    alertErrorDetected = true
+                }
             }
         }
     }
+    
+    //func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    
+//    fileprivate func treatResult<T>(result: Result<T, NetworkError>) {
+//        switch result {
+//        case .success(let data):
+//            DispatchQueue.main.async {
+//        
+//                switch service {
+//                case .velib:
+//                    if let velibs = data.records, velibs.count > 0 {
+//                        self.createVelibDetail(velibs)
+//                    } else {
+//                        alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
+//                        alertErrorDetected = true
+//                    }
+//                case .trotinette:
+//                    
+//                    if let trotinettes = data.records, trotinettes.count > 0 {
+//                        self.createTrotinetteDetail(trotinettes)
+//                    } else {
+//                        alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
+//                        alertErrorDetected = true
+//                    }
+//                }
+//            }
+//            
+//        case .failure(let error):
+//            alertError = AlertManager.shared.createNetworkAlert(error)
+//            alertErrorDetected = true
+//        }
+//    }
     
     fileprivate func createVelibDetail(_ dataResults: [Velib]) {
         if let velib = dataResults.first {
             DispatchQueue.main.async {
                 velibSelected = velib
+            }
+        }
+    }
+    
+    
+    fileprivate func createTrotinetteDetail(_ dataResults: [Trotinette]) {
+        if let trotinette = dataResults.first {
+            DispatchQueue.main.async {
+                trotinetteSelected = trotinette
             }
         }
     }

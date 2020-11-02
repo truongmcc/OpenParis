@@ -20,6 +20,6 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         let annotation = view.annotation as? Annotation
         guard let recordid = annotation?.id else { return }
         print(recordid)
-        map.fetchVelib(recordid: recordid)
+        map.showServiceDetail(recordid: recordid)
     }
 }

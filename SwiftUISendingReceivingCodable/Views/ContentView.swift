@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var map: MKMapView?
     @State private var annotations: [Annotation]?
     @State private var velibSelected: Velib?
+    @State private var trotinetteSelected: Trotinette?
     
     @State private var alertErrorDetected = false
     @State private var alertError: Alert?
@@ -24,10 +25,14 @@ struct ContentView: View {
         ZStack {
             
             MapView(alertErrorDetected: $alertErrorDetected,
-                    velibSelected: $velibSelected, alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations)
+                    velibSelected: $velibSelected, trotinetteSelected: $trotinetteSelected, alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations)
             
             if velibSelected != nil {
                 DetailVelibView(velibSelected: velibSelected)
+            }
+            
+            if trotinetteSelected != nil {
+                DetailTrotinetteView(trotinetteSelected: trotinetteSelected)
             }
             
             addMenuButton()
@@ -35,6 +40,7 @@ struct ContentView: View {
         }
         .onTapGesture {
             velibSelected = nil
+            trotinetteSelected = nil
         }
         
         .alert(isPresented: $alertErrorDetected) {

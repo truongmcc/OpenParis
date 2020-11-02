@@ -22,7 +22,7 @@ struct DetailVelibView: View {
                 Text("\(velibSelected?.fields.numDockAvailable ?? 0)")
             }
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
-                Text("Velib disponibles : ")
+                Text("Velibs disponibles : ")
                 Text("\(velibSelected?.fields.numBikesAvailable ?? 0)")
             }
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {

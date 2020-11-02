@@ -90,7 +90,9 @@ extension MapView {
     fileprivate func treatResult<T>(result: Result<T, NetworkError>) {
         switch result {
         case .success(let data):
-            createDetail(data: data)
+            DispatchQueue.main.async {
+                createDetail(data: data)
+            }
         case .failure(let error):
             alertError = AlertManager.shared.createNetworkAlert(error)
             alertErrorDetected = true
@@ -98,12 +100,10 @@ extension MapView {
     }
     
     fileprivate func createDetail<T>(data: T) {
-        DispatchQueue.main.async {
-            if let dataResponse = data as? VelibResponse, let velibs = dataResponse.records {
-                self.createVelibDetail(velibs)
-            } else if let dataResponse = data as? TrotinetteResponse, let trotinettes = dataResponse.records {
-                self.createTrotinetteDetail(trotinettes)
-            }
+        if let dataResponse = data as? VelibResponse, let velibs = dataResponse.records {
+            self.createVelibDetail(velibs)
+        } else if let dataResponse = data as? TrotinetteResponse, let trotinettes = dataResponse.records {
+            self.createTrotinetteDetail(trotinettes)
         }
     }
     

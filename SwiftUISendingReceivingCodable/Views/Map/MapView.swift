@@ -14,13 +14,11 @@ struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @Binding var alertErrorDetected: Bool
     @Binding var velibSelected: Velib?
-    //@Binding var annotationSelected: Any
     @Binding var trotinetteSelected: Trotinette?
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
     @Binding var service: Services
     @Binding var annotations: [Annotation]?
-    
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -75,25 +73,17 @@ struct MapView: UIViewRepresentable {
     
 extension MapView {
     
-    func showServiceDetail(recordid: String) {
+    func showAnnotationDetail(recordid: String) {
         let url = service.url() + recordid
         switch service {
         case .velib:
-            showServiceVelib(url)
+            ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
+                treatResult(result: result)
+            }
         case .trotinette:
-            showServiceTrotinette(url)
-        }
-    }
-    
-    fileprivate func showServiceTrotinette(_ url: String) {
-        ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
-            treatResult(result: result)
-        }
-    }
-    
-    fileprivate func showServiceVelib(_ url: String) {
-        ServiceRepository.shared.fetchVelib(urlString: url) { result in
-            treatResult(result: result)
+            ServiceRepository.shared.fetchVelib(urlString: url) { result in
+                treatResult(result: result)
+            }
         }
     }
 
@@ -129,40 +119,7 @@ extension MapView {
         if let trotinette = dataResults.first {
             DispatchQueue.main.async {
                 trotinetteSelected = trotinette
-                //annotationSelected = trotinetteSelected as Any
             }
         }
     }
-    
-    //func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
-    
-//    fileprivate func treatResult<T>(result: Result<T, NetworkError>) {
-//        switch result {
-//        case .success(let data):
-//            DispatchQueue.main.async {
-//        
-//                switch service {
-//                case .velib:
-//                    if let velibs = data.records, velibs.count > 0 {
-//                        self.createVelibDetail(velibs)
-//                    } else {
-//                        alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
-//                        alertErrorDetected = true
-//                    }
-//                case .trotinette:
-//                    
-//                    if let trotinettes = data.records, trotinettes.count > 0 {
-//                        self.createTrotinetteDetail(trotinettes)
-//                    } else {
-//                        alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
-//                        alertErrorDetected = true
-//                    }
-//                }
-//            }
-//            
-//        case .failure(let error):
-//            alertError = AlertManager.shared.createNetworkAlert(error)
-//            alertErrorDetected = true
-//        }
-//    }
 }

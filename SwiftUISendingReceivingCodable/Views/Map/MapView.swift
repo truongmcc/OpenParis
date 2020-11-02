@@ -29,7 +29,6 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-
         uiView.mapType = mapType
 
         if annotations?.count != uiView.annotations.count - 1 {
@@ -41,7 +40,6 @@ struct MapView: UIViewRepresentable {
     }
     
     // MARK: - Functions
-    
     func refresh() {
         print("dans refresh")
     }
@@ -69,6 +67,37 @@ struct MapView: UIViewRepresentable {
             let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let region = MKCoordinateRegion(center: coordinate, span: span)
             uiView.setRegion(region, animated: true)
+        }
+    }
+}
+    
+extension MapView {
+    func fetchVelib(recordid: String) {
+        let url = UrlDataLocationEnum.velib.rawValue + recordid
+        WebServiceManager.shared.fetchDataWithTypeResult(url: url,
+                                    decodable: VelibResponse.self) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    if let velibs = data.records, velibs.count > 0 {
+                        self.createVelibDetail(velibs)
+                    } else {
+                        alertError = AlertManager.shared.createNetworkAlert(NetworkError.serverLost)
+                        alertErrorDetected = true
+                    }
+                }
+            case .failure(let error):
+                alertError = AlertManager.shared.createNetworkAlert(error)
+                alertErrorDetected = true
+            }
+        }
+    }
+    
+    fileprivate func createVelibDetail(_ dataResults: [Velib]) {
+        if let velib = dataResults.first {
+            DispatchQueue.main.async {
+                velibSelected = velib
+            }
         }
     }
 }

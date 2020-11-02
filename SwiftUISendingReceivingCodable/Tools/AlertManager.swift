@@ -13,7 +13,7 @@ class AlertManager {
     static let shared = AlertManager()
     private init() { }
     
-    func createErrorAlert(_ error: NetworkError?) -> Alert {
+    func createNetworkAlert(_ error: NetworkError?) -> Alert {
         return Alert(title: Text("Network Error"), message: Text(error?.description ?? "Unknown error"), dismissButton: .default(Text("OK")) {
         })
     }

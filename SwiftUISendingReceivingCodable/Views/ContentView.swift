@@ -9,16 +9,16 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State var map: MKMapView?
-    @State var annotations: [Annotation]?
-    @State var velibSelected: Velib?
+    @State private var map: MKMapView?
+    @State private var annotations: [Annotation]?
+    @State private var velibSelected: Velib?
     
-    @State var alertErrorDetected = false
-    @State var alertError: Alert?
+    @State private var alertErrorDetected = false
+    @State private var alertError: Alert?
     
     @State private var mapType = MKMapType.standard
-    @State var showOptionsView = false
-    @State var service = Services.velib
+    @State private var showOptionsView = false
+    @State private var service = Services.velib
         
     var body: some View {
         ZStack {
@@ -65,7 +65,7 @@ struct ContentView: View {
     }
     
     fileprivate func fetchAllAnnotations(of service: Services) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: service.url(), decodable: ResponseAnnotationDatas.self) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: service.urlForAll(), decodable: ResponseAnnotationDatas.self) {
             result in
             switch result {
             case .success(let data):
@@ -76,14 +76,14 @@ struct ContentView: View {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    alertError = AlertManager.shared.createErrorAlert(error)
+                    alertError = AlertManager.shared.createNetworkAlert(error)
                     alertErrorDetected = true
                 }
             }
         }
     }
     
-    fileprivate func createAnnotations(results: [AnnotationDatas]) {
+    fileprivate func createAnnotations(results: [AnnotationDataModel]) {
         var annos = [Annotation]()
         for annotation in results {
             annos.append(Annotation(data: annotation))

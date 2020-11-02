@@ -2,8 +2,10 @@
 gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
 webservices with combine !!
+ajout webservice trotinette
+ajout model trotinette done
 ajout services allTrotinettes done
-raccourcir la frame de MenuView
+raccourcir la frame de MenuView (complexe)
 ajout menu avec type de map (binding) done
 utiliser le protocole Identifiable
 BUG : recordid lost by opendata server : reload map when notify the alert error !!!

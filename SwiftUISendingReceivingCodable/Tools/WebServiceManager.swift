@@ -32,10 +32,6 @@ enum NetworkError: Error {
     }
 }
 
-enum UrlDataLocationEnum: String {
-    case velib = "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
-}
-
 class WebServiceManager {
     
     static let shared = WebServiceManager()
@@ -49,20 +45,7 @@ class WebServiceManager {
         return URLRequest(url: url)
     }
     
-//    func fetchAll(service: Services, completion: @escaping (Result<[AnnotationDatas], NetworkError>) -> Void) {
-//        WebServiceManager.shared.fetchDataWithTypeResult(url: service.url(), decodable: ResponseAnnotationDatas.self) {
-//            result in
-//            switch result {
-//            case .success(let data):
-//                if let dataResults = data.records {
-//                    completion(.success(dataResults))
-//                }
-//            case .failure(let error):
-//                completion(.failure(error))
-//            }
-//        }
-//    }
-    
+    // Generic with result type version
     func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let urlRequest = createUrlRequest(url: url) else {
             completion(.failure(NetworkError.badURL))
@@ -85,10 +68,9 @@ class WebServiceManager {
         }
         .resume()
     }
- 
-    // !!!!!!!!!!!!!!!!!!!!!!!! GENERIC VERSION !!!!!!!!!!!!!!!!!!!!!
     
-//    static func fetchData<T: Codable>(url: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+//     Generic without result type version
+//    static func fetchData<T: Codable>(urlForAll: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
 //        guard let urlRequest = createUrlRequest(url: url) else {
 //            return
 //        }

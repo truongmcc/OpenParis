@@ -13,12 +13,12 @@ struct MapView: UIViewRepresentable {
 
     let locationManager = CLLocationManager()
     @Binding var alertErrorDetected: Bool
-    @Binding var velibSelected: Velib?
-    @Binding var trotinetteSelected: Trotinette?
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
     @Binding var service: Services
     @Binding var annotations: [Annotation]?
+    
+    @Binding var serviceSelected: Any?
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -90,35 +90,20 @@ extension MapView {
     fileprivate func treatResult<T>(result: Result<T, NetworkError>) {
         switch result {
         case .success(let data):
-            DispatchQueue.main.async {
                 createDetail(data: data)
-            }
         case .failure(let error):
             alertError = AlertManager.shared.createNetworkAlert(error)
             alertErrorDetected = true
         }
+
     }
     
     fileprivate func createDetail<T>(data: T) {
-        if let dataResponse = data as? VelibResponse, let velibs = dataResponse.records {
-            self.createVelibDetail(velibs)
-        } else if let dataResponse = data as? TrotinetteResponse, let trotinettes = dataResponse.records {
-            self.createTrotinetteDetail(trotinettes)
-        }
-    }
-    
-    fileprivate func createVelibDetail(_ dataResults: [Velib]) {
-        if let velib = dataResults.first {
-            DispatchQueue.main.async {
-                velibSelected = velib
-            }
-        }
-    }
-    
-    fileprivate func createTrotinetteDetail(_ dataResults: [Trotinette]) {
-        if let trotinette = dataResults.first {
-            DispatchQueue.main.async {
-                trotinetteSelected = trotinette
+        DispatchQueue.main.async {
+            if let dataResponse = data as? VelibResponse, let velib = dataResponse.records?.first {
+                serviceSelected = velib
+            } else if let dataResponse = data as? TrotinetteResponse, let trotinette = dataResponse.records?.first {
+                serviceSelected = trotinette
             }
         }
     }

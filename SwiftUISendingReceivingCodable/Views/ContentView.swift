@@ -11,39 +11,32 @@ import MapKit
 struct ContentView: View {
     @State private var map: MKMapView?
     @State private var annotations: [Annotation]?
-    @State private var velibSelected: Velib?
-    @State private var trotinetteSelected: Trotinette?
+    @State private var mapType = MKMapType.standard
     
-    @State private var alertErrorDetected = false
+    @State private var service = Services.velib
+    @State private var serviceSelected: Any?
+    
+    @State private var showOptionsView = false
+    
+    @State private var showErrorAlert = false
     @State private var alertError: Alert?
     
-    @State private var mapType = MKMapType.standard
-    @State private var showOptionsView = false
-    @State private var service = Services.velib
-        
     var body: some View {
         ZStack {
             
-            MapView(alertErrorDetected: $alertErrorDetected,
-                    velibSelected: $velibSelected, trotinetteSelected: $trotinetteSelected, alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations)
+            MapView(alertErrorDetected: $showErrorAlert,
+                    alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations, serviceSelected: $serviceSelected)
             
-            if velibSelected != nil {
-                DetailVelibView(velibSelected: velibSelected)
-            }
-            
-            if trotinetteSelected != nil {
-                DetailTrotinetteView(trotinetteSelected: trotinetteSelected)
-            }
+            showServiceDetail()
             
             addMenuButton()
    
         }
         .onTapGesture {
-            velibSelected = nil
-            trotinetteSelected = nil
+            serviceSelected = nil
         }
         
-        .alert(isPresented: $alertErrorDetected) {
+        .alert(isPresented: $showErrorAlert) {
             return (alertError ?? Alert(title: Text(NetworkError.unknown.description)))
         }
         
@@ -56,6 +49,15 @@ struct ContentView: View {
         .onAppear() {
             fetchAllAnnotations(of: service)
         }
+    }
+    
+    fileprivate func showServiceDetail() -> AnyView? {
+        if serviceSelected is Velib {
+            return AnyView(DetailVelibView(velibSelected: serviceSelected as? Velib))
+        } else if serviceSelected is Trotinette {
+            return AnyView(DetailTrotinetteView(trotinetteSelected: serviceSelected as? Trotinette))
+        }
+        return nil
     }
     
     fileprivate func addMenuButton() -> some View {
@@ -83,7 +85,7 @@ struct ContentView: View {
             case .failure(let error):
                 DispatchQueue.main.async {
                     alertError = AlertManager.shared.createNetworkAlert(error)
-                    alertErrorDetected = true
+                    showErrorAlert = true
                 }
             }
         }

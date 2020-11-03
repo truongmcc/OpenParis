@@ -78,16 +78,16 @@ extension MapView {
         switch service {
         case .velib:
             ServiceRepository.shared.fetchVelib(urlString: url) { result in
-                treatResult(result: result)
+                manageServiceResult(result: result)
             }
         case .trotinette:
             ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
-                treatResult(result: result)
+                manageServiceResult(result: result)
             }
         }
     }
 
-    fileprivate func treatResult<T>(result: Result<T, NetworkError>) {
+    fileprivate func manageServiceResult<T>(result: Result<T, NetworkError>) {
         switch result {
         case .success(let data):
                 createDetail(data: data)
@@ -95,7 +95,6 @@ extension MapView {
             alertError = AlertManager.shared.createNetworkAlert(error)
             alertErrorDetected = true
         }
-
     }
     
     fileprivate func createDetail<T>(data: T) {

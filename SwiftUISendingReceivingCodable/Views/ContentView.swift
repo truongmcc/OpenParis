@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var showOptionsView = false
     
     @State private var showErrorAlert = false
+    @State private var showProgressView = false
     @State private var alertError: Alert?
     
     var body: some View {
@@ -26,9 +27,9 @@ struct ContentView: View {
             
             MapView(alertErrorDetected: $showErrorAlert,
                     alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations, serviceSelected: $serviceSelected)
-            
+         
+            showProgressionView()
             showServiceDetail()
-            
             addMenuButton()
    
         }
@@ -42,12 +43,40 @@ struct ContentView: View {
         
         .sheet(isPresented: $showOptionsView) {
             OptionsView(mapType: $mapType, service: $service) {
-                fetchAllAnnotations(of: service)
+                refreshAllAnnotations()
             }
         }
-        
+
         .onAppear() {
-            fetchAllAnnotations(of: service)
+            refreshAllAnnotations()
+            
+        }
+    }
+    
+    fileprivate func refreshAllAnnotations() {
+        showProgressView = true
+        map?.isUserInteractionEnabled = false
+        ServiceRepository.shared.fetchAllAnnotations(of: service)
+        { result in
+            map?.isUserInteractionEnabled = true
+            showProgressView = false
+            manageAnnotationsResults(result: result)
+        }
+    }
+    
+    fileprivate func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkError>) {
+        switch result {
+        case .success(let data):
+            if let dataResults = data.records {
+                DispatchQueue.main.async {
+                    self.createAnnotations(results: dataResults)
+                }
+            }
+        case .failure(let error):
+            DispatchQueue.main.async {
+                alertError = AlertManager.shared.createNetworkAlert(error)
+                showErrorAlert = true
+            }
         }
     }
     
@@ -58,6 +87,15 @@ struct ContentView: View {
             return AnyView(DetailTrotinetteView(trotinetteSelected: serviceSelected as? Trotinette))
         }
         return nil
+    }
+    
+    fileprivate func showProgressionView() -> some View {
+        VStack {
+            if showProgressView {
+                ProgressView()
+                    .foregroundColor(Color.primary)
+            }
+        }
     }
     
     fileprivate func addMenuButton() -> some View {

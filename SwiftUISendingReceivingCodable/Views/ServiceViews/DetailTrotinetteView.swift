@@ -12,7 +12,7 @@ struct DetailTrotinetteView: View {
     @State var opacityChange = false
 
     var body: some View {
-        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10) {
+        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
             Text(trotinetteSelected?.fields.adresse ?? "")
                 .padding(10)
                 .font(.title)

@@ -35,6 +35,12 @@ class ServiceRepository {
     static let shared = ServiceRepository()
     private init() { }
     
+    func fetchAllAnnotations(of service: Services, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: service.urlForAll(), decodable: ResponseAnnotationDatas.self) { result in
+            completion(result)
+        }
+    }
+    
     func fetchVelib(urlString: String, completion: @escaping (Result<VelibResponse, NetworkError>) -> Void) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
                                     decodable: VelibResponse.self) { result in

@@ -1,8 +1,8 @@
 
-gérer d'autres services (trotinnettes, belib, ...)
 detecter les velibs aux alentours (200 mètres)
 webservices with combine !!
-refacto webService trotinette et velib
+ajout timer
+refacto webService trotinette et velib done
 ajout webservice trotinette done
 ajout model trotinette done
 ajout services allTrotinettes done

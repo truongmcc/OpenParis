@@ -26,12 +26,17 @@ struct ContentView: View {
         ZStack {
             
             MapView(alertErrorDetected: $showErrorAlert,
-                    alertError: $alertError, mapType: $mapType, service: $service, annotations: $annotations, serviceSelected: $serviceSelected)
-         
+                    alertError: $alertError,
+                    mapType: $mapType,
+                    service: $service,
+                    annotations: $annotations,
+                    showProgressView: $showProgressView,
+                    serviceSelected: $serviceSelected)
+            
             showProgressionView()
             showServiceDetail()
             addMenuButton()
-   
+            
         }
         .onTapGesture {
             serviceSelected = nil
@@ -46,13 +51,14 @@ struct ContentView: View {
                 refreshAllAnnotations()
             }
         }
-
+        
         .onAppear() {
             refreshAllAnnotations()
-            
         }
     }
-    
+}
+
+extension ContentView {
     fileprivate func refreshAllAnnotations() {
         showProgressView = true
         map?.isUserInteractionEnabled = false
@@ -111,7 +117,7 @@ struct ContentView: View {
     }
     
     fileprivate func fetchAllAnnotations(of service: Services) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: service.urlForAll(), decodable: ResponseAnnotationDatas.self) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) {
             result in
             switch result {
             case .success(let data):

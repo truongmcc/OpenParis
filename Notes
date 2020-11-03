@@ -1,24 +1,21 @@
 
 detecter les velibs aux alentours (200 mètres)
+raccourcir la frame de MenuView (complexe)
 webservices with combine !!
-ajout timer
+
+ajout progressview for webservices done
 refacto webService trotinette et velib done
 ajout webservice trotinette done
 ajout model trotinette done
 ajout services allTrotinettes done
-raccourcir la frame de MenuView (complexe)
 ajout menu avec type de map (binding) done
-utiliser le protocole Identifiable
-BUG : recordid lost by opendata server : reload map when notify the alert error !!!
 utiliser le type results (erreurs et datas) done
 crash selection userlocation : done
-refacto : done
 ajout dand git : done
 zoom sur map : done
 gestion des erreurs ws : done
 animation sur détail velib : done
-faire une fonction qui traduit les erreurs ! done
+error manager ! done
 afficher détails velib : done
+ajouter la map avec SwiftUI : done
 migration swiftUI done
-
-

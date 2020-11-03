@@ -70,8 +70,8 @@ class WebServiceManager {
     }
     
 //     Generic without result type version
-//    static func fetchData<T: Codable>(urlForAll: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
-//        guard let urlRequest = createUrlRequest(url: url) else {
+//    static func fetchData<T: Codable>(allAnnotationsUrl: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+//        guard let urlRequest = createUrlRequest(annotationUrl: url) else {
 //            return
 //        }
 //

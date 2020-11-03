@@ -11,7 +11,7 @@ enum Services: Int {
     case velib
     case trotinette
     
-    func urlForAll() -> String {
+    func allAnnotationsUrl() -> String {
         switch self {
         case .velib:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes"
@@ -20,7 +20,7 @@ enum Services: Int {
         }
     }
     
-    func url() -> String {
+    func annotationUrl() -> String {
         switch self {
         case .velib:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
@@ -36,7 +36,7 @@ class ServiceRepository {
     private init() { }
     
     func fetchAllAnnotations(of service: Services, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: service.urlForAll(), decodable: ResponseAnnotationDatas.self) { result in
+        WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
         }
     }

@@ -10,14 +10,14 @@ import MapKit
 import CoreLocation
 
 struct MapView: UIViewRepresentable {
-
+    
     let locationManager = CLLocationManager()
     @Binding var alertErrorDetected: Bool
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
     @Binding var service: Services
     @Binding var annotations: [Annotation]?
-    
+    @Binding var showProgressView: Bool
     @Binding var serviceSelected: Any?
     
     // MARK: - Required protocol methods of UIViewRepresentable
@@ -30,7 +30,7 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         uiView.mapType = mapType
-
+        
         if annotations?.count != uiView.annotations.count - 1 {
             uiView.removeAnnotations(uiView.annotations)
             if let annos = annotations {
@@ -70,11 +70,12 @@ struct MapView: UIViewRepresentable {
         }
     }
 }
-    
+
 extension MapView {
     
     func showAnnotationDetail(recordid: String) {
-        let url = service.url() + recordid
+        showProgressView = true
+        let url = service.annotationUrl() + recordid
         switch service {
         case .velib:
             ServiceRepository.shared.fetchVelib(urlString: url) { result in
@@ -86,11 +87,12 @@ extension MapView {
             }
         }
     }
-
+    
     fileprivate func manageServiceResult<T>(result: Result<T, NetworkError>) {
+        showProgressView = false
         switch result {
         case .success(let data):
-                createDetail(data: data)
+            createDetail(data: data)
         case .failure(let error):
             alertError = AlertManager.shared.createNetworkAlert(error)
             alertErrorDetected = true

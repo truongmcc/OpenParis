@@ -2,7 +2,12 @@
 detecter les velibs aux alentours (200 mètres)
 raccourcir la frame de MenuView (complexe)
 webservices with combine !!
+ajouter un titre pour afficher le service appliqué
+customiser les annotationsViews
 
+ajouter service fontaines à boire
+
+ajouter services sanisettes done
 ajout progressview for webservices done
 refacto webService trotinette et velib done
 ajout webservice trotinette done

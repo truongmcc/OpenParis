@@ -85,6 +85,10 @@ extension MapView {
             ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
                 manageServiceResult(result: result)
             }
+        case .sanisette:
+            ServiceRepository.shared.fetchSanisette(urlString: url) { result in
+                manageServiceResult(result: result)
+            }
         }
     }
     
@@ -105,6 +109,8 @@ extension MapView {
                 serviceSelected = velib
             } else if let dataResponse = data as? TrotinetteResponse, let trotinette = dataResponse.records?.first {
                 serviceSelected = trotinette
+            } else if let dataResponse = data as? SanisetteResponse, let sanisette = dataResponse.records?.first {
+                serviceSelected = sanisette
             }
         }
     }

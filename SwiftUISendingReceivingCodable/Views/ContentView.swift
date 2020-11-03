@@ -91,6 +91,8 @@ extension ContentView {
             return AnyView(DetailVelibView(velibSelected: serviceSelected as? Velib))
         } else if serviceSelected is Trotinette {
             return AnyView(DetailTrotinetteView(trotinetteSelected: serviceSelected as? Trotinette))
+        } else if serviceSelected is Sanisette {
+            return AnyView(DetailSanisetteView(sanisetteSelected: serviceSelected as? Sanisette))
         }
         return nil
     }

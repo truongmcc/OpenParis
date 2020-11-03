@@ -49,6 +49,7 @@ struct OptionsView: View {
         Picker(selection: $service, label: Text("Services"), content: {
             Text("Velibs").tag(Services.velib)
             Text("Trotinettes").tag(Services.trotinette)
+            Text("Sanisettes").tag(Services.sanisette)
         })
         .pickerStyle(SegmentedPickerStyle())
         .padding(10)

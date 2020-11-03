@@ -15,7 +15,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         map = mapView
         super.init()
     }
-    
+
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as? Annotation
         guard let recordid = annotation?.id else { return }

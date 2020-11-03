@@ -10,22 +10,28 @@ import Foundation
 enum Services: Int {
     case velib
     case trotinette
+    case sanisette
     
     func allAnnotationsUrl() -> String {
         switch self {
         case .velib:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes"
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000"
         case .trotinette:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1300"
+        case .sanisette:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=&rows=1000"
         }
     }
     
     func annotationUrl() -> String {
         switch self {
         case .velib:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
+            return
+                "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
         case .trotinette:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=recordid%3D"
+        case .sanisette:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=recordid%3D"
         }
     }
 }
@@ -51,6 +57,13 @@ class ServiceRepository {
     func fetchTrotinette(urlString: String, completion: @escaping (Result<TrotinetteResponse, NetworkError>) -> Void) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
                                     decodable: TrotinetteResponse.self) { result in
+            completion(result)
+        }
+    }
+    
+    func fetchSanisette(urlString: String, completion: @escaping (Result<SanisetteResponse, NetworkError>) -> Void) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
+                                    decodable: SanisetteResponse.self) { result in
             completion(result)
         }
     }

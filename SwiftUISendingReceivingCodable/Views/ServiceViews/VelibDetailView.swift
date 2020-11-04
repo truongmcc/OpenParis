@@ -1,5 +1,5 @@
 //
-//  DetailVelibView.swift
+//  VelibDetailView.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 14/08/2020.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailVelibView: View {
+struct VelibDetailView: View {
     @State var velibSelected: Velib?
     @State var opacityChange = false
 
@@ -46,6 +46,6 @@ struct DetailVelibView: View {
 
 struct DetailVelibView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailVelibView()
+        VelibDetailView()
     }
 }

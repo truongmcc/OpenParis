@@ -91,13 +91,15 @@ extension ContentView {
     
     fileprivate func showServiceDetail() -> AnyView? {
         if serviceSelected is Velib {
-            return AnyView(DetailVelibView(velibSelected: serviceSelected as? Velib))
+            return AnyView(VelibDetailView(velibSelected: serviceSelected as? Velib))
         } else if serviceSelected is Trotinette {
-            return AnyView(DetailTrotinetteView(trotinetteSelected: serviceSelected as? Trotinette))
+            return AnyView(TrotinetteDetailView(trotinetteSelected: serviceSelected as? Trotinette))
         } else if serviceSelected is Sanisette {
-            return AnyView(DetailSanisetteView(sanisetteSelected: serviceSelected as? Sanisette))
+            return AnyView(SanisetteDetailView(sanisetteSelected: serviceSelected as? Sanisette))
         } else if serviceSelected is Fontaine {
-            return AnyView(DetailFontaineView(fontaineSelected: serviceSelected as? Fontaine))
+            return AnyView(FontaineDetailView(fontaineSelected: serviceSelected as? Fontaine))
+        } else if serviceSelected is TriMobile {
+            return AnyView(TriMobileDetailView(triMobileSelected: serviceSelected as? TriMobile))
         }
         return nil
     }
@@ -128,8 +130,10 @@ extension ContentView {
             result in
             switch result {
             case .success(let data):
-                if let dataResults = data.records {
+                DispatchQueue.main.async {
+                    if let dataResults = data.records {
                         self.createAnnotations(results: dataResults)
+                    }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -141,14 +145,12 @@ extension ContentView {
     }
     
     fileprivate func createAnnotations(results: [AnnotationDataModel]) {
-        DispatchQueue.main.async {
-            refreshAnnotations = true
-            var annos = [Annotation]()
-            for annotation in results {
-                annos.append(Annotation(data: annotation))
-            }
-            annotations = annos
+        refreshAnnotations = true
+        var annos = [Annotation]()
+        for annotation in results {
+            annos.append(Annotation(data: annotation))
         }
+        annotations = annos
     }
 }
 

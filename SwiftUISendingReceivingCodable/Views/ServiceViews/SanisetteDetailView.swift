@@ -1,31 +1,30 @@
 //
-//  DetailFontaineView.swift
+//  SanisetteDetailView.swift
 //  SwiftUISendingReceivingCodable
 //
-//  Created by picshertho on 04/11/2020.
+//  Created by picshertho on 03/11/2020.
 //
 
 import SwiftUI
 
-struct DetailFontaineView: View {
-    @State var fontaineSelected: Fontaine?
+struct SanisetteDetailView: View {
+    @State var sanisetteSelected: Sanisette?
     @State var opacityChange = false
 
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("\(fontaineSelected?.fields.commune ?? "")")
+            Text("Ardt : \(sanisetteSelected?.fields.arrondissement ?? "")")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text(createAdress(noImpair: fontaineSelected?.fields.noVoirieImpair,
-                               noPair: fontaineSelected?.fields.noVoiriePair,
-                               street: fontaineSelected?.fields.voie))
+            Text(sanisetteSelected?.fields.adresse ?? "")
+                .padding(10)
+                .font(.title)
+                .multilineTextAlignment(.center)
+            Text("Horaire : \(sanisetteSelected?.fields.horaire ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
-            Text("disponible : \(fontaineSelected?.fields.dispo ?? "")")
-                .padding(10)
-                .multilineTextAlignment(.center)
-            Text("type : \(fontaineSelected?.fields.typeObjet ?? "")")
+            Text("Acces PMR : \(sanisetteSelected?.fields.accesPmr ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
         }
@@ -41,16 +40,10 @@ struct DetailFontaineView: View {
             opacityChange.toggle()
         }
     }
-    
-    func createAdress(noImpair: String?, noPair: String?, street: String?) -> String {
-        let no = (noImpair ?? "") + (noPair ?? "")
-        let adress = no + " " + (street ?? "")
-        return adress
-    }
 }
 
-struct FontaineView_Previews: PreviewProvider {
+struct DetailSanisetteView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailVelibView()
+        SanisetteDetailView()
     }
 }

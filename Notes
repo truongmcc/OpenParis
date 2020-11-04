@@ -4,9 +4,9 @@ raccourcir la frame de MenuView (complexe)
 webservices with combine !!
 ajouter un titre pour afficher le service appliqué
 customiser les annotationsViews
-refacto service methods
-ajouter service fontaines à boire
-
+refacto service fetch methods
+ajouter service fontaines à boire done
+ajouter tri mobile service done
 ajouter services sanisettes done
 ajout progressview for webservices done
 refacto webService trotinette et velib done

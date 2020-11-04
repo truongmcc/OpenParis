@@ -92,7 +92,11 @@ extension MapView {
             }
         case .fontaine:
             ServiceRepository.shared.fetchFontaine(urlString: url) { result in
-                    manageServiceResult(result: result)
+                manageServiceResult(result: result)
+            }
+        case .triMobile:
+            ServiceRepository.shared.fetchTriMobile(urlString: url) { result in
+                manageServiceResult(result: result)
             }
         }
     }
@@ -118,6 +122,8 @@ extension MapView {
                 serviceSelected = sanisette
             } else if let dataResponse = data as? FontaineResponse, let fontaine = dataResponse.records?.first {
                 serviceSelected = fontaine
+            } else if let dataResponse = data as? TriMobileResponse, let triMobile = dataResponse.records?.first {
+                serviceSelected = triMobile
             }
         }
     }

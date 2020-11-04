@@ -1,19 +1,23 @@
 //
-//  DetailTrotinetteView.swift
+//  TriMobileDetailView.swift
 //  SwiftUISendingReceivingCodable
 //
-//  Created by picshertho on 02/11/2020.
+//  Created by picshertho on 04/11/2020.
 //
 
 import SwiftUI
 
-struct DetailTrotinetteView: View {
-    @State var trotinetteSelected: Trotinette?
+struct TriMobileDetailView: View {
+    @State var triMobileSelected: TriMobile?
     @State var opacityChange = false
     
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("\(trotinetteSelected?.fields.adresse ?? "") \(trotinetteSelected?.fields.code_postal ?? "")")
+            Text("\(triMobileSelected?.fields.adresse ?? "") \(triMobileSelected?.fields.codePostal ?? 75000)")
+                .padding(10)
+                .multilineTextAlignment(.center)
+            
+            Text("Jours de tenus : \(triMobileSelected?.fields.joursDeTenue ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
         }
@@ -31,8 +35,8 @@ struct DetailTrotinetteView: View {
     }
 }
 
-struct DetailTrotinetteView_Previews: PreviewProvider {
+struct TriMobileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailVelibView()
+        TriMobileDetailView()
     }
 }

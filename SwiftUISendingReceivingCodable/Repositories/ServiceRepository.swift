@@ -12,6 +12,7 @@ enum Services: Int {
     case trotinette
     case sanisette
     case fontaine
+    case triMobile
     
     func allAnnotationsUrl() -> String {
         switch self {
@@ -24,6 +25,8 @@ enum Services: Int {
         case .fontaine:
             return
                 "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=&rows=1000"
+        case .triMobile:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=&rows=1000"
         }
     }
     
@@ -37,9 +40,16 @@ enum Services: Int {
         case .sanisette:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=recordid%3D"
         case .fontaine:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=recordid%3D"
+        case .triMobile:
             return
-//                "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=recordid%3D%22837176cbd6320c7501e888ea72b250e36bf44592%22"
-                "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=recordid%3D"
+                "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=recordid%3D"
+            
+            
+            
+            //%22d245823c927421e84cfe8ab9a3eab077cd64f39e%22
+                
+//                "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=recordid%3D"
         }
     }
 }
@@ -79,6 +89,13 @@ class ServiceRepository {
     func fetchFontaine(urlString: String, completion: @escaping (Result<FontaineResponse, NetworkError>) -> Void) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
                                     decodable: FontaineResponse.self) { result in
+            completion(result)
+        }
+    }
+    
+    func fetchTriMobile(urlString: String, completion: @escaping (Result<TriMobileResponse, NetworkError>) -> Void) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
+                                    decodable: TriMobileResponse.self) { result in
             completion(result)
         }
     }

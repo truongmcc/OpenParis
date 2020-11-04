@@ -51,14 +51,14 @@ class WebServiceManager {
             completion(.failure(NetworkError.badURL))
             return
         }
-        
+        print(url)
+
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
                 print(error?._code ?? "0")
                 completion(.failure(NetworkError.requestFailed))
                 return
             }
-            
             do {
                 let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
                 completion(.success(decodedResponse))

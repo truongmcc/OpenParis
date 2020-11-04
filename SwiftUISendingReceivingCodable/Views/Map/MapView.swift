@@ -33,9 +33,9 @@ struct MapView: UIViewRepresentable {
         uiView.mapType = mapType
         if refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
-        }
-        if let annos = annotations {
-            uiView.addAnnotations(annos)
+            if let annos = annotations {
+                uiView.addAnnotations(annos)
+            }
         }
     }
     

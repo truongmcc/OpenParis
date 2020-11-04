@@ -57,19 +57,19 @@ struct Velib: Codable {
         
         init( from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            eBike = try values.decode(Int.self, forKey: .eBike)
-            capacity = try values.decode(Int.self, forKey: .capacity)
+            eBike = try? values.decode(Int.self, forKey: .eBike)
+            capacity = try? values.decode(Int.self, forKey: .capacity)
             name = try values.decode(String.self, forKey: .name)
-            nomArrondissementCommune = try values.decode(String.self, forKey: .nomArrondissementCommune)
-            numBikesAvailable = try values.decode(Int.self, forKey: .numBikesAvailable)
-            isInstalled = try values.decode(String.self, forKey: .isInstalled)
-            isRenting = try values.decode(String.self, forKey: .isRenting)
-            mechanical = try values.decode(Int.self, forKey: .mechanical)
-            stationCode = try values.decode(String.self, forKey: .stationCode)
-            coordonneesGeo = try values.decode([Double].self, forKey: .coordonneesGeo)
-            numDockAvailable = try values.decode(Int.self, forKey: .numDockAvailable)
-            isReturning = try values.decode(String.self, forKey: .isReturning)
-            dueDate = try values.decode(String.self, forKey: .dueDate)
+            nomArrondissementCommune = try? values.decode(String.self, forKey: .nomArrondissementCommune)
+            numBikesAvailable = try? values.decode(Int.self, forKey: .numBikesAvailable)
+            isInstalled = try? values.decode(String.self, forKey: .isInstalled)
+            isRenting = try? values.decode(String.self, forKey: .isRenting)
+            mechanical = try? values.decode(Int.self, forKey: .mechanical)
+            stationCode = try? values.decode(String.self, forKey: .stationCode)
+            coordonneesGeo = try? values.decode([Double].self, forKey: .coordonneesGeo)
+            numDockAvailable = try? values.decode(Int.self, forKey: .numDockAvailable)
+            isReturning = try? values.decode(String.self, forKey: .isReturning)
+            dueDate = try? values.decode(String.self, forKey: .dueDate)
         }
     }
 }

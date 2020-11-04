@@ -19,6 +19,7 @@ struct MapView: UIViewRepresentable {
     @Binding var annotations: [Annotation]?
     @Binding var showProgressView: Bool
     @Binding var serviceSelected: Any?
+    @Binding var refreshAnnotations: Bool
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -30,12 +31,11 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         uiView.mapType = mapType
-        
-        if annotations?.count != uiView.annotations.count - 1 {
+        if refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
-            if let annos = annotations {
-                uiView.addAnnotations(annos)
-            }
+        }
+        if let annos = annotations {
+            uiView.addAnnotations(annos)
         }
     }
     
@@ -75,6 +75,7 @@ extension MapView {
     
     func showAnnotationDetail(recordid: String) {
         showProgressView = true
+        refreshAnnotations = false
         let url = service.annotationUrl() + recordid
         switch service {
         case .velib:
@@ -88,6 +89,10 @@ extension MapView {
         case .sanisette:
             ServiceRepository.shared.fetchSanisette(urlString: url) { result in
                 manageServiceResult(result: result)
+            }
+        case .fontaine:
+            ServiceRepository.shared.fetchFontaine(urlString: url) { result in
+                    manageServiceResult(result: result)
             }
         }
     }
@@ -111,6 +116,8 @@ extension MapView {
                 serviceSelected = trotinette
             } else if let dataResponse = data as? SanisetteResponse, let sanisette = dataResponse.records?.first {
                 serviceSelected = sanisette
+            } else if let dataResponse = data as? FontaineResponse, let fontaine = dataResponse.records?.first {
+                serviceSelected = fontaine
             }
         }
     }

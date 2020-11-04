@@ -50,6 +50,7 @@ struct OptionsView: View {
             Text("Velibs").tag(Services.velib)
             Text("Trotinettes").tag(Services.trotinette)
             Text("Sanisettes").tag(Services.sanisette)
+            Text("Fontaines").tag(Services.fontaine)
         })
         .pickerStyle(SegmentedPickerStyle())
         .padding(10)

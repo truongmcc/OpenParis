@@ -10,16 +10,11 @@ import SwiftUI
 struct DetailTrotinetteView: View {
     @State var trotinetteSelected: Trotinette?
     @State var opacityChange = false
-
+    
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text(trotinetteSelected?.fields.adresse ?? "")
+            Text("\(trotinetteSelected?.fields.adresse ?? "") \(trotinetteSelected?.fields.code_postal ?? "")")
                 .padding(10)
-                .font(.title)
-                .multilineTextAlignment(.center)
-            Text(trotinetteSelected?.fields.code_postal ?? "")
-                .padding(10)
-                .font(.title)
                 .multilineTextAlignment(.center)
         }
         .font(.system(size: 20))

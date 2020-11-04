@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var map: MKMapView?
     @State private var annotations: [Annotation]?
     @State private var mapType = MKMapType.standard
+    @State private var refreshAnnotations = false
     
     @State private var service = Services.velib
     @State private var serviceSelected: Any?
@@ -31,7 +32,8 @@ struct ContentView: View {
                     service: $service,
                     annotations: $annotations,
                     showProgressView: $showProgressView,
-                    serviceSelected: $serviceSelected)
+                    serviceSelected: $serviceSelected,
+                    refreshAnnotations: $refreshAnnotations)
             
             showProgressionView()
             showServiceDetail()
@@ -47,6 +49,7 @@ struct ContentView: View {
         }
         
         .sheet(isPresented: $showOptionsView) {
+            
             OptionsView(mapType: $mapType, service: $service) {
                 refreshAllAnnotations()
             }
@@ -93,6 +96,8 @@ extension ContentView {
             return AnyView(DetailTrotinetteView(trotinetteSelected: serviceSelected as? Trotinette))
         } else if serviceSelected is Sanisette {
             return AnyView(DetailSanisetteView(sanisetteSelected: serviceSelected as? Sanisette))
+        } else if serviceSelected is Fontaine {
+            return AnyView(DetailFontaineView(fontaineSelected: serviceSelected as? Fontaine))
         }
         return nil
     }
@@ -124,9 +129,7 @@ extension ContentView {
             switch result {
             case .success(let data):
                 if let dataResults = data.records {
-                    DispatchQueue.main.async {
                         self.createAnnotations(results: dataResults)
-                    }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -138,11 +141,14 @@ extension ContentView {
     }
     
     fileprivate func createAnnotations(results: [AnnotationDataModel]) {
-        var annos = [Annotation]()
-        for annotation in results {
-            annos.append(Annotation(data: annotation))
+        DispatchQueue.main.async {
+            refreshAnnotations = true
+            var annos = [Annotation]()
+            for annotation in results {
+                annos.append(Annotation(data: annotation))
+            }
+            annotations = annos
         }
-        annotations = annos
     }
 }
 

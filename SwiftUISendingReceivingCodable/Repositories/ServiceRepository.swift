@@ -11,15 +11,19 @@ enum Services: Int {
     case velib
     case trotinette
     case sanisette
+    case fontaine
     
     func allAnnotationsUrl() -> String {
         switch self {
         case .velib:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000"
         case .trotinette:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1300"
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1000"
         case .sanisette:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=&rows=1000"
+        case .fontaine:
+            return
+                "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=&rows=1000"
         }
     }
     
@@ -32,6 +36,10 @@ enum Services: Int {
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=recordid%3D"
         case .sanisette:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=recordid%3D"
+        case .fontaine:
+            return
+//                "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=recordid%3D%22837176cbd6320c7501e888ea72b250e36bf44592%22"
+                "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=recordid%3D"
         }
     }
 }
@@ -40,7 +48,7 @@ class ServiceRepository {
     
     static let shared = ServiceRepository()
     private init() { }
-    
+        
     func fetchAllAnnotations(of service: Services, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
@@ -64,6 +72,13 @@ class ServiceRepository {
     func fetchSanisette(urlString: String, completion: @escaping (Result<SanisetteResponse, NetworkError>) -> Void) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
                                     decodable: SanisetteResponse.self) { result in
+            completion(result)
+        }
+    }
+    
+    func fetchFontaine(urlString: String, completion: @escaping (Result<FontaineResponse, NetworkError>) -> Void) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
+                                    decodable: FontaineResponse.self) { result in
             completion(result)
         }
     }

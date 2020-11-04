@@ -28,6 +28,8 @@
 		EBB5F40E25519D3600A3DEF6 /* DetailTrotinetteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40C25519D3600A3DEF6 /* DetailTrotinetteView.swift */; };
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
 		EBB5F4182551B30A00A3DEF6 /* DetailSanisetteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4172551B30A00A3DEF6 /* DetailSanisetteView.swift */; };
+		EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */; };
+		EBE5EBF22552B0E400DF20F0 /* DetailFontaineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBF12552B0E400DF20F0 /* DetailFontaineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		EBB5F40C25519D3600A3DEF6 /* DetailTrotinetteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTrotinetteView.swift; sourceTree = "<group>"; };
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
 		EBB5F4172551B30A00A3DEF6 /* DetailSanisetteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSanisetteView.swift; sourceTree = "<group>"; };
+		EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontaineDataModel.swift; sourceTree = "<group>"; };
+		EBE5EBF12552B0E400DF20F0 /* DetailFontaineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFontaineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				EB887FE524C9DD9300BA086F /* VelibModel.swift */,
 				EB6AE30225503FF600787240 /* TrotinetteModel.swift */,
 				EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */,
+				EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				EBB5F40C25519D3600A3DEF6 /* DetailTrotinetteView.swift */,
 				EBB5F40B25519D3600A3DEF6 /* DetailVelibView.swift */,
 				EBB5F4172551B30A00A3DEF6 /* DetailSanisetteView.swift */,
+				EBE5EBF12552B0E400DF20F0 /* DetailFontaineView.swift */,
 			);
 			path = ServiceViews;
 			sourceTree = "<group>";
@@ -365,6 +371,8 @@
 				EB6AE31D25505CE500787240 /* ServiceRepository.swift in Sources */,
 				EBB5F40D25519D3600A3DEF6 /* DetailVelibView.swift in Sources */,
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
+				EBE5EBF22552B0E400DF20F0 /* DetailFontaineView.swift in Sources */,
+				EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */,
 				EBADF27B25498496003CD339 /* OptionsView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* WebServiceManager.swift in Sources */,

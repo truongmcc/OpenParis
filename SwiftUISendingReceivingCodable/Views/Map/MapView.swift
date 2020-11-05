@@ -20,6 +20,7 @@ struct MapView: UIViewRepresentable {
     @Binding var showProgressView: Bool
     @Binding var serviceSelected: Any?
     @Binding var refreshAnnotations: Bool
+    @Binding var centerUserLocation: Bool
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -36,6 +37,9 @@ struct MapView: UIViewRepresentable {
             if let annos = annotations {
                 uiView.addAnnotations(annos)
             }
+        }
+        if centerUserLocation {
+            goToUserLocation(uiView: uiView)
         }
     }
     

@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var annotations: [Annotation]?
     @State private var mapType = MKMapType.standard
     @State private var refreshAnnotations = false
+    @State var centerUserLocation = false
     
     @State private var service = ServicesEnum.velib
     @State private var serviceSelected: Any?
@@ -33,7 +34,8 @@ struct ContentView: View {
                     annotations: $annotations,
                     showProgressView: $showProgressView,
                     serviceSelected: $serviceSelected,
-                    refreshAnnotations: $refreshAnnotations)
+                    refreshAnnotations: $refreshAnnotations,
+                    centerUserLocation: $centerUserLocation)
             
             showProgressionView()
             showServiceDetail()
@@ -62,6 +64,7 @@ struct ContentView: View {
 }
 
 extension ContentView {
+    
     fileprivate func refreshAllAnnotations() {
         showProgressView = true
         map?.isUserInteractionEnabled = false
@@ -118,12 +121,24 @@ extension ContentView {
     fileprivate func addMenuButton() -> some View {
         return
             GeometryReader { geometryReader in
-                Button("Options", action: {
-                    showOptionsView.toggle()
-                })
+                VStack {
+                    Button("Centrer", action: {
+                        centerUserLocation.toggle()
+                    })
+                    .padding(20)
+                    
+                    Button("Options", action: {
+                        showOptionsView.toggle()
+                    })
+                    .padding(20)
+                    
+                }
                 .foregroundColor(.primary)
-                .padding(20)
-                .frame(width: geometryReader.size.width, height: geometryReader.size.height, alignment: .topTrailing)
+                
+                .frame(width: geometryReader.size.width, height: geometryReader.size.height, alignment: .bottomTrailing)
+                
+                
+                
             }
     }
     

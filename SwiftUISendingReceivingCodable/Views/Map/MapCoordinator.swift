@@ -22,15 +22,4 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         print(recordid)
         map.showAnnotationDetail(recordid: recordid)
     }
-    
-//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//                if centerUserLocation {
-//                    let latDelta:CLLocationDegrees = 0.5
-//                    let lonDelta:CLLocationDegrees = 0.5
-//                    let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
-//                    let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-//                    mapView.setRegion(region, animated: true)
-//                    centerLocationOnce = false
-//                }
-//            }
 }

@@ -9,11 +9,10 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
+    
+    @ObservedObject var mapViewModel = MapViewModel()
     @State private var map: MKMapView?
-    @State private var annotations: [Annotation]?
     @State private var mapType = MKMapType.standard
-    @State private var refreshAnnotations = false
-    @State var centerUserLocation = false
     
     @State private var service = ServicesEnum.velib
     @State private var serviceSelected: Any?
@@ -21,21 +20,19 @@ struct ContentView: View {
     @State private var showOptionsView = false
     
     @State private var showErrorAlert = false
-    @State private var showProgressView = false
+    @State private var showLoadingView = false
     @State private var alertError: Alert?
     
     var body: some View {
         ZStack {
             
-            MapView(alertErrorDetected: $showErrorAlert,
+            MapView(mapViewModel: mapViewModel,
+                    alertErrorDetected: $showErrorAlert,
                     alertError: $alertError,
                     mapType: $mapType,
                     service: $service,
-                    annotations: $annotations,
-                    showProgressView: $showProgressView,
-                    serviceSelected: $serviceSelected,
-                    refreshAnnotations: $refreshAnnotations,
-                    centerUserLocation: $centerUserLocation)
+                    showLoadingView: $showLoadingView,
+                    serviceSelected: $serviceSelected)
             
             showProgressionView()
             showServiceDetail()
@@ -66,12 +63,12 @@ struct ContentView: View {
 extension ContentView {
     
     fileprivate func refreshAllAnnotations() {
-        showProgressView = true
+        showLoadingView = true
         map?.isUserInteractionEnabled = false
         ServiceRepository.shared.fetchAllAnnotations(of: service)
         { result in
             map?.isUserInteractionEnabled = true
-            showProgressView = false
+            showLoadingView = false
             manageAnnotationsResults(result: result)
         }
     }
@@ -81,7 +78,7 @@ extension ContentView {
         case .success(let data):
             if let dataResults = data.records {
                 DispatchQueue.main.async {
-                    self.createAnnotations(results: dataResults)
+                    mapViewModel.createAnnotations(results: dataResults)
                 }
             }
         case .failure(let error):
@@ -111,7 +108,7 @@ extension ContentView {
     
     fileprivate func showProgressionView() -> some View {
         VStack {
-            if showProgressView {
+            if showLoadingView {
                 ProgressView()
                     .foregroundColor(Color.primary)
             }
@@ -123,7 +120,7 @@ extension ContentView {
             GeometryReader { geometryReader in
                 VStack {
                     Button("Centrer", action: {
-                        centerUserLocation.toggle()
+                        mapViewModel.centerUserLocation.toggle()
                     })
                     .padding(20)
                     
@@ -149,7 +146,7 @@ extension ContentView {
             case .success(let data):
                 DispatchQueue.main.async {
                     if let dataResults = data.records {
-                        self.createAnnotations(results: dataResults)
+                        mapViewModel.createAnnotations(results: dataResults)
                     }
                 }
             case .failure(let error):
@@ -159,15 +156,6 @@ extension ContentView {
                 }
             }
         }
-    }
-    
-    fileprivate func createAnnotations(results: [AnnotationDataModel]) {
-        refreshAnnotations = true
-        var annos = [Annotation]()
-        for annotation in results {
-            annos.append(Annotation(data: annotation))
-        }
-        annotations = annos
     }
 }
 

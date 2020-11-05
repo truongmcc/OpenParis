@@ -11,16 +11,15 @@ import CoreLocation
 
 struct MapView: UIViewRepresentable {
     
+    @ObservedObject var mapViewModel: MapViewModel
     let locationManager = CLLocationManager()
+    
     @Binding var alertErrorDetected: Bool
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
     @Binding var service: ServicesEnum
-    @Binding var annotations: [Annotation]?
-    @Binding var showProgressView: Bool
+    @Binding var showLoadingView: Bool
     @Binding var serviceSelected: Any?
-    @Binding var refreshAnnotations: Bool
-    @Binding var centerUserLocation: Bool
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -32,13 +31,13 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         uiView.mapType = mapType
-        if refreshAnnotations == true {
+        if mapViewModel.refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
-            if let annos = annotations {
+            let annos = mapViewModel.annotations
                 uiView.addAnnotations(annos)
-            }
+            
         }
-        if centerUserLocation {
+        if mapViewModel.centerUserLocation {
             goToUserLocation(uiView: uiView)
         }
     }
@@ -78,8 +77,8 @@ struct MapView: UIViewRepresentable {
 extension MapView {
     
     func showAnnotationDetail(recordid: String) {
-        showProgressView = true
-        refreshAnnotations = false
+        showLoadingView = true
+        mapViewModel.refreshAnnotations = false
         let url = service.annotationUrl() + recordid
         switch service {
         case .velib:
@@ -106,7 +105,7 @@ extension MapView {
     }
     
     fileprivate func manageServiceResult<T>(result: Result<T, NetworkError>) {
-        showProgressView = false
+        showLoadingView = false
         switch result {
         case .success(let data):
             createDetail(data: data)

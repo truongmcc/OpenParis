@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct SanisetteDetailView: View {
-    @State var sanisetteSelected: Sanisette?
+    @State var serviceSelected: Sanisette?
     @State var opacityChange = false
 
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("Ardt : \(sanisetteSelected?.fields.arrondissement ?? "")")
+            Text("Ardt : \(serviceSelected?.fields.arrondissement ?? "")")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text(sanisetteSelected?.fields.adresse ?? "")
+            Text(serviceSelected?.fields.adresse ?? "")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text("Horaire : \(sanisetteSelected?.fields.horaire ?? "")")
+            Text("Horaire : \(serviceSelected?.fields.horaire ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
-            Text("Acces PMR : \(sanisetteSelected?.fields.accesPmr ?? "")")
+            Text("Acces PMR : \(serviceSelected?.fields.accesPmr ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
         }

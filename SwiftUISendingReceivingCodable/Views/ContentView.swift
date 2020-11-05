@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var mapType = MKMapType.standard
     @State private var refreshAnnotations = false
     
-    @State private var service = Services.velib
+    @State private var service = ServicesEnum.velib
     @State private var serviceSelected: Any?
     
     @State private var showOptionsView = false
@@ -90,18 +90,20 @@ extension ContentView {
     }
     
     fileprivate func showServiceDetail() -> AnyView? {
-        if serviceSelected is Velib {
-            return AnyView(VelibDetailView(velibSelected: serviceSelected as? Velib))
-        } else if serviceSelected is Trotinette {
-            return AnyView(TrotinetteDetailView(trotinetteSelected: serviceSelected as? Trotinette))
-        } else if serviceSelected is Sanisette {
-            return AnyView(SanisetteDetailView(sanisetteSelected: serviceSelected as? Sanisette))
-        } else if serviceSelected is Fontaine {
-            return AnyView(FontaineDetailView(fontaineSelected: serviceSelected as? Fontaine))
-        } else if serviceSelected is TriMobile {
-            return AnyView(TriMobileDetailView(triMobileSelected: serviceSelected as? TriMobile))
+        switch serviceSelected {
+        case is Velib:
+            return AnyView(VelibDetailView(serviceSelected: serviceSelected as? Velib))
+        case is Trotinette:
+            return AnyView(TrotinetteDetailView(serviceSelected: serviceSelected as? Trotinette))
+        case is Sanisette:
+            return AnyView(SanisetteDetailView(serviceSelected: serviceSelected as? Sanisette))
+        case is Fontaine:
+            return AnyView(FontaineDetailView(serviceSelected: serviceSelected as? Fontaine))
+        case is TriMobile:
+            return AnyView(TriMobileDetailView(serviceSelected: serviceSelected as? TriMobile))
+        default:
+            return nil
         }
-        return nil
     }
     
     fileprivate func showProgressionView() -> some View {
@@ -125,7 +127,7 @@ extension ContentView {
             }
     }
     
-    fileprivate func fetchAllAnnotations(of service: Services) {
+    fileprivate func fetchAllAnnotations(of service: ServicesEnum) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) {
             result in
             switch result {

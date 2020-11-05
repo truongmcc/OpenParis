@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct FontaineDetailView: View {
-    @State var fontaineSelected: Fontaine?
+    @State var serviceSelected: Fontaine?
     @State var opacityChange = false
 
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("\(fontaineSelected?.fields.commune ?? "")")
+            Text("\(serviceSelected?.fields.commune ?? "")")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text(createAdress(noImpair: fontaineSelected?.fields.noVoirieImpair,
-                               noPair: fontaineSelected?.fields.noVoiriePair,
-                               street: fontaineSelected?.fields.voie))
+            Text(createAdress(noImpair: serviceSelected?.fields.noVoirieImpair,
+                               noPair: serviceSelected?.fields.noVoiriePair,
+                               street: serviceSelected?.fields.voie))
                 .padding(10)
                 .multilineTextAlignment(.center)
-            Text("disponible : \(fontaineSelected?.fields.dispo ?? "")")
+            Text("disponible : \(serviceSelected?.fields.dispo ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
-            Text("type : \(fontaineSelected?.fields.typeObjet ?? "")")
+            Text("type : \(serviceSelected?.fields.typeObjet ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
         }

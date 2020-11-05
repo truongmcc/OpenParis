@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Services: Int {
+enum ServicesEnum: Int {
     case velib
     case trotinette
     case sanisette
@@ -59,7 +59,7 @@ class ServiceRepository {
     static let shared = ServiceRepository()
     private init() { }
         
-    func fetchAllAnnotations(of service: Services, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+    func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
         WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
         }

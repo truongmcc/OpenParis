@@ -11,7 +11,7 @@ import MapKit
 struct OptionsView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var mapType: MKMapType
-    @Binding var service: Services
+    @Binding var service: ServicesEnum
     var onDismiss: () -> Void
 
     var body: some View {
@@ -47,20 +47,20 @@ struct OptionsView: View {
     
     fileprivate func addTypeService()  -> some View {
         Picker(selection: $service, label: Text("Services"), content: {
-            Text("Velibs").tag(Services.velib)
-            Text("Trotinettes").tag(Services.trotinette)
-            Text("Sanisettes").tag(Services.sanisette)
-            Text("Fontaines").tag(Services.fontaine)
-            Text("Tri mobile").tag(Services.triMobile)
+            Text("Velibs").tag(ServicesEnum.velib)
+            Text("Trotinettes").tag(ServicesEnum.trotinette)
+            Text("Sanisettes").tag(ServicesEnum.sanisette)
+            Text("Fontaines").tag(ServicesEnum.fontaine)
+            Text("Tri mobile").tag(ServicesEnum.triMobile)
         })
-        .pickerStyle(SegmentedPickerStyle())
+        .pickerStyle(DefaultPickerStyle())
         .padding(10)
     }
 }
 
 struct MenuView_Previews: PreviewProvider {
     @State static var mapType = MKMapType.standard
-    @State static var service = Services.velib
+    @State static var service = ServicesEnum.velib
     static var previews: some View {
         OptionsView(mapType: $mapType, service: $service, onDismiss: {} )
     }

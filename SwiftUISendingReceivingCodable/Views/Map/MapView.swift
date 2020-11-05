@@ -15,7 +15,7 @@ struct MapView: UIViewRepresentable {
     @Binding var alertErrorDetected: Bool
     @Binding var alertError: Alert?
     @Binding var mapType : MKMapType
-    @Binding var service: Services
+    @Binding var service: ServicesEnum
     @Binding var annotations: [Annotation]?
     @Binding var showProgressView: Bool
     @Binding var serviceSelected: Any?

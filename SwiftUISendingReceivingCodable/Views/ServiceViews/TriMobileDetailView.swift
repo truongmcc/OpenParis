@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct TriMobileDetailView: View {
-    @State var triMobileSelected: TriMobile?
+    @State var serviceSelected: TriMobile?
     @State var opacityChange = false
     
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("\(triMobileSelected?.fields.adresse ?? "") \(triMobileSelected?.fields.codePostal ?? 75000)")
+            Text("\(serviceSelected?.fields.adresse ?? "") \(serviceSelected?.fields.codePostal ?? 75000)")
                 .padding(10)
+                .font(.title)
                 .multilineTextAlignment(.center)
-            
-            Text("Jours de tenus : \(triMobileSelected?.fields.joursDeTenue ?? "")")
+            Text(serviceSelected?.fields.joursDeTenue ?? "")
                 .padding(10)
+                .font(.title)
                 .multilineTextAlignment(.center)
         }
         .font(.system(size: 20))

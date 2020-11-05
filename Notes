@@ -2,7 +2,9 @@
 detecter les velibs aux alentours (200 mètres)
 raccourcir la frame de MenuView (complexe)
 webservices with combine !!
+repositionnement du userlocation
 ajouter un titre pour afficher le service appliqué
+bouton switch pour passer un d'un service à l autre
 customiser les annotationsViews
 refacto service fetch methods
 ajouter service fontaines à boire done

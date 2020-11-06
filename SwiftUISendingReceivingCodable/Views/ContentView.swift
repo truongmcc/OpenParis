@@ -65,7 +65,8 @@ extension ContentView {
     fileprivate func refreshAllAnnotations() {
         showLoadingView = true
         map?.isUserInteractionEnabled = false
-        ServiceRepository.shared.fetchAllAnnotations(of: service)
+        
+        mapViewModel.fetchAllAnnotations(of: service)
         { result in
             map?.isUserInteractionEnabled = true
             showLoadingView = false

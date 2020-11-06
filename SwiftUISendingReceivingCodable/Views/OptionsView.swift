@@ -10,6 +10,7 @@ import MapKit
 
 struct OptionsView: View {
     @Environment(\.presentationMode) private var presentationMode
+        
     @Binding var mapType: MKMapType
     @Binding var service: ServicesEnum
     var onDismiss: () -> Void

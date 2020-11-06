@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MapViewModel.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 05/11/2020.
@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewModel: ObservableObject {
     @Published var annotations = [Annotation]()
-    //@Published var mapType = MKMapType.standard
+    @Published var mapType = MKMapType.standard
     @Published var centerUserLocation = false
     @Published var refreshAnnotations = false
     
@@ -21,5 +21,11 @@ class MapViewModel: ObservableObject {
             annos.append(Annotation(data: annotation))
         }
         annotations = annos
+    }
+    
+    func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+        WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
+            completion(result)
+        }
     }
 }

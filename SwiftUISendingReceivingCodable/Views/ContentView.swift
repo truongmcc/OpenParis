@@ -16,6 +16,7 @@ struct ContentView: View {
     @ObservedObject var serviceViewModel = ServiceViewModel()
     
     @State private var showOptionsView = false
+    
     @State private var showLoadingView = false
     
     @State private var showErrorAlert = false
@@ -27,7 +28,6 @@ struct ContentView: View {
                     serviceViewModel: serviceViewModel,
                     alertErrorDetected: $showErrorAlert,
                     alertError: $alertError,
-                    //mapType: $mapType,
                     showLoadingView: $showLoadingView)
             
             addTitle()

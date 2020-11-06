@@ -13,6 +13,7 @@ struct OptionsView: View {
         
     @Binding var mapType: MKMapType
     @Binding var service: ServicesEnum
+    
     var onDismiss: () -> Void
 
     var body: some View {

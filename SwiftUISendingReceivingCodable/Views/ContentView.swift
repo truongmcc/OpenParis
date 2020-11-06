@@ -9,29 +9,26 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    
-    @ObservedObject var mapViewModel = MapViewModel()
     @State private var map: MKMapView?
     @State private var mapType = MKMapType.standard
     
-    @State private var service = ServicesEnum.velib
-    @State private var serviceSelected: Any?
+    @ObservedObject var mapViewModel = MapViewModel()
+    @ObservedObject var serviceViewModel = ServiceViewModel()
     
     @State private var showOptionsView = false
+    @State private var showLoadingView = false
     
     @State private var showErrorAlert = false
-    @State private var showLoadingView = false
     @State private var alertError: Alert?
     
     var body: some View {
         ZStack {
             MapView(mapViewModel: mapViewModel,
+                    serviceViewModel: serviceViewModel,
                     alertErrorDetected: $showErrorAlert,
                     alertError: $alertError,
-                    mapType: $mapType,
-                    service: $service,
-                    showLoadingView: $showLoadingView,
-                    serviceSelected: $serviceSelected)
+                    //mapType: $mapType,
+                    showLoadingView: $showLoadingView)
             
             addTitle()
             
@@ -40,7 +37,7 @@ struct ContentView: View {
             addMenuButton()
         }
         .onTapGesture {
-            serviceSelected = nil
+            serviceViewModel.serviceSelected = nil
         }
         
         .alert(isPresented: $showErrorAlert) {
@@ -48,7 +45,7 @@ struct ContentView: View {
         }
         
         .sheet(isPresented: $showOptionsView) {
-            OptionsView(mapType: $mapType, service: $service) {
+            OptionsView(mapType: $mapType, service: $serviceViewModel.service) {
                 refreshAllAnnotations()
             }
         }
@@ -62,10 +59,10 @@ struct ContentView: View {
 extension ContentView {
     
     fileprivate func refreshAllAnnotations() {
-        serviceSelected = nil
+        serviceViewModel.serviceSelected = nil
         showLoadingView = true
         map?.isUserInteractionEnabled = false
-        mapViewModel.fetchAllAnnotations(of: service)
+        mapViewModel.fetchAllAnnotations(of: serviceViewModel.service)
         { result in
             map?.isUserInteractionEnabled = true
             showLoadingView = false
@@ -91,17 +88,17 @@ extension ContentView {
     }
     
     fileprivate func showServiceDetail() -> AnyView? {
-        switch serviceSelected {
+        switch serviceViewModel.serviceSelected {
         case is Velib:
-            return AnyView(VelibDetailView(serviceSelected: serviceSelected as? Velib))
+            return AnyView(VelibDetailView(serviceSelected: serviceViewModel.serviceSelected as? Velib))
         case is Trotinette:
-            return AnyView(TrotinetteDetailView(serviceSelected: serviceSelected as? Trotinette))
+            return AnyView(TrotinetteDetailView(serviceSelected: serviceViewModel.serviceSelected as? Trotinette))
         case is Sanisette:
-            return AnyView(SanisetteDetailView(serviceSelected: serviceSelected as? Sanisette))
+            return AnyView(SanisetteDetailView(serviceSelected: serviceViewModel.serviceSelected as? Sanisette))
         case is Fontaine:
-            return AnyView(FontaineDetailView(serviceSelected: serviceSelected as? Fontaine))
+            return AnyView(FontaineDetailView(serviceSelected: serviceViewModel.serviceSelected as? Fontaine))
         case is TriMobile:
-            return AnyView(TriMobileDetailView(serviceSelected: serviceSelected as? TriMobile))
+            return AnyView(TriMobileDetailView(serviceSelected: serviceViewModel.serviceSelected as? TriMobile))
         default:
             return nil
         }
@@ -139,7 +136,7 @@ extension ContentView {
     
     fileprivate func addTitle() -> some View {
         VStack {
-            Text(service.title())
+            Text(serviceViewModel.service.title())
                 .foregroundColor(.primary)
                 .font(.title)
             Spacer()

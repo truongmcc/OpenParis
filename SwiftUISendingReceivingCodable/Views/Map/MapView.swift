@@ -12,14 +12,14 @@ import CoreLocation
 struct MapView: UIViewRepresentable {
     
     @ObservedObject var mapViewModel: MapViewModel
+    @ObservedObject var serviceViewModel: ServiceViewModel
     let locationManager = CLLocationManager()
     
     @Binding var alertErrorDetected: Bool
     @Binding var alertError: Alert?
-    @Binding var mapType : MKMapType
-    @Binding var service: ServicesEnum
+    //@Binding var mapType : MKMapType
+    //@Binding var service: ServicesEnum
     @Binding var showLoadingView: Bool
-    @Binding var serviceSelected: Any?
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -30,7 +30,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.mapType = mapType
+        uiView.mapType = mapViewModel.mapType
         if mapViewModel.refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations
@@ -80,8 +80,8 @@ extension MapView {
     func showAnnotationDetail(recordid: String) {
         showLoadingView = true
         mapViewModel.refreshAnnotations = false
-        let url = service.annotationUrl() + recordid
-        switch service {
+        let url = serviceViewModel.service.annotationUrl() + recordid
+        switch serviceViewModel.service {
         case .velib:
             ServiceRepository.shared.fetchVelib(urlString: url) { result in
                 manageServiceResult(result: result)
@@ -119,15 +119,15 @@ extension MapView {
     fileprivate func createDetail<T>(data: T) {
         DispatchQueue.main.async {
             if let dataResponse = data as? VelibResponse, let velib = dataResponse.records?.first {
-                serviceSelected = velib
+                serviceViewModel.serviceSelected = velib
             } else if let dataResponse = data as? TrotinetteResponse, let trotinette = dataResponse.records?.first {
-                serviceSelected = trotinette
+                serviceViewModel.serviceSelected = trotinette
             } else if let dataResponse = data as? SanisetteResponse, let sanisette = dataResponse.records?.first {
-                serviceSelected = sanisette
+                serviceViewModel.serviceSelected = sanisette
             } else if let dataResponse = data as? FontaineResponse, let fontaine = dataResponse.records?.first {
-                serviceSelected = fontaine
+                serviceViewModel.serviceSelected = fontaine
             } else if let dataResponse = data as? TriMobileResponse, let triMobile = dataResponse.records?.first {
-                serviceSelected = triMobile
+                serviceViewModel.serviceSelected = triMobile
             }
         }
     }

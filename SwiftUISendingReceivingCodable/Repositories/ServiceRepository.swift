@@ -14,6 +14,22 @@ enum ServicesEnum: Int {
     case fontaine
     case triMobile
     
+    func title() -> String {
+        switch self {
+        case .velib:
+            return "Velibs"
+        case .trotinette:
+            return "Trotinettes"
+        case .sanisette:
+            return "Sanisettes"
+        case .fontaine:
+            return
+                "Fontaines"
+        case .triMobile:
+            return "Tri Mobile"
+        }
+    }
+    
     func allAnnotationsUrl() -> String {
         switch self {
         case .velib:

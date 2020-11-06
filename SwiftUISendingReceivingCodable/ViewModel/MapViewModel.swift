@@ -23,9 +23,12 @@ class MapViewModel: ObservableObject {
         annotations = annos
     }
     
-    func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
+    func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping
+                                (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+        ServiceRepository.shared.fetchAllAnnotations(of: service)
+        { result in
             completion(result)
         }
     }
 }
+

@@ -25,7 +25,6 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            
             MapView(mapViewModel: mapViewModel,
                     alertErrorDetected: $showErrorAlert,
                     alertError: $alertError,
@@ -34,10 +33,11 @@ struct ContentView: View {
                     showLoadingView: $showLoadingView,
                     serviceSelected: $serviceSelected)
             
+            addTitle()
+            
             showProgressionView()
             showServiceDetail()
             addMenuButton()
-            
         }
         .onTapGesture {
             serviceSelected = nil
@@ -48,7 +48,6 @@ struct ContentView: View {
         }
         
         .sheet(isPresented: $showOptionsView) {
-            
             OptionsView(mapType: $mapType, service: $service) {
                 refreshAllAnnotations()
             }
@@ -63,15 +62,16 @@ struct ContentView: View {
 extension ContentView {
     
     fileprivate func refreshAllAnnotations() {
+        serviceSelected = nil
         showLoadingView = true
         map?.isUserInteractionEnabled = false
-        
         mapViewModel.fetchAllAnnotations(of: service)
         { result in
             map?.isUserInteractionEnabled = true
             showLoadingView = false
             manageAnnotationsResults(result: result)
         }
+        mapViewModel.annotations.removeAll()
     }
     
     fileprivate func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkError>) {
@@ -134,28 +134,15 @@ extension ContentView {
                 .foregroundColor(.primary)
                 
                 .frame(width: geometryReader.size.width, height: geometryReader.size.height, alignment: .bottomTrailing)
-                
-                
-                
             }
     }
     
-    fileprivate func fetchAllAnnotations(of service: ServicesEnum) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) {
-            result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    if let dataResults = data.records {
-                        mapViewModel.createAnnotations(results: dataResults)
-                    }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    alertError = AlertManager.shared.createNetworkAlert(error)
-                    showErrorAlert = true
-                }
-            }
+    fileprivate func addTitle() -> some View {
+        VStack {
+            Text(service.title())
+                .foregroundColor(.primary)
+                .font(.title)
+            Spacer()
         }
     }
 }

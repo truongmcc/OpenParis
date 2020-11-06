@@ -39,6 +39,7 @@ struct MapView: UIViewRepresentable {
         }
         if mapViewModel.centerUserLocation {
             goToUserLocation(uiView: uiView)
+            mapViewModel.centerUserLocation = false
         }
     }
     

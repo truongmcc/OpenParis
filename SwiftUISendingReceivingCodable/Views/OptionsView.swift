@@ -18,22 +18,26 @@ struct OptionsView: View {
     var body: some View {
         VStack() {
             HStack {
-                Text("MENU")
+                Text("OPTIONS")
                     .font(.title)
                     .padding()
-                Spacer()
             }
             
+            Spacer()
             addTypeMap()
-            
+            Spacer()
             addTypeService()
-            
+            Spacer()
+                
             Button("OK", action: {
                 onDismiss()
                 self.presentationMode.wrappedValue.dismiss()
             })
             .foregroundColor(.white)
+            .font(.title)
             .padding()
+            
+            Spacer()
         }
     }
     

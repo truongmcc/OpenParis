@@ -9,7 +9,8 @@ struct TrotinetteResponse: Codable {
     var records: [Trotinette]?
 }
 
-struct Trotinette: Codable {
+struct Trotinette: Service, Codable {
+    var typeService = ServicesEnum.trotinette
     var trotinetteId: String?
     var fields: Fields
     

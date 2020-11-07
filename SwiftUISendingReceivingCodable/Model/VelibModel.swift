@@ -5,11 +5,17 @@
 //  Created by picshertho on 23/07/2020.
 //
 
+protocol Service {
+    var typeService: ServicesEnum { get set }
+}
+
 struct VelibResponse: Codable {
     var records: [Velib]?
 }
 
-struct Velib: Codable {
+struct Velib: Service, Codable {
+    var typeService = ServicesEnum.velib
+    
     var velibId: String?
     var fields: Fields
     

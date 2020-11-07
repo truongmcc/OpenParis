@@ -12,7 +12,7 @@ struct OptionsView: View {
     @Environment(\.presentationMode) private var presentationMode
         
     @Binding var mapType: MKMapType
-    @Binding var service: ServicesEnum
+    @Binding var typeService: ServicesEnum
     
     var onDismiss: () -> Void
 
@@ -52,7 +52,7 @@ struct OptionsView: View {
     }
     
     fileprivate func addTypeService()  -> some View {
-        Picker(selection: $service, label: Text("Services"), content: {
+        Picker(selection: $typeService, label: Text("Services"), content: {
             Text("Velibs").tag(ServicesEnum.velib)
             Text("Trotinettes").tag(ServicesEnum.trotinette)
             Text("Sanisettes").tag(ServicesEnum.sanisette)
@@ -68,6 +68,6 @@ struct MenuView_Previews: PreviewProvider {
     @State static var mapType = MKMapType.standard
     @State static var service = ServicesEnum.velib
     static var previews: some View {
-        OptionsView(mapType: $mapType, service: $service, onDismiss: {} )
+        OptionsView(mapType: $mapType, typeService: $service, onDismiss: {} )
     }
 }

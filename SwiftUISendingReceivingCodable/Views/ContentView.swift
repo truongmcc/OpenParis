@@ -9,16 +9,13 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var map: MKMapView?
-    @State private var mapType = MKMapType.standard
     
     @ObservedObject var mapViewModel = MapViewModel()
     @ObservedObject var serviceViewModel = ServiceViewModel()
-    
+    @State private var map: MKMapView?
+    @State private var mapType = MKMapType.standard
     @State private var showOptionsView = false
-    
     @State private var showLoadingView = false
-    
     @State private var showErrorAlert = false
     @State private var alertError: Alert?
     
@@ -29,15 +26,13 @@ struct ContentView: View {
                     alertErrorDetected: $showErrorAlert,
                     alertError: $alertError,
                     showLoadingView: $showLoadingView)
-            
             addTitle()
-            
             showProgressionView()
             showServiceDetail()
             addMenuButton()
         }
         .onTapGesture {
-            serviceViewModel.serviceSelected = nil
+            serviceViewModel.service = nil
         }
         
         .alert(isPresented: $showErrorAlert) {
@@ -45,7 +40,7 @@ struct ContentView: View {
         }
         
         .sheet(isPresented: $showOptionsView) {
-            OptionsView(mapType: $mapType, service: $serviceViewModel.service) {
+            OptionsView(mapType: $mapType, typeService: $serviceViewModel.typeServiceSelected) {
                 refreshAllAnnotations()
             }
         }
@@ -59,10 +54,10 @@ struct ContentView: View {
 extension ContentView {
     
     fileprivate func refreshAllAnnotations() {
-        serviceViewModel.serviceSelected = nil
+        serviceViewModel.service = nil
         showLoadingView = true
         map?.isUserInteractionEnabled = false
-        mapViewModel.fetchAllAnnotations(of: serviceViewModel.service)
+        mapViewModel.fetchAllAnnotations(of: serviceViewModel.typeServiceSelected)
         { result in
             map?.isUserInteractionEnabled = true
             showLoadingView = false
@@ -88,17 +83,17 @@ extension ContentView {
     }
     
     fileprivate func showServiceDetail() -> AnyView? {
-        switch serviceViewModel.serviceSelected {
+        switch serviceViewModel.service {
         case is Velib:
-            return AnyView(VelibDetailView(serviceSelected: serviceViewModel.serviceSelected as? Velib))
+            return AnyView(VelibDetailView(serviceSelected: serviceViewModel.service as? Velib))
         case is Trotinette:
-            return AnyView(TrotinetteDetailView(serviceSelected: serviceViewModel.serviceSelected as? Trotinette))
+            return AnyView(TrotinetteDetailView(serviceSelected: serviceViewModel.service as? Trotinette))
         case is Sanisette:
-            return AnyView(SanisetteDetailView(serviceSelected: serviceViewModel.serviceSelected as? Sanisette))
+            return AnyView(SanisetteDetailView(serviceSelected: serviceViewModel.service as? Sanisette))
         case is Fontaine:
-            return AnyView(FontaineDetailView(serviceSelected: serviceViewModel.serviceSelected as? Fontaine))
+            return AnyView(FontaineDetailView(serviceSelected: serviceViewModel.service as? Fontaine))
         case is TriMobile:
-            return AnyView(TriMobileDetailView(serviceSelected: serviceViewModel.serviceSelected as? TriMobile))
+            return AnyView(TriMobileDetailView(serviceSelected: serviceViewModel.service as? TriMobile))
         default:
             return nil
         }
@@ -136,7 +131,7 @@ extension ContentView {
     
     fileprivate func addTitle() -> some View {
         VStack {
-            Text(serviceViewModel.service.title())
+            Text(serviceViewModel.typeServiceSelected.title())
                 .foregroundColor(.primary)
                 .font(.title)
             Spacer()

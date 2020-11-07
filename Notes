@@ -3,8 +3,8 @@ detecter les velibs aux alentours (200 mètres)
 webservices with combine 
 customiser les annotationsViews
 refacto service fetch methods
-creer un service view model
 
+creer un service view model done
 ajouter un titre pour afficher le service appliqué done
 view model pour la map done
 repositionnement du userlocation done

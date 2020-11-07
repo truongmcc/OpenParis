@@ -9,7 +9,8 @@ struct FontaineResponse: Codable {
     var records: [Fontaine]?
 }
 
-struct Fontaine: Codable {
+struct Fontaine: Service, Codable {
+    var typeService = ServicesEnum.fontaine
     var fontaineId: String?
     var fields: Fields
     

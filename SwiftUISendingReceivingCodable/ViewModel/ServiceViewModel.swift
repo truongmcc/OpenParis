@@ -8,11 +8,12 @@
 import SwiftUI
 
 class ServiceViewModel: ObservableObject {
-    @Published var serviceSelected: Any?
-    @Published var service = ServicesEnum.velib
+    @Published var service: Service?
+    @Published var typeServiceSelected = ServicesEnum.velib
+    
     func fetchAnnotationDetail(recordId: String, finished: @escaping (Bool, Alert?) -> Void) {
-        let url = service.annotationUrl() + recordId
-        switch service {
+        let url = typeServiceSelected.annotationUrl() + recordId
+        switch typeServiceSelected {
         case .velib:
             ServiceRepository.shared.fetchVelib(urlString: url) { result in
                 self.manageServiceResult(result: result) { showError, alert  in
@@ -60,15 +61,15 @@ class ServiceViewModel: ObservableObject {
     
     func createDetail<T>(data: T) {
         if let dataResponse = data as? VelibResponse, let velib = dataResponse.records?.first {
-            self.serviceSelected = velib
+            self.service = velib
         } else if let dataResponse = data as? TrotinetteResponse, let trotinette = dataResponse.records?.first {
-            self.serviceSelected = trotinette
+            self.service = trotinette
         } else if let dataResponse = data as? SanisetteResponse, let sanisette = dataResponse.records?.first {
-            self.serviceSelected = sanisette
+            self.service = sanisette
         } else if let dataResponse = data as? FontaineResponse, let fontaine = dataResponse.records?.first {
-            self.serviceSelected = fontaine
+            self.service = fontaine
         } else if let dataResponse = data as? TriMobileResponse, let triMobile = dataResponse.records?.first {
-            self.serviceSelected = triMobile
+            self.service = triMobile
         }
     }
 }

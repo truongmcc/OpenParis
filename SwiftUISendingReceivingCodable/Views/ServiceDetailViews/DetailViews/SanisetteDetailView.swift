@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SanisetteDetailView: View {
     @State var serviceSelected: Sanisette?
-    @State var opacityChange = false
-
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
             Text("Ardt : \(serviceSelected?.fields.arrondissement ?? "")")
@@ -27,17 +25,6 @@ struct SanisetteDetailView: View {
             Text("Acces PMR : \(serviceSelected?.fields.accesPmr ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
-        }
-        .font(.system(size: 20))
-        .foregroundColor(.white)
-        .cornerRadius(10)
-        .opacity(opacityChange ? 1 : 0)
-        .animation(.default)
-        .onAppear() {
-            opacityChange.toggle()
-        }
-        .onDisappear() {
-            opacityChange.toggle()
         }
     }
 }

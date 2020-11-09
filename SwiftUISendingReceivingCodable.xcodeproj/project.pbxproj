@@ -15,6 +15,7 @@
 		EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */; };
 		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
 		EB6AE31D25505CE500787240 /* ServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* ServiceRepository.swift */; };
+		EB7C488F255986C700CB5C7F /* DetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C488E255986C700CB5C7F /* DetailBaseView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
 		EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */; };
 		EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FBA24C9BDD000BA086F /* ContentView.swift */; };
@@ -62,6 +63,7 @@
 		EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
 		EB6AE31C25505CE500787240 /* ServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRepository.swift; sourceTree = "<group>"; };
+		EB7C488E255986C700CB5C7F /* DetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBaseView.swift; sourceTree = "<group>"; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EB887FB524C9BDD000BA086F /* SwiftUISendingReceivingCodable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUISendingReceivingCodable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISendingReceivingCodableApp.swift; sourceTree = "<group>"; };
@@ -142,7 +144,7 @@
 			children = (
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
 				EBADF27A25498496003CD339 /* OptionsView.swift */,
-				EBB5F4012551961B00A3DEF6 /* ServiceViews */,
+				EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 			);
 			path = Views;
@@ -163,6 +165,18 @@
 				EB6AE31C25505CE500787240 /* ServiceRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		EB7C4893255987E700CB5C7F /* DetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */,
+				EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */,
+				EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */,
+				EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */,
+				EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */,
+			);
+			path = DetailViews;
 			sourceTree = "<group>";
 		};
 		EB887FAC24C9BDCF00BA086F = {
@@ -237,16 +251,13 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		EBB5F4012551961B00A3DEF6 /* ServiceViews */ = {
+		EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */ = {
 			isa = PBXGroup;
 			children = (
-				EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */,
-				EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */,
-				EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */,
-				EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */,
-				EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */,
+				EB7C488E255986C700CB5C7F /* DetailBaseView.swift */,
+				EB7C4893255987E700CB5C7F /* DetailViews */,
 			);
-			path = ServiceViews;
+			path = ServiceDetailViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB7C488F255986C700CB5C7F /* DetailBaseView.swift in Sources */,
 				EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */,
 				EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */,
 				EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */,

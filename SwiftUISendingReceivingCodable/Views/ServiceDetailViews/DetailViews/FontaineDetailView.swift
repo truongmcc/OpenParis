@@ -51,6 +51,6 @@ struct FontaineDetailView: View {
 
 struct FontaineView_Previews: PreviewProvider {
     static var previews: some View {
-        VelibDetailView()
+        FontaineDetailView()
     }
 }

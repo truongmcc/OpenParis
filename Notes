@@ -3,7 +3,9 @@ detecter les velibs aux alentours (200 mètres)
 webservices with combine 
 customiser les annotationsViews
 refacto service fetch methods
+rendre invisible les annotations lorsqu'on visualise un detail
 
+creer un DetailViewBase à la place du switch (ViewBuilder done)
 creer un service view model done
 ajouter un titre pour afficher le service appliqué done
 view model pour la map done

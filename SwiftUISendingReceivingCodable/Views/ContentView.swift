@@ -83,20 +83,8 @@ extension ContentView {
     }
     
     fileprivate func showServiceDetail() -> AnyView? {
-        switch serviceViewModel.service {
-        case is Velib:
-            return AnyView(VelibDetailView(serviceSelected: serviceViewModel.service as? Velib))
-        case is Trotinette:
-            return AnyView(TrotinetteDetailView(serviceSelected: serviceViewModel.service as? Trotinette))
-        case is Sanisette:
-            return AnyView(SanisetteDetailView(serviceSelected: serviceViewModel.service as? Sanisette))
-        case is Fontaine:
-            return AnyView(FontaineDetailView(serviceSelected: serviceViewModel.service as? Fontaine))
-        case is TriMobile:
-            return AnyView(TriMobileDetailView(serviceSelected: serviceViewModel.service as? TriMobile))
-        default:
-            return nil
-        }
+        guard let service = serviceViewModel.service else { return nil }
+            return AnyView(DetailBaseView(serviceSelected: service))
     }
     
     fileprivate func showProgressionView() -> some View {
@@ -121,7 +109,6 @@ extension ContentView {
                         showOptionsView.toggle()
                     })
                     .padding(20)
-                    
                 }
                 .foregroundColor(.primary)
                 

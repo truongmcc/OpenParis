@@ -33,6 +33,6 @@ struct TrotinetteDetailView: View {
 
 struct TrotinetteDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        VelibDetailView()
+        TrotinetteDetailView()
     }
 }

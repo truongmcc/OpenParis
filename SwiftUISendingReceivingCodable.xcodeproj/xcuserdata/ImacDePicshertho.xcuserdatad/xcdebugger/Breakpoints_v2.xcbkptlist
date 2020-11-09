@@ -87,65 +87,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A55A1691-E5C9-4073-8795-1185AD839B38"
+            uuid = "05824003-A60E-4679-8A60-0CEF74C6216B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Views/ContentView.swift"
+            filePath = "SwiftUISendingReceivingCodable/Views/ServiceViews/DetailBaseView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1024A459-4B8E-46EB-BF8F-8D94D0A4709F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Tools/WebServiceManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "fetchDataWithTypeResult(url:decodable:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "06C9F771-7B84-4EA3-9C14-49546C5F6A34"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Views/Map/MapView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "showAnnotationDetail(recordId:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2114122F-D43E-449A-9D03-9F741C0249B9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/ViewModel/ServiceViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "fetchAnnotationDetail(recordId:finished:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "05824003-A60E-4679-8A60-0CEF74C6216B - 324eacf68033014f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.DetailBaseView.body.getter : some"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Views/ServiceViews/DetailBaseView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "05824003-A60E-4679-8A60-0CEF74C6216B - 96616bafd598d1b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUISendingReceivingCodable.VelibDetailView, SwiftUISendingReceivingCodable.TrotinetteDetailView&gt;, SwiftUI._ConditionalContent&lt;SwiftUISendingReceivingCodable.SanisetteDetailView, SwiftUISendingReceivingCodable.FontaineDetailView&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUISendingReceivingCodable.TriMobileDetailView, SwiftUI.Text&gt;&gt; in SwiftUISendingReceivingCodable.DetailBaseView.body.getter : some"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Views/ServiceViews/DetailBaseView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "580">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

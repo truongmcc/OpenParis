@@ -17,14 +17,12 @@ struct ContentView: View {
     @State private var showOptionsView = false
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
-    @State private var alertError: Alert?
     
     var body: some View {
         ZStack {
             MapView(mapViewModel: mapViewModel,
                     serviceViewModel: serviceViewModel,
                     alertErrorDetected: $showErrorAlert,
-                    alertError: $alertError,
                     showLoadingView: $showLoadingView)
             
             addTitle()
@@ -37,7 +35,7 @@ struct ContentView: View {
         }
         
         .alert(isPresented: $showErrorAlert) {
-            return (alertError ?? Alert(title: Text(NetworkError.unknown.description)))
+            return AlertManager.shared.createNetworkAlert()
         }
         
         .sheet(isPresented: $showOptionsView) {
@@ -77,7 +75,7 @@ extension ContentView {
             }
         case .failure(let error):
             DispatchQueue.main.async {
-                alertError = AlertManager.shared.createNetworkAlert(error)
+                AlertManager.shared.netWorkError = error
                 showErrorAlert = true
             }
         }

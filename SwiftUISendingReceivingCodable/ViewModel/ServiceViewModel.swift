@@ -11,53 +11,53 @@ class ServiceViewModel: ObservableObject {
     @Published var service: Service?
     @Published var typeServiceSelected = ServicesEnum.velib
     
-    func fetchAnnotationDetail(recordId: String, finished: @escaping (Bool, Alert?) -> Void) {
+    func fetchAnnotationDetail(recordId: String, finished: @escaping (Bool, NetworkError?) -> Void) {
         let url = typeServiceSelected.annotationUrl() + recordId
         switch typeServiceSelected {
         case .velib:
             ServiceRepository.shared.fetchVelib(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, alert  in
-                    finished(showError, alert ?? nil)
+                self.manageServiceResult(result: result) { showError, netWorkError  in
+                    finished(showError, netWorkError)
                 }
             }
         case .trotinette:
             ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, alert  in
-                    finished(showError, alert ?? nil)
+                self.manageServiceResult(result: result) { showError, netWorkError  in
+                    finished(showError, netWorkError)
                 }
             }
         case .sanisette:
             ServiceRepository.shared.fetchSanisette(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, alert  in
-                    finished(showError, alert ?? nil)
+                self.manageServiceResult(result: result) { showError, netWorkError  in
+                    finished(showError, netWorkError)
                 }
             }
         case .fontaine:
             ServiceRepository.shared.fetchFontaine(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, alert  in
-                    finished(showError, alert ?? nil)
+                self.manageServiceResult(result: result) { showError, netWorkError  in
+                    finished(showError, netWorkError)
                 }
             }
         case .triMobile:
             ServiceRepository.shared.fetchTriMobile(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, alert  in
-                    finished(showError, alert ?? nil)
+                self.manageServiceResult(result: result) { showError, netWorkError  in
+                    finished(showError, netWorkError)
                 }
             }
         }
     }
     
-    func manageServiceResult<T>(result: Result<T, NetworkError>, completion: @escaping (Bool, Alert?) -> Void) {
+    func manageServiceResult<T>(result: Result<T, NetworkError>, completion: @escaping (Bool, NetworkError?) -> Void) {
         DispatchQueue.main.async {
             switch result {
             case .success(let data):
                 if self.createDetail(data: data) {
                     completion(false, nil)
                 } else {
-                    completion(true, AlertManager.shared.createNetworkAlert(NetworkError.dataNotFound))
+                    completion(true, NetworkError.dataNotFound)
                 }
             case .failure(let error):
-                completion(true, AlertManager.shared.createNetworkAlert(error))
+                completion(true, error)
             }
         }
     }

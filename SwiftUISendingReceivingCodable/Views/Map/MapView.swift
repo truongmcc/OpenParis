@@ -16,7 +16,6 @@ struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     
     @Binding var alertErrorDetected: Bool
-    @Binding var alertError: Alert?
     @Binding var showLoadingView: Bool
     
     // MARK: - Required protocol methods of UIViewRepresentable
@@ -78,10 +77,12 @@ extension MapView {
     func showAnnotationDetail(recordId: String) {
         showLoadingView = true
         mapViewModel.refreshAnnotations = false
-        serviceViewModel.fetchAnnotationDetail(recordId: recordId) { showError, alert in
+        serviceViewModel.fetchAnnotationDetail(recordId: recordId) { showError, networkError in
             showLoadingView = false
+            if let error = networkError {
+                AlertManager.shared.netWorkError = error
+            }
             alertErrorDetected = showError
-            alertError = alert
         }
     }
 }

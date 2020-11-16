@@ -26,10 +26,11 @@ struct ContentView: View {
                     alertErrorDetected: $showErrorAlert,
                     alertError: $alertError,
                     showLoadingView: $showLoadingView)
+            
             addTitle()
             showProgressionView()
             showServiceDetail()
-            addMenuButton()
+            addButtons()
         }
         .onTapGesture {
             serviceViewModel.service = nil
@@ -96,22 +97,22 @@ extension ContentView {
         }
     }
     
-    fileprivate func addMenuButton() -> some View {
+    fileprivate func addButtons() -> some View {
         return
             GeometryReader { geometryReader in
                 VStack {
-                    Button("Centrer", action: {
+                    Button("Ma position", action: {
                         mapViewModel.centerUserLocation.toggle()
                     })
                     .padding(20)
+                    .multilineTextAlignment(.trailing)
                     
                     Button("Options", action: {
                         showOptionsView.toggle()
                     })
                     .padding(20)
                 }
-                .foregroundColor(.primary)
-                
+                .foregroundColor(Color.primary)
                 .frame(width: geometryReader.size.width, height: geometryReader.size.height, alignment: .bottomTrailing)
             }
     }
@@ -121,6 +122,7 @@ extension ContentView {
             Text(serviceViewModel.typeServiceSelected.title())
                 .foregroundColor(.primary)
                 .font(.title)
+                .padding(20)
             Spacer()
         }
     }

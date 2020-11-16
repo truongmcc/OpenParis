@@ -5,7 +5,6 @@
 //  Created by picshertho on 19/08/2020.
 //
 
-import SwiftUI
 import MapKit
 import CoreLocation
 

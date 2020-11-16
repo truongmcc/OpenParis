@@ -92,6 +92,7 @@ class ServiceRepository {
         WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
                                     decodable: TrotinetteResponse.self) { result in
             completion(result)
+                
         }
     }
     

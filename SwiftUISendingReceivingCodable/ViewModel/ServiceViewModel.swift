@@ -51,15 +51,19 @@ class ServiceViewModel: ObservableObject {
         DispatchQueue.main.async {
             switch result {
             case .success(let data):
-                self.createDetail(data: data)
-                completion(false, nil)
+                if self.createDetail(data: data) {
+                    completion(false, nil)
+                } else {
+                    completion(true, AlertManager.shared.createNetworkAlert(NetworkError.dataNotFound))
+                }
             case .failure(let error):
                 completion(true, AlertManager.shared.createNetworkAlert(error))
             }
         }
     }
     
-    func createDetail<T>(data: T) {
+    func createDetail<T>(data: T) -> Bool {
+        var dataFound = true
         if let dataResponse = data as? VelibResponse, let velib = dataResponse.records?.first {
             self.service = velib
         } else if let dataResponse = data as? TrotinetteResponse, let trotinette = dataResponse.records?.first {
@@ -70,6 +74,9 @@ class ServiceViewModel: ObservableObject {
             self.service = fontaine
         } else if let dataResponse = data as? TriMobileResponse, let triMobile = dataResponse.records?.first {
             self.service = triMobile
+        } else {
+            dataFound = false
         }
+        return dataFound
     }
 }

@@ -98,38 +98,22 @@
             endingLineNumber = "13"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "05824003-A60E-4679-8A60-0CEF74C6216B - 324eacf68033014f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftUISendingReceivingCodable.DetailBaseView.body.getter : some"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Views/ServiceViews/DetailBaseView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "05824003-A60E-4679-8A60-0CEF74C6216B - 96616bafd598d1b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUISendingReceivingCodable.VelibDetailView, SwiftUISendingReceivingCodable.TrotinetteDetailView&gt;, SwiftUI._ConditionalContent&lt;SwiftUISendingReceivingCodable.SanisetteDetailView, SwiftUISendingReceivingCodable.FontaineDetailView&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUISendingReceivingCodable.TriMobileDetailView, SwiftUI.Text&gt;&gt; in SwiftUISendingReceivingCodable.DetailBaseView.body.getter : some"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Views/ServiceViews/DetailBaseView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "580">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D94A0623-E0B6-4EB7-881E-ABDA9E8EB5D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUISendingReceivingCodable/ViewModel/ServiceViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "createDetail(data:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

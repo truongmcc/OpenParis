@@ -36,20 +36,24 @@ struct BaseView<Content: View>: View {
         self.content = content()
     }
     var body: some View {
-        VStack() {
-            content
-        }
+        content
         .font(.system(size: 20))
+        .padding()
         .foregroundColor(.white)
         .cornerRadius(10)
-        .opacity(opacityChange ? 1 : 0)
+        
         .animation(.default)
+        .border(Color.primary)
+            
+        .background(Color.black.opacity(0.5))
+            
+        .opacity(opacityChange ? 1 : 0)
         .onAppear() {
             opacityChange.toggle()
         }
         .onDisappear() {
             opacityChange.toggle()
         }
-        .border(Color.primary)
+        
     }
 }

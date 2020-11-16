@@ -10,7 +10,7 @@ import SwiftUI
 
 enum NetworkError: Error {
     
-    case badURL, requestFailed, decodingFailed, serverNotAccessible, noInternet, serverLost, unknown
+    case badURL, requestFailed, decodingFailed, serverNotAccessible, noInternet, serverLost, dataNotFound, unknown
     
     var description: String {
         switch self {
@@ -26,6 +26,8 @@ enum NetworkError: Error {
             return "The Internet connection appears to be offline."
         case .serverLost:
             return "Server lost. Try again"
+        case .dataNotFound:
+            return "Data not found"
         case .unknown:
             return "Unknown error"
         }
@@ -55,11 +57,11 @@ class WebServiceManager {
 
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
-                print(error?._code ?? "0")
                 completion(.failure(NetworkError.requestFailed))
                 return
             }
             do {
+                print(data)
                 let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
                 completion(.success(decodedResponse))
             } catch {

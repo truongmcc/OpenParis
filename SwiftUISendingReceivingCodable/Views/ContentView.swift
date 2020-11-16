@@ -35,7 +35,11 @@ struct ContentView: View {
         }
         
         .alert(isPresented: $showErrorAlert) {
-            return AlertManager.shared.createNetworkAlert()
+            return AlertManager.shared.createNetworkAlert(completionHandler: { shouldReloadMap in
+                if shouldReloadMap {
+                    refreshAllAnnotations()
+                }
+            })
         }
         
         .sheet(isPresented: $showOptionsView) {

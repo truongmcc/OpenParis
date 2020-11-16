@@ -15,10 +15,11 @@ class AlertManager {
     
     var netWorkError: NetworkError?
     
-    func createNetworkAlert() -> Alert {
+    func createNetworkAlert(shouldReloadMap: Bool = true, completionHandler: @escaping (Bool) -> Void) -> Alert {
         return Alert(title: Text("Network Error"),
                      message: Text(netWorkError?.description ?? "Unknown error"),
                      dismissButton: .default(Text("OK")) {
+                        completionHandler(shouldReloadMap)
         })
     }
 }

@@ -79,10 +79,10 @@ extension MapView {
         mapViewModel.refreshAnnotations = false
         serviceViewModel.fetchAnnotationDetail(recordId: recordId) { showError, networkError in
             showLoadingView = false
+            alertErrorDetected = showError
             if let error = networkError {
                 AlertManager.shared.netWorkError = error
             }
-            alertErrorDetected = showError
         }
     }
 }

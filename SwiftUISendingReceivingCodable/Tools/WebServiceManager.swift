@@ -71,6 +71,29 @@ class WebServiceManager {
         .resume()
     }
     
+    func fetchDataWithTypeResult2<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        guard let urlRequest = createUrlRequest(url: url) else {
+            completion(.failure(NetworkError.badURL))
+            return
+        }
+        print(url)
+
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data else {
+                completion(.failure(NetworkError.requestFailed))
+                return
+            }
+            do {
+                print(data)
+                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
+                completion(.success(decodedResponse))
+            } catch {
+                completion(.failure(NetworkError.decodingFailed))
+            }
+        }
+        .resume()
+    }
+    
 //     Generic without result type version
 //    static func fetchData<T: Codable>(allAnnotationsUrl: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
 //        guard let urlRequest = createUrlRequest(annotationUrl: url) else {

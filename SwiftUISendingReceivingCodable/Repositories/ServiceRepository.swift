@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ServicesEnum: Int {
+enum ServicesEnum: Int, serviceResponseAliasProtocol {
     case velib
     case trotinette
     case sanisette
@@ -76,7 +76,24 @@ enum ServicesEnum: Int {
             return TriMobileResponse.self as! T.Type
         }
     }
+    
+    func typeAliasClosure<T>() -> T.Type {
+        switch self {
+        case .velib:
+            return velibResponseAlias.self as! T.Type
+        case .trotinette:
+            return trotinetteResponseAlias.self as! T.Type
+        case .sanisette:
+            return SanisetteResponseAlias.self as! T.Type
+        case .fontaine:
+            return fontaineResponseAlias.self as! T.Type
+        case .triMobile:
+            return triMobileResponseAlias.self as! T.Type
+        }
+    }
 }
+
+
 
 class ServiceRepository {
     

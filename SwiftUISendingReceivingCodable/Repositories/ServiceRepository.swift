@@ -62,23 +62,22 @@ enum ServicesEnum: Int {
         }
     }
     
-    func type() -> Codable {
+    func type<T>() -> T.Type {
         switch self {
         case .velib:
-            return (Velib.self as? Codable)!
+            return VelibResponse.self as! T.Type
         case .trotinette:
-            return (Trotinette.self as? Codable)!
+            return TrotinetteResponse.self as! T.Type
         case .sanisette:
-            return (Sanisette.self as? Codable)!
+            return SanisetteResponse.self as! T.Type
         case .fontaine:
-            return
-                (Fontaine.self as? Codable)!
+            return FontaineResponse.self as! T.Type
         case .triMobile:
-            return (TriMobile.self as? Codable)!
+            return TriMobileResponse.self as! T.Type
         }
     }
 }
-    
+
 class ServiceRepository {
     
     static let shared = ServiceRepository()
@@ -90,38 +89,12 @@ class ServiceRepository {
         }
     }
     
-    func fetchVelib(urlString: String, completion: @escaping (Result<VelibResponse, NetworkError>) -> Void) {
-            WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
-                                                             decodable: VelibResponse.self) { result in
-                completion(result)
-            }
-    }
-    
-    func fetchTrotinette(urlString: String, completion: @escaping (Result<TrotinetteResponse, NetworkError>) -> Void) {
+    func fetchDetail<T: Codable>(of service: ServicesEnum,
+                                 urlString: String,
+                                 completion: @escaping (Result<T, NetworkError>) -> Void) {
+        
         WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
-                                                         decodable: TrotinetteResponse.self) { result in
-            completion(result)
-            
-        }
-    }
-    
-    func fetchSanisette(urlString: String, completion: @escaping (Result<SanisetteResponse, NetworkError>) -> Void) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
-                                                         decodable: SanisetteResponse.self) { result in
-            completion(result)
-        }
-    }
-    
-    func fetchFontaine(urlString: String, completion: @escaping (Result<FontaineResponse, NetworkError>) -> Void) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
-                                                         decodable: FontaineResponse.self) { result in
-            completion(result)
-        }
-    }
-    
-    func fetchTriMobile(urlString: String, completion: @escaping (Result<TriMobileResponse, NetworkError>) -> Void) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
-                                                         decodable: TriMobileResponse.self) { result in
+                                                         decodable: service.type()) { result in
             completion(result)
         }
     }

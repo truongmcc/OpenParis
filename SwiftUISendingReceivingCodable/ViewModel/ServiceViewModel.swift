@@ -15,36 +15,58 @@ class ServiceViewModel: ObservableObject {
     @Published var service: Service?
     @Published var typeServiceSelected = ServicesEnum.velib
     
-    func fetchAnnotationDetail(recordId: String, finished: @escaping (Bool, NetworkError?) -> Void) {
+    typealias velibResponseAlias = Result<VelibResponse, NetworkError>
+    typealias trotinetteResponseAlias = Result<TrotinetteResponse, NetworkError>
+    typealias SanisetteResponseAlias = Result<SanisetteResponse, NetworkError>
+    typealias fontaineResponseAlias = Result<FontaineResponse, NetworkError>
+    typealias triMobileResponseAlias = Result<TriMobileResponse, NetworkError>
+    
+    func fetchAnnotationDetail(recordId: String,
+                                finished: @escaping (Bool, NetworkError?) -> Void) {
+        
         let url = typeServiceSelected.annotationUrl() + recordId
+        
         switch typeServiceSelected {
         case .velib:
-            ServiceRepository.shared.fetchVelib(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, netWorkError  in
+            
+            
+            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
+                                                 urlString: url) { ( _ result: velibResponseAlias) in
+                self.manageServiceResult(result: result) {
+                    showError, netWorkError  in
                     finished(showError, netWorkError)
                 }
             }
+            
         case .trotinette:
-            ServiceRepository.shared.fetchTrotinette(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, netWorkError  in
+            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
+                                                 urlString: url) { ( _ result: trotinetteResponseAlias) in
+                self.manageServiceResult(result: result) {
+                    showError, netWorkError  in
                     finished(showError, netWorkError)
                 }
             }
         case .sanisette:
-            ServiceRepository.shared.fetchSanisette(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, netWorkError  in
+            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
+                                                 urlString: url) { ( _ result: SanisetteResponseAlias) in
+                self.manageServiceResult(result: result) {
+                    showError, netWorkError  in
                     finished(showError, netWorkError)
                 }
             }
         case .fontaine:
-            ServiceRepository.shared.fetchFontaine(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, netWorkError  in
+            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
+                                                 urlString: url) { ( _ result: fontaineResponseAlias) in
+                self.manageServiceResult(result: result) {
+                    showError, netWorkError  in
                     finished(showError, netWorkError)
                 }
             }
         case .triMobile:
-            ServiceRepository.shared.fetchTriMobile(urlString: url) { result in
-                self.manageServiceResult(result: result) { showError, netWorkError  in
+            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
+                                                 urlString: url) { ( _ result: triMobileResponseAlias) in
+                self.manageServiceResult(result: result) {
+                    showError, netWorkError  in
                     finished(showError, netWorkError)
                 }
             }

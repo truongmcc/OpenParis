@@ -11,10 +11,6 @@ struct FontaineDetailView: View {
     @State var serviceSelected: Fontaine?
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("\(serviceSelected?.fields.commune ?? "")")
-                .padding(10)
-                .font(.title)
-                .multilineTextAlignment(.center)
             Text(createAdress(noImpair: serviceSelected?.fields.noVoirieImpair,
                                noPair: serviceSelected?.fields.noVoiriePair,
                                street: serviceSelected?.fields.voie))

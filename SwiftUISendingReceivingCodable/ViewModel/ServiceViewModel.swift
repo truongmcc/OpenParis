@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+protocol Service {
+    var typeService: ServicesEnum { get set }
+}
+
 class ServiceViewModel: ObservableObject {
     @Published var service: Service?
     @Published var typeServiceSelected = ServicesEnum.velib

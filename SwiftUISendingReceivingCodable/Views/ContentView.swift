@@ -37,26 +37,26 @@ struct ContentView: View {
         .alert(isPresented: $showErrorAlert) {
             return AlertManager.shared.createNetworkAlert(completionHandler: { shouldReloadMap in
                 if shouldReloadMap {
-                    refreshAllAnnotations()
+                    loadMap()
                 }
             })
         }
         
         .sheet(isPresented: $showOptionsView) {
             OptionsView(mapType: $mapType, typeService: $serviceViewModel.typeServiceSelected) {
-                refreshAllAnnotations()
+                loadMap()
             }
         }
         
         .onAppear() {
-            refreshAllAnnotations()
+            loadMap()
         }
     }
 }
 
 extension ContentView {
     
-    fileprivate func refreshAllAnnotations() {
+    fileprivate func loadMap() {
         serviceViewModel.service = nil
         showLoadingView = true
         map?.isUserInteractionEnabled = false
@@ -87,7 +87,7 @@ extension ContentView {
     
     fileprivate func showServiceDetail() -> AnyView? {
         guard let service = serviceViewModel.service else { return nil }
-            return AnyView(DetailBaseView(serviceSelected: service))
+        return AnyView(DetailBaseView(serviceSelected: service))
     }
     
     fileprivate func showProgressionView() -> some View {

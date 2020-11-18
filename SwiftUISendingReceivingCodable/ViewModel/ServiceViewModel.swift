@@ -12,19 +12,17 @@ protocol Service {
 }
 
 protocol serviceResponseAliasProtocol {
-    typealias velibResponseAlias = Result<VelibResponse, NetworkError>
-    typealias trotinetteResponseAlias = Result<TrotinetteResponse, NetworkError>
-    typealias SanisetteResponseAlias = Result<SanisetteResponse, NetworkError>
-    typealias fontaineResponseAlias = Result<FontaineResponse, NetworkError>
-    typealias triMobileResponseAlias = Result<TriMobileResponse, NetworkError>
+    typealias velibResult = Result<VelibResponse, NetworkError>
+    typealias trotinetteResult = Result<TrotinetteResponse, NetworkError>
+    typealias SanisetteResult = Result<SanisetteResponse, NetworkError>
+    typealias fontaineResult = Result<FontaineResponse, NetworkError>
+    typealias triMobileResult = Result<TriMobileResponse, NetworkError>
 }
 
 class ServiceViewModel:serviceResponseAliasProtocol, ObservableObject {
     @Published var service: Service?
     @Published var typeServiceSelected = ServicesEnum.velib
-        
-    
-    
+ 
     func fetchAnnotationDetail(recordId: String,
                                 finished: @escaping (Bool, NetworkError?) -> Void) {
 
@@ -32,43 +30,42 @@ class ServiceViewModel:serviceResponseAliasProtocol, ObservableObject {
         switch typeServiceSelected {
         case .velib:
             ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( _ result: velibResponseAlias) in
-                self.manageServiceResult(result: result) {
+                                                 urlString: url) { ( result: velibResult) in
+                self.manageResult(result: result) {
                     showError, netWorkError  in
                     finished(showError, netWorkError) } }
-            
         case .trotinette:
             ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( _ result: trotinetteResponseAlias) in
-                self.manageServiceResult(result: result) {
+                                                 urlString: url) { ( result: trotinetteResult) in
+                self.manageResult(result: result) {
                     showError, netWorkError  in
                     finished(showError, netWorkError) } }
         case .sanisette:
             ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( _ result: SanisetteResponseAlias) in
-                self.manageServiceResult(result: result) {
+                                                 urlString: url) { ( result: SanisetteResult) in
+                self.manageResult(result: result) {
                     showError, netWorkError  in
                     finished(showError, netWorkError) } }
         case .fontaine:
             ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( _ result: fontaineResponseAlias) in
-                self.manageServiceResult(result: result) {
+                                                 urlString: url) { ( result: fontaineResult) in
+                self.manageResult(result: result) {
                     showError, netWorkError  in
                     finished(showError, netWorkError) } }
         case .triMobile:
             ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( _ result: triMobileResponseAlias) in
-                self.manageServiceResult(result: result) {
+                                                 urlString: url) { ( result: triMobileResult) in
+                self.manageResult(result: result) {
                     showError, netWorkError  in
                     finished(showError, netWorkError) } }
         }
     }
     
-    func manageServiceResult<T>(result: Result<T, NetworkError>, completion: @escaping (Bool, NetworkError?) -> Void) {
+    func manageResult<T>(result: Result<T, NetworkError>, completion: @escaping (Bool, NetworkError?) -> Void) {
         DispatchQueue.main.async {
             switch result {
             case .success(let data):
-                if self.createDetail(data: data) {
+                if self.createService(data: data) {
                     completion(false, nil)
                 } else {
                     completion(true, NetworkError.dataNotFound)
@@ -79,7 +76,7 @@ class ServiceViewModel:serviceResponseAliasProtocol, ObservableObject {
         }
     }
     
-    func createDetail<T>(data: T) -> Bool {
+    func createService<T>(data: T) -> Bool {
         var dataFound = true
         if let dataResponse = data as? VelibResponse, let velib = dataResponse.records?.first {
             self.service = velib

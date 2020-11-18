@@ -15,6 +15,7 @@ struct FontaineDetailView: View {
                                noPair: serviceSelected?.fields.noVoiriePair,
                                street: serviceSelected?.fields.voie))
                 .padding(10)
+                .font(.title)
                 .multilineTextAlignment(.center)
             Text("disponible : \(serviceSelected?.fields.dispo ?? "")")
                 .padding(10)

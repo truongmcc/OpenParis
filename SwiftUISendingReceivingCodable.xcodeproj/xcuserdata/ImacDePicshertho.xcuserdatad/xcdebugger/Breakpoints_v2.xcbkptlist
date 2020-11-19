@@ -114,38 +114,6 @@
             endingLineNumber = "54"
             landmarkName = "fetchDetail(of:urlString:completionHandler:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "94EDE404-1B64-402D-B87A-5B5109265EC0 - 4634cb4b722495c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;SwiftUISendingReceivingCodable.TriMobileResponse, SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; () in SwiftUISendingReceivingCodable.TriMobile.fetchDetail(of: SwiftUISendingReceivingCodable.ServicesEnum, urlString: Swift.String, completionHandler: (Swift.Optional&lt;SwiftUISendingReceivingCodable.Service&gt;, Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Model/TriMobileDataModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "94EDE404-1B64-402D-B87A-5B5109265EC0 - 4634cb4b722495c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;SwiftUISendingReceivingCodable.TriMobileResponse, SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; () in SwiftUISendingReceivingCodable.TriMobile.fetchDetail(of: SwiftUISendingReceivingCodable.ServicesEnum, urlString: Swift.String, completionHandler: (Swift.Optional&lt;SwiftUISendingReceivingCodable.Service&gt;, Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Model/TriMobileDataModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "144">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

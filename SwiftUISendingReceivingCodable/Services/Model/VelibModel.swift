@@ -80,7 +80,7 @@ struct Velib: Service, Codable {
     func fetchDetail(of service: ServicesEnum,
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
-        ServiceRepository.shared.fetchDetail(of: service,
+        ServicesWebServices.shared.fetchDetail(of: service,
                                              urlString: urlString) { ( result: Result<VelibResponse, NetworkError>) in
             switch result {
             case .success(let data):

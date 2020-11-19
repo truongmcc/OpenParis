@@ -1,5 +1,5 @@
 //
-//  ServiceRepository.swift
+//  ServicesWebServices.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 02/11/2020.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-class ServiceRepository {
+class ServicesWebServices {
     
-    static let shared = ServiceRepository()
+    static let shared = ServicesWebServices()
     private init() { }
     
     func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
-        WebServiceManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
+        NetworkManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
         }
     }
@@ -22,7 +22,7 @@ class ServiceRepository {
                                  urlString: String,
                                  completion: @escaping (Result<T, NetworkError>) -> Void) {
         
-        WebServiceManager.shared.fetchDataWithTypeResult(url: urlString,
+        NetworkManager.shared.fetchDataWithTypeResult(url: urlString,
                                                          decodable: service.type()) { result in
             completion(result)
         }

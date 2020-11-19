@@ -1,5 +1,5 @@
 //
-//  WebServiceManager.swift
+//  NetworkManager.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 23/07/2020.
@@ -34,9 +34,9 @@ enum NetworkError: Error {
     }
 }
 
-class WebServiceManager {
+class NetworkManager {
     
-    static let shared = WebServiceManager()
+    static let shared = NetworkManager()
     private init() { }
     
     func createUrlRequest(url: String) -> URLRequest? {

@@ -10,20 +10,22 @@ struct FontaineResponse: Codable {
 }
 
 struct Fontaine: Service, Codable {
+    var id: String?
     var typeService = ServicesEnum.fontaine
-    var fontaineId: String?
-    var fields: Fields
+    var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
-        case fontaineId = "recordid"
+        case id = "recordid"
         case fields = "fields"
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        fontaineId = try values.decode(String.self, forKey: .fontaineId)
+        id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
+    
+    init() {}
     
     struct Fields: Codable {
         var commune: String?
@@ -51,5 +53,30 @@ struct Fontaine: Service, Codable {
             noVoirieImpair = try? values.decode(String.self, forKey: .noVoirieImpair)
             noVoiriePair = try? values.decode(String.self, forKey: .noVoiriePair)
         }
+    }
+    
+    func fetchDetail(of service: ServicesEnum,
+                     urlString: String,
+                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
+        ServiceRepository.shared.fetchDetail(of: service,
+                                             urlString: urlString) { ( result: Result<FontaineResponse, NetworkError>) in
+            switch result {
+            case .success(let data):
+                if let service = self.createService(data: data) {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkError.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
+        }
+    }
+
+    func createService<T>(data: T) -> Service? {
+        if let dataResponse = data as? FontaineResponse, let service = dataResponse.records?.first {
+            return service
+        }
+        return nil
     }
 }

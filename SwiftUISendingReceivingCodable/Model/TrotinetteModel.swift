@@ -10,18 +10,20 @@ struct TrotinetteResponse: Codable {
 }
 
 struct Trotinette: Service, Codable {
+    var id: String?
     var typeService = ServicesEnum.trotinette
-    var trotinetteId: String?
-    var fields: Fields
+    var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
-        case trotinetteId = "recordid"
+        case id = "recordid"
         case fields = "fields"
     }
     
+    init() {}
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        trotinetteId = try values.decode(String.self, forKey: .trotinetteId)
+        id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
     
@@ -39,6 +41,31 @@ struct Trotinette: Service, Codable {
             adresse = try values.decode(String.self, forKey: .adresse)
             codePostal = try values.decode(String.self, forKey: .codePostal)
         }
+    }
+    
+    func fetchDetail(of service: ServicesEnum,
+                     urlString: String,
+                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
+        ServiceRepository.shared.fetchDetail(of: service,
+                                             urlString: urlString) { ( result: Result<TrotinetteResponse, NetworkError>) in
+            switch result {
+            case .success(let data):
+                if let service = createService(data: data) {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkError.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
+        }
+    }
+    
+    func createService<T>(data: T) -> Service? {
+        if let dataResponse = data as? TrotinetteResponse, let service = dataResponse.records?.first {
+            return service
+        }
+        return nil
     }
 }
 

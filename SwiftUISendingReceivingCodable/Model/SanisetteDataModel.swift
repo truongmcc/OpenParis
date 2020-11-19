@@ -10,18 +10,20 @@ struct SanisetteResponse: Codable {
 }
 
 struct Sanisette: Service, Codable {
+    var id: String?
     var typeService = ServicesEnum.sanisette
-    var sanisetteId: String?
-    var fields: Fields
+    var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
-        case sanisetteId = "recordid"
+        case id = "recordid"
         case fields = "fields"
     }
     
+    init() {}
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        sanisetteId = try values.decode(String.self, forKey: .sanisetteId)
+        id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
     
@@ -45,5 +47,29 @@ struct Sanisette: Service, Codable {
             horaire = try values.decode(String.self, forKey: .horaire)
         }
     }
-
+    
+    func fetchDetail(of service: ServicesEnum,
+                     urlString: String,
+                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
+        ServiceRepository.shared.fetchDetail(of: service,
+                                             urlString: urlString) { ( result: Result<SanisetteResponse, NetworkError>) in
+            switch result {
+            case .success(let data):
+                if let service = createService(data: data) {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkError.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
+        }
+    }
+    
+    func createService<T>(data: T) -> Service? {
+        if let dataResponse = data as? SanisetteResponse, let service = dataResponse.records?.first {
+            return service
+        }
+        return nil
+    }
 }

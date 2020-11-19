@@ -86,7 +86,7 @@ extension ContentView {
     }
     
     fileprivate func showServiceDetail() -> AnyView? {
-        guard let service = serviceViewModel.service else { return nil }
+        guard let service = serviceViewModel.service, service.id != nil else { return nil }
         return AnyView(DetailBaseView(serviceSelected: service))
     }
     

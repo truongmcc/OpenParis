@@ -10,19 +10,21 @@ struct VelibResponse: Codable {
 }
 
 struct Velib: Service, Codable {
+    var id: String?
     var typeService = ServicesEnum.velib
-    
-    var velibId: String?
-    var fields: Fields
+
+    var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
-        case velibId = "recordid"
+        case id = "recordid"
         case fields = "fields"
     }
     
+    init() {}
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        velibId = try values.decode(String.self, forKey: .velibId)
+        id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
     
@@ -74,6 +76,32 @@ struct Velib: Service, Codable {
             dueDate = try? values.decode(String.self, forKey: .dueDate)
         }
     }
+    
+    func fetchDetail(of service: ServicesEnum,
+                     urlString: String,
+                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
+        ServiceRepository.shared.fetchDetail(of: service,
+                                             urlString: urlString) { ( result: Result<VelibResponse, NetworkError>) in
+            switch result {
+            case .success(let data):
+                if let service = self.createService(data: data) {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkError.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
+        }
+    }
+
+    func createService<T>(data: T) -> Service? {
+        if let dataResponse = data as? VelibResponse, let service = dataResponse.records?.first {
+            return service
+        }
+        return nil
+    }
+    
 }
 
 

@@ -95,7 +95,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
-            endingLineNumber = "72">
+            endingLineNumber = "72"
+            landmarkName = "createService(data:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -109,7 +111,89 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
-            endingLineNumber = "54">
+            endingLineNumber = "54"
+            landmarkName = "fetchDetail(of:urlString:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "94EDE404-1B64-402D-B87A-5B5109265EC0 - 4634cb4b722495c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;SwiftUISendingReceivingCodable.TriMobileResponse, SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; () in SwiftUISendingReceivingCodable.TriMobile.fetchDetail(of: SwiftUISendingReceivingCodable.ServicesEnum, urlString: Swift.String, completionHandler: (Swift.Optional&lt;SwiftUISendingReceivingCodable.Service&gt;, Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Model/TriMobileDataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "94EDE404-1B64-402D-B87A-5B5109265EC0 - 4634cb4b722495c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;SwiftUISendingReceivingCodable.TriMobileResponse, SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; () in SwiftUISendingReceivingCodable.TriMobile.fetchDetail(of: SwiftUISendingReceivingCodable.ServicesEnum, urlString: Swift.String, completionHandler: (Swift.Optional&lt;SwiftUISendingReceivingCodable.Service&gt;, Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Model/TriMobileDataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "35BC6A40-AF48-47BE-826C-2A1A8FAAD825"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUISendingReceivingCodable/Model/FontaineDataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "fetchDetail(of:urlString:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F450A70-25C5-4C20-9981-26BFCEB24B87"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUISendingReceivingCodable/Views/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "showServiceDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A245C3F-5E69-4EF4-9E76-AC3AB3416D78"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUISendingReceivingCodable/Model/TrotinetteModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "fetchDetail(of:urlString:completionHandler:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

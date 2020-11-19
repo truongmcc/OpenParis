@@ -77,4 +77,19 @@ enum ServicesEnum: Int {
         }
     }
     
+    func create() -> Service {
+        switch self {
+        case .velib:
+            return Velib()
+        case .trotinette:
+            return Trotinette()
+        case .sanisette:
+            return Sanisette()
+        case .fontaine:
+            return Fontaine()
+        case .triMobile:
+            return TriMobile()
+        }
+    }
+    
 }

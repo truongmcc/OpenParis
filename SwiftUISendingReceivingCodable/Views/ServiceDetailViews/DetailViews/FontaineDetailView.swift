@@ -11,16 +11,16 @@ struct FontaineDetailView: View {
     @State var serviceSelected: Fontaine?
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text(createAdress(noImpair: serviceSelected?.fields.noVoirieImpair,
-                               noPair: serviceSelected?.fields.noVoiriePair,
-                               street: serviceSelected?.fields.voie))
+            Text(createAdress(noImpair: serviceSelected?.fields?.noVoirieImpair,
+                               noPair: serviceSelected?.fields?.noVoiriePair,
+                               street: serviceSelected?.fields?.voie))
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text("disponible : \(serviceSelected?.fields.dispo ?? "")")
+            Text("disponible : \(serviceSelected?.fields?.dispo ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
-            Text("type : \(serviceSelected?.fields.typeObjet ?? "")")
+            Text("type : \(serviceSelected?.fields?.typeObjet ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
         }

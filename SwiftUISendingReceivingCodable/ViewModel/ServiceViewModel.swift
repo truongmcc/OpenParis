@@ -8,15 +8,22 @@
 import SwiftUI
 
 protocol Service {
-    var typeService: ServicesEnum { get set }
-}
-
-protocol serviceResponseAliasProtocol {
+    
     typealias velibResult = Result<VelibResponse, NetworkError>
     typealias trotinetteResult = Result<TrotinetteResponse, NetworkError>
     typealias SanisetteResult = Result<SanisetteResponse, NetworkError>
     typealias fontaineResult = Result<FontaineResponse, NetworkError>
     typealias triMobileResult = Result<TriMobileResponse, NetworkError>
+    
+    var id: String? { get set }
+    var typeService: ServicesEnum { get set }
+    func fetchDetail(of service: ServicesEnum,
+                     urlString: String,
+                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void)
+}
+
+protocol serviceResponseAliasProtocol {
+
 }
 
 class ServiceViewModel:serviceResponseAliasProtocol, ObservableObject {
@@ -27,70 +34,13 @@ class ServiceViewModel:serviceResponseAliasProtocol, ObservableObject {
                                 finished: @escaping (Bool, NetworkError?) -> Void) {
 
         let url = typeServiceSelected.annotationUrl() + recordId
-        switch typeServiceSelected {
-        case .velib:
-            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( result: velibResult) in
-                self.manageResult(result: result) {
-                    showError, netWorkError  in
-                    finished(showError, netWorkError) } }
-        case .trotinette:
-            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( result: trotinetteResult) in
-                self.manageResult(result: result) {
-                    showError, netWorkError  in
-                    finished(showError, netWorkError) } }
-        case .sanisette:
-            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( result: SanisetteResult) in
-                self.manageResult(result: result) {
-                    showError, netWorkError  in
-                    finished(showError, netWorkError) } }
-        case .fontaine:
-            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( result: fontaineResult) in
-                self.manageResult(result: result) {
-                    showError, netWorkError  in
-                    finished(showError, netWorkError) } }
-        case .triMobile:
-            ServiceRepository.shared.fetchDetail(of: typeServiceSelected,
-                                                 urlString: url) { ( result: triMobileResult) in
-                self.manageResult(result: result) {
-                    showError, netWorkError  in
-                    finished(showError, netWorkError) } }
-        }
-    }
-    
-    func manageResult<T>(result: Result<T, NetworkError>, completion: @escaping (Bool, NetworkError?) -> Void) {
-        DispatchQueue.main.async {
-            switch result {
-            case .success(let data):
-                if self.createService(data: data) {
-                    completion(false, nil)
-                } else {
-                    completion(true, NetworkError.dataNotFound)
-                }
-            case .failure(let error):
-                completion(true, error)
+        
+        service = typeServiceSelected.create()
+        service?.fetchDetail(of: typeServiceSelected, urlString: url) { service, showError, networkError in
+            DispatchQueue.main.async {
+                self.service = service
+                finished(showError, networkError)
             }
         }
-    }
-    
-    func createService<T>(data: T) -> Bool {
-        var dataFound = true
-        if let dataResponse = data as? VelibResponse, let velib = dataResponse.records?.first {
-            self.service = velib
-        } else if let dataResponse = data as? TrotinetteResponse, let trotinette = dataResponse.records?.first {
-            self.service = trotinette
-        } else if let dataResponse = data as? SanisetteResponse, let sanisette = dataResponse.records?.first {
-            self.service = sanisette
-        } else if let dataResponse = data as? FontaineResponse, let fontaine = dataResponse.records?.first {
-            self.service = fontaine
-        } else if let dataResponse = data as? TriMobileResponse, let triMobile = dataResponse.records?.first {
-            self.service = triMobile
-        } else {
-            dataFound = false
-        }
-        return dataFound
     }
 }

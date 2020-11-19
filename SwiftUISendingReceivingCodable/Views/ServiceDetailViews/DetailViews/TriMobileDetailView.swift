@@ -11,11 +11,11 @@ struct TriMobileDetailView: View {
     @State var serviceSelected: TriMobile?
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text(serviceSelected?.fields.adresse ?? "")
+            Text(serviceSelected?.fields?.adresse ?? "")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text(serviceSelected?.fields.joursDeTenue ?? "")
+            Text(serviceSelected?.fields?.joursDeTenue ?? "")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)

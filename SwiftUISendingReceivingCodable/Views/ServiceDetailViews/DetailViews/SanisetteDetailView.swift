@@ -11,14 +11,14 @@ struct SanisetteDetailView: View {
     @State var serviceSelected: Sanisette?
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text(serviceSelected?.fields.adresse ?? "")
+            Text(serviceSelected?.fields?.adresse ?? "")
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text("Horaire : \(serviceSelected?.fields.horaire ?? "")")
+            Text("Horaire : \(serviceSelected?.fields?.horaire ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
-            Text("Acces PMR : \(serviceSelected?.fields.accesPmr ?? "")")
+            Text("Acces PMR : \(serviceSelected?.fields?.accesPmr ?? "")")
                 .padding(10)
                 .multilineTextAlignment(.center)
         }

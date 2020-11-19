@@ -52,7 +52,7 @@ struct Sanisette: Service, Codable {
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
         ServiceRepository.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: Result<SanisetteResponse, NetworkError>) in
+                                             urlString: urlString) { ( result: SanisetteResult) in
             switch result {
             case .success(let data):
                 if let service = createService(data: data) {

@@ -94,7 +94,7 @@ struct Velib: Service, Codable {
             }
         }
     }
-
+  
     func createService<T>(data: T) -> Service? {
         if let dataResponse = data as? VelibResponse, let service = dataResponse.records?.first {
             return service

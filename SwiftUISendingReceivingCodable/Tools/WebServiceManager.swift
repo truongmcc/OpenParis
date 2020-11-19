@@ -62,7 +62,7 @@ class WebServiceManager {
             }
             do {
                 print(data)
-                let decodedResponse  = try JSONDecoder().decode(T.self, from: data)
+                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
                 completion(.success(decodedResponse))
             } catch {
                 completion(.failure(NetworkError.decodingFailed))

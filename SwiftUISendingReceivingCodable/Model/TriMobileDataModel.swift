@@ -50,7 +50,7 @@ struct TriMobile: Service, Codable {
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
         ServiceRepository.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: Result<TriMobileResponse, NetworkError>) in
+                                             urlString: urlString) { ( result: triMobileResult) in
             switch result {
             case .success(let data):
                 if let service = self.createService(data: data) {

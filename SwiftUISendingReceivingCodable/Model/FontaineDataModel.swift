@@ -59,7 +59,7 @@ struct Fontaine: Service, Codable {
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
         ServiceRepository.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: Result<FontaineResponse, NetworkError>) in
+                                             urlString: urlString) { ( result: fontaineResult) in
             switch result {
             case .success(let data):
                 if let service = self.createService(data: data) {

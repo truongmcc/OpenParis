@@ -25,25 +25,28 @@ struct AnnotationDataModel: Codable {
     }
     
     struct FieldsData: Codable {
+        var coordinates: [Double]?
+        
         var coordonneesGeo: [Double]?
         var geo_point_2d: [Double]?
-        var coordinates: [Double]?
         var xy: [Double]?
+        var geom_x_y: [Double]?
 
-        enum CodingKeys: String, CodingKey {
+        // CaseIterable crée un tableau d'enum !!!
+        enum CodingKeys: String, CodingKey, CaseIterable {
             case coordonneesGeo = "coordonnees_geo"
             case geo_point_2d = "geo_point_2d"
             case xy = "xy"
+            case geom_x_y = "geom_x_y"
         }
-
+ 
         init( from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            coordinates = try? values.decode([Double].self, forKey: .coordonneesGeo)
-            if coordinates == nil {
-                coordinates = try? values.decode([Double].self, forKey: .geo_point_2d)
-            }
-            if coordinates == nil {
-                coordinates = try? values.decode([Double].self, forKey: .xy)
+            for codingKey in CodingKeys.allCases {
+                if let coords = try? values.decode([Double].self, forKey: codingKey) {
+                    coordinates = coords
+                    break
+                }
             }
         }
     }

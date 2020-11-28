@@ -13,6 +13,7 @@ enum ServicesEnum: Int {
     case sanisette
     case fontaine
     case triMobile
+    case arbreRemarquable
     
     func title() -> String {
         switch self {
@@ -26,6 +27,8 @@ enum ServicesEnum: Int {
             return "Fontaines"
         case .triMobile:
             return "Tri Mobile"
+        case .arbreRemarquable:
+            return "Arbres remarquables"
         }
     }
     
@@ -42,6 +45,8 @@ enum ServicesEnum: Int {
                 "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=&rows=1000"
         case .triMobile:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=&rows=1000"
+        case .arbreRemarquable:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=&rows=1000"
         }
     }
     
@@ -59,6 +64,8 @@ enum ServicesEnum: Int {
         case .triMobile:
             return
                 "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=recordid%3D"
+        case .arbreRemarquable:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=recordid%3D"
         }
     }
     
@@ -74,6 +81,8 @@ enum ServicesEnum: Int {
             return FontaineResponse.self as! T.Type
         case .triMobile:
             return TriMobileResponse.self as! T.Type
+        case .arbreRemarquable:
+            return ArbreRemarquableResponse.self as! T.Type
         }
     }
     
@@ -89,6 +98,8 @@ enum ServicesEnum: Int {
             return Fontaine()
         case .triMobile:
             return TriMobile()
+        case .arbreRemarquable:
+            return ArbreRemarquable()
         }
     }
     

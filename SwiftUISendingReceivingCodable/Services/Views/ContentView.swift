@@ -52,6 +52,8 @@ struct ContentView: View {
             loadMap()
         }
     }
+    
+    
 }
 
 extension ContentView {

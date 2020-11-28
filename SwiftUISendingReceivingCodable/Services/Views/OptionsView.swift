@@ -58,6 +58,7 @@ struct OptionsView: View {
             Text("Sanisettes").tag(ServicesEnum.sanisette)
             Text("Fontaines").tag(ServicesEnum.fontaine)
             Text("Tri mobile").tag(ServicesEnum.triMobile)
+            Text("Arbres remarquables").tag(ServicesEnum.arbreRemarquable)
         })
         .pickerStyle(DefaultPickerStyle())
         .padding(10)

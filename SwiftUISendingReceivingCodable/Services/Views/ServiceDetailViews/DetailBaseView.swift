@@ -18,10 +18,12 @@ struct DetailBaseView: View {
                 TrotinetteDetailView(serviceSelected: serviceSelected as? Trotinette)
             case .sanisette:
                 SanisetteDetailView(serviceSelected: serviceSelected as? Sanisette)
-            case (.fontaine):
+            case .fontaine:
                 FontaineDetailView(serviceSelected: serviceSelected as? Fontaine)
-            case (.triMobile):
+            case .triMobile:
                 TriMobileDetailView(serviceSelected: serviceSelected as? TriMobile)
+            case .arbreRemarquable:
+                ArbreRemarquableDetailView(serviceSelected: serviceSelected as? ArbreRemarquable)
             case .none:
                 Text("")
             }

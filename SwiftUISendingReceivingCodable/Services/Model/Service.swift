@@ -14,6 +14,7 @@ protocol Service {
     typealias SanisetteResult = Result<SanisetteResponse, NetworkError>
     typealias fontaineResult = Result<FontaineResponse, NetworkError>
     typealias triMobileResult = Result<TriMobileResponse, NetworkError>
+    typealias arbreRemarquableResult = Result<ArbreRemarquableResponse, NetworkError>
     
     var id: String? { get set }
     var typeService: ServicesEnum { get set }

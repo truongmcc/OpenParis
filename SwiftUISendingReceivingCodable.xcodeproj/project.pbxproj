@@ -36,6 +36,8 @@
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
 		EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */; };
 		EBB6AD09256558FE00651C64 /* ServiceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6AD08256558FE00651C64 /* ServiceEnum.swift */; };
+		EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */; };
+		EBCC3F3A2573DE1A003B3DD1 /* WifiHotspotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */; };
 		EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */; };
 		EBE5EBF22552B0E400DF20F0 /* FontaineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */; };
 		EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */; };
@@ -95,6 +97,8 @@
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
 		EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDetailView.swift; sourceTree = "<group>"; };
 		EBB6AD08256558FE00651C64 /* ServiceEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEnum.swift; sourceTree = "<group>"; };
+		EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiHotspot.swift; sourceTree = "<group>"; };
+		EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiHotspotDetailView.swift; sourceTree = "<group>"; };
 		EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontaineDataModel.swift; sourceTree = "<group>"; };
 		EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontaineDetailView.swift; sourceTree = "<group>"; };
 		EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDataModel.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */,
 				EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */,
 				EB1B71592572852200DFB05A /* ArbreRemarquable.swift */,
+				EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */,
 				EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */,
 				EB1B715E25728A0400DFB05A /* ArbreRemarquableDetailView.swift */,
+				EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */,
 			);
 			path = DetailViews;
 			sourceTree = "<group>";
@@ -449,8 +455,10 @@
 				EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */,
 				EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */,
 				EB3C1DFB24E7CB520013ED0E /* Annotation.swift in Sources */,
+				EBCC3F3A2573DE1A003B3DD1 /* WifiHotspotDetailView.swift in Sources */,
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* AnnotationDataModel.swift in Sources */,
+				EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */,
 				EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */,
 				EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */,
 				EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */,

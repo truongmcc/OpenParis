@@ -13,7 +13,7 @@ class ServicesWebServices {
     private init() { }
     
     func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
-        NetworkManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsUrl(), decodable: ResponseAnnotationDatas.self) { result in
+        NetworkManager.shared.fetchDataWithTypeResult(url: service.allAnnotationsEndpoint(), decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
         }
     }

@@ -14,6 +14,7 @@ enum ServicesEnum: Int {
     case fontaine
     case triMobile
     case arbreRemarquable
+    case wifiHotspot
     
     func title() -> String {
         switch self {
@@ -29,10 +30,12 @@ enum ServicesEnum: Int {
             return "Tri Mobile"
         case .arbreRemarquable:
             return "Arbres remarquables"
+        case .wifiHotspot:
+            return "Hotspots Wifi"
         }
     }
     
-    func allAnnotationsUrl() -> String {
+    func allAnnotationsEndpoint() -> String {
         switch self {
         case .velib:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000"
@@ -47,10 +50,12 @@ enum ServicesEnum: Int {
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=&rows=1000"
         case .arbreRemarquable:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=&rows=1000"
+        case .wifiHotspot:
+            return "https://parisdata.opendatasoft.com/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&q=&rows=1000"
         }
     }
     
-    func annotationUrl() -> String {
+    func annotationEndpoint() -> String {
         switch self {
         case .velib:
             return
@@ -66,6 +71,8 @@ enum ServicesEnum: Int {
                 "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=recordid%3D"
         case .arbreRemarquable:
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=recordid%3D"
+        case .wifiHotspot:
+            return "https://parisdata.opendatasoft.com/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&q=recordid%3D"
         }
     }
     
@@ -83,6 +90,8 @@ enum ServicesEnum: Int {
             return TriMobileResponse.self as! T.Type
         case .arbreRemarquable:
             return ArbreRemarquableResponse.self as! T.Type
+        case .wifiHotspot:
+            return WifiHotspotResponse.self as! T.Type
         }
     }
     
@@ -100,6 +109,8 @@ enum ServicesEnum: Int {
             return TriMobile()
         case .arbreRemarquable:
             return ArbreRemarquable()
+        case .wifiHotspot:
+            return WifiHotspot()
         }
     }
     

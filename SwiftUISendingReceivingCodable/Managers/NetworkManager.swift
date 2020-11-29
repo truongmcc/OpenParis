@@ -72,8 +72,8 @@ class NetworkManager {
     }
     
 //     Generic without result type version
-//    static func fetchData<T: Codable>(allAnnotationsUrl: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
-//        guard let urlRequest = createUrlRequest(annotationUrl: url) else {
+//    static func fetchData<T: Codable>(allAnnotationsEndpoint: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+//        guard let urlRequest = createUrlRequest(annotationEndpoint: url) else {
 //            return
 //        }
 //

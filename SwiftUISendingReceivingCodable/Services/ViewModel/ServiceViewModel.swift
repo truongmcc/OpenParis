@@ -14,7 +14,7 @@ class ServiceViewModel: ObservableObject {
     func fetchAnnotationDetail(recordId: String,
                                 finished: @escaping (Bool, NetworkError?) -> Void) {
 
-        let url = typeServiceSelected.annotationUrl() + recordId
+        let url = typeServiceSelected.annotationEndpoint() + recordId
         
         service = typeServiceSelected.create()
         service?.fetchDetail(of: typeServiceSelected, urlString: url) { service, showError, networkError in

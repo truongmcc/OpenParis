@@ -22,10 +22,10 @@ struct ArbreRemarquableDetailView: View {
             createDetailText(title: "Pépinière", value: serviceSelected?.fields?.espece ?? "")
             createDetailText(title: "Genre", value: serviceSelected?.fields?.genre ?? "")
             if let circ = serviceSelected?.fields?.circonferenceencm {
-                createDetailText(title: "Circ.", value: String(circ))
+                createDetailText(title: "Circonf. (cm)", value: String(circ))
             }
             if let taille = serviceSelected?.fields?.hauteurenm, taille != 0.0 {
-                createDetailText(title: "Taille", value: String(taille))
+                createDetailText(title: "Taille (mètres)", value: String(taille))
             }
             if let formattedDate = serviceSelected?.fields?.dateplantation?.formatDateDMY(date: serviceSelected?.fields?.dateplantation ?? "Date Inconnue"), formattedDate != "01-01-1700" {
                 createDetailText(title: "Plantation", value: String(formattedDate))
@@ -34,7 +34,7 @@ struct ArbreRemarquableDetailView: View {
     }
     
     fileprivate func createDetailText(title: String, value: String) -> some View {
-            return Text(title + " : \(value)")
+        return Text(title + " : \(value.lowercased())")
                 .padding(10)
                 .multilineTextAlignment(.leading)
     }

@@ -24,6 +24,8 @@ struct DetailBaseView: View {
                 TriMobileDetailView(serviceSelected: serviceSelected as? TriMobile)
             case .arbreRemarquable:
                 ArbreRemarquableDetailView(serviceSelected: serviceSelected as? ArbreRemarquable)
+            case .wifiHotspot:
+                WifiHotspotDetailView(serviceSelected: serviceSelected as? WifiHotspot)
             case .none:
                 Text("")
             }

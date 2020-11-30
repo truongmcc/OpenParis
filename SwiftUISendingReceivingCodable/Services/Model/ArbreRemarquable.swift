@@ -9,7 +9,7 @@ struct ArbreRemarquableResponse: Codable {
     var records: [ArbreRemarquable]?
 }
      
-struct ArbreRemarquable: Service, Codable {
+struct ArbreRemarquable: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.arbreRemarquable
     var fields: Fields?

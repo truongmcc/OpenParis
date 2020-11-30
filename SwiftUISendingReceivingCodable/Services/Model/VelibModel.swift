@@ -9,7 +9,7 @@ struct VelibResponse: Codable {
     var records: [Velib]?
 }
 
-struct Velib: Service, Codable {
+struct Velib: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.velib
 
@@ -24,7 +24,7 @@ struct Velib: Service, Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(String.self, forKey: .id)
+        //id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
     

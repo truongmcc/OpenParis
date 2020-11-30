@@ -9,7 +9,7 @@ struct TriMobileResponse: Codable {
     var records: [TriMobile]?
 }
 
-struct TriMobile: Service, Codable {
+struct TriMobile: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.triMobile
     var fields: Fields?

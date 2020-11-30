@@ -2,9 +2,10 @@
 detecter les velibs aux alentours (200 mètres)
 webservices with combine 
 customiser les annotationsViews
-refacto service fetch methods
-sortir le decoding data de webservicemanager pour virer les switch de chaque type de service !!!
 
+ajout de services (arbres, wifi) done
+refacto service fetch methods done
+refactoring customTextView et titleTextView done
 creer un DetailViewBase à la place du switch (ViewBuilder done)
 creer un service view model done
 ajouter un titre pour afficher le service appliqué done

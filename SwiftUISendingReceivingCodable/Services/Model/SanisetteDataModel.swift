@@ -9,7 +9,7 @@ struct SanisetteResponse: Codable {
     var records: [Sanisette]?
 }
 
-struct Sanisette: Service, Codable {
+struct Sanisette: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.sanisette
     var fields: Fields?

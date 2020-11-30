@@ -9,7 +9,7 @@ struct WifiHotspotResponse: Codable {
     var records: [WifiHotspot]?
 }
 
-struct WifiHotspot: Service, Codable {
+struct WifiHotspot: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.wifiHotspot
 

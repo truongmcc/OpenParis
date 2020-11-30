@@ -15,16 +15,10 @@ struct WifiHotspotDetailView: View {
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
-                Text("Adresse : ")
-                Text(serviceSelected?.fields?.arcAdresse ?? "" + (serviceSelected?.fields?.cp ?? ""))
-            }
-            Text("Nombre de bornes : \(serviceSelected?.fields?.nbBorneWifi ?? 0)")
-            Text("Id/Password : \(serviceSelected?.fields?.idpw ?? "Inconnu")")
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
-                Text("Etat : ")
-                Text(serviceSelected?.fields?.etat2 ?? "Inconnu")
-            }
+            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.arcAdresse ?? "" + (serviceSelected?.fields?.cp ?? ""))
+            CustomTextView(title: "Nombre de bornes  : ", value: "\(serviceSelected?.fields?.nbBorneWifi ?? 0)")
+            CustomTextView(title: "Id/Password  : ", value: serviceSelected?.fields?.idpw ?? "Inconnu")
+            CustomTextView(title: "Etat  : ", value: serviceSelected?.fields?.etat2 ?? "Inconnu")
         }
     }
 }

@@ -15,12 +15,8 @@ struct SanisetteDetailView: View {
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text("Horaire : \(serviceSelected?.fields?.horaire ?? "")")
-                .padding(10)
-                .multilineTextAlignment(.center)
-            Text("Acces PMR : \(serviceSelected?.fields?.accesPmr ?? "")")
-                .padding(10)
-                .multilineTextAlignment(.center)
+            CustomTextView(title: "Horaire : ", value: serviceSelected?.fields?.horaire ?? "")
+            CustomTextView(title: "Acces PMR : ", value: serviceSelected?.fields?.accesPmr ?? "")
         }
     }
 }

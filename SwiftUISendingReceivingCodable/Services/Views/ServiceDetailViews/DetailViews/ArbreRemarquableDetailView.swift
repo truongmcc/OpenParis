@@ -18,25 +18,21 @@ struct ArbreRemarquableDetailView: View {
                 .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            createDetailText(title: "Adresse", value: serviceSelected?.fields?.adresse ?? "")
-            createDetailText(title: "Pépinière", value: serviceSelected?.fields?.espece ?? "")
-            createDetailText(title: "Genre", value: serviceSelected?.fields?.genre ?? "")
+            
+            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.adresse ?? "")
+            CustomTextView(title: "Pépinière : ", value: serviceSelected?.fields?.espece ?? "")
+            CustomTextView(title: "Genre : ", value: serviceSelected?.fields?.genre ?? "")
+
             if let circ = serviceSelected?.fields?.circonferenceencm {
-                createDetailText(title: "Circonf. (cm)", value: String(circ))
+                CustomTextView(title: "Circonf. (cm) : ", value: String(Int(circ)))
             }
-            if let taille = serviceSelected?.fields?.hauteurenm, taille != 0.0 {
-                createDetailText(title: "Taille (mètres)", value: String(taille))
+            if let taille = serviceSelected?.fields?.hauteurenm, taille != 0 {
+                CustomTextView(title: "Taille (mètres) : ", value: String(Int(taille)))
             }
-            if let formattedDate = serviceSelected?.fields?.dateplantation?.formatDateDMY(date: serviceSelected?.fields?.dateplantation ?? "Date Inconnue"), formattedDate != "01-01-1700" {
-                createDetailText(title: "Plantation", value: String(formattedDate))
+            if let formattedDate = serviceSelected?.fields?.dateplantation?.formatDateDMY(date: serviceSelected?.fields?.dateplantation ?? "Date Inconnue"),formattedDate != "01-01-1700" {
+                CustomTextView(title: "Plantation : ", value: String(formattedDate))
             }
         }
-    }
-    
-    fileprivate func createDetailText(title: String, value: String) -> some View {
-        return Text(title + " : \(value.lowercased())")
-                .padding(10)
-                .multilineTextAlignment(.leading)
     }
 }
 

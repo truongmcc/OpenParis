@@ -14,15 +14,10 @@ struct FontaineDetailView: View {
             Text(createAdress(noImpair: serviceSelected?.fields?.noVoirieImpair,
                                noPair: serviceSelected?.fields?.noVoiriePair,
                                street: serviceSelected?.fields?.voie))
-                .padding(10)
                 .font(.title)
                 .multilineTextAlignment(.center)
-            Text("disponible : \(serviceSelected?.fields?.dispo ?? "")")
-                .padding(10)
-                .multilineTextAlignment(.center)
-            Text("type : \(serviceSelected?.fields?.typeObjet ?? "")")
-                .padding(10)
-                .multilineTextAlignment(.center)
+            CustomTextView(title: "disponible : ", value: serviceSelected?.fields?.dispo ?? "")
+            CustomTextView(title: "type : ", value: serviceSelected?.fields?.typeObjet ?? "")
         }
     }
     

@@ -24,7 +24,7 @@ struct Velib: Service, Codable, Identifiable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        //id = try values.decode(String.self, forKey: .id)
+        id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ServicesEnum: Int {
+enum ServicesEnum {
     case velib
     case trotinette
     case sanisette

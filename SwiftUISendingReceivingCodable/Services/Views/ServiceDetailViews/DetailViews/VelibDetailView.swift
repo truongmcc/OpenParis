@@ -12,10 +12,7 @@ struct VelibDetailView: View {
 
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10) {
-            Text(serviceSelected?.fields?.name ?? "nom non trouvé")
-                .padding(10)
-                .font(.title)
-                .multilineTextAlignment(.center)
+            TitleTextView(title: serviceSelected?.fields?.name ?? "nom non trouvé")
             CustomTextView(title: "Bornes disponibles : ", value: "\(serviceSelected?.fields?.numDockAvailable ?? 0)")
             CustomTextView(title: "Velibs disponibles : ", value: "\(serviceSelected?.fields?.numDockAvailable ?? 0)")
             CustomTextView(title: "Ebikes : ", value: "\(serviceSelected?.fields?.eBike ?? 0)")

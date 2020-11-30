@@ -39,6 +39,7 @@
 		EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */; };
 		EBCC3F3A2573DE1A003B3DD1 /* WifiHotspotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */; };
 		EBCCFA6925750A4C00D18AAE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCCFA6825750A4C00D18AAE /* CustomTextView.swift */; };
+		EBCCFA74257514F800D18AAE /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCCFA73257514F800D18AAE /* TitleTextView.swift */; };
 		EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */; };
 		EBE5EBF22552B0E400DF20F0 /* FontaineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */; };
 		EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */; };
@@ -101,6 +102,7 @@
 		EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiHotspot.swift; sourceTree = "<group>"; };
 		EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiHotspotDetailView.swift; sourceTree = "<group>"; };
 		EBCCFA6825750A4C00D18AAE /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		EBCCFA73257514F800D18AAE /* TitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextView.swift; sourceTree = "<group>"; };
 		EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontaineDataModel.swift; sourceTree = "<group>"; };
 		EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontaineDetailView.swift; sourceTree = "<group>"; };
 		EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDataModel.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				EB7C488E255986C700CB5C7F /* DetailBaseView.swift */,
 				EBCCFA6825750A4C00D18AAE /* CustomTextView.swift */,
+				EBCCFA73257514F800D18AAE /* TitleTextView.swift */,
 				EB7C4893255987E700CB5C7F /* DetailViews */,
 			);
 			path = ServiceDetailViews;
@@ -462,6 +465,7 @@
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* AnnotationDataModel.swift in Sources */,
 				EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */,
+				EBCCFA74257514F800D18AAE /* TitleTextView.swift in Sources */,
 				EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */,
 				EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */,
 				EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */,

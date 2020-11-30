@@ -7,18 +7,12 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct ArbreRemarquableDetailView: View {
     @State var serviceSelected: ArbreRemarquable?
 
     var body: some View {
         VStack(alignment: .center) {
-            Text(serviceSelected?.fields?.libellefrancais ?? "")
-                .padding(10)
-                .font(.title)
-                .multilineTextAlignment(.center)
-            
+            TitleTextView(title: serviceSelected?.fields?.libellefrancais ?? "")
             CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.adresse ?? "")
             CustomTextView(title: "Pépinière : ", value: serviceSelected?.fields?.espece ?? "")
             CustomTextView(title: "Genre : ", value: serviceSelected?.fields?.genre ?? "")

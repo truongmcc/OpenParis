@@ -1,8 +1,9 @@
 
-detecter les velibs aux alentours (200 mètres)
+
 webservices with combine 
 customiser les annotationsViews
 
+detecter les velibs aux alentours à partir d'une certaine distance de la localisation de l'utilisateur done
 ajout de services (arbres, wifi) done
 refacto service fetch methods done
 refactoring customTextView et titleTextView done

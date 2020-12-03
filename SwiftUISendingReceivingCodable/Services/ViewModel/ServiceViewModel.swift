@@ -10,6 +10,8 @@ import SwiftUI
 class ServiceViewModel: ObservableObject {
     @Published var service: Service?
     @Published var typeServiceSelected = ServicesEnum.velib
+    @Published var rayOfDistance = 0
+    @Published var userLocation: (x: Double, y: Double)?
  
     func fetchAnnotationDetail(recordId: String,
                                 finished: @escaping (Bool, NetworkError?) -> Void) {

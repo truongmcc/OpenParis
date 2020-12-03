@@ -43,7 +43,9 @@ struct ContentView: View {
         }
         
         .sheet(isPresented: $showOptionsView) {
-            OptionsView(mapType: $mapType, typeService: $serviceViewModel.typeServiceSelected) {
+            OptionsView(mapType: $mapType,
+                        typeService: $serviceViewModel.typeServiceSelected,
+                        rayOfDistance: $serviceViewModel.rayOfDistance) {
                 loadMap()
             }
         }
@@ -52,8 +54,6 @@ struct ContentView: View {
             loadMap()
         }
     }
-    
-    
 }
 
 extension ContentView {
@@ -62,7 +62,7 @@ extension ContentView {
         serviceViewModel.service = nil
         showLoadingView = true
         map?.isUserInteractionEnabled = false
-        mapViewModel.fetchAllAnnotations(of: serviceViewModel.typeServiceSelected)
+        mapViewModel.fetchAllAnnotations(of: serviceViewModel, distance: serviceViewModel.rayOfDistance)
         { result in
             map?.isUserInteractionEnabled = true
             showLoadingView = false

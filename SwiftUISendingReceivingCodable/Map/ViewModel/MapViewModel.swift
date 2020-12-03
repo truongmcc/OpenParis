@@ -23,9 +23,17 @@ class MapViewModel: ObservableObject {
         annotations = annos
     }
     
-    func fetchAllAnnotations(of service: ServicesEnum, completion: @escaping
+//    func fetchAllAnnotations(of service: ServicesEnum, distance: Int, completion: @escaping
+//                                (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+//        ServicesWebServices.shared.fetchAllAnnotations(of: service, distance: distance)
+//        { result in
+//            completion(result)
+//        }
+//    }
+    
+    func fetchAllAnnotations(of service: ServiceViewModel, distance: Int, completion: @escaping
                                 (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
-        ServicesWebServices.shared.fetchAllAnnotations(of: service)
+        ServicesWebServices.shared.fetchAllAnnotations(of: service, distance: distance)
         { result in
             completion(result)
         }

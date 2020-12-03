@@ -12,7 +12,7 @@ struct VelibResponse: Codable {
 struct Velib: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.velib
-
+    
     var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
@@ -38,7 +38,6 @@ struct Velib: Service, Codable, Identifiable {
         var isRenting: String?
         var mechanical: Int?
         var stationCode: String?
-        var coordonneesGeo: [Double]?
         var numDockAvailable: Int?
         var isReturning: String?
         var dueDate: String?
@@ -53,7 +52,6 @@ struct Velib: Service, Codable, Identifiable {
             case isRenting = "is_renting"
             case mechanical = "mechanical"
             case stationCode = "stationcode"
-            case coordonneesGeo = "coordonnees_geo"
             case numDockAvailable = "numdocksavailable"
             case isReturning = "is_returning"
             case dueDate = "duedate"
@@ -70,7 +68,6 @@ struct Velib: Service, Codable, Identifiable {
             isRenting = try? values.decode(String.self, forKey: .isRenting)
             mechanical = try? values.decode(Int.self, forKey: .mechanical)
             stationCode = try? values.decode(String.self, forKey: .stationCode)
-            coordonneesGeo = try? values.decode([Double].self, forKey: .coordonneesGeo)
             numDockAvailable = try? values.decode(Int.self, forKey: .numDockAvailable)
             isReturning = try? values.decode(String.self, forKey: .isReturning)
             dueDate = try? values.decode(String.self, forKey: .dueDate)
@@ -81,7 +78,7 @@ struct Velib: Service, Codable, Identifiable {
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
         ServicesWebServices.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: Result<VelibResponse, NetworkError>) in
+                                               urlString: urlString) { ( result: Result<VelibResponse, NetworkError>) in
             switch result {
             case .success(let data):
                 if let service = self.createService(data: data) {
@@ -94,14 +91,11 @@ struct Velib: Service, Codable, Identifiable {
             }
         }
     }
-  
+    
     func createService<T>(data: T) -> Service? {
         if let dataResponse = data as? VelibResponse, let service = dataResponse.records?.first {
             return service
         }
         return nil
     }
-    
 }
-
-

@@ -12,18 +12,18 @@ class ServicesWebServices {
     static let shared = ServicesWebServices()
     private init() { }
     
-    func fetchAllAnnotations(of service: ServiceViewModel, distance: Int, completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
-        let url = CreateUrl(service: service)
+    func fetchAllAnnotations(of service: ServiceViewModel, centerCoordinate: (Double, Double), completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+        let url = CreateUrl(service: service, centerCoordinate: centerCoordinate)
         NetworkManager.shared.fetchDataWithTypeResult(url: url, decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
         }
     }
     
-    func CreateUrl(service: ServiceViewModel) -> String {
+    func CreateUrl(service: ServiceViewModel, centerCoordinate: (x: Double, y: Double)) -> String {
         let endPoint = service.typeServiceSelected.allAnnotationsEndpoint()
         var param = ""
-        if let userLocation = service.userLocation, service.rayOfDistance != 0 {
-            param = "&geofilter.distance=\(userLocation.x)%2C\(userLocation.y)%2C\(String(service.rayOfDistance))"
+        if service.rayOfDistance != 10000 {
+            param = "&geofilter.distance=\(centerCoordinate.x)%2C\(centerCoordinate.y)%2C\(String(service.rayOfDistance))"
         }
         return endPoint + param
     }

@@ -12,23 +12,28 @@ struct ContentView: View {
     
     @ObservedObject var mapViewModel = MapViewModel()
     @ObservedObject var serviceViewModel = ServiceViewModel()
-    @State private var map: MKMapView?
     @State private var mapType = MKMapType.standard
     @State private var showOptionsView = false
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
+    var mapView: MapView {
+        return MapView(mapViewModel: mapViewModel,
+                serviceViewModel: serviceViewModel,
+                alertErrorDetected: $showErrorAlert,
+                showLoadingView: $showLoadingView,
+                showErrorAlert: $showErrorAlert)
+    }
     
     var body: some View {
+        
         ZStack {
-            MapView(mapViewModel: mapViewModel,
-                    serviceViewModel: serviceViewModel,
-                    alertErrorDetected: $showErrorAlert,
-                    showLoadingView: $showLoadingView)
-            
+            mapView
+
             addTitle()
             showProgressionView()
             showServiceDetail()
             addButtons()
+           
         }
         .onTapGesture {
             serviceViewModel.service = nil
@@ -37,7 +42,7 @@ struct ContentView: View {
         .alert(isPresented: $showErrorAlert) {
             return AlertManager.shared.createNetworkAlert(completionHandler: { shouldReloadMap in
                 if shouldReloadMap {
-                    loadMap()
+                    mapView.loadMap()
                 }
             })
         }
@@ -46,46 +51,17 @@ struct ContentView: View {
             OptionsView(mapType: $mapType,
                         typeService: $serviceViewModel.typeServiceSelected,
                         rayOfDistance: $serviceViewModel.rayOfDistance) {
-                loadMap()
+                mapView.loadMap()
             }
         }
         
         .onAppear() {
-            loadMap()
+            mapView.loadMap()
         }
     }
 }
 
 extension ContentView {
-    
-    fileprivate func loadMap() {
-        serviceViewModel.service = nil
-        showLoadingView = true
-        map?.isUserInteractionEnabled = false
-        mapViewModel.fetchAllAnnotations(of: serviceViewModel, distance: serviceViewModel.rayOfDistance)
-        { result in
-            map?.isUserInteractionEnabled = true
-            showLoadingView = false
-            manageAnnotationsResults(result: result)
-        }
-        mapViewModel.annotations.removeAll()
-    }
-    
-    fileprivate func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkError>) {
-        switch result {
-        case .success(let data):
-            if let dataResults = data.records {
-                DispatchQueue.main.async {
-                    mapViewModel.createAnnotations(results: dataResults)
-                }
-            }
-        case .failure(let error):
-            DispatchQueue.main.async {
-                AlertManager.shared.netWorkError = error
-                showErrorAlert = true
-            }
-        }
-    }
     
     fileprivate func showServiceDetail() -> AnyView? {
         guard let service = serviceViewModel.service, service.id != nil else { return nil }

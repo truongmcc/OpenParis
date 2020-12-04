@@ -21,4 +21,11 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         print(recordid)
         map.showAnnotationDetail(recordId: recordid)
     }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        map.mapViewModel.centerCordinate = mapView.centerCoordinate
+        if map.serviceViewModel.rayOfDistance <= 500 {
+            map.loadMap()
+        }
+    }
 }

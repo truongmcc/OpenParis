@@ -47,9 +47,10 @@ struct OptionsView: View {
     
     fileprivate func addRayDistancePicker() -> some View {
         return Picker(selection: $rayOfDistance, label: Text("Rayons de recherche")) {
-            Text("Aucune").tag(0)
-            Text("500 M").tag(500)
-            Text("3 KM").tag(3000)
+            
+            Text("100 M").tag(100)
+            Text("500 m").tag(500)
+            Text("5 KM").tag(5000)
             Text("10 KM").tag(10000)
         }
         .pickerStyle(SegmentedPickerStyle())

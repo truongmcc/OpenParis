@@ -17,6 +17,7 @@ struct MapView: UIViewRepresentable {
     
     @Binding var alertErrorDetected: Bool
     @Binding var showLoadingView: Bool
+    @Binding var showErrorAlert: Bool
     
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
@@ -82,6 +83,33 @@ extension MapView {
             alertErrorDetected = showError
             if let error = networkError {
                 AlertManager.shared.netWorkError = error
+            }
+        }
+    }
+    
+    func loadMap() {
+        serviceViewModel.service = nil
+        showLoadingView = true
+        mapViewModel.fetchAllAnnotations(of: serviceViewModel, distance: serviceViewModel.rayOfDistance)
+        { result in
+            showLoadingView = false
+            manageAnnotationsResults(result: result)
+        }
+        mapViewModel.annotations.removeAll()
+    }
+    
+    func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkError>) {
+        switch result {
+        case .success(let data):
+            if let dataResults = data.records {
+                DispatchQueue.main.async {
+                    mapViewModel.createAnnotations(results: dataResults)
+                }
+            }
+        case .failure(let error):
+            DispatchQueue.main.async {
+                AlertManager.shared.netWorkError = error
+                showErrorAlert = true
             }
         }
     }

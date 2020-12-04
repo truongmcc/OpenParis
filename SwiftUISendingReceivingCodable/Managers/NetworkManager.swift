@@ -53,8 +53,6 @@ class NetworkManager {
             completion(.failure(NetworkError.badURL))
             return
         }
-        print(url)
-
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
                 completion(.failure(NetworkError.requestFailed))

@@ -5,6 +5,7 @@ customiser les annotationsViews
 ajout colonnes de verre
 utiliser userDefault avec wrapper properties pour les préférences
 
+utiliser propertyWrapper pour les string capitalized done
 gestion du showError et alertErrorDetected done
 amélioration détail tri mobile done
 fix bug refreshAnnotations done

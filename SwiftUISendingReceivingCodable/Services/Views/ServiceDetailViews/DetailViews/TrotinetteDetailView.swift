@@ -11,7 +11,7 @@ struct TrotinetteDetailView: View {
     @State var serviceSelected: Trotinette?
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            CustomTextView(title: serviceSelected?.fields?.adresse?.lowercased() ?? "", value: " \(serviceSelected?.fields?.codePostal ?? "")")
+            CustomTextView(title: serviceSelected?.fields?.adresse?.lowercased(), value: serviceSelected?.fields?.codePostal)
         }
     }
 }

@@ -12,7 +12,7 @@ struct WifiHotspotDetailView: View {
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10) {
             TitleTextView(title: serviceSelected?.fields?.nomSite ?? "nom non trouvé")
-            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.arcAdresse ?? "" + (serviceSelected?.fields?.cp ?? ""))
+            CustomTextView(title: "\(serviceSelected?.fields?.arcAdresse ?? "") ", value: serviceSelected?.fields?.cp)
             CustomTextView(title: "Nombre de bornes  : ", value: "\(serviceSelected?.fields?.nbBorneWifi ?? 0)")
             CustomTextView(title: "Id/Password  : ", value: serviceSelected?.fields?.idpw ?? "Inconnu")
             CustomTextView(title: "Etat  : ", value: serviceSelected?.fields?.etat2 ?? "Inconnu")

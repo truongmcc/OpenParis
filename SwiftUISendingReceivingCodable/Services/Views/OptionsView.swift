@@ -25,13 +25,14 @@ struct OptionsView: View {
                     .padding()
             }
             
+            Text("Affichage")
+            addTypeMapPicker()
+            
             addTypeService()
+            
             Text("Rayon de recherche")
             addRayDistancePicker()
             
-            Spacer()
-            Text("Affichage")
-            addTypeMapPicker()
             Spacer()
             
             Button("OK", action: {
@@ -49,7 +50,6 @@ struct OptionsView: View {
     
     fileprivate func addRayDistancePicker() -> some View {
         return Picker(selection: $rayOfDistance, label: Text("Rayons de recherche")) {
-            
             Text("100 M").tag(100)
             Text("500 m").tag(500)
             Text("5 KM").tag(5000)

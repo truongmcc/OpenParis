@@ -14,8 +14,9 @@ struct FontaineDetailView: View {
             TitleTextView(title: createAdress(noImpair: serviceSelected?.fields?.noVoirieImpair,
                                               noPair: serviceSelected?.fields?.noVoiriePair,
                                               street: serviceSelected?.fields?.voie))
-            CustomTextView(title: "disponible : ", value: serviceSelected?.fields?.dispo ?? "")
-            CustomTextView(title: "type : ", value: serviceSelected?.fields?.typeObjet ?? "")
+            let type = serviceSelected?.fields?.typeObjet?.split(separator: "_").last
+            CustomTextView(title: "type : ", value: String(type ?? "Non renseigné"))
+            CustomTextView(title: "disponible : ", value: serviceSelected?.fields?.dispo)
         }
     }
     

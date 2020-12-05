@@ -7,9 +7,20 @@
 
 import SwiftUI
 
+@propertyWrapper struct capitalizedString {
+    var wrappedValue: String? {
+        didSet {
+            wrappedValue = wrappedValue?.capitalized
+        }
+    }
+    init(wrappedValue: String?) {
+        self.wrappedValue = wrappedValue?.capitalized
+    }
+}
+
 struct CustomTextView: View {
-    var title: String?
-    var value: String?
+    @capitalizedString var title: String?
+    @capitalizedString var value: String?
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             if let title = self.title {

@@ -12,10 +12,10 @@ struct ArbreRemarquableDetailView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            TitleTextView(title: serviceSelected?.fields?.libellefrancais ?? "")
-            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.adresse ?? "")
-            CustomTextView(title: "Pépinière : ", value: serviceSelected?.fields?.espece ?? "")
-            CustomTextView(title: "Genre : ", value: serviceSelected?.fields?.genre ?? "")
+            TitleTextView(title: serviceSelected?.fields?.libellefrancais)
+            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.adresse)
+            CustomTextView(title: "Pépinière : ", value: serviceSelected?.fields?.espece)
+            CustomTextView(title: "Genre : ", value: serviceSelected?.fields?.genre)
 
             if let circ = serviceSelected?.fields?.circonferenceencm {
                 CustomTextView(title: "Circonf. (cm) : ", value: String(Int(circ)))

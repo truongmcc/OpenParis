@@ -16,7 +16,7 @@ struct OptionsView: View {
     @Binding var rayOfDistance: Int
     
     var onDismiss: () -> Void
-
+    
     var body: some View {
         VStack() {
             HStack {
@@ -33,15 +33,17 @@ struct OptionsView: View {
             Text("Affichage")
             addTypeMapPicker()
             Spacer()
-
+            
             Button("OK", action: {
-                onDismiss()
                 self.presentationMode.wrappedValue.dismiss()
             })
             .foregroundColor(.white)
             .font(.title)
             .padding()
             
+            .onDisappear() {
+                onDismiss()
+            }
         }
     }
     

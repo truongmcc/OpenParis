@@ -2,8 +2,11 @@
 
 webservices with combine 
 customiser les annotationsViews
-gestion du showError et alertErrorDetected
+ajout colonnes de verre
+utiliser userDefault avec wrapper properties pour les préférences
 
+gestion du showError et alertErrorDetected done
+amélioration détail tri mobile done
 fix bug refreshAnnotations done
 detecter les services aux alentours à partir d'une certaine distance par rapport au centre de la carte done
 ajout de services (arbres, wifi) done

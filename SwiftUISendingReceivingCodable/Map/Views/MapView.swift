@@ -10,12 +10,9 @@ import MapKit
 import CoreLocation
 
 struct MapView: UIViewRepresentable {
-    
+    let locationManager = CLLocationManager()
     @ObservedObject var mapViewModel: MapViewModel
     @ObservedObject var serviceViewModel: ServiceViewModel
-    let locationManager = CLLocationManager()
-    
-    @Binding var alertErrorDetected: Bool
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
     
@@ -79,7 +76,7 @@ extension MapView {
         mapViewModel.refreshAnnotations = false
         serviceViewModel.fetchAnnotationDetail(recordId: recordId) { showError, networkError in
             showLoadingView = false
-            alertErrorDetected = showError
+            showErrorAlert = showError
             if let error = networkError {
                 AlertManager.shared.netWorkError = error
             }

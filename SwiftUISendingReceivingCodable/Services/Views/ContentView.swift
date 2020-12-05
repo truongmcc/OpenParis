@@ -18,27 +18,22 @@ struct ContentView: View {
     @State private var showErrorAlert = false
     var mapView: MapView {
         return MapView(mapViewModel: mapViewModel,
-                serviceViewModel: serviceViewModel,
-                alertErrorDetected: $showErrorAlert,
-                showLoadingView: $showLoadingView,
-                showErrorAlert: $showErrorAlert)
+                       serviceViewModel: serviceViewModel,
+                       showLoadingView: $showLoadingView,
+                       showErrorAlert: $showErrorAlert)
     }
     
     var body: some View {
-        
         ZStack {
             mapView
-
             addTitle()
             showProgressionView()
             showServiceDetail()
             addButtons()
-           
         }
         .onTapGesture {
             serviceViewModel.service = nil
         }
-        
         .alert(isPresented: $showErrorAlert) {
             return AlertManager.shared.createNetworkAlert(completionHandler: { shouldReloadMap in
                 if shouldReloadMap {
@@ -46,15 +41,13 @@ struct ContentView: View {
                 }
             })
         }
-        
         .sheet(isPresented: $showOptionsView) {
             OptionsView(mapType: $mapType,
                         typeService: $serviceViewModel.typeServiceSelected,
-                        rayOfDistance: $serviceViewModel.rayOfDistance) {
+                        rayOfDistance: $serviceViewModel.rayOfDistance, onDismiss: {
                 mapView.loadMap()
-            }
+            })
         }
-        
         .onAppear() {
             mapView.loadMap()
         }

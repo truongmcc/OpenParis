@@ -2,8 +2,10 @@
 
 webservices with combine 
 customiser les annotationsViews
+gestion du showError et alertErrorDetected
 
-detecter les velibs aux alentours à partir d'une certaine distance de la localisation de l'utilisateur done
+fix bug refreshAnnotations done
+detecter les services aux alentours à partir d'une certaine distance par rapport au centre de la carte done
 ajout de services (arbres, wifi) done
 refacto service fetch methods done
 refactoring customTextView et titleTextView done

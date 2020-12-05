@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct CustomTextView: View {
-    var title: String
-    var value: String
+    var title: String?
+    var value: String?
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
-            Text(title)
-                .padding(.vertical, 10)
-            Text(value)
-                .padding(.vertical, 10)
+            if let title = self.title {
+                Text(title)
+            }
+            if let value = self.value {
+                Text(value)
+            }
         }
+        .padding(.vertical, 10)
     }
 }
 

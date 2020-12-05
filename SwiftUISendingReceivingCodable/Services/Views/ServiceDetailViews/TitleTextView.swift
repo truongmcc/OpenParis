@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct TitleTextView: View {
-    var title = "title"
+    var title: String?
     var body: some View {
-        Text(title)
-            .padding(10)
-            .font(.title)
-            .multilineTextAlignment(.center)
+        if let title = self.title {
+            Text(title)
+                .padding(10)
+                .font(.title)
+                .multilineTextAlignment(.center)
+        }
     }
 }
 

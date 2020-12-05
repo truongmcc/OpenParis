@@ -33,6 +33,7 @@ struct MapView: UIViewRepresentable {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations
                 uiView.addAnnotations(annos)
+            mapViewModel.refreshAnnotations = false
             
         }
         if mapViewModel.centerUserLocation {
@@ -62,8 +63,6 @@ struct MapView: UIViewRepresentable {
                 return
             }
             let locValue:CLLocationCoordinate2D = location.coordinate
-            print("CURRENT LOCATION = \(locValue.latitude) \(locValue.longitude)")
-            serviceViewModel.userLocation = (x: locValue.latitude, y: locValue.longitude)
             let coordinate = CLLocationCoordinate2D(
                 latitude: locValue.latitude, longitude: locValue.longitude)
             let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)

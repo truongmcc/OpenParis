@@ -31,11 +31,15 @@ struct TriMobile: Service, Codable, Identifiable {
         var adresse: String?
         var codePostal: Int?
         var joursDeTenue: String?
+        var complementAdresse: String?
+        var horaires: String?
         
         enum CodingKeys: String, CodingKey {
             case adresse = "adresse"
             case codePostal = "code_postal"
             case joursDeTenue = "jours_de_tenue"
+            case complementAdresse = "complement_d_adresse"
+            case horaires = "horaires"
         }
         
         init( from decoder: Decoder) throws {
@@ -43,6 +47,8 @@ struct TriMobile: Service, Codable, Identifiable {
             adresse = try? values.decode(String.self, forKey: .adresse)
             codePostal = try? values.decode(Int.self, forKey: .codePostal)
             joursDeTenue = try? values.decode(String.self, forKey: .joursDeTenue)
+            complementAdresse = try? values.decode(String.self, forKey: .complementAdresse)
+            horaires = try? values.decode(String.self, forKey: .horaires)
         }
     }
     

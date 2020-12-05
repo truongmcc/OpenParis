@@ -11,8 +11,12 @@ struct TriMobileDetailView: View {
     @State var serviceSelected: TriMobile?
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.adresse ?? "")
-            CustomTextView(title: "Jours de tenue : ", value: serviceSelected?.fields?.joursDeTenue ?? "")
+            TitleTextView(title: serviceSelected?.fields?.adresse)
+            if let complementAdresse = serviceSelected?.fields?.complementAdresse {
+                CustomTextView(title: complementAdresse, value: nil)
+            }
+            CustomTextView(title: serviceSelected?.fields?.joursDeTenue, value: nil)
+            CustomTextView(title: serviceSelected?.fields?.horaires, value: nil)
         }
     }
 }

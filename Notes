@@ -1,10 +1,11 @@
 
 
-webservices with combine 
-customiser les annotationsViews
+webservices with combine
 ajout colonnes de verre
 utiliser userDefault avec wrapper properties pour les préférences
 
+ne pas afficher les commerces sur la carte en option
+customiser les annotationsViews avec images des services done
 utiliser propertyWrapper pour les string capitalized done
 gestion du showError et alertErrorDetected done
 amélioration détail tri mobile done

@@ -40,27 +40,12 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
             return nil
         }
         dequeuedView.annotation = annotation
-
-        let image = UIImage(named: "velib")?.withRenderingMode(.alwaysTemplate)
-        dequeuedView.image = image
+        
+        
+        dequeuedView.image = UIImage(named: map.serviceViewModel.typeServiceSelected.rawValue)
+        // récup icones : https://icones8.fr/
+        // change png color : https://.rawValueonlinepngtools.com/change-png-color
         
         return dequeuedView
-    }
-}
-
-extension UIImage {
-
-    func colorized(color : UIColor) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        let context = UIGraphicsGetCurrentContext()
-        context!.setBlendMode(.multiply)
-        draw(in: rect)
-        context!.clip(to: rect, mask: self.cgImage!)
-        context!.setFillColor(color.cgColor)
-        context!.fill(rect)
-        let colorizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return colorizedImage
     }
 }

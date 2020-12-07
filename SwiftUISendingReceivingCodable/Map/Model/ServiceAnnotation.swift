@@ -1,5 +1,5 @@
 //
-//  Annotation.swift
+//  ServiceAnnotation.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 15/08/2020.
@@ -7,7 +7,7 @@
 
 import MapKit
 
-class Annotation: NSObject, MKAnnotation {
+class ServiceAnnotation: NSObject, MKAnnotation {
     let id: String?
     var coordinate: CLLocationCoordinate2D
     
@@ -18,3 +18,4 @@ class Annotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
     }
 }
+

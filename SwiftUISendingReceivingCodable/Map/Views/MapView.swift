@@ -21,6 +21,8 @@ struct MapView: UIViewRepresentable {
         let uiView = MKMapView()
         uiView.delegate = context.coordinator
         goToUserLocation(uiView: uiView)
+        uiView.register(MKAnnotationView.self,
+                        forAnnotationViewWithReuseIdentifier: "ServiceAnnotationView")
         return uiView
     }
     

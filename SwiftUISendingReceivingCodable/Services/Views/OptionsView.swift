@@ -50,8 +50,8 @@ struct OptionsView: View {
     
     fileprivate func addRayDistancePicker() -> some View {
         return Picker(selection: $rayOfDistance, label: Text("Rayons de recherche")) {
-            Text("100 M").tag(100)
-            Text("500 m").tag(500)
+            Text("300 M").tag(300)
+            Text("700 M").tag(700)
             Text("5 KM").tag(5000)
             Text("10 KM").tag(10000)
         }
@@ -86,7 +86,7 @@ struct OptionsView: View {
 struct MenuView_Previews: PreviewProvider {
     @State static var mapType = MKMapType.standard
     @State static var service = ServicesEnum.velib
-    @State static var rayOfDistance = 50
+    @State static var rayOfDistance = 10000
     static var previews: some View {
         OptionsView(mapType: $mapType, typeService: $service, rayOfDistance: $rayOfDistance, onDismiss: {} )
     }

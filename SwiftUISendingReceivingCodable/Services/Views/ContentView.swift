@@ -24,12 +24,14 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack() {
             mapView
-            addTitle()
+            VStack {
+                addTitleBar()
+                addPositionButton()
+            }
             showProgressionView()
             showServiceDetail()
-            addButtons()
         }
         .onTapGesture {
             serviceViewModel.service = nil
@@ -45,8 +47,8 @@ struct ContentView: View {
             OptionsView(mapType: $mapType,
                         typeService: $serviceViewModel.typeServiceSelected,
                         rayOfDistance: $serviceViewModel.rayOfDistance, onDismiss: {
-                mapView.loadMap()
-            })
+                            mapView.loadMap()
+                        })
         }
         .onAppear() {
             mapView.loadMap()
@@ -70,7 +72,19 @@ extension ContentView {
         }
     }
     
-    fileprivate func addButtons() -> some View {
+    fileprivate func addTitleBar() -> some View {
+        return HStack(alignment: .firstTextBaseline) {
+            addTitle()
+            Spacer()
+            Button("Options", action: {
+                showOptionsView.toggle()
+            })
+            .padding(20)
+        }
+        .foregroundColor(Color.primary)
+    }
+    
+    fileprivate func addPositionButton() -> some View {
         return
             GeometryReader { geometryReader in
                 VStack {
@@ -79,11 +93,6 @@ extension ContentView {
                     })
                     .padding(20)
                     .multilineTextAlignment(.trailing)
-                    
-                    Button("Options", action: {
-                        showOptionsView.toggle()
-                    })
-                    .padding(20)
                 }
                 .foregroundColor(Color.primary)
                 .frame(width: geometryReader.size.width, height: geometryReader.size.height, alignment: .bottomTrailing)
@@ -91,13 +100,10 @@ extension ContentView {
     }
     
     fileprivate func addTitle() -> some View {
-        VStack {
             Text(serviceViewModel.typeServiceSelected.title())
                 .foregroundColor(.primary)
                 .font(.title)
                 .padding(20)
-            Spacer()
-        }
     }
 }
 

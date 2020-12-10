@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    
     @ObservedObject var mapViewModel = MapViewModel()
     @ObservedObject var serviceViewModel = ServiceViewModel()
     @State private var mapType = MKMapType.standard

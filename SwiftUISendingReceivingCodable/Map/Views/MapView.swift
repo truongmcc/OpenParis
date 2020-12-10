@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import Foundation
 import CoreLocation
 
 struct MapView: UIViewRepresentable {
@@ -27,13 +28,18 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
+        if let filteredPointsOfInterests = UserDefaults.standard.array(forKey: "selectedInterests") as? [MKPointOfInterestCategory] {
+            uiView.pointOfInterestFilter = MKPointOfInterestFilter(including: filteredPointsOfInterests)
+        } else {
+            uiView.pointOfInterestFilter = MKPointOfInterestFilter.includingAll
+        }
+
         uiView.mapType = mapViewModel.mapType
         if mapViewModel.refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations
-                uiView.addAnnotations(annos)
+            uiView.addAnnotations(annos)
             mapViewModel.refreshAnnotations = false
-            
         }
         if mapViewModel.centerUserLocation {
             goToUserLocation(uiView: uiView)

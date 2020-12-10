@@ -12,8 +12,10 @@
 		EB1B715A2572852200DFB05A /* ArbreRemarquable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B71592572852200DFB05A /* ArbreRemarquable.swift */; };
 		EB1B715F25728A0400DFB05A /* ArbreRemarquableDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B715E25728A0400DFB05A /* ArbreRemarquableDetailView.swift */; };
 		EB1B7164257294B500DFB05A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B7163257294B500DFB05A /* String+Extension.swift */; };
+		EB2C881B257F9517007EBACC /* PointsOfInterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2C881A257F9517007EBACC /* PointsOfInterestsView.swift */; };
 		EB3B0226257D332200C6CDE8 /* ServiceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B0225257D332200C6CDE8 /* ServiceAnnotation.swift */; };
 		EB3C1DFF24E7F7870013ED0E /* AnnotationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C1DFE24E7F7870013ED0E /* AnnotationDataModel.swift */; };
+		EB3D27632582A43900A694D3 /* PointsOfInterestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */; };
 		EB4C5EA725669454001791D4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C5EA625669454001791D4 /* Service.swift */; };
 		EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19225558EA300C3AEF9 /* MapViewModel.swift */; };
 		EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */; };
@@ -69,8 +71,10 @@
 		EB1B71592572852200DFB05A /* ArbreRemarquable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbreRemarquable.swift; sourceTree = "<group>"; };
 		EB1B715E25728A0400DFB05A /* ArbreRemarquableDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbreRemarquableDetailView.swift; sourceTree = "<group>"; };
 		EB1B7163257294B500DFB05A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		EB2C881A257F9517007EBACC /* PointsOfInterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterestsView.swift; sourceTree = "<group>"; };
 		EB3B0225257D332200C6CDE8 /* ServiceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAnnotation.swift; sourceTree = "<group>"; };
 		EB3C1DFE24E7F7870013ED0E /* AnnotationDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationDataModel.swift; sourceTree = "<group>"; };
+		EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterestEnum.swift; sourceTree = "<group>"; };
 		EB4C5EA625669454001791D4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EB55B19225558EA300C3AEF9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
 				EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */,
 				EBADF27A25498496003CD339 /* OptionsView.swift */,
+				EB2C881A257F9517007EBACC /* PointsOfInterestsView.swift */,
+				EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */,
 				EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */,
 				EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */,
+				EB3D27632582A43900A694D3 /* PointsOfInterestEnum.swift in Sources */,
 				EBB5F40D25519D3600A3DEF6 /* VelibDetailView.swift in Sources */,
 				EBCCFA6925750A4C00D18AAE /* CustomTextView.swift in Sources */,
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
@@ -477,6 +484,7 @@
 				EB1B715A2572852200DFB05A /* ArbreRemarquable.swift in Sources */,
 				EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */,
 				EBADF27B25498496003CD339 /* OptionsView.swift in Sources */,
+				EB2C881B257F9517007EBACC /* PointsOfInterestsView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */,
 				EB3B0226257D332200C6CDE8 /* ServiceAnnotation.swift in Sources */,

@@ -18,13 +18,8 @@ struct OptionsView: View {
     var onDismiss: () -> Void
     
     var body: some View {
+        NavigationView {
         VStack() {
-            HStack {
-                Text("OPTIONS")
-                    .font(.title)
-                    .padding()
-            }
-            
             Text("Affichage")
             addTypeMapPicker()
             
@@ -33,7 +28,14 @@ struct OptionsView: View {
             Text("Rayon de recherche")
             addRayDistancePicker()
             
-            Spacer()
+            NavigationLink(destination: PointsOfInterestsView()) {
+                Text("Filtrer les points d'intérêts")
+                    .foregroundColor(.white)
+            }
+            .padding()
+            .background(Color.secondary)
+            .cornerRadius(6.0)
+            
             
             Button("OK", action: {
                 self.presentationMode.wrappedValue.dismiss()
@@ -45,6 +47,9 @@ struct OptionsView: View {
             .onDisappear() {
                 onDismiss()
             }
+        }
+            .navigationTitle("PREFERENCES")
+        
         }
     }
     
@@ -68,7 +73,7 @@ struct OptionsView: View {
         .padding(10)
     }
     
-    fileprivate func addTypeService()  -> some View {
+    fileprivate func addTypeService() -> some View {
         Picker(selection: $typeService, label: Text("Services"), content: {
             Text("Velibs").tag(ServicesEnum.velib)
             Text("Trotinettes").tag(ServicesEnum.trotinette)

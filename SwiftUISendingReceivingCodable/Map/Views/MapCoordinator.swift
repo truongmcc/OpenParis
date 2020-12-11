@@ -24,7 +24,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         map.mapViewModel.centerCordinate = mapView.centerCoordinate
-        if map.serviceViewModel.rayOfDistance <= 700 {
+        if map.userSettings.rayOfDistance <= 700 {
             map.loadMap()
         }
     }
@@ -42,7 +42,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         dequeuedView.annotation = annotation
         
         
-        dequeuedView.image = UIImage(named: map.serviceViewModel.typeServiceSelected.rawValue)
+        dequeuedView.image = UIImage(named: map.userSettings.typeService.rawValue)
         // récup icones : https://icones8.fr/
         // change png color : https://.rawValueonlinepngtools.com/change-png-color
         

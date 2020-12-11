@@ -12,9 +12,6 @@ struct OptionsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var userSettings: UserSettings
-    //@Binding var mapType: MKMapType
-    @Binding var typeService: ServicesEnum
-    @Binding var rayOfDistance: Int
     
     var onDismiss: () -> Void
     
@@ -54,7 +51,7 @@ struct OptionsView: View {
     }
     
     fileprivate func addRayDistancePicker() -> some View {
-        return Picker(selection: $rayOfDistance, label: Text("Rayons de recherche")) {
+        return Picker(selection: $userSettings.rayOfDistance, label: Text("Rayons de recherche")) {
             Text("300 M").tag(300)
             Text("700 M").tag(700)
             Text("5 KM").tag(5000)
@@ -74,7 +71,7 @@ struct OptionsView: View {
     }
     
     fileprivate func addTypeService() -> some View {
-        Picker(selection: $typeService, label: Text("Services"), content: {
+        Picker(selection: $userSettings.typeService, label: Text("Services"), content: {
             Text("Velibs").tag(ServicesEnum.velib)
             Text("Trotinettes").tag(ServicesEnum.trotinette)
             Text("Sanisettes").tag(ServicesEnum.sanisette)
@@ -92,8 +89,7 @@ struct MenuView_Previews: PreviewProvider {
     //@State static var mapType = MKMapType.standard
     static var userSettings = UserSettings()
     @State static var service = ServicesEnum.velib
-    @State static var rayOfDistance = 10000
     static var previews: some View {
-        OptionsView(userSettings: userSettings, typeService: $service, rayOfDistance: $rayOfDistance, onDismiss: {} )
+        OptionsView(userSettings: userSettings, onDismiss: {} )
     }
 }

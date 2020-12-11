@@ -10,7 +10,6 @@ import MapKit
 
 class MapViewModel: ObservableObject {
     @Published var annotations = [ServiceAnnotation]()
-    //@Published var mapType = MKMapType.standard
     @Published var centerUserLocation = false
     @Published var refreshAnnotations = false
     @Published var centerCordinate: CLLocationCoordinate2D?
@@ -24,12 +23,12 @@ class MapViewModel: ObservableObject {
         annotations = annos
     }
     
-    func fetchAllAnnotations(of service: ServiceViewModel, distance: Int, completion: @escaping
+    func fetchAllAnnotations(of userSettings: UserSettings, completion: @escaping
                                 (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
         let center: (x: Double, y: Double)
         center.x = centerCordinate?.latitude ?? 0
         center.y = centerCordinate?.longitude ?? 0
-        ServicesWebServices.shared.fetchAllAnnotations(of: service, centerCoordinate: center)
+        ServicesWebServices.shared.fetchAllAnnotations(of: userSettings, centerCoordinate: center)
         { result in
             completion(result)
         }

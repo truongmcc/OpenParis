@@ -10,13 +10,14 @@ import MapKit
 
 struct ContentView: View {
     @ObservedObject var mapViewModel = MapViewModel()
-    @ObservedObject var serviceViewModel = ServiceViewModel()
     @ObservedObject var userSettings = UserSettings()
-    //@State private var mapType = MKMapType.standard
+    @ObservedObject var serviceViewModel = ServiceViewModel()
+    
     @State private var showOptionsView = false
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
     var mapView: MapView {
+        serviceViewModel.userSettings = userSettings
         return MapView(mapViewModel: mapViewModel,
                        serviceViewModel: serviceViewModel,
                        userSettings: userSettings,
@@ -45,8 +46,8 @@ struct ContentView: View {
             })
         }
         .sheet(isPresented: $showOptionsView) {
-            OptionsView(userSettings: userSettings, typeService: $serviceViewModel.typeServiceSelected,
-                        rayOfDistance: $serviceViewModel.rayOfDistance, onDismiss: {
+            OptionsView(userSettings: userSettings,
+                        onDismiss: {
                             mapView.loadMap()
                         })
         }
@@ -100,7 +101,7 @@ extension ContentView {
     }
     
     fileprivate func addTitle() -> some View {
-            Text(serviceViewModel.typeServiceSelected.title())
+            Text(userSettings.typeService.title())
                 .foregroundColor(.primary)
                 .font(.title)
                 .padding(20)

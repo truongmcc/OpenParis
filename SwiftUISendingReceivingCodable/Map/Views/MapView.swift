@@ -95,7 +95,7 @@ extension MapView {
     func loadMap() {
         serviceViewModel.service = nil
         showLoadingView = true
-        mapViewModel.fetchAllAnnotations(of: serviceViewModel, distance: serviceViewModel.rayOfDistance)
+        mapViewModel.fetchAllAnnotations(of: userSettings)
         { result in
             showLoadingView = false
             manageAnnotationsResults(result: result)

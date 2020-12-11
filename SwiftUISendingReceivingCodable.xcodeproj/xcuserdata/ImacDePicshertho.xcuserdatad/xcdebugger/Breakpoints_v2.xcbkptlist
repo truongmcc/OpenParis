@@ -167,47 +167,122 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "69606D0E-DF6E-475B-ADFB-7E0971519377"
+            uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "PointsOfInterestsView"
+            landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "69606D0E-DF6E-475B-ADFB-7E0971519377 - 64ebe5c530ec0302"
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - 9a431142f9657489"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.body.getter : some"
+                  symbolName = "property wrapper backing initializer of SwiftUISendingReceivingCodable.PointsOfInterestsView.selectedInterests : Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt;"
                   moduleName = "SwiftUISendingReceivingCodable"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "432">
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
-                  uuid = "69606D0E-DF6E-475B-ADFB-7E0971519377 - 5e068e5721a94114"
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - fb9dfd1d6b61ff07"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt;, SwiftUISendingReceivingCodable.PointsOfInterestEnum, SwiftUISendingReceivingCodable.PointsOfInterestsView.MultipleSelectionRow&gt; in SwiftUISendingReceivingCodable.PointsOfInterestsView.body.getter : some"
+                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.selectedInterests.getter : Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt;"
                   moduleName = "SwiftUISendingReceivingCodable"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "384">
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - 47bf96b05e573f33"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.selectedInterests.setter : Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt;"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - 1586ad3d9ab67f04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.selectedInterests.modify : Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt;"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - cb548b3c9cfed1f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.selectedInterests.modify : Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - 412713344ea18760"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.$selectedInterests.getter : SwiftUI.Binding&lt;Swift.Array&lt;SwiftUISendingReceivingCodable.PointsOfInterestEnum&gt;&gt;"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "3E5CE272-5503-4A6E-8184-1C9CE96C9FC9 - 36d57da549b39b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUISendingReceivingCodable.PointsOfInterestsView.init() -&gt; SwiftUISendingReceivingCodable.PointsOfInterestsView"
+                  moduleName = "SwiftUISendingReceivingCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/PointsOfInterestsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "132">
                </Location>
             </Locations>
          </BreakpointContent>

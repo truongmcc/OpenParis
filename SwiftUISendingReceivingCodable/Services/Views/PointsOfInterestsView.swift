@@ -9,26 +9,26 @@ import SwiftUI
 import MapKit
 
 struct PointsOfInterestsView: View {
-  
-    @State var selectedInterests = PointsOfInterestEnum.convert(pointsOfInterestList: ((UserDefaults.standard.array(forKey: "selectedInterests") as? [MKPointOfInterestCategory] ?? [MKPointOfInterestCategory]())))
-    
+    @ObservedObject var userSettings = UserSettings()
+    @State var selectedInterests = PointsOfInterestEnum.convert(pointsOfInterestList: ((UserDefaults.standard.array(forKey: "pointsOfInterests") as? [MKPointOfInterestCategory] ?? [MKPointOfInterestCategory]())))
+
     var body: some View {
         List {
             ForEach(PointsOfInterestEnum.allCases, id: \.self) { pointOfInterst in
-                MultipleSelectionRow(title: pointOfInterst.rawValue, isSelected: self.selectedInterests.contains(pointOfInterst)) {
+                MultipleSelectionRow(title: pointOfInterst.rawValue, isSelected: selectedInterests.contains(pointOfInterst)) {
                     // --> closure action from MultipleSelectionRow :
-                    if self.selectedInterests.contains(pointOfInterst) {
-                        self.selectedInterests.removeAll(where: { $0 == pointOfInterst })
+                    if selectedInterests.contains(pointOfInterst) {
+                        selectedInterests.removeAll(where: { $0 == pointOfInterst })
                     }
                     else {
-                        self.selectedInterests.append(pointOfInterst)
+                        selectedInterests.append(pointOfInterst)
                     }
                     // <--
                 }
             }
         }
         .onDisappear() {
-            UserDefaults.standard.set(PointsOfInterestEnum.convert(enumList: selectedInterests), forKey: "selectedInterests")
+            userSettings.pointsOfInterests = PointsOfInterestEnum.convert(enumList: selectedInterests)
         }
     }
     

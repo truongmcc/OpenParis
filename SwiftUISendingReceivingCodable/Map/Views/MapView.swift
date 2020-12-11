@@ -14,6 +14,7 @@ struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @ObservedObject var mapViewModel: MapViewModel
     @ObservedObject var serviceViewModel: ServiceViewModel
+    @ObservedObject var userSettings = UserSettings()
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
     
@@ -28,8 +29,8 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        if let filteredPointsOfInterests = UserDefaults.standard.array(forKey: "selectedInterests") as? [MKPointOfInterestCategory] {
-            uiView.pointOfInterestFilter = MKPointOfInterestFilter(including: filteredPointsOfInterests)
+        if let pointsOfInterests = userSettings.pointsOfInterests {
+            uiView.pointOfInterestFilter = MKPointOfInterestFilter(including: pointsOfInterests)
         } else {
             uiView.pointOfInterestFilter = MKPointOfInterestFilter.includingAll
         }

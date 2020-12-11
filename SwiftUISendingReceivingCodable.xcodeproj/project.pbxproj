@@ -46,6 +46,7 @@
 		EBE5EBF22552B0E400DF20F0 /* FontaineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */; };
 		EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */; };
 		EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */; };
+		EBECC46E258378D10094D643 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECC46D258378D10094D643 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontaineDetailView.swift; sourceTree = "<group>"; };
 		EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDataModel.swift; sourceTree = "<group>"; };
 		EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDetailView.swift; sourceTree = "<group>"; };
+		EBECC46D258378D10094D643 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		EB3C1DF924E7CAE90013ED0E /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */,
 				EB4C5EBA2566A298001791D4 /* Views */,
 				EB4C5EAE25669F7D001791D4 /* ViewModel */,
 				EB4C5EAF25669F8F001791D4 /* Model */,
@@ -171,7 +174,6 @@
 				EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */,
 				EBADF27A25498496003CD339 /* OptionsView.swift */,
 				EB2C881A257F9517007EBACC /* PointsOfInterestsView.swift */,
-				EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */,
+				EBECC46D258378D10094D643 /* UserSettings.swift */,
 				EB4C5EB325669FF0001791D4 /* Services */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 				EB8C332B254C88C600524379 /* Managers */,
@@ -473,6 +476,7 @@
 				EBCCFA74257514F800D18AAE /* TitleTextView.swift in Sources */,
 				EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */,
 				EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */,
+				EBECC46E258378D10094D643 /* UserSettings.swift in Sources */,
 				EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */,
 				EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */,
 				EB3D27632582A43900A694D3 /* PointsOfInterestEnum.swift in Sources */,

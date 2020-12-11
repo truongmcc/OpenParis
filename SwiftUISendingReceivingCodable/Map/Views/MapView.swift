@@ -14,7 +14,7 @@ struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @ObservedObject var mapViewModel: MapViewModel
     @ObservedObject var serviceViewModel: ServiceViewModel
-    @ObservedObject var userSettings = UserSettings()
+    @ObservedObject var userSettings: UserSettings
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
     
@@ -35,7 +35,7 @@ struct MapView: UIViewRepresentable {
             uiView.pointOfInterestFilter = MKPointOfInterestFilter.includingAll
         }
 
-        uiView.mapType = mapViewModel.mapType
+        uiView.mapType = userSettings.mapType
         if mapViewModel.refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations

@@ -11,7 +11,8 @@ import MapKit
 struct OptionsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
-    @Binding var mapType: MKMapType
+    @ObservedObject var userSettings: UserSettings
+    //@Binding var mapType: MKMapType
     @Binding var typeService: ServicesEnum
     @Binding var rayOfDistance: Int
     
@@ -49,7 +50,6 @@ struct OptionsView: View {
             }
         }
             .navigationTitle("PREFERENCES")
-        
         }
     }
     
@@ -65,7 +65,7 @@ struct OptionsView: View {
     }
     
     fileprivate func addTypeMapPicker() -> some View {
-        return Picker(selection: $mapType, label: Text("Type de plans")) {
+        return Picker(selection: $userSettings.mapType, label: Text("Type de plans")) {
             Text("Carte").tag(MKMapType.standard)
             Text("Satellite").tag(MKMapType.satellite)
         }
@@ -89,10 +89,11 @@ struct OptionsView: View {
 }
 
 struct MenuView_Previews: PreviewProvider {
-    @State static var mapType = MKMapType.standard
+    //@State static var mapType = MKMapType.standard
+    static var userSettings = UserSettings()
     @State static var service = ServicesEnum.velib
     @State static var rayOfDistance = 10000
     static var previews: some View {
-        OptionsView(mapType: $mapType, typeService: $service, rayOfDistance: $rayOfDistance, onDismiss: {} )
+        OptionsView(userSettings: userSettings, typeService: $service, rayOfDistance: $rayOfDistance, onDismiss: {} )
     }
 }

@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewModel: ObservableObject {
     @Published var annotations = [ServiceAnnotation]()
-    @Published var mapType = MKMapType.standard
+    //@Published var mapType = MKMapType.standard
     @Published var centerUserLocation = false
     @Published var refreshAnnotations = false
     @Published var centerCordinate: CLLocationCoordinate2D?

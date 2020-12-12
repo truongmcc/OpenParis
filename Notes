@@ -4,9 +4,9 @@ webservices with combine
 ajout colonnes de verre
 effacer tous les services sur la carte
 fix bug selectedInterests updated...
-usersettings : remplacer les propriétés par des userdefaults
-mettre userSetting en EnvironmentObject
 
+usersettings : remplacer les propriétés par des userdefaults done
+mettre userSetting en EnvironmentObject done
 creer un userSettings avec userDefaults done
 filtre des intérêts gérés par une liste dans les options done
 customiser les annotationsViews avec images des services done

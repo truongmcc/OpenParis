@@ -45,12 +45,9 @@ struct BaseView<Content: View>: View {
         .padding()
         .foregroundColor(.white)
         .cornerRadius(10)
-        
         .animation(.default)
         .border(Color.primary)
-            
         .background(Color.black.opacity(0.5))
-            
         .opacity(opacityChange ? 1 : 0)
         .onAppear() {
             opacityChange.toggle()
@@ -58,6 +55,5 @@ struct BaseView<Content: View>: View {
         .onDisappear() {
             opacityChange.toggle()
         }
-        
     }
 }

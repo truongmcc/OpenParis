@@ -34,8 +34,7 @@ struct MapView: UIViewRepresentable {
         } else {
             uiView.pointOfInterestFilter = MKPointOfInterestFilter.includingAll
         }
-
-        uiView.mapType = userSettings.mapType
+        uiView.mapType = userSettings.mapType == 0 ? MKMapType.standard : MKMapType.satellite
         if mapViewModel.refreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations

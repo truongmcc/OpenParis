@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct PointsOfInterestsView: View {
-    @ObservedObject var userSettings = UserSettings()
+    @EnvironmentObject var userSettings: UserSettings
     @State var selectedInterests = PointsOfInterestEnum.convert(pointsOfInterestList: ((UserDefaults.standard.array(forKey: "pointsOfInterests") as? [MKPointOfInterestCategory] ?? [MKPointOfInterestCategory]())))
 
     var body: some View {

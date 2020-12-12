@@ -22,7 +22,7 @@ class ServicesWebServices {
     func CreateUrl(userSettings: UserSettings, centerCoordinate: (x: Double, y: Double)) -> String {
         let endPoint = userSettings.typeService.allAnnotationsEndpoint()
         var param = ""
-        if userSettings.rayOfDistance != 10000 {
+        if userSettings.rayOfDistance <= 700 {
             param = "&geofilter.distance=\(centerCoordinate.x)%2C\(centerCoordinate.y)%2C\(String(userSettings.rayOfDistance))"
         }
         return endPoint + param

@@ -1,5 +1,5 @@
 //
-//  OptionsView.swift
+//  PreferencesView.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 28/10/2020.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct OptionsView: View {
+struct PreferencesView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var userSettings: UserSettings
@@ -63,8 +63,8 @@ struct OptionsView: View {
     
     fileprivate func addTypeMapPicker() -> some View {
         return Picker(selection: $userSettings.mapType, label: Text("Type de plans")) {
-            Text("Carte").tag(MKMapType.standard)
-            Text("Satellite").tag(MKMapType.satellite)
+            Text("Carte").tag(0)
+            Text("Satellite").tag(1)
         }
         .pickerStyle(SegmentedPickerStyle())
         .padding(10)
@@ -86,9 +86,8 @@ struct OptionsView: View {
 }
 
 struct MenuView_Previews: PreviewProvider {
-    //@State static var mapType = MKMapType.standard
     @State static var service = ServicesEnum.velib
     static var previews: some View {
-        OptionsView(onDismiss: {} )
+        PreferencesView(onDismiss: {} )
     }
 }

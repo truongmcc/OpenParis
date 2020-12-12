@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EB0A643B24E3DDE0003A4D28 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = EB0A643A24E3DDE0003A4D28 /* Notes */; };
 		EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0EB5D624ED12AE001319C7 /* MapCoordinator.swift */; };
+		EB0FF5B42584DFE60061E251 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0FF5B32584DFE60061E251 /* PreferencesView.swift */; };
 		EB1B715A2572852200DFB05A /* ArbreRemarquable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B71592572852200DFB05A /* ArbreRemarquable.swift */; };
 		EB1B715F25728A0400DFB05A /* ArbreRemarquableDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B715E25728A0400DFB05A /* ArbreRemarquableDetailView.swift */; };
 		EB1B7164257294B500DFB05A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B7163257294B500DFB05A /* String+Extension.swift */; };
@@ -32,7 +33,6 @@
 		EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE324C9DC8500BA086F /* NetworkManager.swift */; };
 		EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE524C9DD9300BA086F /* VelibModel.swift */; };
 		EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C3321254C4BC400524379 /* AlertManager.swift */; };
-		EBADF27B25498496003CD339 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBADF27A25498496003CD339 /* OptionsView.swift */; };
 		EBB5F40D25519D3600A3DEF6 /* VelibDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */; };
 		EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */; };
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
@@ -69,6 +69,7 @@
 /* Begin PBXFileReference section */
 		EB0A643A24E3DDE0003A4D28 /* Notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		EB0EB5D624ED12AE001319C7 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		EB0FF5B32584DFE60061E251 /* PreferencesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = SwiftUISendingReceivingCodable/Services/Views/PreferencesView.swift; sourceTree = SOURCE_ROOT; };
 		EB1B71592572852200DFB05A /* ArbreRemarquable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbreRemarquable.swift; sourceTree = "<group>"; };
 		EB1B715E25728A0400DFB05A /* ArbreRemarquableDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbreRemarquableDetailView.swift; sourceTree = "<group>"; };
 		EB1B7163257294B500DFB05A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		EB887FE324C9DC8500BA086F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EB887FE524C9DD9300BA086F /* VelibModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibModel.swift; sourceTree = "<group>"; };
 		EB8C3321254C4BC400524379 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		EBADF27A25498496003CD339 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibDetailView.swift; sourceTree = "<group>"; };
 		EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrotinetteDetailView.swift; sourceTree = "<group>"; };
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 			children = (
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
 				EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */,
-				EBADF27A25498496003CD339 /* OptionsView.swift */,
+				EB0FF5B32584DFE60061E251 /* PreferencesView.swift */,
 				EBECC46D258378D10094D643 /* UserSettings.swift */,
 				EB2C881A257F9517007EBACC /* PointsOfInterestsView.swift */,
 				EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */,
@@ -461,6 +461,7 @@
 				EB7C488F255986C700CB5C7F /* DetailBaseView.swift in Sources */,
 				EB1B715F25728A0400DFB05A /* ArbreRemarquableDetailView.swift in Sources */,
 				EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */,
+				EB0FF5B42584DFE60061E251 /* PreferencesView.swift in Sources */,
 				EB4C5EA725669454001791D4 /* Service.swift in Sources */,
 				EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */,
 				EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */,
@@ -487,7 +488,6 @@
 				EBB6AD09256558FE00651C64 /* ServiceEnum.swift in Sources */,
 				EB1B715A2572852200DFB05A /* ArbreRemarquable.swift in Sources */,
 				EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */,
-				EBADF27B25498496003CD339 /* OptionsView.swift in Sources */,
 				EB2C881B257F9517007EBACC /* PointsOfInterestsView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */,

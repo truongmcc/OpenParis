@@ -167,129 +167,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9B079FA2-3354-43A5-99C2-5905B9AFA9E2"
+            uuid = "C29B60E3-5F91-4075-A031-9F399E71F991"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Services/ViewModel/ServiceViewModel.swift"
+            filePath = "SwiftUISendingReceivingCodable/Map/Views/MapView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "fetchAnnotationDetail(recordId:finished:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9B079FA2-3354-43A5-99C2-5905B9AFA9E2 - 5867fe48934ce323"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftUISendingReceivingCodable.ServiceViewModel.fetchAnnotationDetail(recordId: Swift.String, finished: (Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/ViewModel/ServiceViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  uuid = "9B079FA2-3354-43A5-99C2-5905B9AFA9E2 - 7a753b1a6c71816b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;SwiftUISendingReceivingCodable.Service&gt;, Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; () in SwiftUISendingReceivingCodable.ServiceViewModel.fetchAnnotationDetail(recordId: Swift.String, finished: (Swift.Bool, Swift.Optional&lt;SwiftUISendingReceivingCodable.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/ViewModel/ServiceViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "352">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3D2D5808-9AFA-48A6-9E84-F211419DB9C0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Services/Views/ServiceDetailViews/DetailBaseView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CBB7690A-49C4-4BC3-AB1E-642210EE43F3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Services/Views/OptionsView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "addTypeService()"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "loadMap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E7D27C0D-DE4B-444B-A194-13004982ABB2"
+            uuid = "BA96ED92-D093-42CF-922F-FDDC3C36E5A6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftUISendingReceivingCodable/Services/Views/OptionsView.swift"
+            filePath = "SwiftUISendingReceivingCodable/Map/Views/MapCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "addTypeService()"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "mapView(_:regionDidChangeAnimated:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E7D27C0D-DE4B-444B-A194-13004982ABB2 - 5f3340ac7fd73040"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftUISendingReceivingCodable.OptionsView.(addTypeService in _E95C4A9BB063704EC1B3789898628618)() -&gt; some"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/OptionsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "424">
-               </Location>
-               <Location
-                  uuid = "E7D27C0D-DE4B-444B-A194-13004982ABB2 - cf43dc6ca5f6a58b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.tag&lt;A where A1: Swift.Hashable&gt;(A1) -&gt; some&gt;&gt;.0)&gt; in SwiftUISendingReceivingCodable.OptionsView.(addTypeService in _E95C4A9BB063704EC1B3789898628618)() -&gt; some"
-                  moduleName = "SwiftUISendingReceivingCodable"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ImacDePicshertho/Desktop/tutorial/SwiftUI/OpenParis/SwiftUISendingReceivingCodable/Services/Views/OptionsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "124">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

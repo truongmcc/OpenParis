@@ -12,11 +12,11 @@ struct ContentView: View {
     @ObservedObject var mapViewModel = MapViewModel()
     @EnvironmentObject var userSettings: UserSettings
     @ObservedObject var serviceViewModel = ServiceViewModel()
-    @State private var showOptionsView = false
+    @State private var showPreferencesView = false
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
     var mapView: MapView {
-        //serviceViewModel.userSettings = userSettings
+        serviceViewModel.userSettings = userSettings
         return MapView(mapViewModel: mapViewModel,
                        serviceViewModel: serviceViewModel,
                        userSettings: userSettings,
@@ -44,8 +44,8 @@ struct ContentView: View {
                 }
             })
         }
-        .sheet(isPresented: $showOptionsView) {
-            OptionsView(onDismiss: {
+        .sheet(isPresented: $showPreferencesView) {
+            PreferencesView(onDismiss: {
                             mapView.loadMap()
                         })
         }
@@ -76,7 +76,7 @@ extension ContentView {
             addTitle()
             Spacer()
             Button("Options", action: {
-                showOptionsView.toggle()
+                showPreferencesView.toggle()
             })
             .padding(20)
         }

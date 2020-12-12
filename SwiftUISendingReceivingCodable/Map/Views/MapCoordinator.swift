@@ -12,6 +12,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     var map: MapView
     init(mapView: MapView) {
         map = mapView
+        
         super.init()
     }
     

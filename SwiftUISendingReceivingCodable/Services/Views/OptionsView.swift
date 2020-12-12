@@ -11,7 +11,7 @@ import MapKit
 struct OptionsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
-    @ObservedObject var userSettings: UserSettings
+    @EnvironmentObject var userSettings: UserSettings
     
     var onDismiss: () -> Void
     
@@ -87,9 +87,8 @@ struct OptionsView: View {
 
 struct MenuView_Previews: PreviewProvider {
     //@State static var mapType = MKMapType.standard
-    static var userSettings = UserSettings()
     @State static var service = ServicesEnum.velib
     static var previews: some View {
-        OptionsView(userSettings: userSettings, onDismiss: {} )
+        OptionsView(onDismiss: {} )
     }
 }

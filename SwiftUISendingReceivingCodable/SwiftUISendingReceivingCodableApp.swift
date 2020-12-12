@@ -10,9 +10,10 @@ import MapKit
 
 @main
 struct SwiftUISendingReceivingCodableApp: App {
+    var userSettings = UserSettings()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(userSettings)
         }
     }
 }

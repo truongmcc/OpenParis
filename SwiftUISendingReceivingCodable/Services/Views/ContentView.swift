@@ -10,14 +10,13 @@ import MapKit
 
 struct ContentView: View {
     @ObservedObject var mapViewModel = MapViewModel()
-    @ObservedObject var userSettings = UserSettings()
+    @EnvironmentObject var userSettings: UserSettings
     @ObservedObject var serviceViewModel = ServiceViewModel()
-    
     @State private var showOptionsView = false
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
     var mapView: MapView {
-        serviceViewModel.userSettings = userSettings
+        //serviceViewModel.userSettings = userSettings
         return MapView(mapViewModel: mapViewModel,
                        serviceViewModel: serviceViewModel,
                        userSettings: userSettings,
@@ -46,8 +45,7 @@ struct ContentView: View {
             })
         }
         .sheet(isPresented: $showOptionsView) {
-            OptionsView(userSettings: userSettings,
-                        onDismiss: {
+            OptionsView(onDismiss: {
                             mapView.loadMap()
                         })
         }

@@ -13,13 +13,13 @@ class AlertManager {
     static let shared = AlertManager()
     private init() { }
     
-    var netWorkError: NetworkError?
+    var netWorkError: NetworkErrorEnum?
     
     func createNetworkAlert(completionHandler: @escaping (Bool) -> Void) -> Alert {
         return Alert(title: Text("Network Error"),
                      message: Text(netWorkError?.description ?? "Unknown error"),
                      dismissButton: .default(Text("OK")) {
-                        if self.netWorkError == NetworkError.requestFailed {
+                        if self.netWorkError == NetworkErrorEnum.requestFailed {
                             completionHandler(false)
                         } else {
                             completionHandler(true)

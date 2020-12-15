@@ -54,7 +54,7 @@ struct TriMobile: Service, Codable, Identifiable {
     
     func fetchDetail(of service: ServicesEnum,
                      urlString: String,
-                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void) {
+                     completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
         ServicesWebServices.shared.fetchDetail(of: service,
                                              urlString: urlString) { ( result: triMobileResult) in
             switch result {
@@ -62,7 +62,7 @@ struct TriMobile: Service, Codable, Identifiable {
                 if let service = self.createService(data: data) {
                     completionHandler(service, false, nil)
                 } else {
-                    completionHandler(nil, true, NetworkError.dataNotFound)
+                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
                 }
             case .failure(let error):
                 completionHandler(nil, true, error)

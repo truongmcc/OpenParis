@@ -51,7 +51,7 @@ struct PreferencesView: View {
     }
     
     fileprivate func addRayDistancePicker() -> some View {
-        return Picker(selection: $userSettings.rayOfDistance, label: Text("Rayons de recherche")) {
+        return Picker(selection: self.$userSettings.rayOfDistance, label: Text("Rayons de recherche")) {
             Text("300 M").tag(300)
             Text("700 M").tag(700)
             Text("5 KM").tag(5000)
@@ -62,7 +62,7 @@ struct PreferencesView: View {
     }
     
     fileprivate func addTypeMapPicker() -> some View {
-        return Picker(selection: $userSettings.mapType, label: Text("Type de plans")) {
+        return Picker(selection: self.$userSettings.mapType, label: Text("Type de plans")) {
             Text("Carte").tag(0)
             Text("Satellite").tag(1)
         }

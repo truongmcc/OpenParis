@@ -22,6 +22,7 @@
 		EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */; };
 		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
 		EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* ServicesWebServices.swift */; };
+		EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */; };
 		EB7C488F255986C700CB5C7F /* DetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C488E255986C700CB5C7F /* DetailBaseView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
 		EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */; };
@@ -82,6 +83,7 @@
 		EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
 		EB6AE31C25505CE500787240 /* ServicesWebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesWebServices.swift; sourceTree = "<group>"; };
+		EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
 		EB7C488E255986C700CB5C7F /* DetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBaseView.swift; sourceTree = "<group>"; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EB887FB524C9BDD000BA086F /* SwiftUISendingReceivingCodable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUISendingReceivingCodable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +145,6 @@
 		EB3C1DF824E7C9300013ED0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EBB6AD08256558FE00651C64 /* ServiceEnum.swift */,
 				EB4C5EA625669454001791D4 /* Service.swift */,
 				EB887FE524C9DD9300BA086F /* VelibModel.swift */,
 				EB6AE30225503FF600787240 /* TrotinetteModel.swift */,
@@ -174,7 +175,6 @@
 				EB0FF5B32584DFE60061E251 /* PreferencesView.swift */,
 				EBECC46D258378D10094D643 /* UserSettings.swift */,
 				EB2C881A257F9517007EBACC /* PointsOfInterestsView.swift */,
-				EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +232,16 @@
 			path = WebServices;
 			sourceTree = "<group>";
 		};
+		EB70884E2588E8A60069C1FF /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */,
+				EBB6AD08256558FE00651C64 /* ServiceEnum.swift */,
+				EB3D27622582A43900A694D3 /* PointsOfInterestEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		EB7C4893255987E700CB5C7F /* DetailViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				EB887FB824C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift */,
+				EB70884E2588E8A60069C1FF /* Enums */,
 				EB4C5EB325669FF0001791D4 /* Services */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 				EB8C332B254C88C600524379 /* Managers */,
@@ -491,6 +502,7 @@
 				EB2C881B257F9517007EBACC /* PointsOfInterestsView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */,
+				EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */,
 				EB3B0226257D332200C6CDE8 /* ServiceAnnotation.swift in Sources */,
 				EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */,
 			);

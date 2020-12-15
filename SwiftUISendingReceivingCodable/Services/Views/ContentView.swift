@@ -9,12 +9,15 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @ObservedObject var mapViewModel = MapViewModel()
     @EnvironmentObject var userSettings: UserSettings
+    
+    @ObservedObject var mapViewModel = MapViewModel()
     @ObservedObject var serviceViewModel = ServiceViewModel()
+    
     @State private var showPreferencesView = false
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
+    
     var mapView: MapView {
         serviceViewModel.userSettings = userSettings
         return MapView(mapViewModel: mapViewModel,
@@ -47,7 +50,7 @@ struct ContentView: View {
         .sheet(isPresented: $showPreferencesView) {
             PreferencesView(onDismiss: {
                             mapView.loadMap()
-                        })
+            }).environmentObject(userSettings)
         }
         .onAppear() {
             mapView.loadMap()

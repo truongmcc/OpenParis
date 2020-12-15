@@ -7,33 +7,6 @@
 
 import Foundation
 import SwiftUI
-
-enum NetworkError: Error {
-    
-    case badURL, requestFailed, decodingFailed, serverNotAccessible, noInternet, serverLost, dataNotFound, unknown
-    
-    var description: String {
-        switch self {
-        case .badURL:
-            return "The URL request contains error(s)"
-        case .requestFailed:
-            return "Request failed"
-        case .decodingFailed:
-            return "Decoding failed"
-        case .serverNotAccessible:
-            return "Server not accessible."
-        case .noInternet:
-            return "The Internet connection appears to be offline."
-        case .serverLost:
-            return "Server lost. Try again"
-        case .dataNotFound:
-            return "Data not found"
-        case .unknown:
-            return "Unknown error"
-        }
-    }
-}
-
 class NetworkManager {
     
     static let shared = NetworkManager()
@@ -48,14 +21,14 @@ class NetworkManager {
     }
     
     // Generic with result type version
-    func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
         guard let urlRequest = createUrlRequest(url: url) else {
-            completion(.failure(NetworkError.badURL))
+            completion(.failure(NetworkErrorEnum.badURL))
             return
         }
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
-                completion(.failure(NetworkError.requestFailed))
+                completion(.failure(NetworkErrorEnum.requestFailed))
                 return
             }
             do {
@@ -63,7 +36,7 @@ class NetworkManager {
                 let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
                 completion(.success(decodedResponse))
             } catch {
-                completion(.failure(NetworkError.decodingFailed))
+                completion(.failure(NetworkErrorEnum.decodingFailed))
             }
         }
         .resume()

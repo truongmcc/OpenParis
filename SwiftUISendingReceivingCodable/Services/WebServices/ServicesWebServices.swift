@@ -12,7 +12,7 @@ class ServicesWebServices {
     static let shared = ServicesWebServices()
     private init() { }
     
-    func fetchAllAnnotations(of userSettings: UserSettings, centerCoordinate: (Double, Double), completion: @escaping (Result<ResponseAnnotationDatas, NetworkError>) -> Void) {
+    func fetchAllAnnotations(of userSettings: UserSettings, centerCoordinate: (Double, Double), completion: @escaping (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {
         let url = CreateUrl(userSettings: userSettings, centerCoordinate: centerCoordinate)
         NetworkManager.shared.fetchDataWithTypeResult(url: url, decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
@@ -30,7 +30,7 @@ class ServicesWebServices {
     
     func fetchDetail<T: Codable>(of service: ServicesEnum,
                                  urlString: String,
-                                 completion: @escaping (Result<T, NetworkError>) -> Void) {
+                                 completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
         
         NetworkManager.shared.fetchDataWithTypeResult(url: urlString,
                                                          decodable: service.type()) { result in

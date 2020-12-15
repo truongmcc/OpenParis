@@ -102,7 +102,7 @@ extension MapView {
         mapViewModel.annotations.removeAll()
     }
     
-    func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkError>) {
+    func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkErrorEnum>) {
         switch result {
         case .success(let data):
             if let dataResults = data.records {

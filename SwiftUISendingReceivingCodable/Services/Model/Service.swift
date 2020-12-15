@@ -8,18 +8,18 @@
 import Foundation
 
 protocol Service {
-    typealias serviceResult<T> = Result<T, NetworkError>
-    typealias velibResult = Result<VelibResponse, NetworkError>
-    typealias trotinetteResult = Result<TrotinetteResponse, NetworkError>
-    typealias SanisetteResult = Result<SanisetteResponse, NetworkError>
-    typealias fontaineResult = Result<FontaineResponse, NetworkError>
-    typealias triMobileResult = Result<TriMobileResponse, NetworkError>
-    typealias arbreRemarquableResult = Result<ArbreRemarquableResponse, NetworkError>
+    typealias serviceResult<T> = Result<T, NetworkErrorEnum>
+    typealias velibResult = Result<VelibResponse, NetworkErrorEnum>
+    typealias trotinetteResult = Result<TrotinetteResponse, NetworkErrorEnum>
+    typealias SanisetteResult = Result<SanisetteResponse, NetworkErrorEnum>
+    typealias fontaineResult = Result<FontaineResponse, NetworkErrorEnum>
+    typealias triMobileResult = Result<TriMobileResponse, NetworkErrorEnum>
+    typealias arbreRemarquableResult = Result<ArbreRemarquableResponse, NetworkErrorEnum>
     
     var id: String? { get set }
     var typeService: ServicesEnum { get set }
     func fetchDetail(of service: ServicesEnum,
                      urlString: String,
-                     completionHandler: @escaping (Service?, Bool, NetworkError?) -> Void)
+                     completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void)
     func createService<T>(data: T) -> Service?
 }

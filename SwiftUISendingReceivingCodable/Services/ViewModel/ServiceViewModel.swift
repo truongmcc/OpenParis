@@ -12,7 +12,7 @@ class ServiceViewModel: ObservableObject {
     var userSettings: UserSettings?
  
     func fetchAnnotationDetail(recordId: String,
-                                finished: @escaping (Bool, NetworkError?) -> Void) {
+                                finished: @escaping (Bool, NetworkErrorEnum?) -> Void) {
 
         guard let urls = userSettings?.typeService.annotationEndpoint() else { return }
         let url = urls + recordId

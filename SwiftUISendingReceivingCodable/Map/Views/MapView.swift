@@ -11,10 +11,11 @@ import Foundation
 import CoreLocation
 
 struct MapView: UIViewRepresentable {
-    let locationManager = CLLocationManager()
+    
     @ObservedObject var mapViewModel: MapViewModel
     @ObservedObject var serviceViewModel: ServiceViewModel
     @ObservedObject var userSettings: UserSettings
+    
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
     
@@ -58,13 +59,13 @@ struct MapView: UIViewRepresentable {
     
     func goToUserLocation(uiView: MKMapView) {
         uiView.showsUserLocation = true
-        self.locationManager.requestAlwaysAuthorization()
+        mapViewModel.locationManager.requestAlwaysAuthorization()
         // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
+        mapViewModel.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            self.locationManager.startUpdatingLocation()
-            guard let location = locationManager.location else {
+            mapViewModel.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            mapViewModel.locationManager.startUpdatingLocation()
+            guard let location = mapViewModel.locationManager.location else {
                 return
             }
             let locValue:CLLocationCoordinate2D = location.coordinate

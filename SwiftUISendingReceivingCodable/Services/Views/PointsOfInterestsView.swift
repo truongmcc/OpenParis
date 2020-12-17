@@ -30,6 +30,7 @@ struct PointsOfInterestsView: View {
         .onDisappear() {
             userSettings.pointsOfInterests = PointsOfInterestEnum.convert(enumList: selectedInterests)
         }
+        .navigationTitle("Points d'intérêts")
     }
     
     struct MultipleSelectionRow: View {

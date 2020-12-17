@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 class MapViewModel: ObservableObject {
+    @Published var locationManager = CLLocationManager()
     @Published var annotations = [ServiceAnnotation]()
     @Published var centerUserLocation = false
     @Published var refreshAnnotations = false

@@ -17,37 +17,38 @@ struct PreferencesView: View {
     
     var body: some View {
         NavigationView {
-        VStack() {
-            Text("Affichage")
-            addTypeMapPicker()
-            
-            addTypeService()
-            
-            Text("Rayon de recherche")
-            addRayDistancePicker()
-            
-            NavigationLink(destination: PointsOfInterestsView()) {
-                Text("Filtrer les points d'intérêts")
-                    .foregroundColor(.white)
+            VStack() {
+                Text("Affichage")
+                addTypeMapPicker()
+                
+                addTypeService()
+                
+                Text("Rayon de recherche")
+                addRayDistancePicker()
+                
+                NavigationLink(destination: PointsOfInterestsView().environmentObject(userSettings)) {
+                    Text("Filtrer les points d'intérêts")
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .background(Color.secondary)
+                .cornerRadius(6.0)
+                
+                
+                Button("OK", action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
+                .foregroundColor(.white)
+                .font(.title)
+                .padding()
+                
+                .onDisappear() {
+                    onDismiss()
+                }
             }
-            .padding()
-            .background(Color.secondary)
-            .cornerRadius(6.0)
-            
-            
-            Button("OK", action: {
-                self.presentationMode.wrappedValue.dismiss()
-            })
-            .foregroundColor(.white)
-            .font(.title)
-            .padding()
-            
-            .onDisappear() {
-                onDismiss()
-            }
-        }
             .navigationTitle("PREFERENCES")
         }
+        .accentColor( .white)
     }
     
     fileprivate func addRayDistancePicker() -> some View {

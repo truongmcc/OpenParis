@@ -21,10 +21,12 @@ struct PreferencesView: View {
                 Text("Affichage")
                 addTypeMapPicker()
                 
-                addTypeService()
+                Spacer()
                 
                 Text("Rayon de recherche")
                 addRayDistancePicker()
+                
+                Spacer()
                 
                 NavigationLink(destination: PointsOfInterestsView().environmentObject(userSettings)) {
                     Text("Filtrer les points d'intérêts")
@@ -34,6 +36,7 @@ struct PreferencesView: View {
                 .background(Color.secondary)
                 .cornerRadius(6.0)
                 
+                addTypeService()
                 
                 Button("OK", action: {
                     self.presentationMode.wrappedValue.dismiss()
@@ -81,7 +84,7 @@ struct PreferencesView: View {
             Text("Arbres remarquables").tag(ServicesEnum.arbreRemarquable)
             Text("Hotspots wifi").tag(ServicesEnum.wifiHotspot)
         })
-        .pickerStyle(DefaultPickerStyle())
+        .pickerStyle(WheelPickerStyle())
         .padding(10)
     }
 }

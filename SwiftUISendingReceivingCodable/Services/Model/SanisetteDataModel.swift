@@ -41,10 +41,10 @@ struct Sanisette: Service, Codable, Identifiable {
         
         init( from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            adresse = try values.decode(String.self, forKey: .adresse)
-            arrondissement = try values.decode(String.self, forKey: .arrondissement)
-            accesPmr = try values.decode(String.self, forKey: .accesPmr)
-            horaire = try values.decode(String.self, forKey: .horaire)
+            adresse = try? values.decode(String.self, forKey: .adresse)
+            arrondissement = try? values.decode(String.self, forKey: .arrondissement)
+            accesPmr = try? values.decode(String.self, forKey: .accesPmr)
+            horaire = try? values.decode(String.self, forKey: .horaire)
         }
     }
     

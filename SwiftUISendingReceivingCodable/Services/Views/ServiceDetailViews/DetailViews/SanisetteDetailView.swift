@@ -12,8 +12,8 @@ struct SanisetteDetailView: View {
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
             TitleTextView(title: serviceSelected?.fields?.adresse ?? "")
-            CustomTextView(title: "Horaire : ", value: serviceSelected?.fields?.horaire ?? "")
-            CustomTextView(title: "Acces PMR : ", value: serviceSelected?.fields?.accesPmr ?? "")
+            CustomTextView(title: "Horaire : ", value: serviceSelected?.fields?.horaire ?? "Non Renseigné")
+            CustomTextView(title: "Acces PMR : ", value: serviceSelected?.fields?.accesPmr ?? "Non Renseigné")
         }
     }
 }

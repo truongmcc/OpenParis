@@ -11,8 +11,8 @@ import MapKit
 struct ContentView: View {
     @EnvironmentObject var userSettings: UserSettings
     
-    @ObservedObject var mapViewModel = MapViewModel()
-    @ObservedObject var serviceViewModel = ServiceViewModel()
+    @StateObject var mapViewModel = MapViewModel()
+    @StateObject var serviceViewModel = ServiceViewModel()
     
     @State private var showPreferencesView = false
     @State private var showLoadingView = false

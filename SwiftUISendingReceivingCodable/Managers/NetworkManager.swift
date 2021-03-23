@@ -57,7 +57,7 @@ class NetworkManager {
             completion(.failure(NetworkErrorEnum.badURL))
             return
         }
-         
+          
         self.cancellable = URLSession.shared.dataTaskPublisher(for: urlRequest)
             .tryMap() { element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse,

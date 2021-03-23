@@ -57,7 +57,7 @@ class NetworkManager {
             completion(.failure(NetworkErrorEnum.badURL))
             return
         }
-        
+         
         self.cancellable = URLSession.shared.dataTaskPublisher(for: urlRequest)
             .tryMap() { element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse,
@@ -70,7 +70,7 @@ class NetworkManager {
             .decode(type: decodable.self, decoder: JSONDecoder())
             .sink(receiveCompletion: {
                 print ("Received completion: \($0).")
-            }, 
+            },
             receiveValue: {
                 user in print ("Received user: \(user).")
                 completion(.success(user))

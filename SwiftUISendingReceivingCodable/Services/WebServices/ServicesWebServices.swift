@@ -14,7 +14,7 @@ class ServicesWebServices {
     
     func fetchAllAnnotations(of userSettings: UserSettings, centerCoordinate: (Double, Double), completion: @escaping (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {
         let url = CreateUrl(userSettings: userSettings, centerCoordinate: centerCoordinate)
-        NetworkManager.shared.fetchDataWithTypeResult(url: url, decodable: ResponseAnnotationDatas.self) { result in
+        NetworkManager.shared.fetchDataWithCombine(url: url, decodable: ResponseAnnotationDatas.self) { result in
             completion(result)
         }
     }

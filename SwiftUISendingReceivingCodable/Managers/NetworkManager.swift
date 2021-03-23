@@ -47,7 +47,7 @@ class NetworkManager {
                 completion(.failure(NetworkErrorEnum.decodingFailed))
             }
         }
-        .resume()
+        .resume() 
     }
     
     func fetchDataWithCombine<T: Codable>(url: String,

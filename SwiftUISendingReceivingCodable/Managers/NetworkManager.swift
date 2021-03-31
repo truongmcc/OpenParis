@@ -47,7 +47,7 @@ class NetworkManager {
                 completion(.failure(NetworkErrorEnum.decodingFailed))
             }
         }
-        .resume()  
+        .resume()
     }
     
     func fetchDataWithCombine<T: Codable>(url: String,
@@ -57,7 +57,7 @@ class NetworkManager {
             completion(.failure(NetworkErrorEnum.badURL))
             return
         }
-          
+        
         self.cancellable = URLSession.shared.dataTaskPublisher(for: urlRequest)
             .tryMap() { element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse,
@@ -66,57 +66,40 @@ class NetworkManager {
                     throw URLError(.badServerResponse)
                 }
                 return element.data
-            }.eraseToAnyPublisher()
+            }
             .decode(type: decodable.self, decoder: JSONDecoder())
+            //.eraseToAnyPublisher()
             .sink(receiveCompletion: {
                 print ("Received completion: \($0).")
             },
             receiveValue: {
-                user in print ("Received user: \(user).")
-                completion(.success(user))
+                decodedData in
+                print ("Received user: \(decodedData).")
+                completion(.success(decodedData))
             })
-        
-        
-        
-//
-//        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-//            guard let data = data else {
-//                completion(.failure(NetworkErrorEnum.requestFailed))
-//                return
-//            }
-//            do {
-//                print(data)
-//                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
-//                completion(.success(decodedResponse))
-//            } catch {
-//                print(error)
-//                completion(.failure(NetworkErrorEnum.decodingFailed))
-//            }
-//        }
-//        .resume()
     }
     
-//     Generic without result type version
-//    static func fetchData<T: Codable>(allAnnotationsEndpoint: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
-//        guard let urlRequest = createUrlRequest(annotationEndpoint: url) else {
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-//            guard let data = data else {
-//                print(error?._code ?? "0")
-//                completion(nil, error)
-//                return // Handling errors in an enum
-//            }
-//
-//            do {
-//                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
-//                completion(decodedResponse, nil)
-//            } catch {
-//                print(error)
-//            }
-//        }
-//        .resume()
-//    }
+    //     Generic without result type version
+    //    static func fetchData<T: Codable>(allAnnotationsEndpoint: String, decodable: T.Type, completion: @escaping (T?, Error?)->Void) {
+    //        guard let urlRequest = createUrlRequest(annotationEndpoint: url) else {
+    //            return
+    //        }
+    //
+    //        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+    //            guard let data = data else {
+    //                print(error?._code ?? "0")
+    //                completion(nil, error)
+    //                return // Handling errors in an enum
+    //            }
+    //
+    //            do {
+    //                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
+    //                completion(decodedResponse, nil)
+    //            } catch {
+    //                print(error)
+    //            }
+    //        }
+    //        .resume()
+    //    }
     
 }

@@ -12,7 +12,7 @@ struct ResponseAnnotationDatas: Codable {
 struct AnnotationDataModel: Codable {
     var idData: String?
     var fieldsData: FieldsData
-
+    
     enum CodingKeys: String, CodingKey {
         case idData = "recordid"
         case fieldsData = "fields"
@@ -23,14 +23,14 @@ struct AnnotationDataModel: Codable {
         idData = try values.decode(String.self, forKey: .idData)
         fieldsData = try values.decode(FieldsData.self, forKey: .fieldsData)
     }
-    
+
     struct FieldsData: Codable {
         var coordinates: [Double]?
-        
         var coordonneesGeo: [Double]?
         var geo_point_2d: [Double]?
         var xy: [Double]?
         var geom_x_y: [Double]?
+        var name: String?
 
         // CaseIterable crée un tableau d'enum !!!
         enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,11 +38,14 @@ struct AnnotationDataModel: Codable {
             case geo_point_2d = "geo_point_2d"
             case xy = "xy"
             case geom_x_y = "geom_x_y"
+            case name = "name"
         }
  
         init( from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             for codingKey in CodingKeys.allCases {
+                name = try? values.decode(String.self, forKey: .name)
+                print(name!)
                 if let coords = try? values.decode([Double].self, forKey: codingKey) {
                     coordinates = coords
                     break

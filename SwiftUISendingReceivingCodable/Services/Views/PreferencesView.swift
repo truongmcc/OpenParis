@@ -12,6 +12,7 @@ struct PreferencesView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var userSettings: UserSettings
+    @ObservedObject var mapViewModel: MapViewModel
     
     var onDismiss: () -> Void
     
@@ -27,6 +28,14 @@ struct PreferencesView: View {
                 addRayDistancePicker()
                 
                 Spacer()
+                
+                NavigationLink(destination: ServicesListView(mapViewModel: self.mapViewModel)) {
+                    Text("Recherche par liste")
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .background(Color.secondary)
+                .cornerRadius(6.0)
                 
                 NavigationLink(destination: PointsOfInterestsView().environmentObject(userSettings)) {
                     Text("Filtrer les points d'intérêts")
@@ -91,7 +100,8 @@ struct PreferencesView: View {
 
 struct MenuView_Previews: PreviewProvider {
     @State static var service = ServicesEnum.velib
+    static var mapViewModel = MapViewModel()
     static var previews: some View {
-        PreferencesView(onDismiss: {} )
+        PreferencesView(mapViewModel: mapViewModel, onDismiss: {} )
     }
 }

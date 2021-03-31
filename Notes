@@ -3,8 +3,7 @@
 webservices with combine
 ajout colonnes de verre
 effacer tous les services sur la carte
-fix bug selectedInterests updated...
-
+fetchall with combine done
 usersettings : remplacer les propriétés par des userdefaults done
 mettre userSetting en EnvironmentObject done
 creer un userSettings avec userDefaults done

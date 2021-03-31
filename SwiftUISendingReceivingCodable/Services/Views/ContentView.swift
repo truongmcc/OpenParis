@@ -48,7 +48,7 @@ struct ContentView: View {
             })
         }
         .sheet(isPresented: $showPreferencesView) {
-            PreferencesView(onDismiss: {
+            PreferencesView(mapViewModel: mapViewModel, onDismiss: {
                             mapView.loadMap()
             }).environmentObject(userSettings)
         }

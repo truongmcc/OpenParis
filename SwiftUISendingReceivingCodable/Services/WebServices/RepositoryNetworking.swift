@@ -1,5 +1,5 @@
 //
-//  ServicesWebServices.swift
+//  RepositoryNetworking.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 02/11/2020.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class ServicesWebServices {
+class RepositoryNetworking {
     
-    static let shared = ServicesWebServices()
+    static let shared = RepositoryNetworking()
     private init() { }
     
     func fetchAllAnnotations(of userSettings: UserSettings, centerCoordinate: (Double, Double), completion: @escaping (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {

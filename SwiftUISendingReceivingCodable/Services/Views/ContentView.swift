@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var showLoadingView = false
     @State private var showErrorAlert = false
     
+    @State private var bottomSheetShown = false
+    
     var mapView: MapView {
         serviceViewModel.userSettings = userSettings
         return MapView(mapViewModel: mapViewModel,
@@ -36,6 +38,14 @@ struct ContentView: View {
             }
             showProgressionView()
             showServiceDetail()
+            GeometryReader { geometry in
+                //Color.green
+                BottomSheetView(
+                    isOpen: self.$bottomSheetShown,
+                    maxHeight: geometry.size.height * 0.7) {
+                    Color.blue
+                }
+            }.edgesIgnoringSafeArea(.all)
         }
         .onTapGesture {
             serviceViewModel.service = nil

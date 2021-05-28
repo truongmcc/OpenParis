@@ -58,7 +58,7 @@ struct Fontaine: Service, Codable, Identifiable {
     func fetchDetail(of service: ServicesEnum,
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
-        ServicesWebServices.shared.fetchDetail(of: service,
+        RepositoryNetworking.shared.fetchDetail(of: service,
                                              urlString: urlString) { ( result: fontaineResult) in
             switch result {
             case .success(let data):

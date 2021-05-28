@@ -15,6 +15,7 @@ enum ServicesEnum: String, CaseIterable {
     case triMobile
     case arbreRemarquable
     case wifiHotspot
+    case colonneVerre
     
     func title() -> String {
         switch self {
@@ -32,6 +33,8 @@ enum ServicesEnum: String, CaseIterable {
             return "Arbres remarquables"
         case .wifiHotspot:
             return "Hotspots Wifi"
+        case .colonneVerre:
+            return "Colonne de verre"
         }
     }
     
@@ -52,6 +55,8 @@ enum ServicesEnum: String, CaseIterable {
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=&rows=1000"
         case .wifiHotspot:
             return "https://parisdata.opendatasoft.com/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&q=&rows=1000"
+        case .colonneVerre:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=dechets-menagers-points-dapport-volontaire-colonnes-a-verre&q=&rows=1000"
         }
     }
     
@@ -73,6 +78,8 @@ enum ServicesEnum: String, CaseIterable {
             return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=recordid%3D"
         case .wifiHotspot:
             return "https://parisdata.opendatasoft.com/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&q=recordid%3D"
+        case .colonneVerre:
+            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=dechets-menagers-points-dapport-volontaire-colonnes-a-verre&q=recordid+%3D"
         }
     }
     
@@ -92,6 +99,8 @@ enum ServicesEnum: String, CaseIterable {
             return ArbreRemarquableResponse.self as! T.Type
         case .wifiHotspot:
             return WifiHotspotResponse.self as! T.Type
+        case .colonneVerre:
+            return ColonneVerreResponse.self as! T.Type
         }
     }
     
@@ -111,6 +120,8 @@ enum ServicesEnum: String, CaseIterable {
             return ArbreRemarquable()
         case .wifiHotspot:
             return WifiHotspot()
+        case .colonneVerre:
+            return ColonneVerre()
         }
     }
     

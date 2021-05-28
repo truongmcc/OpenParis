@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ServiceCellView: View {
-    let name: String
+    let keySearch: String
     var body: some View {
-        Text(name)
+        Text(keySearch)
     }
 }
 
 struct ServiceCellView_Previews: PreviewProvider {
-    static let name = "hello"
+    static let keySearch = ""
     static var previews: some View {
-        ServiceCellView(name: name)
+        ServiceCellView(keySearch: keySearch)
     }
 }

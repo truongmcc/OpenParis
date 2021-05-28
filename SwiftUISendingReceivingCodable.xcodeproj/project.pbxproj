@@ -21,7 +21,7 @@
 		EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19225558EA300C3AEF9 /* MapViewModel.swift */; };
 		EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */; };
 		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
-		EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* ServicesWebServices.swift */; };
+		EB6AE31D25505CE500787240 /* RepositoryNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */; };
 		EB6BDB1426136793005BF4B8 /* ListServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6BDB1326136793005BF4B8 /* ListServiceViewModel.swift */; };
 		EB6BDB1F26136962005BF4B8 /* ServiceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6BDB1E26136962005BF4B8 /* ServiceCellView.swift */; };
 		EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */; };
@@ -41,6 +41,8 @@
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
 		EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */; };
 		EBB6AD09256558FE00651C64 /* ServiceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6AD08256558FE00651C64 /* ServiceEnum.swift */; };
+		EBC6DD04265E967E00170A8A /* ColonneVerre.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6DD03265E967E00170A8A /* ColonneVerre.swift */; };
+		EBC6DD09265E99CA00170A8A /* ColonneVerreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6DD08265E99CA00170A8A /* ColonneVerreDetailView.swift */; };
 		EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */; };
 		EBCC3F3A2573DE1A003B3DD1 /* WifiHotspotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */; };
 		EBCCFA6925750A4C00D18AAE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCCFA6825750A4C00D18AAE /* CustomTextView.swift */; };
@@ -51,6 +53,7 @@
 		EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */; };
 		EBECC46E258378D10094D643 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECC46D258378D10094D643 /* UserSettings.swift */; };
 		EBF49769260CC14100E83585 /* ServicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF49768260CC14100E83585 /* ServicesListView.swift */; };
+		EBFAD4E82660E7C6009010E1 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD4E72660E7C6009010E1 /* BottomSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +88,7 @@
 		EB55B19225558EA300C3AEF9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
-		EB6AE31C25505CE500787240 /* ServicesWebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesWebServices.swift; sourceTree = "<group>"; };
+		EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNetworking.swift; sourceTree = "<group>"; };
 		EB6BDB1326136793005BF4B8 /* ListServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListServiceViewModel.swift; sourceTree = "<group>"; };
 		EB6BDB1E26136962005BF4B8 /* ServiceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCellView.swift; sourceTree = "<group>"; };
 		EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
 		EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDetailView.swift; sourceTree = "<group>"; };
 		EBB6AD08256558FE00651C64 /* ServiceEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEnum.swift; sourceTree = "<group>"; };
+		EBC6DD03265E967E00170A8A /* ColonneVerre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColonneVerre.swift; sourceTree = "<group>"; };
+		EBC6DD08265E99CA00170A8A /* ColonneVerreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColonneVerreDetailView.swift; sourceTree = "<group>"; };
 		EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiHotspot.swift; sourceTree = "<group>"; };
 		EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiHotspotDetailView.swift; sourceTree = "<group>"; };
 		EBCCFA6825750A4C00D18AAE /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDetailView.swift; sourceTree = "<group>"; };
 		EBECC46D258378D10094D643 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		EBF49768260CC14100E83585 /* ServicesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListView.swift; sourceTree = "<group>"; };
+		EBFAD4E72660E7C6009010E1 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BottomSheetView.swift; path = SwiftUISendingReceivingCodable/BottomSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 				EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */,
 				EB1B71592572852200DFB05A /* ArbreRemarquable.swift */,
 				EBCC3F262573D727003B3DD1 /* WifiHotspot.swift */,
+				EBC6DD03265E967E00170A8A /* ColonneVerre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,7 +240,7 @@
 		EB6AE30F25504D5600787240 /* WebServices */ = {
 			isa = PBXGroup;
 			children = (
-				EB6AE31C25505CE500787240 /* ServicesWebServices.swift */,
+				EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 		EB7C4893255987E700CB5C7F /* DetailViews */ = {
 			isa = PBXGroup;
 			children = (
+				EBC6DD08265E99CA00170A8A /* ColonneVerreDetailView.swift */,
 				EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */,
 				EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */,
 				EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */,
@@ -299,6 +307,7 @@
 		EB887FAC24C9BDCF00BA086F = {
 			isa = PBXGroup;
 			children = (
+				EBFAD4E72660E7C6009010E1 /* BottomSheetView.swift */,
 				EB0A643A24E3DDE0003A4D28 /* Notes */,
 				EB887FB724C9BDD000BA086F /* SwiftUISendingReceivingCodable */,
 				EB887FC924C9BE3000BA086F /* SwiftUISendingReceivingCodableTests */,
@@ -521,6 +530,7 @@
 				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
 				EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */,
 				EB1B7164257294B500DFB05A /* String+Extension.swift in Sources */,
+				EBFAD4E82660E7C6009010E1 /* BottomSheetView.swift in Sources */,
 				EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */,
 				EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */,
 				EBCC3F3A2573DE1A003B3DD1 /* WifiHotspotDetailView.swift in Sources */,
@@ -531,7 +541,7 @@
 				EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */,
 				EBCCFA74257514F800D18AAE /* TitleTextView.swift in Sources */,
 				EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */,
-				EB6AE31D25505CE500787240 /* ServicesWebServices.swift in Sources */,
+				EB6AE31D25505CE500787240 /* RepositoryNetworking.swift in Sources */,
 				EBECC46E258378D10094D643 /* UserSettings.swift in Sources */,
 				EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */,
 				EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */,
@@ -540,7 +550,9 @@
 				EBCCFA6925750A4C00D18AAE /* CustomTextView.swift in Sources */,
 				EB84FA8824D4366000053EDE /* MapView.swift in Sources */,
 				EBE5EBF22552B0E400DF20F0 /* FontaineDetailView.swift in Sources */,
+				EBC6DD09265E99CA00170A8A /* ColonneVerreDetailView.swift in Sources */,
 				EBB6AD09256558FE00651C64 /* ServiceEnum.swift in Sources */,
+				EBC6DD04265E967E00170A8A /* ColonneVerre.swift in Sources */,
 				EB1B715A2572852200DFB05A /* ArbreRemarquable.swift in Sources */,
 				EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */,
 				EB2C881B257F9517007EBACC /* PointsOfInterestsView.swift in Sources */,

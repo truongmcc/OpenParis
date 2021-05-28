@@ -1,18 +1,19 @@
 //
-//  WifiHotspot.swift
+//  ColonneVerre.swift
 //  SwiftUISendingReceivingCodable
 //
-//  Created by picshertho on 29/11/2020.
+//  Created by picshertho on 26/05/2021.
 //
 
-struct WifiHotspotResponse: Codable {
-    var records: [WifiHotspot]?
+import Foundation
+
+struct ColonneVerreResponse: Codable {
+    var records: [ColonneVerre]?
 }
 
-struct WifiHotspot: Service, Codable, Identifiable {
+struct ColonneVerre: Service, Codable, Identifiable {
     var id: String?
-    var typeService = ServicesEnum.wifiHotspot
-
+    var typeService = ServicesEnum.colonneVerre
     var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
@@ -20,39 +21,30 @@ struct WifiHotspot: Service, Codable, Identifiable {
         case fields = "fields"
     }
     
-    init() {}
-    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
         fields = try values.decode(Fields.self, forKey: .fields)
     }
     
+    init() {}
+    
     struct Fields: Codable {
-        var cp: String?
-        var name: String?
-        var arcAdresse: String?
-        var idpw: String?
-        var etat2: String?
-        var nbBorneWifi: Int?
+        var adresse: String?
+        var codePostal: Int?
+        var numeroColonne: String?
         
         enum CodingKeys: String, CodingKey {
-            case cp = "cp"
-            case name = "nom_site"
-            case arcAdresse = "arc_adresse"
-            case idpw = "idpw"
-            case etat2 = "etat2"
-            case nbBorneWifi = "nombre_de_borne_wifi"
+            case adresse = "adresse"
+            case codePostal = "code_postal"
+            case numeroColonne = "numero_colonne"
         }
         
         init( from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            cp = try? values.decode(String.self, forKey: .cp)
-            name = try? values.decode(String.self, forKey: .name)
-            arcAdresse = try values.decode(String.self, forKey: .arcAdresse)
-            idpw = try? values.decode(String.self, forKey: .idpw)
-            etat2 = try? values.decode(String.self, forKey: .etat2)
-            nbBorneWifi = try? values.decode(Int.self, forKey: .nbBorneWifi)
+            adresse = try? values.decode(String.self, forKey: .adresse)
+            codePostal = try? values.decode(Int.self, forKey: .codePostal)
+            numeroColonne = try? values.decode(String.self, forKey: .numeroColonne)
         }
     }
     
@@ -60,7 +52,7 @@ struct WifiHotspot: Service, Codable, Identifiable {
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
         RepositoryNetworking.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: Result<WifiHotspotResponse, NetworkErrorEnum>) in
+                                             urlString: urlString) { ( result: colonneVerreResult) in
             switch result {
             case .success(let data):
                 if let service = self.createService(data: data) {
@@ -73,12 +65,11 @@ struct WifiHotspot: Service, Codable, Identifiable {
             }
         }
     }
-  
+
     func createService<T>(data: T) -> Service? {
-        if let dataResponse = data as? WifiHotspotResponse, let service = dataResponse.records?.first {
+        if let dataResponse = data as? ColonneVerreResponse, let service = dataResponse.records?.first {
             return service
         }
         return nil
     }
-    
 }

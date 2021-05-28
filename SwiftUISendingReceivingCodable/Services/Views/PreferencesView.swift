@@ -92,6 +92,7 @@ struct PreferencesView: View {
             Text("Tri mobile").tag(ServicesEnum.triMobile)
             Text("Arbres remarquables").tag(ServicesEnum.arbreRemarquable)
             Text("Hotspots wifi").tag(ServicesEnum.wifiHotspot)
+            Text("Colonnes de verre").tag(ServicesEnum.colonneVerre)
         })
         .pickerStyle(WheelPickerStyle())
         .padding(10)

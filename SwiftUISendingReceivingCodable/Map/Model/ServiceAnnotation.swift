@@ -11,13 +11,15 @@ class ServiceAnnotation: NSObject, MKAnnotation {
     @Published var id: String?
     @Published var coordinate: CLLocationCoordinate2D
     @Published var name: String?
+    @Published var adresse: String?
     
     init(data: AnnotationDataModel) {
         self.id = data.idData
-        let coordinate = CLLocationCoordinate2D(latitude: data.fieldsData.coordinates?.first ?? 0,
-                                                longitude: data.fieldsData.coordinates?.last ?? 0)
+        let coordinate = CLLocationCoordinate2D(latitude: data.fieldsData.refCoordinates?.first ?? 0,
+                                                longitude: data.fieldsData.refCoordinates?.last ?? 0)
         self.coordinate = coordinate
-        self.name = data.fieldsData.name
+        self.name = data.fieldsData.refName
+        self.adresse = data.fieldsData.refAdresse
     }
 }
 

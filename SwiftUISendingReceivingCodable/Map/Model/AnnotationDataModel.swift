@@ -25,13 +25,19 @@ struct AnnotationDataModel: Codable {
     }
 
     struct FieldsData: Codable {
-        var coordinates: [Double]?
+        var refCoordinates: [Double]?
+        var refName: String?
+        var refAdresse: String?
+        
         var coordonneesGeo: [Double]?
         var geo_point_2d: [Double]?
         var xy: [Double]?
         var geom_x_y: [Double]?
         var name: String?
-
+        var nomSite: String?
+        var adresse: String?
+        var voie: String?
+        
         // CaseIterable crée un tableau d'enum !!!
         enum CodingKeys: String, CodingKey, CaseIterable {
             case coordonneesGeo = "coordonnees_geo"
@@ -39,15 +45,29 @@ struct AnnotationDataModel: Codable {
             case xy = "xy"
             case geom_x_y = "geom_x_y"
             case name = "name"
+            case nomSite = "nom_site"
+            case adresse = "adresse"
+            case voie = "voie"
         }
  
         init( from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
+            adresse = try? values.decode(String.self, forKey: .adresse)
             for codingKey in CodingKeys.allCases {
-                name = try? values.decode(String.self, forKey: .name)
-                print(name!)
                 if let coords = try? values.decode([Double].self, forKey: codingKey) {
-                    coordinates = coords
+                    refCoordinates = coords
+                    break
+                }
+            }
+            for codingKey in CodingKeys.allCases {
+                if let ref = try? values.decode(String.self, forKey: codingKey) {
+                    refName = ref
+                    break
+                }
+            }
+            for codingKey in CodingKeys.allCases {
+                if let ref = try? values.decode(String.self, forKey: codingKey) {
+                    refAdresse = ref
                     break
                 }
             }

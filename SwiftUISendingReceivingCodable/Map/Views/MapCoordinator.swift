@@ -45,7 +45,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
         
         dequeuedView.image = UIImage(named: map.userSettings.typeService.rawValue)
         // récup icones : https://icones8.fr/
-        // change png color : https://.rawValueonlinepngtools.com/change-png-color
+        // change png color : https://onlinepngtools.com/change-png-color
         
         return dequeuedView
     }

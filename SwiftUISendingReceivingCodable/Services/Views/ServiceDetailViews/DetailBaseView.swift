@@ -26,6 +26,8 @@ struct DetailBaseView: View {
                 ArbreRemarquableDetailView(serviceSelected: serviceSelected as? ArbreRemarquable)
             case .wifiHotspot:
                 WifiHotspotDetailView(serviceSelected: serviceSelected as? WifiHotspot)
+            case .colonneVerre:
+                ColonneVerreDetailView(serviceSelected: serviceSelected as? ColonneVerre)
             case .none:
                 Text("")
             }

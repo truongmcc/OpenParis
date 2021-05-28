@@ -29,7 +29,7 @@ class MapViewModel: ObservableObject {
         let center: (x: Double, y: Double)
         center.x = centerCordinate?.latitude ?? 0
         center.y = centerCordinate?.longitude ?? 0
-        ServicesWebServices.shared.fetchAllAnnotations(of: userSettings, centerCoordinate: center)
+        RepositoryNetworking.shared.fetchAllAnnotations(of: userSettings, centerCoordinate: center)
         { result in
             completion(result)
         }

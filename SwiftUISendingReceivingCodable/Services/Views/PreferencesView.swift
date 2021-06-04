@@ -29,14 +29,6 @@ struct PreferencesView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: ServicesListView(mapViewModel: self.mapViewModel)) {
-                    Text("Recherche par liste")
-                        .foregroundColor(.white)
-                }
-                .padding()
-                .background(Color.secondary)
-                .cornerRadius(6.0)
-                
                 NavigationLink(destination: PointsOfInterestsView().environmentObject(userSettings)) {
                     Text("Filtrer les points d'intérêts")
                         .foregroundColor(.white)
@@ -53,7 +45,6 @@ struct PreferencesView: View {
                 .foregroundColor(.white)
                 .font(.title)
                 .padding()
-                
                 .onDisappear() {
                     onDismiss()
                 }

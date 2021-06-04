@@ -12,8 +12,9 @@ class MapViewModel: ObservableObject {
     @Published var locationManager = CLLocationManager()
     @Published var annotations = [ServiceAnnotation]()
     @Published var centerUserLocation = false
+    @Published var centerOnAnnotation = false
     @Published var refreshAnnotations = false
-    @Published var centerCordinate: CLLocationCoordinate2D?
+    @Published var centerCoordinate: CLLocationCoordinate2D?
     
     func createAnnotations(results: [AnnotationDataModel]) {
         refreshAnnotations = true
@@ -27,8 +28,8 @@ class MapViewModel: ObservableObject {
     func fetchAllAnnotations(of userSettings: UserSettings, completion: @escaping
                                 (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {
         let center: (x: Double, y: Double)
-        center.x = centerCordinate?.latitude ?? 0
-        center.y = centerCordinate?.longitude ?? 0
+        center.x = centerCoordinate?.latitude ?? 0
+        center.y = centerCoordinate?.longitude ?? 0
         RepositoryNetworking.shared.fetchAllAnnotations(of: userSettings, centerCoordinate: center)
         { result in
             completion(result)

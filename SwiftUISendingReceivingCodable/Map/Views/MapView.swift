@@ -19,9 +19,10 @@ struct MapView: UIViewRepresentable {
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
     
+    var uiView = MKMapView()
+    
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
-        let uiView = MKMapView()
         uiView.delegate = context.coordinator
         goToUserLocation(uiView: uiView)
         uiView.register(MKAnnotationView.self,
@@ -46,6 +47,11 @@ struct MapView: UIViewRepresentable {
             goToUserLocation(uiView: uiView)
             mapViewModel.centerUserLocation = false
         }
+        
+        if mapViewModel.centerOnAnnotation == true {
+            goTo(coordinates: mapViewModel.centerCoordinate!)
+            mapViewModel.centerOnAnnotation = false
+        }
     }
     
     // MARK: - Functions
@@ -68,12 +74,20 @@ struct MapView: UIViewRepresentable {
             guard let location = mapViewModel.locationManager.location else {
                 return
             }
-            let locValue:CLLocationCoordinate2D = location.coordinate
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locValue.latitude, longitude: locValue.longitude)
+            let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                    longitude: location.coordinate.longitude)
             let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let region = MKCoordinateRegion(center: coordinate, span: span)
             uiView.setRegion(region, animated: true)
+        }
+    }
+    
+    func goTo(coordinates: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: coordinates, span: span)
+        DispatchQueue.main.async {
+            uiView.setRegion(region, animated: true)
+            //uiView.setCenter(coordinates, animated: true)
         }
     }
 }

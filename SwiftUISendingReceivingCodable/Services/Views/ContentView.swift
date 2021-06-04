@@ -32,6 +32,9 @@ struct ContentView: View {
     var body: some View {
         ZStack() {
             mapView
+                .onTapGesture {
+                    serviceViewModel.service = nil
+                }
             VStack {
                 addTitleBar()
                 addPositionButton()
@@ -39,16 +42,11 @@ struct ContentView: View {
             showProgressionView()
             showServiceDetail()
             GeometryReader { geometry in
-                //Color.green
-                BottomSheetView(
-                    isOpen: self.$bottomSheetShown,
-                    maxHeight: geometry.size.height * 0.7) {
-                    Color.blue
+                ServicesListView(isOpen: self.$bottomSheetShown, mapView: mapView,
+                                 serviceViewModel: serviceViewModel,
+                                 maxHeight: geometry.size.height * 0.7) {
                 }
             }.edgesIgnoringSafeArea(.all)
-        }
-        .onTapGesture {
-            serviceViewModel.service = nil
         }
         .alert(isPresented: $showErrorAlert) {
             return AlertManager.shared.createNetworkAlert(completionHandler: { shouldReloadMap in
@@ -59,7 +57,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showPreferencesView) {
             PreferencesView(mapViewModel: mapViewModel, onDismiss: {
-                            mapView.loadMap()
+                mapView.loadMap()
             }).environmentObject(userSettings)
         }
         .onAppear() {
@@ -112,10 +110,10 @@ extension ContentView {
     }
     
     fileprivate func addTitle() -> some View {
-            Text(userSettings.typeService.title())
-                .foregroundColor(.primary)
-                .font(.title)
-                .padding(20)
+        Text(userSettings.typeService.title())
+            .foregroundColor(.primary)
+            .font(.title)
+            .padding(20)
     }
 }
 

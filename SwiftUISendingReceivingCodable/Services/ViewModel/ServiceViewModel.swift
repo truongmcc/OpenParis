@@ -10,6 +10,7 @@ import SwiftUI
 class ServiceViewModel: ObservableObject {
     @Published var service: Service?
     var userSettings: UserSettings?
+    
     func fetchAnnotationDetail(recordId: String,
                                 finished: @escaping (Bool, NetworkErrorEnum?) -> Void) {
         guard let urls = userSettings?.typeService.annotationEndpoint() else { return }

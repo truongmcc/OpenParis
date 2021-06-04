@@ -1,5 +1,5 @@
 //
-//  ListServiceViewModel.swift
+//  FilteredServices.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 30/03/2021.
@@ -8,20 +8,16 @@
 import SwiftUI
 import Combine
 
-struct DetailService: Hashable  {
-    var id: Int
-    var name: String
-}
-
-class ListServiceViewModel: ObservableObject {
+class FilteredServices: ObservableObject {
     @ObservedObject var mapViewModel: MapViewModel
     @Published var searchText = ""
     var publisher: AnyCancellable?
     var filteredData: [ServiceAnnotation] = [ServiceAnnotation]()
     
-    init(mapViewModel: MapViewModel) {
+    init(mapViewModel: MapViewModel, searchText: String) {
         self.mapViewModel = mapViewModel
-        self.publisher = $searchText
+        self.searchText = searchText
+        self.publisher = self.$searchText
             .receive(on: RunLoop.main)
             .sink(receiveValue: { (annotation) in
                 if !self.searchText.isEmpty {

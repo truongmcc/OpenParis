@@ -8,44 +8,108 @@
 import SwiftUI
 import Combine
 
-struct ServicesListView: View {
-    @ObservedObject var mapViewModel: MapViewModel
-    @ObservedObject var listServiceViewModel: ListServiceViewModel
-    init(mapViewModel: MapViewModel) {
-        self.mapViewModel = mapViewModel
-        self.listServiceViewModel = ListServiceViewModel(mapViewModel: mapViewModel)
+fileprivate enum Constants {
+    static let radius: CGFloat = 16
+    static let indicatorHeight: CGFloat = 6
+    static let indicatorWidth: CGFloat = 60
+    static let snapRatio: CGFloat = 0.25
+    static let minHeightRatio: CGFloat = 0
+}
+
+struct ServicesListView<Content: View>: View {
+    @Binding var isOpen: Bool
+    @State var searchText = ""
+    var mapView: MapView
+    @ObservedObject var serviceViewModel: ServiceViewModel
+    
+    let maxHeight: CGFloat
+    let minHeight: CGFloat
+    let content: Content
+    
+    @GestureState private var translation: CGFloat = 0
+    
+    var filteredServices: FilteredServices?
+    init(isOpen: Binding<Bool>, mapView: MapView, serviceViewModel: ServiceViewModel, maxHeight: CGFloat,
+         @ViewBuilder content: () -> Content) {
+        self.minHeight = maxHeight * Constants.minHeightRatio
+        self.maxHeight = maxHeight
+        self.content = content()
+        self._isOpen = isOpen
+        
+        self.mapView = mapView
+        self.serviceViewModel = serviceViewModel
+        self.filteredServices = FilteredServices(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
+    }
+    
+    private var offset: CGFloat {
+        isOpen ? 0 : maxHeight - minHeight
+    }
+    
+    private var indicator: some View {
+        RoundedRectangle(cornerRadius: Constants.radius)
+            .fill(Color.secondary)
+            .frame(
+                width: Constants.indicatorWidth,
+                height: Constants.indicatorHeight
+            )
     }
     
     var body: some View {
-        return VStack {
-            HStack(spacing: 8) {
-                TextField("Search...", text: $listServiceViewModel.searchText)
-            }
-            .padding(.top, 10)
-            .padding(.leading, 20)
-            .padding(.trailing, 20)
-            List {
-                ForEach(
-                    listServiceViewModel.filteredData, id: \.self) { annotation in
-                    if let annot = annotation as ServiceAnnotation {
-                        if let name = annot.name {
-                            NavigationLink(name, destination: ServiceCellView(keySearch: name))
-                        
-                        } else if let adresse = annot.adresse {
-                            NavigationLink(adresse, destination: ServiceCellView(keySearch: adresse))
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                self.indicator.padding()
+                self.content
+                HStack(spacing: 8) {
+                    TextField("Search...", text: $searchText)
+                }
+                .padding(.top, 10)
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
+                List {
+                    ForEach(
+                        filteredServices?.filteredData ?? self.mapView.mapViewModel.annotations, id: \.self) { annotation in
+                        if let annot = annotation as ServiceAnnotation {
+                            addServiceCellView(annotation: annot)
+                                .onTapGesture {
+                                self.isOpen = false
+                                    mapView.showAnnotationDetail(recordId: annot.id!)
+                                    
+                                    mapView.mapViewModel.centerCoordinate = annot.coordinate
+                                    mapView.mapViewModel.centerOnAnnotation.toggle()
+                            }
                         }
                     }
                 }
             }
+            .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(Constants.radius)
+            .frame(height: geometry.size.height, alignment: .bottom)
+            .offset(y: max(self.offset + self.translation, 0))
+            .animation(.interactiveSpring())
+            .gesture(
+                DragGesture().updating(self.$translation) { value, state, _ in
+                    state = value.translation.height
+                }.onEnded { value in
+                    let snapDistance = self.maxHeight * Constants.snapRatio
+                    guard abs(value.translation.height) > snapDistance else {
+                        return
+                    }
+                    self.isOpen = value.translation.height < 0
+                }
+            )
         }
-        .navigationBarTitle("Services")
+    }
+    
+    fileprivate func addServiceCellView(annotation: ServiceAnnotation) -> ServiceCellView {
+        var ref: String?
+        if let name = annotation.name {
+            ref = name
+        } else if let adresse = annotation.adresse {
+            ref = adresse
+        }
+        return ServiceCellView(keySearch: ref!)
     }
 }
 
 
-struct ServicesListView_Previews: PreviewProvider {
-    var list: ListServiceViewModel
-    static var previews: some View {
-        ServicesListView(mapViewModel: MapViewModel())
-    }
-}

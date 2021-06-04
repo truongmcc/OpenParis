@@ -19,10 +19,9 @@ struct MapView: UIViewRepresentable {
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
     
-    var uiView = MKMapView()
-    
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
+        let uiView = MKMapView()
         uiView.delegate = context.coordinator
         goToUserLocation(uiView: uiView)
         uiView.register(MKAnnotationView.self,
@@ -37,11 +36,11 @@ struct MapView: UIViewRepresentable {
             uiView.pointOfInterestFilter = MKPointOfInterestFilter.includingAll
         }
         uiView.mapType = userSettings.mapType == 0 ? MKMapType.standard : MKMapType.satellite
-        if mapViewModel.refreshAnnotations == true {
+        if mapViewModel.shouldeRefreshAnnotations == true {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations
             uiView.addAnnotations(annos)
-            mapViewModel.refreshAnnotations = false
+            mapViewModel.shouldeRefreshAnnotations = false
         }
         if mapViewModel.centerUserLocation {
             goToUserLocation(uiView: uiView)
@@ -49,8 +48,7 @@ struct MapView: UIViewRepresentable {
         }
         
         if mapViewModel.centerOnAnnotation == true {
-            goTo(coordinates: mapViewModel.centerCoordinate!)
-            mapViewModel.centerOnAnnotation = false
+            goTo(uiView: uiView)
         }
     }
     
@@ -82,21 +80,20 @@ struct MapView: UIViewRepresentable {
         }
     }
     
-    func goTo(coordinates: CLLocationCoordinate2D) {
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: coordinates, span: span)
+    func goTo(uiView: MKMapView) {
         DispatchQueue.main.async {
-            uiView.setRegion(region, animated: true)
-            //uiView.setCenter(coordinates, animated: true)
+            uiView.setCenter(mapViewModel.centerCoordinate!, animated: true)
         }
+        mapViewModel.centerOnAnnotation = false
     }
+    
 }
 
 extension MapView {
     
     func showAnnotationDetail(recordId: String) {
         showLoadingView = true
-        mapViewModel.refreshAnnotations = false
+        mapViewModel.shouldeRefreshAnnotations = false
         serviceViewModel.fetchAnnotationDetail(recordId: recordId) { showError, networkError in
             showLoadingView = false
             showErrorAlert = showError

@@ -13,11 +13,11 @@ class MapViewModel: ObservableObject {
     @Published var annotations = [ServiceAnnotation]()
     @Published var centerUserLocation = false
     @Published var centerOnAnnotation = false
-    @Published var refreshAnnotations = false
+    @Published var shouldeRefreshAnnotations = false
     @Published var centerCoordinate: CLLocationCoordinate2D?
     
     func createAnnotations(results: [AnnotationDataModel]) {
-        refreshAnnotations = true
+        shouldeRefreshAnnotations = true
         var annos = [ServiceAnnotation]()
         for annotation in results {
             annos.append(ServiceAnnotation(data: annotation))

@@ -57,6 +57,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showPreferencesView) {
             PreferencesView(mapViewModel: mapViewModel, onDismiss: {
+                serviceViewModel.service = nil
                 mapView.loadMap()
             }).environmentObject(userSettings)
         }

@@ -34,7 +34,6 @@ class UserSettings: ObservableObject {
         }
     }
        
-    
     init() {
         self.pointsOfInterests = UserDefaults.standard.object(forKey: "pointsOfInterests") as? [MKPointOfInterestCategory]
         
@@ -43,6 +42,5 @@ class UserSettings: ObservableObject {
         self.mapType = UserDefaults.standard.object(forKey: "mapType") as? Int ?? 0
         
         self.typeService = ServicesEnum(rawValue: UserDefaults.standard.object(forKey: "typeService") as? ServicesEnum.RawValue ?? ServicesEnum.velib.rawValue)!
-        
     }
 }

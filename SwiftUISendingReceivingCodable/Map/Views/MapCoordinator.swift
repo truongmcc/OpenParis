@@ -12,14 +12,12 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     var map: MapView
     init(mapView: MapView) {
         map = mapView
-        
         super.init()
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as? ServiceAnnotation
         guard let recordid = annotation?.id else { return }
-        print(recordid)
         map.showAnnotationDetail(recordId: recordid)
     }
     
@@ -41,12 +39,9 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
             return nil
         }
         dequeuedView.annotation = annotation
-        
-        
         dequeuedView.image = UIImage(named: map.userSettings.typeService.rawValue)
         // récup icones : https://icones8.fr/
         // change png color : https://onlinepngtools.com/change-png-color
-        
         return dequeuedView
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 class RepositoryNetworking {
     
     static let shared = RepositoryNetworking()
-    private init() { }
+    private init() {}
     
     func fetchAllAnnotations(of userSettings: UserSettings, centerCoordinate: (Double, Double), completion: @escaping (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {
         let url = CreateUrl(userSettings: userSettings, centerCoordinate: centerCoordinate)
@@ -31,7 +31,6 @@ class RepositoryNetworking {
     func fetchDetail<T: Codable>(of service: ServicesEnum,
                                  urlString: String,
                                  completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
-        
         NetworkManager.shared.fetchDataWithTypeResult(url: urlString,
                                                          decodable: service.type()) { result in
             completion(result)

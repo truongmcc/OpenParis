@@ -23,7 +23,7 @@
 		EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */; };
 		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
 		EB6AE31D25505CE500787240 /* RepositoryNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */; };
-		EB6BDB1426136793005BF4B8 /* FilteredServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6BDB1326136793005BF4B8 /* FilteredServices.swift */; };
+		EB6BDB1426136793005BF4B8 /* FilteredServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6BDB1326136793005BF4B8 /* FilteredServicesViewModel.swift */; };
 		EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */; };
 		EB7C488F255986C700CB5C7F /* DetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C488E255986C700CB5C7F /* DetailBaseView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
@@ -53,7 +53,6 @@
 		EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */; };
 		EBECC46E258378D10094D643 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECC46D258378D10094D643 /* UserSettings.swift */; };
 		EBF49769260CC14100E83585 /* ServicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF49768260CC14100E83585 /* ServicesListView.swift */; };
-		EBFAD4E82660E7C6009010E1 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFAD4E72660E7C6009010E1 /* BottomSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +89,7 @@
 		EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
 		EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNetworking.swift; sourceTree = "<group>"; };
-		EB6BDB1326136793005BF4B8 /* FilteredServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredServices.swift; sourceTree = "<group>"; };
+		EB6BDB1326136793005BF4B8 /* FilteredServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredServicesViewModel.swift; sourceTree = "<group>"; };
 		EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
 		EB7C488E255986C700CB5C7F /* DetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBaseView.swift; sourceTree = "<group>"; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -126,7 +125,6 @@
 		EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDetailView.swift; sourceTree = "<group>"; };
 		EBECC46D258378D10094D643 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		EBF49768260CC14100E83585 /* ServicesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListView.swift; sourceTree = "<group>"; };
-		EBFAD4E72660E7C6009010E1 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +213,6 @@
 				EB3C1DFC24E7CBE50013ED0E /* Views */,
 				EB55B1802555620E00C3AEF9 /* ViewModel */,
 				EB3C1DF824E7C9300013ED0E /* Model */,
-				EB6AE30F25504D5600787240 /* WebServices */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 		EB6BDB1026136657005BF4B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EBFAD4E72660E7C6009010E1 /* BottomSheetView.swift */,
 				EBF49768260CC14100E83585 /* ServicesListView.swift */,
 				EB4AFFB92666AAD3002C8F58 /* ServiceCellView.swift */,
 			);
@@ -268,7 +264,7 @@
 		EB6BDB1126136724005BF4B8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB6BDB1326136793005BF4B8 /* FilteredServices.swift */,
+				EB6BDB1326136793005BF4B8 /* FilteredServicesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -333,6 +329,7 @@
 				EB6BDB0F2613663D005BF4B8 /* ListServices */,
 				EB4C5EB325669FF0001791D4 /* Services */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
+				EB6AE30F25504D5600787240 /* WebServices */,
 				EB70884E2588E8A60069C1FF /* Enums */,
 				EB8C332B254C88C600524379 /* Managers */,
 				EB887FBC24C9BE2E00BA086F /* Assets.xcassets */,
@@ -529,14 +526,13 @@
 				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
 				EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */,
 				EB1B7164257294B500DFB05A /* String+Extension.swift in Sources */,
-				EBFAD4E82660E7C6009010E1 /* BottomSheetView.swift in Sources */,
 				EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */,
 				EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */,
 				EBCC3F3A2573DE1A003B3DD1 /* WifiHotspotDetailView.swift in Sources */,
 				EB0EB5D724ED12AE001319C7 /* MapCoordinator.swift in Sources */,
 				EB3C1DFF24E7F7870013ED0E /* AnnotationDataModel.swift in Sources */,
 				EBF49769260CC14100E83585 /* ServicesListView.swift in Sources */,
-				EB6BDB1426136793005BF4B8 /* FilteredServices.swift in Sources */,
+				EB6BDB1426136793005BF4B8 /* FilteredServicesViewModel.swift in Sources */,
 				EBCC3F272573D727003B3DD1 /* WifiHotspot.swift in Sources */,
 				EBCCFA74257514F800D18AAE /* TitleTextView.swift in Sources */,
 				EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */,

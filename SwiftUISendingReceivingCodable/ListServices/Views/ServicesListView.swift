@@ -28,7 +28,7 @@ struct ServicesListView<Content: View>: View {
     
     @GestureState private var translation: CGFloat = 0
     
-    var filteredServices: FilteredServices?
+    var filteredServices: FilteredServicesViewModel?
     init(isOpen: Binding<Bool>, mapView: MapView, serviceViewModel: ServiceViewModel, maxHeight: CGFloat,
          @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
@@ -38,7 +38,7 @@ struct ServicesListView<Content: View>: View {
         
         self.mapView = mapView
         self.serviceViewModel = serviceViewModel
-        self.filteredServices = FilteredServices(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
+        self.filteredServices = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
     }
     
     private var offset: CGFloat {
@@ -73,7 +73,6 @@ struct ServicesListView<Content: View>: View {
                                 .onTapGesture {
                                 self.isOpen = false
                                     mapView.showAnnotationDetail(recordId: annot.id!)
-                                    
                                     mapView.mapViewModel.centerCoordinate = annot.coordinate
                                     mapView.mapViewModel.centerOnAnnotation.toggle()
                             }

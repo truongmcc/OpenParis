@@ -12,7 +12,6 @@ struct ColonneVerreDetailView: View {
     var body: some View {
         VStack(alignment: .center) {
             TitleTextView(title: serviceSelected?.fields?.adresse)
-            CustomTextView(title: serviceSelected?.fields?.numeroColonne, value: nil)
         }
     }
 }

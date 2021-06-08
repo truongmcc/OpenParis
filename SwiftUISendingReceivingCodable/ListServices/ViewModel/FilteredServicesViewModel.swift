@@ -1,5 +1,5 @@
 //
-//  FilteredServices.swift
+//  FilteredServicesViewModel.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 30/03/2021.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class FilteredServices: ObservableObject {
+class FilteredServicesViewModel: ObservableObject {
     @ObservedObject var mapViewModel: MapViewModel
     @Published var searchText = ""
     var publisher: AnyCancellable?

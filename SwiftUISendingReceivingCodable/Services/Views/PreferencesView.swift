@@ -19,16 +19,9 @@ struct PreferencesView: View {
     var body: some View {
         NavigationView {
             VStack() {
-                Text("Affichage")
-                addTypeMapPicker()
-                
-                Spacer()
-                
-                Text("Rayon de recherche")
-                addRayDistancePicker()
-                
-                Spacer()
-                
+                Text("PREFERENCES")
+                    .padding()
+                addTypeService()
                 NavigationLink(destination: PointsOfInterestsView().environmentObject(userSettings)) {
                     Text("Filtrer les points d'intérêts")
                         .foregroundColor(.white)
@@ -36,8 +29,16 @@ struct PreferencesView: View {
                 .padding()
                 .background(Color.secondary)
                 .cornerRadius(6.0)
+                Spacer()
+                Text("Affichage")
+                addTypeMapPicker()
+                Spacer()
+                Text("Rayon de recherche")
+                addRayDistancePicker()
                 
-                addTypeService()
+                
+                
+                
                 
                 Button("OK", action: {
                     self.presentationMode.wrappedValue.dismiss()
@@ -51,7 +52,7 @@ struct PreferencesView: View {
             }
             .navigationTitle("PREFERENCES")
         }
-        .accentColor( .white)
+        .accentColor(.white)
     }
     
     fileprivate func addRayDistancePicker() -> some View {

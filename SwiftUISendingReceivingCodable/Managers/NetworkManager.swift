@@ -57,9 +57,13 @@ class NetworkManager {
             completion(.failure(NetworkErrorEnum.badURL))
             return
         }
-        
         self.cancellable = URLSession.shared.dataTaskPublisher(for: urlRequest)
-            .tryMap() { element -> Data in
+            .mapError { error -> NetworkErrorEnum in
+                completion(.failure(NetworkErrorEnum.requestFailed))
+                return NetworkErrorEnum.requestFailed
+            }
+            .retry(3)
+            .tryMap() { element in
                 guard let httpResponse = element.response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 else {
                     completion(.failure(NetworkErrorEnum.requestFailed))
@@ -68,15 +72,16 @@ class NetworkManager {
                 return element.data
             }
             .decode(type: decodable.self, decoder: JSONDecoder())
-            //.eraseToAnyPublisher()
-            .sink(receiveCompletion: {
-                print ("Received completion: \($0).")
+            .eraseToAnyPublisher()
+            .sink(receiveCompletion: { error in
+                print ("Received completion: \(error).")
             },
             receiveValue: {
                 decodedData in
                 print ("Received user: \(decodedData).")
                 completion(.success(decodedData))
             })
+        
     }
     
     //     Generic without result type version

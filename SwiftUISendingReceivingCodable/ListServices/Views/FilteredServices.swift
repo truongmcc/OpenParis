@@ -1,5 +1,5 @@
 //
-//  ServicesListView.swift
+//  FilteredServices.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 25/03/2021.
@@ -16,18 +16,17 @@ fileprivate enum Constants {
     static let minHeightRatio: CGFloat = 0
 }
 
-struct ServicesListView<Content: View>: View {
+struct FilteredServices<Content: View>: View {
     let maxHeight: CGFloat
     let minHeight: CGFloat
     let content: Content
     var mapView: MapView
-    var filteredServices: FilteredServicesViewModel?
+    @ObservedObject var filteredServicesViewModel:  FilteredServicesViewModel
     @State var searchText = ""
     @Binding var isOpen: Bool
-    @ObservedObject var serviceViewModel: ServiceViewModel
     @GestureState private var translation: CGFloat = 0
     
-    init(isOpen: Binding<Bool>, mapView: MapView, serviceViewModel: ServiceViewModel, maxHeight: CGFloat,
+    init(isOpen: Binding<Bool>, mapView: MapView, maxHeight: CGFloat,
          @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
         self.maxHeight = maxHeight
@@ -35,14 +34,14 @@ struct ServicesListView<Content: View>: View {
         self._isOpen = isOpen
         
         self.mapView = mapView
-        self.serviceViewModel = serviceViewModel
-        self.filteredServices = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
+        self.filteredServicesViewModel = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: "self.searchText")
+        //self.updateFilteredServices()
     }
     
-    func update() {
-        
-    }
-   
+//    private func updateFilteredServices() {
+//        self.filteredServicesViewModel = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
+//    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -50,21 +49,27 @@ struct ServicesListView<Content: View>: View {
                 self.content
                 HStack(spacing: 8) {
                     TextField("Search...", text: $searchText)
+                    {
+                        //self.updateFilteredServices()
+                    }
+//                        .onChange(of: searchText, perform: { _ in
+//                            self.updateFilteredServices()
+//                        })
                 }
                 .padding(.top, 10)
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 List {
                     ForEach(
-                        filteredServices?.filteredData ?? self.mapView.mapViewModel.annotations, id: \.self) { annotation in
+                        filteredServicesViewModel.filteredData ?? self.mapView.mapViewModel.annotations, id: \.self) { annotation in
                         if let annot = annotation as ServiceAnnotation {
                             addServiceCellView(annotation: annot)
                                 .onTapGesture {
-                                self.isOpen = false
+                                    self.isOpen = false
                                     mapView.showAnnotationDetail(recordId: annot.id!)
                                     mapView.mapViewModel.centerCoordinate = annot.coordinate
                                     mapView.mapViewModel.centerOnAnnotation.toggle()
-                            }
+                                }
                         }
                     }
                 }

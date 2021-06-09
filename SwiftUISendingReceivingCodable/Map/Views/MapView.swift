@@ -18,7 +18,7 @@ struct MapView: UIViewRepresentable {
     
     @Binding var showLoadingView: Bool
     @Binding var showErrorAlert: Bool
-    
+
     // MARK: - Required protocol methods of UIViewRepresentable
     func makeUIView(context: Context) -> MKMapView {
         let uiView = MKMapView()

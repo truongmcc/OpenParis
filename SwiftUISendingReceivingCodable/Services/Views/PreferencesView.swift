@@ -35,11 +35,7 @@ struct PreferencesView: View {
                 Spacer()
                 Text("Rayon de recherche")
                 addRayDistancePicker()
-                
-                
-                
-                
-                
+
                 Button("OK", action: {
                     self.presentationMode.wrappedValue.dismiss()
                 })

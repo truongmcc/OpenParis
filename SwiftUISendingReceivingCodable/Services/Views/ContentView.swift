@@ -32,9 +32,7 @@ struct ContentView: View {
     var body: some View {
         ZStack() {
             mapView
-                .onTapGesture {
-                    serviceViewModel.service = nil
-                }
+                .onTapGesture { serviceViewModel.service = nil }
             VStack {
                 addTitleBar()
                 addPositionButton()

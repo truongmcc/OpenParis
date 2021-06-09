@@ -17,18 +17,16 @@ fileprivate enum Constants {
 }
 
 struct ServicesListView<Content: View>: View {
-    @Binding var isOpen: Bool
-    @State var searchText = ""
-    var mapView: MapView
-    @ObservedObject var serviceViewModel: ServiceViewModel
-    
     let maxHeight: CGFloat
     let minHeight: CGFloat
     let content: Content
-    
+    var mapView: MapView
+    var filteredServices: FilteredServicesViewModel?
+    @State var searchText = ""
+    @Binding var isOpen: Bool
+    @ObservedObject var serviceViewModel: ServiceViewModel
     @GestureState private var translation: CGFloat = 0
     
-    var filteredServices: FilteredServicesViewModel?
     init(isOpen: Binding<Bool>, mapView: MapView, serviceViewModel: ServiceViewModel, maxHeight: CGFloat,
          @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
@@ -41,19 +39,10 @@ struct ServicesListView<Content: View>: View {
         self.filteredServices = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
     }
     
-    private var offset: CGFloat {
-        isOpen ? 0 : maxHeight - minHeight
+    func update() {
+        
     }
-    
-    private var indicator: some View {
-        RoundedRectangle(cornerRadius: Constants.radius)
-            .fill(Color.secondary)
-            .frame(
-                width: Constants.indicatorWidth,
-                height: Constants.indicatorHeight
-            )
-    }
-    
+   
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -108,6 +97,19 @@ struct ServicesListView<Content: View>: View {
             ref = adresse
         }
         return ServiceCellView(keySearch: ref!)
+    }
+    
+    private var offset: CGFloat {
+        isOpen ? 0 : maxHeight - minHeight
+    }
+    
+    private var indicator: some View {
+        RoundedRectangle(cornerRadius: Constants.radius)
+            .fill(Color.secondary)
+            .frame(
+                width: Constants.indicatorWidth,
+                height: Constants.indicatorHeight
+            )
     }
 }
 

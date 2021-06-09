@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class FilteredServicesViewModel: ObservableObject {
-    @ObservedObject var mapViewModel: MapViewModel
+    var mapViewModel: MapViewModel
     @Published var searchText = ""
     var publisher: AnyCancellable?
     var filteredData: [ServiceAnnotation] = [ServiceAnnotation]()
@@ -28,8 +28,10 @@ class FilteredServicesViewModel: ObservableObject {
                     }
                 } else {
                     self.filteredData = self.mapViewModel.annotations
+                    self.filteredData = self.mapViewModel.sortAnnotationFromUser() ?? []
                 }
             })
     }
 }
+
 

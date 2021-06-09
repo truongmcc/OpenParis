@@ -35,5 +35,18 @@ class MapViewModel: ObservableObject {
             completion(result)
         }
     }
+    
+    func sortAnnotationFromUser() -> [ServiceAnnotation]? {
+        for annotation in annotations {
+            let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            
+            locationManager.location?.distance(from: location)
+        }
+        return annotations.sorted { a,b in
+            let locationA = CLLocation(latitude: a.coordinate.latitude, longitude: a.coordinate.longitude)
+            let locationB = CLLocation(latitude: b.coordinate.latitude, longitude: b.coordinate.longitude)
+            return (locationManager.location?.distance(from: locationA))! < (locationManager.location?.distance(from: locationB))!
+        }
+    }
 }
 

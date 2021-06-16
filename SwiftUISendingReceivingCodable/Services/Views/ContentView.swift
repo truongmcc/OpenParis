@@ -40,7 +40,7 @@ struct ContentView: View {
             showProgressionView()
             showServiceDetail()
             GeometryReader { geometry in
-                FilteredServices(isOpen: self.$bottomSheetShown, mapView: mapView,
+                FilteredServicesView(isOpen: self.$bottomSheetShown, mapView: mapView,
                                  maxHeight: geometry.size.height * 0.7) {
                 }
             }.edgesIgnoringSafeArea(.all)

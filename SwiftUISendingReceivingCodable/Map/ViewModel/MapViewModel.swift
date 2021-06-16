@@ -18,11 +18,10 @@ class MapViewModel: ObservableObject {
     
     func createAnnotations(results: [AnnotationDataModel]) {
         shouldeRefreshAnnotations = true
-        var annos = [ServiceAnnotation]()
         for annotation in results {
-            annos.append(ServiceAnnotation(data: annotation))
+            annotations.append(ServiceAnnotation(data: annotation))
         }
-        annotations = annos
+        annotations = sortByDistance()!
     }
     
     func fetchAllAnnotations(of userSettings: UserSettings, completion: @escaping
@@ -36,7 +35,7 @@ class MapViewModel: ObservableObject {
         }
     }
     
-    func sortAnnotationFromUser() -> [ServiceAnnotation]? {
+    func sortByDistance() -> [ServiceAnnotation]? {
         for annotation in annotations {
             let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             

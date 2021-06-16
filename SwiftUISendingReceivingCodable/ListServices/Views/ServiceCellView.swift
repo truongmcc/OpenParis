@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ServiceCellView: View {
-    let keySearch: String
+    var annotation: ServiceAnnotation?
     var body: some View {
-        Text(keySearch)
+        if let name = annotation?.name {
+            Text(name)
+        } else if let adresse = annotation?.adresse {
+            Text(adresse)
+        }
     }
 }
 
 struct ServiceCellView_Previews: PreviewProvider {
-    static let keySearch = ""
+    static let annotation = ServiceAnnotation?.self
     static var previews: some View {
-        ServiceCellView(keySearch: keySearch)
+        ServiceCellView(annotation: nil)
     }
 }

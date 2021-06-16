@@ -1,5 +1,5 @@
 //
-//  FilteredServices.swift
+//  FilteredServicesView.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 25/03/2021.
@@ -10,66 +10,57 @@ import Combine
 
 fileprivate enum Constants {
     static let radius: CGFloat = 16
-    static let indicatorHeight: CGFloat = 6
+    static let indicatorHeight: CGFloat = 2
     static let indicatorWidth: CGFloat = 60
     static let snapRatio: CGFloat = 0.25
     static let minHeightRatio: CGFloat = 0
 }
 
-struct FilteredServices<Content: View>: View {
+struct FilteredServicesView<Content: View>: View {
     let maxHeight: CGFloat
     let minHeight: CGFloat
     let content: Content
     var mapView: MapView
-    @ObservedObject var filteredServicesViewModel:  FilteredServicesViewModel
-    @State var searchText = ""
+    @State private var searchText = ""
     @Binding var isOpen: Bool
     @GestureState private var translation: CGFloat = 0
-    
     init(isOpen: Binding<Bool>, mapView: MapView, maxHeight: CGFloat,
          @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
         self.maxHeight = maxHeight
         self.content = content()
         self._isOpen = isOpen
-        
         self.mapView = mapView
-        self.filteredServicesViewModel = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: "self.searchText")
-        //self.updateFilteredServices()
     }
     
-//    private func updateFilteredServices() {
-//        self.filteredServicesViewModel = FilteredServicesViewModel(mapViewModel: self.mapView.mapViewModel, searchText: self.searchText)
-//    }
-    
     var body: some View {
+        let bindingSearch = Binding<String>(
+            get: {
+                self.searchText
+            }, set: {
+                self.searchText = $0.uppercased()
+            })
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 self.indicator.padding()
                 self.content
                 HStack(spacing: 8) {
-                    TextField("Search...", text: $searchText)
-                    {
-                        //self.updateFilteredServices()
-                    }
-//                        .onChange(of: searchText, perform: { _ in
-//                            self.updateFilteredServices()
-//                        })
+                    TextField("Search...", text: bindingSearch)
+                        .padding(.bottom)
                 }
                 .padding(.top, 10)
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 List {
                     ForEach(
-                        filteredServicesViewModel.filteredData ?? self.mapView.mapViewModel.annotations, id: \.self) { annotation in
+                        mapView.mapViewModel.annotations, id: \.self) { annotation in
                         if let annot = annotation as ServiceAnnotation {
-                            addServiceCellView(annotation: annot)
-                                .onTapGesture {
-                                    self.isOpen = false
-                                    mapView.showAnnotationDetail(recordId: annot.id!)
-                                    mapView.mapViewModel.centerCoordinate = annot.coordinate
-                                    mapView.mapViewModel.centerOnAnnotation.toggle()
-                                }
+                            if searchText == "" {
+                                createCell(annot)
+                            } else if annot.name?.contains(searchText) == true {
+                                createCell(annot)
+                            }
+                            
                         }
                     }
                 }
@@ -94,14 +85,14 @@ struct FilteredServices<Content: View>: View {
         }
     }
     
-    fileprivate func addServiceCellView(annotation: ServiceAnnotation) -> ServiceCellView {
-        var ref: String?
-        if let name = annotation.name {
-            ref = name
-        } else if let adresse = annotation.adresse {
-            ref = adresse
-        }
-        return ServiceCellView(keySearch: ref!)
+    fileprivate func createCell(_ annot: ServiceAnnotation) -> some View {
+        return ServiceCellView(annotation: annot)
+            .onTapGesture {
+                self.isOpen = false
+                mapView.showAnnotationDetail(recordId: annot.id!)
+                mapView.mapViewModel.centerCoordinate = annot.coordinate
+                mapView.mapViewModel.centerOnAnnotation.toggle()
+            }
     }
     
     private var offset: CGFloat {

@@ -24,8 +24,7 @@ class MapViewModel: ObservableObject {
         annotations = sortByDistance()!
     }
     
-    func fetchAllAnnotations(of userSettings: UserSettings, completion: @escaping
-                                (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {
+    func fetchAllAnnotations(of userSettings: UserSettings, completion: @escaping (Result<ResponseAnnotationDatas, NetworkErrorEnum>) -> Void) {
         let center: (x: Double, y: Double)
         center.x = centerCoordinate?.latitude ?? 0
         center.y = centerCoordinate?.longitude ?? 0

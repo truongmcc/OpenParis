@@ -1,5 +1,5 @@
 //
-//  ServiceCellView.swift
+//  FilteredServiceCell.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 30/03/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ServiceCellView: View {
+struct FilteredServiceCell: View {
     var annotation: ServiceAnnotation?
     var body: some View {
         if let name = annotation?.name {
@@ -21,6 +21,6 @@ struct ServiceCellView: View {
 struct ServiceCellView_Previews: PreviewProvider {
     static let annotation = ServiceAnnotation?.self
     static var previews: some View {
-        ServiceCellView(annotation: nil)
+        FilteredServiceCell(annotation: nil)
     }
 }

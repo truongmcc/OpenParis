@@ -48,18 +48,18 @@ struct ContentView: View {
         .alert(isPresented: $showErrorAlert) {
             return AlertManager.shared.createNetworkAlert(completionHandler: { shouldReloadMap in
                 if shouldReloadMap {
-                    mapView.loadMap()
+                    mapView.showAllAnnotations()
                 }
             })
         }
         .sheet(isPresented: $showPreferencesView) {
             PreferencesView(mapViewModel: mapViewModel, onDismiss: {
                 serviceViewModel.service = nil
-                mapView.loadMap()
+                mapView.showAllAnnotations()
             }).environmentObject(userSettings)
         }
         .onAppear() {
-            mapView.loadMap()
+            mapView.showAllAnnotations()
         }
     }
 }

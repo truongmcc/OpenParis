@@ -10,7 +10,13 @@ import MapKit
 import Foundation
 import CoreLocation
 
-struct MapView: UIViewRepresentable {
+protocol MapViewProtocol {
+    func showAnnotationDetail(recordId: String)
+    func showAllAnnotations()
+    func manageAnnotationsResults(result: Result<ResponseAnnotationDatas, NetworkErrorEnum>)
+}
+
+struct MapView: UIViewRepresentable, MapViewProtocol {
     let locationManager = CLLocationManager()
     @ObservedObject var mapViewModel: MapViewModel
     @ObservedObject var serviceViewModel: ServiceViewModel
@@ -53,10 +59,6 @@ struct MapView: UIViewRepresentable {
     }
     
     // MARK: - Functions
-    func refresh() {
-        print("dans refresh")
-    }
-    
     func makeCoordinator() -> MapCoordinator {
         MapCoordinator(mapView: self)
     }
@@ -89,8 +91,8 @@ struct MapView: UIViewRepresentable {
     
 }
 
+//MARK: MapViewProtocol
 extension MapView {
-    
     func showAnnotationDetail(recordId: String) {
         showLoadingView = true
         mapViewModel.shouldeRefreshAnnotations = false
@@ -103,8 +105,7 @@ extension MapView {
         }
     }
     
-    func loadMap() {
-        //serviceViewModel.service = nil
+    func showAllAnnotations() {
         showLoadingView = true
         mapViewModel.fetchAllAnnotations(of: userSettings)
         { result in

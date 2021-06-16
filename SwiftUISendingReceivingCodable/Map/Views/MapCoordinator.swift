@@ -24,7 +24,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         map.mapViewModel.centerCoordinate = mapView.centerCoordinate
         if map.userSettings.rayOfDistance <= 700 {
-            map.loadMap()
+            map.showAllAnnotations()
         }
     }
     

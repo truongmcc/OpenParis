@@ -16,14 +16,35 @@ fileprivate enum Constants {
     static let minHeightRatio: CGFloat = 0
 }
 
-struct FilteredServicesView<Content: View>: View {
+protocol ServiceAnnotationProtocol {
+    var serviceAnnotations: [ServiceAnnotation] { get set }
+}
+
+struct FilteredServicesView<Content: View>: View, ServiceAnnotationProtocol {
+    var serviceAnnotations: [ServiceAnnotation]
+    
+    let content: Content
     let maxHeight: CGFloat
     let minHeight: CGFloat
-    let content: Content
-    var mapView: MapView
+    private var mapView: MapView
+    
+    //MARK: Computed Properties
+    private var offset: CGFloat {
+        isOpen ? 0 : maxHeight - minHeight
+    }
+    private var indicator: some View {
+        RoundedRectangle(cornerRadius: Constants.radius)
+            .fill(Color.secondary)
+            .frame(
+                width: Constants.indicatorWidth,
+                height: Constants.indicatorHeight
+            )
+    }
+    //MARK: Property Wrappers
     @State private var searchText = ""
     @Binding var isOpen: Bool
     @GestureState private var translation: CGFloat = 0
+    
     init(isOpen: Binding<Bool>, mapView: MapView, maxHeight: CGFloat,
          @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
@@ -31,12 +52,13 @@ struct FilteredServicesView<Content: View>: View {
         self.content = content()
         self._isOpen = isOpen
         self.mapView = mapView
+        self.serviceAnnotations = mapView.mapViewModel.annotations
     }
     
     var body: some View {
         let bindingSearch = Binding<String>(
             get: {
-                self.searchText
+                self.searchText.uppercased()
             }, set: {
                 self.searchText = $0.uppercased()
             })
@@ -53,14 +75,11 @@ struct FilteredServicesView<Content: View>: View {
                 .padding(.trailing, 20)
                 List {
                     ForEach(
-                        mapView.mapViewModel.annotations, id: \.self) { annotation in
+                        self.serviceAnnotations, id: \.self) { annotation in
                         if let annot = annotation as ServiceAnnotation {
-                            if searchText == "" {
-                                createCell(annot)
-                            } else if annot.name?.contains(searchText) == true {
-                                createCell(annot)
+                            if searchText == "" || annot.name?.contains(searchText) == true {
+                                createAnnotationCell(annot)
                             }
-                            
                         }
                     }
                 }
@@ -85,27 +104,14 @@ struct FilteredServicesView<Content: View>: View {
         }
     }
     
-    fileprivate func createCell(_ annot: ServiceAnnotation) -> some View {
-        return ServiceCellView(annotation: annot)
+    fileprivate func createAnnotationCell(_ annot: ServiceAnnotation) -> some View {
+        return FilteredServiceCell(annotation: annot)
             .onTapGesture {
                 self.isOpen = false
                 mapView.showAnnotationDetail(recordId: annot.id!)
                 mapView.mapViewModel.centerCoordinate = annot.coordinate
                 mapView.mapViewModel.centerOnAnnotation.toggle()
             }
-    }
-    
-    private var offset: CGFloat {
-        isOpen ? 0 : maxHeight - minHeight
-    }
-    
-    private var indicator: some View {
-        RoundedRectangle(cornerRadius: Constants.radius)
-            .fill(Color.secondary)
-            .frame(
-                width: Constants.indicatorWidth,
-                height: Constants.indicatorHeight
-            )
     }
 }
 

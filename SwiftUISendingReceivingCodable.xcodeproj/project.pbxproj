@@ -52,6 +52,8 @@
 		EBE5EC022552F48000DF20F0 /* TriMobileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */; };
 		EBECC46E258378D10094D643 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECC46D258378D10094D643 /* UserSettings.swift */; };
 		EBF49769260CC14100E83585 /* FilteredServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF49768260CC14100E83585 /* FilteredServicesView.swift */; };
+		EBFF9675267CDFFD0007E9D6 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF9674267CDFFD0007E9D6 /* Url.swift */; };
+		EBFF967A267CE2770007E9D6 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF9679267CE2770007E9D6 /* Decoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriMobileDetailView.swift; sourceTree = "<group>"; };
 		EBECC46D258378D10094D643 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		EBF49768260CC14100E83585 /* FilteredServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredServicesView.swift; sourceTree = "<group>"; };
+		EBFF9674267CDFFD0007E9D6 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
+		EBFF9679267CE2770007E9D6 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				EB887FE324C9DC8500BA086F /* NetworkManager.swift */,
+				EBFF9679267CE2770007E9D6 /* Decoding.swift */,
+				EBFF9674267CDFFD0007E9D6 /* Url.swift */,
 				EB8C3321254C4BC400524379 /* AlertManager.swift */,
 				EB1B7163257294B500DFB05A /* String+Extension.swift */,
 			);
@@ -501,8 +507,10 @@
 				EB1B715F25728A0400DFB05A /* ArbreRemarquableDetailView.swift in Sources */,
 				EB887FBB24C9BDD000BA086F /* ContentView.swift in Sources */,
 				EB0FF5B42584DFE60061E251 /* PreferencesView.swift in Sources */,
+				EBFF967A267CE2770007E9D6 /* Decoding.swift in Sources */,
 				EB4C5EA725669454001791D4 /* Service.swift in Sources */,
 				EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */,
+				EBFF9675267CDFFD0007E9D6 /* Url.swift in Sources */,
 				EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */,
 				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
 				EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */,

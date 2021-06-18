@@ -15,21 +15,14 @@ class NetworkManager {
     private var cancellable: AnyCancellable?
     private init() { }
     
-    func createUrlRequest(url: String) -> URLRequest? {
-        guard let url = URL(string: url) else {
-            print("Invalid URL")
-            return nil
-        }
-        return URLRequest(url: url)
-    }
-    
     deinit {
         cancellable?.cancel()
     }
     
     // Generic with result type version
     func fetchDataWithTypeResult<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
-        guard let urlRequest = createUrlRequest(url: url) else {
+        
+        guard let urlRequest = Url(urlString: url).createUrlRequest() else {
             completion(.failure(NetworkErrorEnum.badURL))
             return
         }
@@ -38,14 +31,13 @@ class NetworkManager {
                 completion(.failure(NetworkErrorEnum.requestFailed))
                 return
             }
-            do {
-                print(data)
-                let decodedResponse  = try JSONDecoder().decode(decodable.self, from: data)
-                completion(.success(decodedResponse))
-            } catch {
-                print(error)
+            if let decoding = Decoding(data: data).decode(data: data, decodable: decodable.self) {
+                print(decoding)
+                completion(.success(decoding))
+            } else {
                 completion(.failure(NetworkErrorEnum.decodingFailed))
             }
+
         }
         .resume()
     }
@@ -53,7 +45,7 @@ class NetworkManager {
     func fetchDataWithCombine<T: Codable>(url: String,
                                           decodable: T.Type,
                                           completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
-        guard let urlRequest = createUrlRequest(url: url) else {
+        guard let urlRequest = Url(urlString: url).createUrlRequest() else {
             completion(.failure(NetworkErrorEnum.badURL))
             return
         }

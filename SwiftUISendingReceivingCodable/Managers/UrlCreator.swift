@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Url {
+class UrlCreator {
     let urlString: String
     init(urlString: String) {
         self.urlString = urlString

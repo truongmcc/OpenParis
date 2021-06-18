@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Decoding {
+class DataDecoder {
     let data: Data?
     init(data: Data?) {
         self.data = data
@@ -18,7 +18,7 @@ class Decoding {
         }
         do {
             let decodedData = try JSONDecoder().decode(decodable.self, from: encodedData)
-            return decodedData 
+            return decodedData
         } catch {
             print(error)
         }

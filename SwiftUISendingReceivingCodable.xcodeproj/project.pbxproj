@@ -35,7 +35,6 @@
 		EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE324C9DC8500BA086F /* NetworkManager.swift */; };
 		EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE524C9DD9300BA086F /* VelibModel.swift */; };
 		EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C3321254C4BC400524379 /* AlertManager.swift */; };
-		EBAF1DB4268633A700C8AFD5 /* ServiceDetailViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF1DB3268633A700C8AFD5 /* ServiceDetailViewProtocol.swift */; };
 		EBB5F40D25519D3600A3DEF6 /* VelibDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */; };
 		EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */; };
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
@@ -110,7 +109,6 @@
 		EB887FE324C9DC8500BA086F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EB887FE524C9DD9300BA086F /* VelibModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibModel.swift; sourceTree = "<group>"; };
 		EB8C3321254C4BC400524379 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		EBAF1DB3268633A700C8AFD5 /* ServiceDetailViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailViewProtocol.swift; sourceTree = "<group>"; };
 		EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibDetailView.swift; sourceTree = "<group>"; };
 		EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrotinetteDetailView.swift; sourceTree = "<group>"; };
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */,
 				EB1B715E25728A0400DFB05A /* ArbreRemarquableDetailView.swift */,
 				EBCC3F392573DE1A003B3DD1 /* WifiHotspotDetailView.swift */,
-				EBAF1DB3268633A700C8AFD5 /* ServiceDetailViewProtocol.swift */,
 			);
 			path = DetailViews;
 			sourceTree = "<group>";
@@ -521,7 +518,6 @@
 				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
 				EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */,
 				EB1B7164257294B500DFB05A /* String+Extension.swift in Sources */,
-				EBAF1DB4268633A700C8AFD5 /* ServiceDetailViewProtocol.swift in Sources */,
 				EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */,
 				EBFF9688267CE83F0007E9D6 /* DataFetcher.swift in Sources */,
 				EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */,

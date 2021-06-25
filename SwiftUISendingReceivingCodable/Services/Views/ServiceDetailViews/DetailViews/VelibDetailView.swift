@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VelibDetailView: View {
     @State var serviceSelected: Velib?
+
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10) {
             TitleTextView(title: serviceSelected?.fields?.name ?? "nom non trouvé")
@@ -16,13 +17,6 @@ struct VelibDetailView: View {
             CustomTextView(title: "Velibs disponibles : ", value: "\(serviceSelected?.fields?.numBikesAvailable ?? 0)")
             CustomTextView(title: "Ebikes : ", value: "\(serviceSelected?.fields?.eBike ?? 0)")
         }
-    }
-}
-
-extension VelibDetailView: ServiceDetailViewProtocol {
-    typealias T = VelibDetailView
-    func createServiceView<T>(serviceSelected: Service?) -> T {
-        VelibDetailView(serviceSelected: serviceSelected as? Velib) as! T
     }
 }
 

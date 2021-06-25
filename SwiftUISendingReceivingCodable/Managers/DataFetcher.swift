@@ -8,12 +8,6 @@
 import Foundation
 
 class DataFetcher {
-    let urlRequest: URLRequest
-    
-    init(urlRequest: URLRequest) {
-        self.urlRequest = urlRequest
-    }
-    
     func fetchData(urlRequest: URLRequest, completion: @escaping (Data?, NetworkErrorEnum?) -> Void) {
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {

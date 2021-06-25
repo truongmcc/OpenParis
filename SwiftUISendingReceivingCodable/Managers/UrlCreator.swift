@@ -8,12 +8,8 @@
 import Foundation
 
 class UrlCreator {
-    let urlString: String
-    init(urlString: String) {
-        self.urlString = urlString
-    }
-    func createUrlRequest() -> URLRequest? {
-        guard let url = URL(string: self.urlString) else {
+    func createUrlRequest(urlString: String) -> URLRequest? {
+        guard let url = URL(string: urlString) else {
             return nil
         }
         return URLRequest(url: url)

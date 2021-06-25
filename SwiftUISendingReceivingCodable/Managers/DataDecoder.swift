@@ -8,10 +8,6 @@
 import Foundation
 
 class DataDecoder {
-    let data: Data?
-    init(data: Data?) {
-        self.data = data
-    }
     func decode<T: Codable>(data: Data?, decodable: T.Type) -> T? {
         guard let encodedData = data else {
             return nil

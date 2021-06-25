@@ -11,6 +11,7 @@ struct DetailBaseView: View {
     @State var serviceSelected: Service?
     var body: some View {
         BaseView() {
+            //createServiceView(serviceSelected: Service?)
             switch serviceSelected?.typeService {
             case .velib:
                 VelibDetailView(serviceSelected: serviceSelected as? Velib)

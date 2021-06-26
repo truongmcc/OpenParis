@@ -60,7 +60,7 @@ struct WifiHotspot: Service, Codable, Identifiable {
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
         RepositoryNetworking.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: Result<WifiHotspotResponse, NetworkErrorEnum>) in
+                                             urlString: urlString) { ( result: wifiHotSportResult) in
             switch result {
             case .success(let data):
                 if let service = self.createService(data: data) {

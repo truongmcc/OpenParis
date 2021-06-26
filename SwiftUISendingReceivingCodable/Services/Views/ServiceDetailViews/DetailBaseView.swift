@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct DetailBaseView: View {
-    @State var serviceSelected: Service?
+    var serviceSelected: Service?
+    var detailView: WifiHotspotDetailView {
+        return ConcreteWifiHotspotDetailView().create(service: serviceSelected as! WifiHotspot) as! WifiHotspotDetailView
+    }
+
     var body: some View {
         BaseView() {
             switch serviceSelected?.typeService {
@@ -25,7 +29,8 @@ struct DetailBaseView: View {
             case .arbreRemarquable:
                 ArbreRemarquableDetailView(serviceSelected: serviceSelected as? ArbreRemarquable)
             case .wifiHotspot:
-                WifiHotspotDetailView(serviceSelected: serviceSelected as? WifiHotspot)
+                detailView
+                //WifiHotspotDetailView(service: serviceSelected as? WifiHotspot)
             case .colonneVerre:
                 ColonneVerreDetailView(serviceSelected: serviceSelected as? ColonneVerre)
             case .none:

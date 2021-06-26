@@ -35,6 +35,7 @@
 		EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE324C9DC8500BA086F /* NetworkManager.swift */; };
 		EB887FE624C9DD9300BA086F /* VelibModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB887FE524C9DD9300BA086F /* VelibModel.swift */; };
 		EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C3321254C4BC400524379 /* AlertManager.swift */; };
+		EBAF1DC226876F1400C8AFD5 /* CreatorFactoryMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF1DC126876F1400C8AFD5 /* CreatorFactoryMethod.swift */; };
 		EBB5F40D25519D3600A3DEF6 /* VelibDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */; };
 		EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */; };
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
@@ -109,6 +110,7 @@
 		EB887FE324C9DC8500BA086F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EB887FE524C9DD9300BA086F /* VelibModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibModel.swift; sourceTree = "<group>"; };
 		EB8C3321254C4BC400524379 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		EBAF1DC126876F1400C8AFD5 /* CreatorFactoryMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorFactoryMethod.swift; sourceTree = "<group>"; };
 		EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibDetailView.swift; sourceTree = "<group>"; };
 		EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrotinetteDetailView.swift; sourceTree = "<group>"; };
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */ = {
 			isa = PBXGroup;
 			children = (
+				EBAF1DC126876F1400C8AFD5 /* CreatorFactoryMethod.swift */,
 				EB7C488E255986C700CB5C7F /* DetailBaseView.swift */,
 				EBCCFA6825750A4C00D18AAE /* CustomTextView.swift */,
 				EBCCFA73257514F800D18AAE /* TitleTextView.swift */,
@@ -532,6 +535,7 @@
 				EBECC46E258378D10094D643 /* UserSettings.swift in Sources */,
 				EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */,
 				EBE5EBFD2552F2DE00DF20F0 /* TriMobileDataModel.swift in Sources */,
+				EBAF1DC226876F1400C8AFD5 /* CreatorFactoryMethod.swift in Sources */,
 				EB3D27632582A43900A694D3 /* PointsOfInterestEnum.swift in Sources */,
 				EBB5F40D25519D3600A3DEF6 /* VelibDetailView.swift in Sources */,
 				EBCCFA6925750A4C00D18AAE /* CustomTextView.swift in Sources */,

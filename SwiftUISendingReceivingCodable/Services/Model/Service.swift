@@ -16,6 +16,7 @@ protocol Service {
     typealias triMobileResult = Result<TriMobileResponse, NetworkErrorEnum>
     typealias arbreRemarquableResult = Result<ArbreRemarquableResponse, NetworkErrorEnum>
     typealias colonneVerreResult = Result<ColonneVerreResponse, NetworkErrorEnum>
+    typealias wifiHotSportResult = Result<WifiHotspotResponse, NetworkErrorEnum>
     
     var id: String? { get set }
     var typeService: ServicesEnum { get set }

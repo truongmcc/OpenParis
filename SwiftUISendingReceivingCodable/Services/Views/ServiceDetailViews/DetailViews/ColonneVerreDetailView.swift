@@ -7,11 +7,22 @@
 
 import SwiftUI
 
-struct ColonneVerreDetailView: View {
-    @State var serviceSelected: ColonneVerre?
+struct ConcreteColonneVerreDetailView: CreatorFactoryMethod {
+    func create(service: Service) -> DetailBaseViewProtocol {
+        return ColonneVerreDetailView(service: service as! ColonneVerre)
+    }
+}
+
+struct ColonneVerreDetailView: View, DetailBaseViewProtocol {
+    
+    var service: Service?
+    var colonneVerre: ColonneVerre {
+        return service as! ColonneVerre
+    }
+    
     var body: some View {
         VStack(alignment: .center) {
-            TitleTextView(title: serviceSelected?.fields?.adresse)
+            TitleTextView(title: colonneVerre.fields?.adresse)
         }
     }
 }

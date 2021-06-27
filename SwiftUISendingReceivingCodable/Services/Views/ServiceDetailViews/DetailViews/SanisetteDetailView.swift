@@ -7,13 +7,22 @@
 
 import SwiftUI
 
-struct SanisetteDetailView: View {
-    @State var serviceSelected: Sanisette?
+struct ConcreteSanisetteDetailView: CreatorFactoryMethod {
+    func create(service: Service) -> DetailBaseViewProtocol {
+        return SanisetteDetailView(service: service as! Sanisette)
+    }
+}
+
+struct SanisetteDetailView: View, DetailBaseViewProtocol {
+    var service: Service?
+    var sanisette: Sanisette {
+        return service as! Sanisette
+    }
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            TitleTextView(title: serviceSelected?.fields?.adresse ?? "")
-            CustomTextView(title: "Horaire : ", value: serviceSelected?.fields?.horaire ?? "Non Renseigné")
-            CustomTextView(title: "Acces PMR : ", value: serviceSelected?.fields?.accesPmr ?? "Non Renseigné")
+            TitleTextView(title: sanisette.fields?.adresse ?? "")
+            CustomTextView(title: "Horaire : ", value: sanisette.fields?.horaire ?? "Non Renseigné")
+            CustomTextView(title: "Acces PMR : ", value: sanisette.fields?.accesPmr ?? "Non Renseigné")
         }
     }
 }

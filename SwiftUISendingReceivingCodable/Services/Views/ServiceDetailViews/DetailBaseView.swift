@@ -9,33 +9,13 @@ import SwiftUI
 
 struct DetailBaseView: View {
     var serviceSelected: Service?
-    var detailView: WifiHotspotDetailView {
-        return ConcreteWifiHotspotDetailView().create(service: serviceSelected as! WifiHotspot) as! WifiHotspotDetailView
+    var detailView: some View {
+        return serviceSelected?.typeService.createDetailView(serviceSelected: serviceSelected!)
     }
 
     var body: some View {
         BaseView() {
-            switch serviceSelected?.typeService {
-            case .velib:
-                VelibDetailView(serviceSelected: serviceSelected as? Velib)
-            case .trotinette:
-                TrotinetteDetailView(serviceSelected: serviceSelected as? Trotinette)
-            case .sanisette:
-                SanisetteDetailView(serviceSelected: serviceSelected as? Sanisette)
-            case .fontaine:
-                FontaineDetailView(serviceSelected: serviceSelected as? Fontaine)
-            case .triMobile:
-                TriMobileDetailView(serviceSelected: serviceSelected as? TriMobile)
-            case .arbreRemarquable:
-                ArbreRemarquableDetailView(serviceSelected: serviceSelected as? ArbreRemarquable)
-            case .wifiHotspot:
-                detailView
-                //WifiHotspotDetailView(service: serviceSelected as? WifiHotspot)
-            case .colonneVerre:
-                ColonneVerreDetailView(serviceSelected: serviceSelected as? ColonneVerre)
-            case .none:
-                Text("")
-            }
+            detailView
         }
     }
 }

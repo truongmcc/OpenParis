@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum ServicesEnum: String, CaseIterable {
     case velib
@@ -122,6 +123,27 @@ enum ServicesEnum: String, CaseIterable {
             return WifiHotspot()
         case .colonneVerre:
             return ColonneVerre()
+        }
+    }
+    @ViewBuilder
+    func createDetailView(serviceSelected: Service) -> some View {
+        switch self {
+        case .velib:
+            ConcreteVelibDetailView().create(service: serviceSelected as! Velib) as! VelibDetailView
+        case .trotinette:
+            ConcreteTrotinetteDetailView().create(service: serviceSelected as! Trotinette) as! TrotinetteDetailView
+        case .sanisette:
+            ConcreteSanisetteDetailView().create(service: serviceSelected as! Sanisette) as! SanisetteDetailView
+        case .fontaine:
+            ConcreteFontaineDetailView().create(service: serviceSelected as! Fontaine) as! FontaineDetailView
+        case .triMobile:
+            ConcreteTriMobileDetailView().create(service: serviceSelected as! TriMobile) as! TriMobileDetailView
+        case .arbreRemarquable:
+            ConcreteArbreRemarquableDetailView().create(service: serviceSelected as! ArbreRemarquable) as! ArbreRemarquableDetailView
+        case .wifiHotspot:
+            ConcreteWifiHotspotDetailView().create(service: serviceSelected as! WifiHotspot) as! WifiHotspotDetailView
+        case .colonneVerre:
+            ConcreteColonneVerreDetailView().create(service: serviceSelected as! ColonneVerre) as! ColonneVerreDetailView
         }
     }
     

@@ -7,23 +7,31 @@
 
 import SwiftUI
 
-struct ArbreRemarquableDetailView: View {
-    @State var serviceSelected: ArbreRemarquable?
+struct ConcreteArbreRemarquableDetailView: CreatorFactoryMethod {
+    func create(service: Service) -> DetailBaseViewProtocol {
+        return ArbreRemarquableDetailView(service: service as! ArbreRemarquable)
+    }
+}
 
+struct ArbreRemarquableDetailView: View, DetailBaseViewProtocol {
+    var service: Service?
+    var arbreRemarquable: ArbreRemarquable {
+        return service as! ArbreRemarquable
+    }
     var body: some View {
         VStack(alignment: .center) {
-            TitleTextView(title: serviceSelected?.fields?.libellefrancais)
-            CustomTextView(title: "Adresse : ", value: serviceSelected?.fields?.adresse)
-            CustomTextView(title: "Pépinière : ", value: serviceSelected?.fields?.espece)
-            CustomTextView(title: "Genre : ", value: serviceSelected?.fields?.genre)
+            TitleTextView(title: arbreRemarquable.fields?.libellefrancais)
+            CustomTextView(title: "Adresse : ", value: arbreRemarquable.fields?.adresse)
+            CustomTextView(title: "Pépinière : ", value: arbreRemarquable.fields?.espece)
+            CustomTextView(title: "Genre : ", value: arbreRemarquable.fields?.genre)
 
-            if let circ = serviceSelected?.fields?.circonferenceencm {
+            if let circ = arbreRemarquable.fields?.circonferenceencm {
                 CustomTextView(title: "Circonf. (cm) : ", value: String(Int(circ)))
             }
-            if let taille = serviceSelected?.fields?.hauteurenm, taille != 0 {
+            if let taille = arbreRemarquable.fields?.hauteurenm, taille != 0 {
                 CustomTextView(title: "Taille (mètres) : ", value: String(Int(taille)))
             }
-            if let formattedDate = serviceSelected?.fields?.dateplantation?.formatDateDMY(date: serviceSelected?.fields?.dateplantation ?? "Date Inconnue"),formattedDate != "01-01-1700" {
+            if let formattedDate = arbreRemarquable.fields?.dateplantation?.formatDateDMY(date: arbreRemarquable.fields?.dateplantation ?? "Date Inconnue"),formattedDate != "01-01-1700" {
                 CustomTextView(title: "Plantation : ", value: String(formattedDate))
             }
         }

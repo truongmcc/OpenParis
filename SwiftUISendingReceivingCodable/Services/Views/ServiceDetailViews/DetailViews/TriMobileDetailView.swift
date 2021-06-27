@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteTriMobileDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return TriMobileDetailView(service: service as! TriMobile)
     }
 }

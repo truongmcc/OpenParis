@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteVelibDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return VelibDetailView(service: service as! Velib)
     }
 }

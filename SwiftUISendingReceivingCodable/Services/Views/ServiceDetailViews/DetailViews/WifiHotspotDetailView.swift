@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteWifiHotspotDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return WifiHotspotDetailView(service: service as! WifiHotspot)
     }
 }

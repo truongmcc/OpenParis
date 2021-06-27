@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteArbreRemarquableDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return ArbreRemarquableDetailView(service: service as! ArbreRemarquable)
     }
 }

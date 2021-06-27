@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteSanisetteDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return SanisetteDetailView(service: service as! Sanisette)
     }
 }

@@ -6,7 +6,7 @@
 //
 
 protocol CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol
+    func create(service: Service?) -> DetailBaseViewProtocol?
 }
 
 protocol DetailBaseViewProtocol {

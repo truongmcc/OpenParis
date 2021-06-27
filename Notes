@@ -1,8 +1,8 @@
 webservices with combine
-ajouter le pattern factory method pour les viewdetail !!!
-creer une classe decoder done
 intégrer le map de swiftui lorsque j'ai XCode 13
 
+creer une classe decoder (single responsability) done
+ajouter le pattern factory method pour les viewdetail !!! done
 ajout colonnes de verre done
 fetchall with combine done
 usersettings : remplacer les propriétés par des userdefaults done
@@ -14,7 +14,7 @@ utiliser propertyWrapper pour les string capitalized done
 gestion du showError et alertErrorDetected done
 amélioration détail tri mobile done
 fix bug refreshAnnotations done
-detecter les services aux alentours à partir d'une certaine distance par rapport au centre de la carte done
+detecter les services aux alentours à partir d'une certaine distance
 ajout de services (arbres, wifi) done
 refacto service fetch methods done
 refactoring customTextView et titleTextView done
@@ -34,7 +34,7 @@ ajout services allTrotinettes done
 ajout menu avec type de map (binding) done
 utiliser le type results (erreurs et datas) done
 crash selection userlocation : done
-ajout dand git : done
+ajout dans git : done
 zoom sur map : done
 gestion des erreurs ws : done
 animation sur détail velib : done

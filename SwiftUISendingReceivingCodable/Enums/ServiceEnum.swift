@@ -125,25 +125,26 @@ enum ServicesEnum: String, CaseIterable {
             return ColonneVerre()
         }
     }
+    
     @ViewBuilder
     func createDetailView(serviceSelected: Service) -> some View {
         switch self {
         case .velib:
-            ConcreteVelibDetailView().create(service: serviceSelected as! Velib) as! VelibDetailView
+            ConcreteVelibDetailView().create(service: serviceSelected) as? VelibDetailView
         case .trotinette:
-            ConcreteTrotinetteDetailView().create(service: serviceSelected as! Trotinette) as! TrotinetteDetailView
+            ConcreteTrotinetteDetailView().create(service: serviceSelected) as? TrotinetteDetailView
         case .sanisette:
-            ConcreteSanisetteDetailView().create(service: serviceSelected as! Sanisette) as! SanisetteDetailView
+            ConcreteSanisetteDetailView().create(service: serviceSelected) as? SanisetteDetailView
         case .fontaine:
-            ConcreteFontaineDetailView().create(service: serviceSelected as! Fontaine) as! FontaineDetailView
+            ConcreteFontaineDetailView().create(service: serviceSelected) as? FontaineDetailView
         case .triMobile:
-            ConcreteTriMobileDetailView().create(service: serviceSelected as! TriMobile) as! TriMobileDetailView
+            ConcreteTriMobileDetailView().create(service: serviceSelected) as? TriMobileDetailView
         case .arbreRemarquable:
-            ConcreteArbreRemarquableDetailView().create(service: serviceSelected as! ArbreRemarquable) as! ArbreRemarquableDetailView
+            ConcreteArbreRemarquableDetailView().create(service: serviceSelected) as? ArbreRemarquableDetailView
         case .wifiHotspot:
-            ConcreteWifiHotspotDetailView().create(service: serviceSelected as! WifiHotspot) as! WifiHotspotDetailView
+            ConcreteWifiHotspotDetailView().create(service: serviceSelected) as? WifiHotspotDetailView
         case .colonneVerre:
-            ConcreteColonneVerreDetailView().create(service: serviceSelected as! ColonneVerre) as! ColonneVerreDetailView
+            ConcreteColonneVerreDetailView().create(service: serviceSelected) as? ColonneVerreDetailView
         }
     }
     

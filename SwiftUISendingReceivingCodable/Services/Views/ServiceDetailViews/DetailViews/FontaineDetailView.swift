@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteFontaineDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return FontaineDetailView(service: service as! Fontaine)
     }
 }

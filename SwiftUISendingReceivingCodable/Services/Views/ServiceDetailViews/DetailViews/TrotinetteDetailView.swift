@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteTrotinetteDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return TrotinetteDetailView(service: service as! Trotinette)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConcreteColonneVerreDetailView: CreatorFactoryMethod {
-    func create(service: Service) -> DetailBaseViewProtocol {
+    func create(service: Service?) -> DetailBaseViewProtocol? {
         return ColonneVerreDetailView(service: service as! ColonneVerre)
     }
 }

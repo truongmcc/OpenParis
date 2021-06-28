@@ -247,6 +247,11 @@
 			isa = PBXGroup;
 			children = (
 				EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */,
+				EB887FE324C9DC8500BA086F /* NetworkManager.swift */,
+				EBFF9674267CDFFD0007E9D6 /* UrlCreator.swift */,
+				EBFF9679267CE2770007E9D6 /* DataDecoder.swift */,
+				EBFF9687267CE83F0007E9D6 /* DataFetcher.swift */,
+				EB8C3321254C4BC400524379 /* AlertManager.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -323,7 +328,7 @@
 				EB3C1DF924E7CAE90013ED0E /* Map */,
 				EB6AE30F25504D5600787240 /* WebServices */,
 				EB70884E2588E8A60069C1FF /* Enums */,
-				EB8C332B254C88C600524379 /* Managers */,
+				EB8C332B254C88C600524379 /* Extensions */,
 				EB887FBC24C9BE2E00BA086F /* Assets.xcassets */,
 				EB887FC124C9BE2F00BA086F /* Info.plist */,
 				EB887FBE24C9BE2F00BA086F /* Preview Content */,
@@ -357,17 +362,12 @@
 			path = SwiftUISendingReceivingCodableUITests;
 			sourceTree = "<group>";
 		};
-		EB8C332B254C88C600524379 /* Managers */ = {
+		EB8C332B254C88C600524379 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EB887FE324C9DC8500BA086F /* NetworkManager.swift */,
-				EBFF9674267CDFFD0007E9D6 /* UrlCreator.swift */,
-				EBFF9679267CE2770007E9D6 /* DataDecoder.swift */,
-				EBFF9687267CE83F0007E9D6 /* DataFetcher.swift */,
-				EB8C3321254C4BC400524379 /* AlertManager.swift */,
 				EB1B7163257294B500DFB05A /* String+Extension.swift */,
 			);
-			path = Managers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */ = {

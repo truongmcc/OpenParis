@@ -19,8 +19,6 @@ struct PreferencesView: View {
     var body: some View {
         NavigationView {
             VStack() {
-                Text("PREFERENCES")
-                    .padding()
                 addTypeService()
                 NavigationLink(destination: PointsOfInterestsView().environmentObject(userSettings)) {
                     Text("Filtrer les points d'intérêts")

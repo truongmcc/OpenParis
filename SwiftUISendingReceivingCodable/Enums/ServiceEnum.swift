@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-enum ServicesEnum: String, CaseIterable {
+enum ServicesEnum: String, CaseIterable, Identifiable {
+    var id: String { self.rawValue }
+    
     case velib
     case trotinette
     case sanisette

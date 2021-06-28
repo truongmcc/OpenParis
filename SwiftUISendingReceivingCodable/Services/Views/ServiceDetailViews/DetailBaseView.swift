@@ -12,7 +12,6 @@ struct DetailBaseView: View {
     var detailView: some View {
         return serviceSelected?.typeService.createDetailView(serviceSelected: serviceSelected!)
     }
-
     var body: some View {
         BaseView() {
             detailView

@@ -21,6 +21,7 @@
 		EB4C5EA725669454001791D4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C5EA625669454001791D4 /* Service.swift */; };
 		EB55B19325558EA300C3AEF9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19225558EA300C3AEF9 /* MapViewModel.swift */; };
 		EB55B19825558FCB00C3AEF9 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */; };
+		EB65A364268A02EE009732D4 /* ContentView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65A363268A02EE009732D4 /* ContentView+Extension.swift */; };
 		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
 		EB6AE31D25505CE500787240 /* RepositoryNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */; };
 		EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */; };
@@ -90,6 +91,7 @@
 		EB4C5EA625669454001791D4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EB55B19225558EA300C3AEF9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EB55B19725558FCB00C3AEF9 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
+		EB65A363268A02EE009732D4 /* ContentView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+Extension.swift"; sourceTree = "<group>"; };
 		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
 		EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNetworking.swift; sourceTree = "<group>"; };
 		EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				EB887FBA24C9BDD000BA086F /* ContentView.swift */,
+				EB65A363268A02EE009732D4 /* ContentView+Extension.swift */,
 				EBB5F4012551961B00A3DEF6 /* ServiceDetailViews */,
 				EB0FF5B32584DFE60061E251 /* PreferencesView.swift */,
 				EBECC46D258378D10094D643 /* UserSettings.swift */,
@@ -548,6 +551,7 @@
 				EBE5EBED2552A02D00DF20F0 /* FontaineDataModel.swift in Sources */,
 				EB2C881B257F9517007EBACC /* PointsOfInterestsView.swift in Sources */,
 				EB887FB924C9BDD000BA086F /* SwiftUISendingReceivingCodableApp.swift in Sources */,
+				EB65A364268A02EE009732D4 /* ContentView+Extension.swift in Sources */,
 				EB887FE424C9DC8500BA086F /* NetworkManager.swift in Sources */,
 				EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */,
 				EB3B0226257D332200C6CDE8 /* ServiceAnnotation.swift in Sources */,

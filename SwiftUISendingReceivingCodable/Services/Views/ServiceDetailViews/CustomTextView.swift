@@ -9,9 +9,7 @@ import SwiftUI
 
 @propertyWrapper struct capitalizedString {
     var wrappedValue: String? {
-        didSet {
-            wrappedValue = wrappedValue?.capitalized
-        }
+        didSet { wrappedValue = wrappedValue?.capitalized }
     }
     init(wrappedValue: String?) {
         self.wrappedValue = wrappedValue?.capitalized

@@ -35,7 +35,6 @@ struct PreferencesView: View {
                 Spacer()
                 Text("Rayon de recherche")
                 addRayDistancePicker()
-
                 Button("OK", action: {
                     self.presentationMode.wrappedValue.dismiss()
                 })
@@ -72,16 +71,11 @@ struct PreferencesView: View {
     }
     
     fileprivate func addTypeService() -> some View {
-        Picker(selection: $userSettings.typeService, label: Text("Services"), content: {
-            Text("Velibs").tag(ServicesEnum.velib)
-            Text("Trotinettes").tag(ServicesEnum.trotinette)
-            Text("Sanisettes").tag(ServicesEnum.sanisette)
-            Text("Fontaines").tag(ServicesEnum.fontaine)
-            Text("Tri mobile").tag(ServicesEnum.triMobile)
-            Text("Arbres remarquables").tag(ServicesEnum.arbreRemarquable)
-            Text("Hotspots wifi").tag(ServicesEnum.wifiHotspot)
-            Text("Colonnes de verre").tag(ServicesEnum.colonneVerre)
-        })
+        Picker("Services", selection: $userSettings.typeService) {
+            ForEach(ServicesEnum.allCases) {
+                Text($0.title()).tag($0)
+            }
+        }
         .pickerStyle(WheelPickerStyle())
         .padding(10)
     }

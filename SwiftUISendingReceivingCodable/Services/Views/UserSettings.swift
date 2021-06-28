@@ -33,7 +33,7 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(typeService.rawValue, forKey: "typeService")
         }
     }
-       
+    
     init() {
         self.pointsOfInterests = UserDefaults.standard.object(forKey: "pointsOfInterests") as? [MKPointOfInterestCategory]
         

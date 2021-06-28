@@ -14,11 +14,11 @@ struct ContentView: View {
     @StateObject var mapViewModel = MapViewModel()
     @StateObject var serviceViewModel = ServiceViewModel()
     
-    @State private var showPreferencesView = false
-    @State private var showLoadingView = false
-    @State private var showErrorAlert = false
+    @State var showPreferencesView = false
+    @State var showLoadingView = false
+    @State var showErrorAlert = false
     
-    @State private var bottomSheetShown = false
+    @State private var isFilteringViewShowned = false
     
     var mapView: MapView {
         serviceViewModel.userSettings = userSettings
@@ -40,7 +40,7 @@ struct ContentView: View {
             showProgressionView()
             showServiceDetail()
             GeometryReader { geometry in
-                FilteredServicesView(isOpen: self.$bottomSheetShown, mapView: mapView,
+                FilteredServicesView(isOpen: self.$isFilteringViewShowned, mapView: mapView,
                                  maxHeight: geometry.size.height * 0.7) {
                 }
             }.edgesIgnoringSafeArea(.all)
@@ -61,57 +61,6 @@ struct ContentView: View {
         .onAppear() {
             mapView.showAllAnnotations()
         }
-    }
-}
-
-extension ContentView {
-    
-    fileprivate func showServiceDetail() -> AnyView? {
-        guard let service = serviceViewModel.service, service.id != nil else { return nil }
-        return AnyView(DetailBaseView(serviceSelected: service))
-    }
-    
-    fileprivate func showProgressionView() -> some View {
-        VStack {
-            if showLoadingView {
-                ProgressView()
-                    .foregroundColor(Color.primary)
-            }
-        }
-    }
-    
-    fileprivate func addTitleBar() -> some View {
-        return HStack(alignment: .firstTextBaseline) {
-            addTitle()
-            Spacer()
-            Button("Options", action: {
-                showPreferencesView.toggle()
-            })
-            .padding(20)
-        }
-        .foregroundColor(Color.primary)
-    }
-    
-    fileprivate func addPositionButton() -> some View {
-        return
-            GeometryReader { geometryReader in
-                VStack {
-                    Button("Ma position", action: {
-                        mapViewModel.centerUserLocation.toggle()
-                    })
-                    .padding(20)
-                    .multilineTextAlignment(.trailing)
-                }
-                .foregroundColor(Color.primary)
-                .frame(width: geometryReader.size.width, height: geometryReader.size.height, alignment: .bottomTrailing)
-            }
-    }
-    
-    fileprivate func addTitle() -> some View {
-        Text(userSettings.typeService.title())
-            .foregroundColor(.primary)
-            .font(.title)
-            .padding(20)
     }
 }
 

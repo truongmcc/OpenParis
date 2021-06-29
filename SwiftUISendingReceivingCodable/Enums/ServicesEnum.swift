@@ -1,5 +1,5 @@
 //
-//  ServiceEnum.swift
+//  ServicesEnum.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 18/11/2020.
@@ -42,47 +42,50 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
     }
     
     func allAnnotationsEndpoint() -> String {
+        let openDataBaseUrl = "https://opendata.paris.fr/api/records/1.0/search"
+        let openParisBaseUrl = "https://opendata.paris.fr/api/records/1.0/search"
         switch self {
         case .velib:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000"
         case .trotinette:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1000"
         case .sanisette:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=sanisettesparis&q=&rows=1000"
         case .fontaine:
-            return
-                "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=fontaines-a-boire&q=&rows=1000"
         case .triMobile:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=tri-mobile0&q=&rows=1000"
         case .arbreRemarquable:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=&rows=1000"
+            return openParisBaseUrl + "/?dataset=arbresremarquablesparis&q=&rows=1000"
         case .wifiHotspot:
-            return "https://parisdata.opendatasoft.com/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=sites-disposant-du-service-paris-wi-fi&q=&rows=1000"
         case .colonneVerre:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=dechets-menagers-points-dapport-volontaire-colonnes-a-verre&q=&rows=1000"
+            return openDataBaseUrl + "/?dataset=dechets-menagers-points-dapport-volontaire-colonnes-a-verre&q=&rows=1000"
         }
     }
     
     func annotationEndpoint() -> String {
+        let openDataBaseUrl = "https://opendata.paris.fr/api/records/1.0/search"
+        let openParisBaseUrl = "https://opendata.paris.fr/api/records/1.0/search"
         switch self {
         case .velib:
             return
-                "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
+                openDataBaseUrl + "/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
         case .trotinette:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=emplacements-de-stationnement-trottinettes&q=recordid%3D"
+            return openDataBaseUrl + "/?dataset=emplacements-de-stationnement-trottinettes&q=recordid%3D"
         case .sanisette:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=recordid%3D"
+            return openDataBaseUrl + "/?dataset=sanisettesparis&q=recordid%3D"
         case .fontaine:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&q=recordid%3D"
+            return openDataBaseUrl + "/?dataset=fontaines-a-boire&q=recordid%3D"
         case .triMobile:
             return
-                "https://opendata.paris.fr/api/records/1.0/search/?dataset=tri-mobile0&q=recordid%3D"
+                openDataBaseUrl + "/?dataset=tri-mobile0&q=recordid%3D"
         case .arbreRemarquable:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=arbresremarquablesparis&q=recordid%3D"
+            return openDataBaseUrl + "/?dataset=arbresremarquablesparis&q=recordid%3D"
         case .wifiHotspot:
-            return "https://parisdata.opendatasoft.com/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&q=recordid%3D"
+            return openParisBaseUrl + "/?dataset=sites-disposant-du-service-paris-wi-fi&q=recordid%3D"
         case .colonneVerre:
-            return "https://opendata.paris.fr/api/records/1.0/search/?dataset=dechets-menagers-points-dapport-volontaire-colonnes-a-verre&q=recordid+%3D"
+            return openDataBaseUrl + "/?dataset=dechets-menagers-points-dapport-volontaire-colonnes-a-verre&q=recordid+%3D"
         }
     }
     
@@ -149,5 +152,4 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
             ConcreteColonneVerreDetailView().create(service: serviceSelected) as? ColonneVerreDetailView
         }
     }
-    
 }

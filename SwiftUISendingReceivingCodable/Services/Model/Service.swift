@@ -19,7 +19,7 @@ protocol Service {
     typealias wifiHotSportResult = Result<WifiHotspotResponse, NetworkErrorEnum>
     
     var id: String? { get set }
-    var typeService: ServicesEnum { get set }
+    var typeService: ServicesEnum { get }
     func fetchDetail(of service: ServicesEnum,
                      urlString: String,
                      completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void)

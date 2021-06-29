@@ -47,10 +47,10 @@ struct FilteredServicesView<Content: View>: View, ServiceAnnotationProtocol {
     
     init(isOpen: Binding<Bool>, mapView: MapView, maxHeight: CGFloat,
          @ViewBuilder content: () -> Content) {
+        self._isOpen = isOpen
+        self.content = content()
         self.minHeight = maxHeight * Constants.minHeightRatio
         self.maxHeight = maxHeight
-        self.content = content()
-        self._isOpen = isOpen
         self.mapView = mapView
         self.serviceAnnotations = mapView.mapViewModel.annotations
     }

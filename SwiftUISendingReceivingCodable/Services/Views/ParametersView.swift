@@ -1,5 +1,5 @@
 //
-//  PreferencesView.swift
+//  ParametersView.swift
 //  SwiftUISendingReceivingCodable
 //
 //  Created by picshertho on 28/10/2020.
@@ -8,12 +8,11 @@
 import SwiftUI
 import MapKit
 
-struct PreferencesView: View {
+struct ParametersView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
-    @ObservedObject var mapViewModel: MapViewModel
     
     var onDismiss: () -> Void
     
@@ -44,7 +43,7 @@ struct PreferencesView: View {
                     onDismiss()
                 }
             }
-            .navigationTitle("PREFERENCES")
+            .navigationTitle("Paramètres")
         }
         .accentColor(.white)
     }
@@ -82,8 +81,7 @@ struct PreferencesView: View {
 
 struct MenuView_Previews: PreviewProvider {
     @State static var service = ServicesEnum.velib
-    static var mapViewModel = MapViewModel()
     static var previews: some View {
-        PreferencesView(mapViewModel: mapViewModel, onDismiss: {} )
+        ParametersView( onDismiss: {} )
     }
 }

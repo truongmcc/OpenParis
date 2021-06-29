@@ -12,7 +12,7 @@ class ServiceViewModel: ObservableObject {
     var userSettings: UserSettings?
     
     func fetchAnnotationDetail(recordId: String,
-                                finished: @escaping (Bool, NetworkErrorEnum?) -> Void) {
+                                completionHandler: @escaping (Bool, NetworkErrorEnum?) -> Void) {
         guard let urls = userSettings?.typeService.annotationEndpoint() else { return }
         let url = urls + recordId
         guard let typeService = userSettings?.typeService else { return }
@@ -20,7 +20,7 @@ class ServiceViewModel: ObservableObject {
         service?.fetchDetail(of: typeService, urlString: url) { service, showError, networkError in
             DispatchQueue.main.async {
                 self.service = service
-                finished(showError, networkError)
+                completionHandler(showError, networkError)
             }
         }
     }

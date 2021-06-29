@@ -14,7 +14,7 @@ struct ContentView: View {
     @StateObject var mapViewModel = MapViewModel()
     @StateObject var serviceViewModel = ServiceViewModel()
     
-    @State var showPreferencesView = false
+    @State var showParametersView = false
     @State var showLoadingView = false
     @State var showErrorAlert = false
     
@@ -52,8 +52,8 @@ struct ContentView: View {
                 }
             })
         }
-        .sheet(isPresented: $showPreferencesView) {
-            PreferencesView(mapViewModel: mapViewModel, onDismiss: {
+        .sheet(isPresented: $showParametersView) {
+            ParametersView(onDismiss: {
                 serviceViewModel.service = nil
                 mapView.showAllAnnotations()
             }).environmentObject(userSettings)

@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension ContentView {
-    
     func showServiceDetail() -> AnyView? {
         guard let service = serviceViewModel.service, service.id != nil else { return nil }
         return AnyView(DetailBaseView(serviceSelected: service))
@@ -28,8 +27,8 @@ extension ContentView {
         return HStack(alignment: .firstTextBaseline) {
             addTitle()
             Spacer()
-            Button("Options", action: {
-                showPreferencesView.toggle()
+            Button("Paramètres", action: {
+                showParametersView.toggle()
             })
             .padding(20)
         }
@@ -40,9 +39,7 @@ extension ContentView {
         return
             GeometryReader { geometryReader in
                 VStack {
-                    Button("Ma position", action: {
-                        mapViewModel.centerUserLocation.toggle()
-                    })
+                    Button("Ma position", action: { mapViewModel.centerUserLocation.toggle() })
                     .padding(20)
                     .multilineTextAlignment(.trailing)
                 }

@@ -1,6 +1,7 @@
 webservices with combine
 intégrer le map de swiftui lorsque j'ai XCode 13
 
+add blak icones with ligh mode done
 extension ContentView done
 creer une classe decoder (single responsability) done
 ajouter le pattern factory method pour les viewdetail !!! done

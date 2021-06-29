@@ -243,7 +243,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		EB6AE30F25504D5600787240 /* WebServices */ = {
+		EB6AE30F25504D5600787240 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				EB6AE31C25505CE500787240 /* RepositoryNetworking.swift */,
@@ -253,7 +253,7 @@
 				EBFF9687267CE83F0007E9D6 /* DataFetcher.swift */,
 				EB8C3321254C4BC400524379 /* AlertManager.swift */,
 			);
-			path = WebServices;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EB6BDB0F2613663D005BF4B8 /* ListServices */ = {
@@ -326,7 +326,7 @@
 				EB6BDB0F2613663D005BF4B8 /* ListServices */,
 				EB4C5EB325669FF0001791D4 /* Services */,
 				EB3C1DF924E7CAE90013ED0E /* Map */,
-				EB6AE30F25504D5600787240 /* WebServices */,
+				EB6AE30F25504D5600787240 /* Network */,
 				EB70884E2588E8A60069C1FF /* Enums */,
 				EB8C332B254C88C600524379 /* Extensions */,
 				EB887FBC24C9BE2E00BA086F /* Assets.xcassets */,

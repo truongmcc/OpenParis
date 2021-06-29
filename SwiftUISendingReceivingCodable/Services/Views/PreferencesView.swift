@@ -11,6 +11,7 @@ import MapKit
 struct PreferencesView: View {
     
     @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
     @ObservedObject var mapViewModel: MapViewModel
     
@@ -36,7 +37,7 @@ struct PreferencesView: View {
                 Button("OK", action: {
                     self.presentationMode.wrappedValue.dismiss()
                 })
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 .font(.title)
                 .padding()
                 .onDisappear() {

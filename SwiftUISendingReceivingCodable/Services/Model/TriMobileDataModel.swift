@@ -5,8 +5,20 @@
 //  Created by picshertho on 04/11/2020.
 //
 
-struct TriMobileResponse: Codable {
-    var records: [TriMobile]?
+struct TriMobileResponse: Response {
+    var records: [Service]?
+    enum CodingKeys: String, CodingKey {
+        case records = "records"
+    }
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        records = try values.decode([TriMobile].self, forKey: .records)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.records as? [TriMobile], forKey: .records)
+    }
 }
 
 struct TriMobile: Service, Codable, Identifiable {
@@ -50,30 +62,5 @@ struct TriMobile: Service, Codable, Identifiable {
             complementAdresse = try? values.decode(String.self, forKey: .complementAdresse)
             horaires = try? values.decode(String.self, forKey: .horaires)
         }
-    }
-    
-    func fetchDetail(of service: ServicesEnum,
-                     urlString: String,
-                     completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
-        RepositoryNetworking.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: triMobileResult) in
-            switch result {
-            case .success(let data):
-                if let service = self.createService(data: data) {
-                    completionHandler(service, false, nil)
-                } else {
-                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
-                }
-            case .failure(let error):
-                completionHandler(nil, true, error)
-            }
-        }
-    }
-
-    func createService<T>(data: T) -> Service? {
-        if let dataResponse = data as? TriMobileResponse, let service = dataResponse.records?.first {
-            return service
-        }
-        return nil
     }
 }

@@ -5,8 +5,20 @@
 //  Created by picshertho on 29/11/2020.
 //
 
-struct WifiHotspotResponse: Codable {
-    var records: [WifiHotspot]?
+struct WifiHotspotResponse: Response {
+    var records: [Service]?
+    enum CodingKeys: String, CodingKey {
+        case records = "records"
+    }
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        records = try values.decode([WifiHotspot].self, forKey: .records)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.records as? [WifiHotspot], forKey: .records)
+    }
 }
 
 struct WifiHotspot: Service, Codable, Identifiable {
@@ -55,30 +67,4 @@ struct WifiHotspot: Service, Codable, Identifiable {
             nbBorneWifi = try? values.decode(Int.self, forKey: .nbBorneWifi)
         }
     }
-    
-    func fetchDetail(of service: ServicesEnum,
-                     urlString: String,
-                     completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
-        RepositoryNetworking.shared.fetchDetail(of: service,
-                                             urlString: urlString) { ( result: wifiHotSportResult) in
-            switch result {
-            case .success(let data):
-                if let service = self.createService(data: data) {
-                    completionHandler(service, false, nil)
-                } else {
-                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
-                }
-            case .failure(let error):
-                completionHandler(nil, true, error)
-            }
-        }
-    }
-  
-    func createService<T>(data: T) -> Service? {
-        if let dataResponse = data as? WifiHotspotResponse, let service = dataResponse.records?.first {
-            return service
-        }
-        return nil
-    }
-    
 }

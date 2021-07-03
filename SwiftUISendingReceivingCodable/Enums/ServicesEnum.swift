@@ -89,24 +89,46 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         }
     }
     
-    func type<T>() -> T.Type {
+    func type<T>() -> T {
         switch self {
         case .velib:
-            return VelibResponse.self as! T.Type
+            return VelibResponse.self as! T
         case .trotinette:
-            return TrotinetteResponse.self as! T.Type
+            return TrotinetteResponse.self as! T
         case .sanisette:
-            return SanisetteResponse.self as! T.Type
+            return SanisetteResponse.self as! T
         case .fontaine:
-            return FontaineResponse.self as! T.Type
+            return FontaineResponse.self as! T
         case .triMobile:
-            return TriMobileResponse.self as! T.Type
+            return TriMobileResponse.self as! T
         case .arbreRemarquable:
-            return ArbreRemarquableResponse.self as! T.Type
+            return ArbreRemarquableResponse.self as! T
         case .wifiHotspot:
-            return WifiHotspotResponse.self as! T.Type
+            return WifiHotspotResponse.self as! T
         case .colonneVerre:
-            return ColonneVerreResponse.self as! T.Type
+            return ColonneVerreResponse.self as! T
+        }
+    }
+    
+    func type2() -> Response.Type {
+        switch self {
+        
+        case .velib:
+            return VelibResponse.self
+        case .trotinette:
+            return TrotinetteResponse.self
+        case .sanisette:
+            return SanisetteResponse.self
+        case .fontaine:
+            return FontaineResponse.self
+        case .triMobile:
+            return TriMobileResponse.self
+        case .arbreRemarquable:
+            return ArbreRemarquableResponse.self
+        case .wifiHotspot:
+            return WifiHotspotResponse.self
+        case .colonneVerre:
+            return ColonneVerreResponse.self
         }
     }
     

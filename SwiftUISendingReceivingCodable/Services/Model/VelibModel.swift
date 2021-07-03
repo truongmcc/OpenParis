@@ -5,14 +5,30 @@
 //  Created by picshertho on 23/07/2020.
 //
 
-struct VelibResponse: Codable {
-    var records: [Velib]?
+protocol Response: Codable {
+    var records: [Service]? { get set }
+    func encode(to encoder: Encoder) throws
+}
+
+struct VelibResponse: Response {
+    var records: [Service]?
+    enum CodingKeys: String, CodingKey {
+        case records = "records"
+    }
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        records = try values.decode([Velib].self, forKey: .records)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.records as? [Velib], forKey: .records)
+    }
 }
 
 struct Velib: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.velib
-    
     var fields: Fields?
     
     enum CodingKeys: String, CodingKey {
@@ -72,30 +88,5 @@ struct Velib: Service, Codable, Identifiable {
             isReturning = try? values.decode(String.self, forKey: .isReturning)
             dueDate = try? values.decode(String.self, forKey: .dueDate)
         }
-    }
-    
-    func fetchDetail(of service: ServicesEnum,
-                     urlString: String,
-                     completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
-        RepositoryNetworking.shared.fetchDetail(of: service,
-                                               urlString: urlString) { ( result: Result<VelibResponse, NetworkErrorEnum>) in
-            switch result {
-            case .success(let data):
-                if let service = self.createService(data: data) {
-                    completionHandler(service, false, nil)
-                } else {
-                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
-                }
-            case .failure(let error):
-                completionHandler(nil, true, error)
-            }
-        }
-    }
-    
-    func createService<T>(data: T) -> Service? {
-        if let dataResponse = data as? VelibResponse, let service = dataResponse.records?.first {
-            return service
-        }
-        return nil
     }
 }

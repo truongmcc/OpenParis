@@ -16,15 +16,10 @@ class ServiceViewModel: ObservableObject {
         guard let urls = userSettings?.typeService.annotationEndpoint() else { return }
         let url = urls + recordId
         service = userSettings?.typeService.create()
-//        service?.fetchDetail(urlString: url) { service, showError, networkError in
-//            DispatchQueue.main.async {
-//                self.service = service
-//                completionHandler(showError, networkError)
-//            }
-//        }
+
         guard let typeService = userSettings?.typeService else { return }
         
-        let typeResponse = userSettings?.typeService.type2()
+       // let typeResponse = userSettings?.typeService.type2()
         switch userSettings?.typeService {
         
         case .velib:

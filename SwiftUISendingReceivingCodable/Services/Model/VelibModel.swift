@@ -7,6 +7,7 @@
 
 protocol Response: Codable {
     var records: [Service]? { get set }
+    init(from decoder: Decoder) throws
     func encode(to encoder: Encoder) throws
 }
 
@@ -87,6 +88,25 @@ struct Velib: Service, Codable, Identifiable {
             numDockAvailable = try? values.decode(Int.self, forKey: .numDockAvailable)
             isReturning = try? values.decode(String.self, forKey: .isReturning)
             dueDate = try? values.decode(String.self, forKey: .dueDate)
+        }
+    }
+    
+    func fetchDetail(of service: ServicesEnum,
+                                  urlString: String,
+                                  completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
+        RepositoryNetworking.shared.fetchDetail(of: service,
+                                                urlString: urlString) { (result: Result<VelibResponse, NetworkErrorEnum>) in
+            
+            switch result{
+            case .success(let data):
+                if let service = data.records?.first {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
         }
     }
 }

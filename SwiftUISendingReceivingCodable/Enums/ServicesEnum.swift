@@ -110,9 +110,30 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         }
     }
     
+    func type3(response: Response.Type) -> Response {
+        return response.self as! Response
+//        switch self {
+//        case .velib:
+//            return response as VelibResponse.self
+//        case .trotinette:
+//            return TrotinetteResponse.self
+//        case .sanisette:
+//            return SanisetteResponse.self
+//        case .fontaine:
+//            return FontaineResponse.self
+//        case .triMobile:
+//            return TriMobileResponse.self
+//        case .arbreRemarquable:
+//            return ArbreRemarquableResponse.self
+//        case .wifiHotspot:
+//            return WifiHotspotResponse.self
+//        case .colonneVerre:
+//            return ColonneVerreResponse.self
+//        }
+    }
+    
     func type2() -> Response.Type {
         switch self {
-        
         case .velib:
             return VelibResponse.self
         case .trotinette:
@@ -131,6 +152,47 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
             return ColonneVerreResponse.self
         }
     }
+    
+//    func decode(encodedData: Data) -> Response? {
+//        var decodedData: Response?
+//        switch self {
+//        case .velib:
+//            do {
+//                decodedData = try JSONDecoder().decode(VelibResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .trotinette:
+//            do {
+//                decodedData = try JSONDecoder().decode(TrotinetteResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .sanisette:
+//            do {
+//                decodedData = try JSONDecoder().decode(SanisetteResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .fontaine:
+//            do {
+//                decodedData = try JSONDecoder().decode(FontaineResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .triMobile:
+//            do {
+//                decodedData = try JSONDecoder().decode(TriMobileResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .arbreRemarquable:
+//            do {
+//                decodedData = try JSONDecoder().decode(ArbreRemarquableResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .wifiHotspot:
+//            do {
+//                decodedData = try JSONDecoder().decode(WifiHotspotResponse.self, from: encodedData)
+//            } catch { print("") }
+//        case .colonneVerre:
+//            do {
+//                decodedData = try JSONDecoder().decode(ColonneVerreResponse.self, from: encodedData)
+//            } catch { print("") }
+//        }
+//
+//
+//        return decodedData
+//    }
     
     func create() -> Service {
         switch self {

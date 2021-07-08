@@ -54,5 +54,24 @@ struct Trotinette: Service, Codable, Identifiable {
             codePostal = try values.decode(String.self, forKey: .codePostal)
         }
     }
+    
+    func fetchDetail(of service: ServicesEnum,
+                                  urlString: String,
+                                  completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
+        RepositoryNetworking.shared.fetchDetail(of: service,
+                                                urlString: urlString) { (result: Result<TrotinetteResponse, NetworkErrorEnum>) in
+            
+            switch result{
+            case .success(let data):
+                if let service = data.records?.first {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
+        }
+    }
 }
 

@@ -59,4 +59,23 @@ struct Sanisette: Service, Codable, Identifiable {
             horaire = try? values.decode(String.self, forKey: .horaire)
         }
     }
+    
+    func fetchDetail(of service: ServicesEnum,
+                                  urlString: String,
+                                  completionHandler: @escaping (Service?, Bool, NetworkErrorEnum?) -> Void) {
+        RepositoryNetworking.shared.fetchDetail(of: service,
+                                                urlString: urlString) { (result: Result<SanisetteResponse, NetworkErrorEnum>) in
+            
+            switch result{
+            case .success(let data):
+                if let service = data.records?.first {
+                    completionHandler(service, false, nil)
+                } else {
+                    completionHandler(nil, true, NetworkErrorEnum.dataNotFound)
+                }
+            case .failure(let error):
+                completionHandler(nil, true, error)
+            }
+        }
+    }
 }

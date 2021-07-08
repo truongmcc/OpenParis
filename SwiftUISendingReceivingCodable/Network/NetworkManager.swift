@@ -42,25 +42,25 @@ class NetworkManager {
     }
     
     // Generic with result type version
-    func fetchDataWithTypeResult2<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
-        guard let urlRequest = self.urlCreator.createUrlRequest(urlString: url) else {
-            completion(.failure(NetworkErrorEnum.badURL))
-            return
-        }
-        URLSession.shared.dataTask(with: urlRequest)  { [weak self] data, response, error in
-            guard let data = data else {
-                completion(.failure(NetworkErrorEnum.requestFailed))
-                return
-            }
-            if let decoding = self?.dataDecoder.decode(data: data, decodable: decodable.self) {
-                print(decoding)
-                completion(.success(decoding))
-            } else {
-                completion(.failure(NetworkErrorEnum.decodingFailed))
-            }
-        }
-        .resume()
-    }
+//    func fetchDataWithTypeResult2<T: Codable>(url: String, decodable: T.Type, completion: @escaping (Result<T, NetworkErrorEnum>) -> Void) {
+//        guard let urlRequest = self.urlCreator.createUrlRequest(urlString: url) else {
+//            completion(.failure(NetworkErrorEnum.badURL))
+//            return
+//        }
+//        URLSession.shared.dataTask(with: urlRequest)  { [weak self] data, response, error in
+//            guard let data = data else {
+//                completion(.failure(NetworkErrorEnum.requestFailed))
+//                return
+//            }
+//            if let decoding = self?.dataDecoder.decode(data: data, decodable: decodable.self) {
+//                print(decoding)
+//                completion(.success(decoding))
+//            } else {
+//                completion(.failure(NetworkErrorEnum.decodingFailed))
+//            }
+//        }
+//        .resume()
+//    }
     
     func fetchDataWithCombine<T: Codable>(url: String,
                                           decodable: T.Type,

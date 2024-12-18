@@ -25,6 +25,7 @@ struct TriMobile: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.triMobile
     var fields: Fields?
+    var typeResponse = TriMobileResponse.self
     
     enum CodingKeys: String, CodingKey {
         case id = "recordid"

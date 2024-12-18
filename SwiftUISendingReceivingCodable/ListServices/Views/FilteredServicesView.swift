@@ -76,7 +76,7 @@ struct FilteredServicesView<Content: View>: View, ServiceAnnotationProtocol {
                 List {
                     ForEach(
                         self.serviceAnnotations, id: \.self) { annotation in
-                        if let annot = annotation as ServiceAnnotation {
+                        if let annot = annotation as ServiceAnnotation? {
                             if searchText == "" || annot.name?.contains(searchText) == true {
                                 createAnnotationCell(annot)
                             }

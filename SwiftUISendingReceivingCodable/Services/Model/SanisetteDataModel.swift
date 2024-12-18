@@ -25,6 +25,7 @@ struct Sanisette: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.sanisette
     var fields: Fields?
+    var typeResponse = SanisetteResponse.self
     
     enum CodingKeys: String, CodingKey {
         case id = "recordid"

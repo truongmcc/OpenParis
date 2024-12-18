@@ -24,7 +24,7 @@ struct WifiHotspotResponse: Response {
 struct WifiHotspot: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.wifiHotspot
-
+    var typeResponse = WifiHotspotResponse.self
     var fields: Fields?
     
     enum CodingKeys: String, CodingKey {

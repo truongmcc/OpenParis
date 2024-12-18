@@ -26,6 +26,7 @@ struct ColonneVerreResponse: Response {
 struct ColonneVerre: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.colonneVerre
+    var typeResponse = ColonneVerreResponse.self
     var fields: Fields?
     
     enum CodingKeys: String, CodingKey {

@@ -25,6 +25,7 @@ struct ArbreRemarquable: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.arbreRemarquable
     var fields: Fields?
+    var typeResponse = ArbreRemarquableResponse.self
     
     enum CodingKeys: String, CodingKey {
         case id = "recordid"
@@ -52,7 +53,6 @@ struct ArbreRemarquable: Service, Codable, Identifiable {
         var dateplantation: String?
         var remarquable: String?
         var stadedeveloppement: String?
-
         
         enum CodingKeys: String, CodingKey {
             case adresse = "adresse"

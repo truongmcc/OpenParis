@@ -25,6 +25,7 @@ struct Trotinette: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.trotinette
     var fields: Fields?
+    var typeResponse = TrotinetteResponse.self
     
     enum CodingKeys: String, CodingKey {
         case id = "recordid"

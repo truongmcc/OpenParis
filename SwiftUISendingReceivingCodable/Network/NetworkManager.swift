@@ -33,7 +33,6 @@ class NetworkManager {
             }
             print(data)
             if let decodedData = self?.dataDecoder.decode(data: data, decodable: decodable.self) {
-                print(decodedData)
                 completion(.success(decodedData))
             } else {
                 completion(.failure(NetworkErrorEnum.decodingFailed))

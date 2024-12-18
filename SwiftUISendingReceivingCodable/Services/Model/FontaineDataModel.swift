@@ -25,6 +25,7 @@ struct Fontaine: Service, Codable, Identifiable {
     var id: String?
     var typeService = ServicesEnum.fontaine
     var fields: Fields?
+    var typeResponse = FontaineResponse.self
     
     enum CodingKeys: String, CodingKey {
         case id = "recordid"

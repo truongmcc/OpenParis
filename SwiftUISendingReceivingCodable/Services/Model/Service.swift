@@ -10,7 +10,6 @@ import Foundation
 protocol Service {
     typealias ServiceResult<T> = Result<T, NetworkErrorEnum>
     typealias VelibResult = Result<VelibResponse, NetworkErrorEnum>
-    typealias TrotinetteResult = Result<TrotinetteResponse, NetworkErrorEnum>
     typealias SanisetteResult = Result<SanisetteResponse, NetworkErrorEnum>
     typealias fontaineResult = Result<FontaineResponse, NetworkErrorEnum>
     typealias TriMobileResult = Result<TriMobileResponse, NetworkErrorEnum>

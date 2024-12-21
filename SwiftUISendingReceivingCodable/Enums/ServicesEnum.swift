@@ -12,7 +12,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
     
     case velib
-    case trotinette
     case sanisette
     case fontaine
     case triMobile
@@ -24,8 +23,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         switch self {
         case .velib:
             return "Velibs"
-        case .trotinette:
-            return "Trotinettes"
         case .sanisette:
             return "Sanisettes"
         case .fontaine:
@@ -47,8 +44,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         switch self {
         case .velib:
             return openDataBaseUrl + "/?dataset=velib-disponibilite-en-temps-reel&q=&rows=1000"
-        case .trotinette:
-            return openDataBaseUrl + "/?dataset=emplacements-de-stationnement-trottinettes&q=&rows=1000"
         case .sanisette:
             return openDataBaseUrl + "/?dataset=sanisettesparis&q=&rows=1000"
         case .fontaine:
@@ -71,8 +66,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         case .velib:
             return
                 openDataBaseUrl + "/?dataset=velib-disponibilite-en-temps-reel&q=recordid%3D"
-        case .trotinette:
-            return openDataBaseUrl + "/?dataset=emplacements-de-stationnement-trottinettes&q=recordid%3D"
         case .sanisette:
             return openDataBaseUrl + "/?dataset=sanisettesparis&q=recordid%3D"
         case .fontaine:
@@ -93,8 +86,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         switch self {
         case .velib:
             return VelibResponse.self as! T
-        case .trotinette:
-            return TrotinetteResponse.self as! T
         case .sanisette:
             return SanisetteResponse.self as! T
         case .fontaine:
@@ -115,8 +106,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
 //        switch self {
 //        case .velib:
 //            return response as VelibResponse.self
-//        case .trotinette:
-//            return TrotinetteResponse.self
 //        case .sanisette:
 //            return SanisetteResponse.self
 //        case .fontaine:
@@ -136,8 +125,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         switch self {
         case .velib:
             return VelibResponse.self
-        case .trotinette:
-            return TrotinetteResponse.self
         case .sanisette:
             return SanisetteResponse.self
         case .fontaine:
@@ -159,10 +146,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
 //        case .velib:
 //            do {
 //                decodedData = try JSONDecoder().decode(VelibResponse.self, from: encodedData)
-//            } catch { print("") }
-//        case .trotinette:
-//            do {
-//                decodedData = try JSONDecoder().decode(TrotinetteResponse.self, from: encodedData)
 //            } catch { print("") }
 //        case .sanisette:
 //            do {
@@ -198,8 +181,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         switch self {
         case .velib:
             return Velib()
-        case .trotinette:
-            return Trotinette()
         case .sanisette:
             return Sanisette()
         case .fontaine:
@@ -220,8 +201,6 @@ enum ServicesEnum: String, CaseIterable, Identifiable {
         switch self {
         case .velib:
             ConcreteVelibDetailView().create(service: serviceSelected) as? VelibDetailView
-        case .trotinette:
-            ConcreteTrotinetteDetailView().create(service: serviceSelected) as? TrotinetteDetailView
         case .sanisette:
             ConcreteSanisetteDetailView().create(service: serviceSelected) as? SanisetteDetailView
         case .fontaine:

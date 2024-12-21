@@ -25,7 +25,6 @@
 		EB65906D268B70C200102D44 /* MapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65906C268B70C200102D44 /* MapView+Extension.swift */; };
 		EB65907B268B768100102D44 /* ServicesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65907A268B768100102D44 /* ServicesEnum.swift */; };
 		EB65A364268A02EE009732D4 /* ContentView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65A363268A02EE009732D4 /* ContentView+Extension.swift */; };
-		EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AE30225503FF600787240 /* TrotinetteModel.swift */; };
 		EB7088502588E9E50069C1FF /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */; };
 		EB7C488F255986C700CB5C7F /* DetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C488E255986C700CB5C7F /* DetailBaseView.swift */; };
 		EB84FA8824D4366000053EDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84FA8724D4366000053EDE /* MapView.swift */; };
@@ -40,7 +39,6 @@
 		EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C3321254C4BC400524379 /* AlertManager.swift */; };
 		EBAF1DC226876F1400C8AFD5 /* CreatorFactoryMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAF1DC126876F1400C8AFD5 /* CreatorFactoryMethod.swift */; };
 		EBB5F40D25519D3600A3DEF6 /* VelibDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */; };
-		EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */; };
 		EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */; };
 		EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */; };
 		EBC6DD04265E967E00170A8A /* ColonneVerre.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6DD03265E967E00170A8A /* ColonneVerre.swift */; };
@@ -96,7 +94,6 @@
 		EB65906C268B70C200102D44 /* MapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+Extension.swift"; sourceTree = "<group>"; };
 		EB65907A268B768100102D44 /* ServicesEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesEnum.swift; sourceTree = "<group>"; };
 		EB65A363268A02EE009732D4 /* ContentView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+Extension.swift"; sourceTree = "<group>"; };
-		EB6AE30225503FF600787240 /* TrotinetteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrotinetteModel.swift; sourceTree = "<group>"; };
 		EB70884F2588E9E50069C1FF /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
 		EB7C488E255986C700CB5C7F /* DetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBaseView.swift; sourceTree = "<group>"; };
 		EB84FA8724D4366000053EDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -117,7 +114,6 @@
 		EB8C3321254C4BC400524379 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		EBAF1DC126876F1400C8AFD5 /* CreatorFactoryMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorFactoryMethod.swift; sourceTree = "<group>"; };
 		EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelibDetailView.swift; sourceTree = "<group>"; };
-		EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrotinetteDetailView.swift; sourceTree = "<group>"; };
 		EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDataModel.swift; sourceTree = "<group>"; };
 		EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteDetailView.swift; sourceTree = "<group>"; };
 		EBC6DD03265E967E00170A8A /* ColonneVerre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColonneVerre.swift; sourceTree = "<group>"; };
@@ -167,7 +163,6 @@
 			children = (
 				EB4C5EA625669454001791D4 /* Service.swift */,
 				EB887FE524C9DD9300BA086F /* VelibModel.swift */,
-				EB6AE30225503FF600787240 /* TrotinetteModel.swift */,
 				EBB5F4122551B08200A3DEF6 /* SanisetteDataModel.swift */,
 				EBE5EBEC2552A02D00DF20F0 /* FontaineDataModel.swift */,
 				EBE5EBFC2552F2DE00DF20F0 /* TriMobileDataModel.swift */,
@@ -291,7 +286,6 @@
 			children = (
 				EBC6DD08265E99CA00170A8A /* ColonneVerreDetailView.swift */,
 				EBB5F40B25519D3600A3DEF6 /* VelibDetailView.swift */,
-				EBB5F40C25519D3600A3DEF6 /* TrotinetteDetailView.swift */,
 				EBB5F4172551B30A00A3DEF6 /* SanisetteDetailView.swift */,
 				EBE5EBF12552B0E400DF20F0 /* FontaineDetailView.swift */,
 				EBE5EC012552F48000DF20F0 /* TriMobileDetailView.swift */,
@@ -522,11 +516,9 @@
 				EB0FF5B42584DFE60061E251 /* ParametersView.swift in Sources */,
 				EBFF967A267CE2770007E9D6 /* DataDecoder.swift in Sources */,
 				EB4C5EA725669454001791D4 /* Service.swift in Sources */,
-				EBB5F40E25519D3600A3DEF6 /* TrotinetteDetailView.swift in Sources */,
 				EBFF9675267CDFFD0007E9D6 /* UrlCreator.swift in Sources */,
 				EBB5F4182551B30A00A3DEF6 /* SanisetteDetailView.swift in Sources */,
 				EB8C3322254C4BC400524379 /* AlertManager.swift in Sources */,
-				EB6AE30325503FF600787240 /* TrotinetteModel.swift in Sources */,
 				EB1B7164257294B500DFB05A /* String+Extension.swift in Sources */,
 				EBB5F4132551B08200A3DEF6 /* SanisetteDataModel.swift in Sources */,
 				EBFF9688267CE83F0007E9D6 /* DataFetcher.swift in Sources */,

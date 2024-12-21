@@ -14,7 +14,7 @@ protocol MapViewProtocol {
 }
 
 //MARK: MapViewProtocol
-extension MapView {
+extension MapView: MapViewProtocol {
     func showAnnotationDetail(recordId: String) {
         showLoadingView = true
         mapViewModel.shouldeRefreshAnnotations = false
@@ -28,11 +28,14 @@ extension MapView {
     }
     
     func showAllAnnotations() {
-        showLoadingView = true
-        mapViewModel.fetchAllAnnotations(of: userSettings)
-        { result in
-            showLoadingView = false
-            manageAnnotationsResults(result: result)
+        DispatchQueue.main.async {
+            showLoadingView = true
+            mapViewModel.fetchAllAnnotations(of: userSettings)
+            { result in
+                
+                showLoadingView = false
+                manageAnnotationsResults(result: result)
+            }
         }
         mapViewModel.annotations.removeAll()
     }

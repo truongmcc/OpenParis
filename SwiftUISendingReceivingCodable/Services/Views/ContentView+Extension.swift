@@ -33,6 +33,7 @@ extension ContentView {
             .padding(20)
         }
         .foregroundColor(Color.primary)
+        .background(Color.blue.luminanceToAlpha())
     }
     
     func addPositionButton() -> some View {

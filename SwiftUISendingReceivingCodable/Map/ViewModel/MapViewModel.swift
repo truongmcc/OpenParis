@@ -9,12 +9,12 @@ import SwiftUI
 import MapKit
 
 class MapViewModel: ObservableObject {
-    @Published var locationManager = CLLocationManager()
-    @Published var annotations = [ServiceAnnotation]()
-    @Published var centerUserLocation = false
-    @Published var centerOnAnnotation = false
-    @Published var shouldeRefreshAnnotations = false
-    @Published var centerCoordinate: CLLocationCoordinate2D?
+    var locationManager = CLLocationManager()
+    var annotations = [ServiceAnnotation]()
+    var centerUserLocation = false
+    var centerOnAnnotation = false
+    var shouldeRefreshAnnotations = false
+    var centerCoordinate: CLLocationCoordinate2D?
     
     func createAnnotations(results: [AnnotationDataModel]) {
         shouldeRefreshAnnotations = true

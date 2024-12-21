@@ -43,7 +43,7 @@ struct ParametersView: View {
                     onDismiss()
                 }
             }
-            .navigationTitle("Paramètres")
+            .navigationBarTitle("Paramètres", displayMode: .large)
         }
         .accentColor(.white)
     }

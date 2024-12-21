@@ -10,7 +10,7 @@ import MapKit
 import Foundation
 import CoreLocation
 
-struct MapView: UIViewRepresentable, MapViewProtocol {
+struct MapView: UIViewRepresentable {
     let locationManager = CLLocationManager()
     @ObservedObject var mapViewModel: MapViewModel
     @ObservedObject var serviceViewModel: ServiceViewModel
@@ -40,7 +40,9 @@ struct MapView: UIViewRepresentable, MapViewProtocol {
             uiView.removeAnnotations(uiView.annotations)
             let annos = mapViewModel.annotations
             uiView.addAnnotations(annos)
-            mapViewModel.shouldeRefreshAnnotations = false
+            DispatchQueue.main.async {
+                mapViewModel.shouldeRefreshAnnotations = false
+            }
         }
         if mapViewModel.centerUserLocation {
             goToUserLocation(uiView: uiView)
@@ -62,18 +64,36 @@ struct MapView: UIViewRepresentable, MapViewProtocol {
         self.locationManager.requestAlwaysAuthorization()
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            self.locationManager.startUpdatingLocation()
-            guard let location = self.locationManager.location else {
-                return
-            }
-            let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
-                                                    longitude: location.coordinate.longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
-            uiView.setRegion(region, animated: true)
+        self.locationAuthorization(uiView: uiView)
+    }
+    
+    func locationAuthorization(uiView: MKMapView) {
+        let manager = CLLocationManager()
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            setDefaultRegion(uiView: uiView)
+        case .denied:
+           break
+        case.notDetermined:
+            manager.requestAlwaysAuthorization()
+            manager.requestWhenInUseAuthorization()
+            sleep(2)
+        default:
+            break
         }
+    }
+    
+    func setDefaultRegion(uiView: MKMapView) {
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.locationManager.startUpdatingLocation()
+        guard let location = self.locationManager.location else {
+            return
+        }
+        let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                longitude: location.coordinate.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        uiView.setRegion(region, animated: true)
     }
     
     func goTo(uiView: MKMapView) {

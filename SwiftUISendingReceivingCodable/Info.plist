@@ -27,8 +27,6 @@
 		<key>NSAllowsArbitraryLoadsUsageDescription</key>
 		<dict/>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIApplicationSceneManifest</key>

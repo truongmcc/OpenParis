@@ -20,6 +20,8 @@ struct ContentView: View {
     
     @State private var isFilteringViewShowned = false
     
+    @StateObject var manager = LocationManager()
+
     var mapView: MapView {
         serviceViewModel.userSettings = userSettings
         return MapView(mapViewModel: mapViewModel,
@@ -28,10 +30,11 @@ struct ContentView: View {
                        showLoadingView: $showLoadingView,
                        showErrorAlert: $showErrorAlert)
     }
-    
+
     var body: some View {
         ZStack() {
-            mapView
+            Map(coordinateRegion: $manager.region, showsUserLocation: true)
+                .edgesIgnoringSafeArea(.all)
                 .onTapGesture { serviceViewModel.service = nil }
             VStack {
                 addTitleBar()
